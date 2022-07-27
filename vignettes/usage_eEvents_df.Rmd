@@ -1,0 +1,49 @@
+---
+title: "Usage of eEvents_df"
+output:
+  rmarkdown::html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+    highlight: "textmate"
+    css: "custom.css"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Usage of eEvents_df}
+---
+
+```{r, message=FALSE, echo=FALSE}
+library(tibble)
+```
+
+
+**_eEvents_df_** computes expected number of events over time and by strata under the assumption of piecewise model:
+
+- piecewise constant enrollment rates 
+- piecewise exponential failure rates
+- piecewise censoring rates.
+
+The above piecewise exponential distribution allows a simple method to specify a distribution and enrollment pattern where the enrollment, failure and dropout rates changes over time.
+
+```{r}
+# Default arguments, simple output (total event count only)
+eEvents_df()
+
+# Event count by time period
+eEvents_df(simple = FALSE)
+
+# Early cutoff
+eEvents_df(totalDuration=.5)
+# Single time period example
+eEvents_df(enrollRates = tibble(duration = 10,rate = 10),
+           failRates = tibble(duration = 100,failRate = log(2)/6,dropoutRate=.01),
+           totalDuration = 22,
+           simple = FALSE)
+# Single time period example, multiple enrollment periods
+eEvents_df(enrollRates = tibble(duration = c(5,5), rate=c(10,20)),
+           failRates = tibble(duration = 100,failRate=log(2)/6,dropoutRate=.01),
+           totalDuration = 22,
+           simple = FALSE)
+```
+
