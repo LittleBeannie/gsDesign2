@@ -77,32 +77,29 @@ NULL
 #' and info0 (information under related null hypothesis) for each value of `totalDuration` input;
 #' if `simple=FALSE`, `Stratum` and `t` (beginning of each constant HR period) are also returned
 #' and `HR` is returned instead of `AHR`
+#' 
 #' @examples
 #' # Example: default
 #' AHR()
-#' # Example; default with multiple analysis times (varying totalDuration)
-#' AHR(totalDuration=c(15,30))
+#' 
+#' # Example: default with multiple analysis times (varying totalDuration)
+#' 
+#' AHR(totalDuration = c(15, 30))
+#' 
 #' # Stratified population
-#' enrollRates <- tibble::tibble(Stratum=c(rep("Low",2),rep("High",3)),
-#'                               duration=c(2,10,4,4,8),
-#'                               rate=c(5,10,0,3,6)
-#' )
-#' failRates <- tibble::tibble(Stratum=c(rep("Low",2),rep("High",2)),
-#'                             duration=1,
-#'                             failRate=c(.1,.2,.3,.4),
-#'                             hr=c(.9,.75,.8,.6),
-#'                             dropoutRate=.001
-#' )
-#' AHR(enrollRates=enrollRates,
-#'     failRates=failRates,
-#'     totalDuration=c(15,30)
-#'    )
+#' enrollRates <- tibble::tibble(Stratum = c(rep("Low", 2), rep("High", 3)),
+#'                               duration = c(2, 10, 4, 4, 8),
+#'                               rate = c(5, 10, 0, 3, 6))
+#' failRates <- tibble::tibble(Stratum = c(rep("Low", 2), rep("High", 2)),
+#'                             duration = 1,
+#'                             failRate = c(.1, .2, .3, .4),
+#'                             hr = c(.9, .75, .8, .6),
+#'                             dropoutRate = .001)
+#' AHR(enrollRates = enrollRates, failRates = failRates, totalDuration = c(15, 30))
+#' 
 #' # Same example, give results by strata and time period
-#' AHR(enrollRates=enrollRates,
-#'     failRates=failRates,
-#'     totalDuration=c(15,30),
-#'     simple=FALSE
-#' )
+#' AHR(enrollRates = enrollRates, failRates = failRates, totalDuration = c(15, 30), simple = FALSE)
+#' 
 #' @export
 #'
 AHR <- function(enrollRates = tibble::tibble(Stratum = "All",
@@ -146,7 +143,7 @@ AHR <- function(enrollRates = tibble::tibble(Stratum = "All",
       # Experimental events
       enrolle <- enroll %>% mutate(rate = rate * Qe)
       fre <- fail %>% mutate(failRate = failRate * hr)
-      experimental <- eEvents_df(enrollRates = enrolle,failRates = fre, totalDuration = td, simple = FALSE)
+      experimental <- eEvents_df(enrollRates = enrolle, failRates = fre, totalDuration = td, simple = FALSE)
       # Combine control and experimental; by period recompute HR, events, information
       events <-rbind(control %>% mutate(Treatment = "Control"),
                      experimental %>% mutate(Treatment = "Experimental")) %>%
@@ -159,9 +156,9 @@ AHR <- function(enrollRates = tibble::tibble(Stratum = "All",
     }
     rval <- rbind(rval,
                   events %>%
-                    mutate(Time=td, lnhr = log(HR), info0 = Events * Qc * Qe) %>%
+                    mutate(Time= td, lnhr = log(HR), info0 = Events * Qc * Qe) %>%
                     ungroup() %>% group_by(Time, Stratum, HR) %>%
-                    summarize(t=min(t), Events = sum(Events), info0 = sum(info0), info = sum(info))
+                    summarize(t = min(t), Events = sum(Events), info0 = sum(info0), info = sum(info))
     )
   }
   

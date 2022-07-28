@@ -67,6 +67,7 @@ articles:
   desc: The following vignettes cover the usage of the key functions in gsDesign2.
   contents: 
   - usage_eEvents_df
+  - usage_AHR
   
 - title: "Check of functions"
   desc: The following vignettes cover the usage of the key functions in gsDesign2.

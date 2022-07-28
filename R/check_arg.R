@@ -116,7 +116,8 @@ check_failRates <- function(failRates){
   #   check the hr column       #
   # --------------------------- #
   if("hr" %in% colnames(failRates)){
-    if(is.numeric(failRates$hr)){
+    
+    if(!is.numeric(failRates$hr)){
       stop("The `hr`column in failRates should be numeric!")
     }
     
@@ -168,7 +169,7 @@ check_enrollRates_failRates <- function(enrollRates, failRates){
     strata_fail   <- unique(failRates$Stratum)
     strata_common <- dplyr::intersect(strata_enroll, strata_fail)
     
-    if(strata_common != strata_enroll){
+    if(sum(strata_common %in% strata_enroll) != length(strata_enroll)){
       stop("The `Strata` column in the input argument `enrollRates` and `failRates` must be the same!")
     }
   }

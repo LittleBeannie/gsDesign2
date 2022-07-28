@@ -1,5 +1,5 @@
 ---
-title: "Check eEvents_df from the old version and the new version"
+title: "Check eEvents_df"
 output:
   rmarkdown::html_document:
     toc: true
