@@ -2,10 +2,11 @@ pandoc: 2.7.3
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
+  check_AHR: check_AHR.html
   check_eEvents_df: check_eEvents_df.html
   usage_AHR: usage_AHR.html
   usage_eEvents_df: usage_eEvents_df.html
-last_built: 2022-07-28T16:28Z
+last_built: 2022-07-28T21:12Z
 urls:
   reference: https://littlebeannie.github.io/gsDesign2/reference
   article: https://littlebeannie.github.io/gsDesign2/articles
