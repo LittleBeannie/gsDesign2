@@ -43,19 +43,20 @@ reference:
   - "gs_info_ahr"
 - title: WLR
   contents: 
-  - to do
+  - "AHR"
 - title: Max Combo
   contents: 
-  - to do
+  - "AHR"
 - title: Fixed design wapper
   contents: 
-  - to do
+  - "AHR"
 - title: Group sequential design wapper
   contents: 
-  - to do
+  - "AHR"
 - title: Summary functions
   contents: 
-  - to do
+  - "AHR"
+  - "AHR"
 - title: Lower level functions
   contents: 
   - "gridpts"
