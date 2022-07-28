@@ -28,8 +28,6 @@ Otherwise, when \code{simple=FALSE} a \code{tibble} is returned with the followi
 \code{t} start of period,
 \code{failRate} failure rate during the period
 \code{Events} expected events during the period,
-
-The records in the returned \code{tibble} correspond to the input \code{tibble} \code{failRates}.
 }
 \description{
 \code{eEvents_df} computes expected events over time and by strata

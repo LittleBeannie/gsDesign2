@@ -66,13 +66,15 @@ NULL
 #'    \item Return \code{eEvents_df}
 #'  }
 #' }
-#' @return
+#' @return 
 #' The default when \code{simple=TRUE} is to return the total expected number of events as a real number.
 #' Otherwise, when \code{simple=FALSE} a \code{tibble} is returned with the following variables for each period specified in 'failRates':
 #' \code{t} start of period,
 #' \code{failRate} failure rate during the period
 #' \code{Events} expected events during the period,
-#'
+#' 
+#' @noRd
+#' 
 #' The records in the returned \code{tibble} correspond to the input \code{tibble} \code{failRates}.
 #' @details
 #' More periods will generally be supplied in output than those that are input.

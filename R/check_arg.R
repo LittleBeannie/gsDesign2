@@ -9,6 +9,8 @@
 #' enrollRates <- tibble::tibble(Stratum = "All", duration = c(2, 2, 10), rate = c(3, 6, 9))
 #' check_enrollRates(enrollRates)
 #' 
+#' @noRd
+#' 
 check_enrollRates <- function(enrollRates){
   
   # --------------------------- #
@@ -67,6 +69,7 @@ check_enrollRates <- function(enrollRates){
 #'                             dropoutRate = rep(.001, 2))
 #' check_failRates(failRates)
 #' 
+#' @noRd
 check_failRates <- function(failRates){
   
   # --------------------------- #
@@ -156,6 +159,8 @@ check_failRates <- function(failRates){
 #'                             dropoutRate = rep(.001, 2))
 #' check_enrollRates(enrollRates, failRates)
 #' 
+#' @noRd
+#' 
 check_enrollRates_failRates <- function(enrollRates, failRates){
   
   if("Stratum" %in% colnames(enrollRates) && "Stratum" %in% colnames(failRates)){
@@ -182,6 +187,8 @@ check_enrollRates_failRates <- function(enrollRates, failRates){
 #' 
 #' analysisTimes <- c(20, 30)
 #' check_analysisTimes(analysisTimes)
+#' 
+#' @noRd
 check_analysisTimes <- function(analysisTimes){
   cond1 <- !is.numeric(analysisTimes)
   cond2 <- !is.vector(analysisTimes)
@@ -197,13 +204,15 @@ check_analysisTimes <- function(analysisTimes){
 #' @param analysisTimes  
 #'
 #' @return TURE or FALSE
-#'
+#' 
 #' @examples
 #' events <- 20
 #' check_events(events)
 #' 
 #' events <- c(20, 30)
 #' check_events(events)
+#' 
+#' @noRd
 check_events <- function(events){
   cond1 <- !is.numeric(events)
   cond2 <- !is.vector(events)
@@ -218,13 +227,15 @@ check_events <- function(events){
 #' @param totalDuration  
 #'
 #' @return TURE or FALSE
-#'
+#' 
 #' @examples
 #' totalDuration <- 36
 #' check_totalDuration(totalDuration)
 #' 
 #' totalDuration <- c(36, 48)
 #' check_totalDuration(totalDuration)
+#' 
+#' @noRd
 check_totalDuration <- function(totalDuration){
   if(!is.numeric(totalDuration)){
     stop("The input argument `totalDuration` must be a non-empty vector of positive numbers!")
@@ -240,11 +251,12 @@ check_totalDuration <- function(totalDuration){
 #' @param ratio  
 #'
 #' @return TURE or FALSE
-#'
+#' 
 #' @examples
 #' ratio <- 1
 #' check_ratio(ratio)
 #' 
+#' @noRd
 check_ratio <- function(ratio){
   if(!is.numeric(ratio)){
     stop("The input argument `ratio` must be a numerical number!")
