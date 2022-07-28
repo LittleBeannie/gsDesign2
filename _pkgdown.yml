@@ -1,4 +1,7 @@
+destination: docs
+
 url: https://littlebeannie.github.io/gsDesign2/
+
 template:
   bootstrap: 5
   bslib:
@@ -10,6 +13,7 @@ template:
     navbar-light-active-color: '#fff'
     dropdown-link-hover-color: '#fff'
     dropdown-link-hover-bg: '#00857c'
+
 footer:
   structure:
     left:
@@ -18,7 +22,54 @@ footer:
     - legal
     right: blank
   components:
-    legal: <br>Copyright &copy; Merck Sharp & Dohme Corp., a subsidiary of Merck &
-      Co., Inc., Kenilworth, NJ, USA.
+    legal: <br>Copyright &copy; 2022 Merck & Co., Inc., Rahway, NJ, USA and its affiliates.
+      All rights reserved.
     blank: <span></span>
 
+navbar:
+  left:
+  - text: Home
+    href: index.html
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+    href: articles/index.html
+
+reference:
+- title: AHR
+  contents: 
+  - "AHR"
+  - "eEvents_df"
+  - "gs_info_ahr"
+- title: WLR
+  contents: 
+  - to do
+- title: Max Combo
+  contents: 
+  - to do
+- title: Fixed design wapper
+  contents: 
+  - to do
+- title: Group sequential design wapper
+  contents: 
+  - to do
+- title: Summary functions
+  contents: 
+  - to do
+- title: Lower level functions
+  contents: 
+  - "gridpts"
+  - "h1"
+  - "hupdate"
+  
+articles:
+- title: "Usage of functions"
+  desc: The following vignettes cover the usage of the key functions in gsDesign2.
+  contents: 
+  - usage_eEvents_df
+  
+- title: "Check of functions"
+  desc: The following vignettes cover the usage of the key functions in gsDesign2.
+  contents: 
+  - check_eEvents_df
+  

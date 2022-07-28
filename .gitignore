@@ -1,5 +1,11 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-docs
+^.*\.Rproj$
+^\.Rproj\.user$
+^_pkgdown\.yml$
+^pkgdown$
+^docs$
+^data-raw$
+^LICENSE\.md$
+^LICENSES_THIRD_PARTY$
+^codecov\.yml$
+^tests/testthat/_snaps$
+^\.github$
