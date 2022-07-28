@@ -147,7 +147,7 @@ events <- rbind(events_c %>% mutate(Treatment = "Control"),
                  lnhr = log(HR), 
                  info0 = Events * Qc * Qe) %>%
           ungroup() %>% 
-          # pool strata together for each time period
+          
           group_by(Time, Stratum, HR) %>%
           summarize(t = min(t), 
                     Events = sum(Events), 

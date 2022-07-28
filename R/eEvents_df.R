@@ -74,30 +74,33 @@ NULL
 #' \code{Events} expected events during the period,
 #'
 #' The records in the returned \code{tibble} correspond to the input \code{tibble} \code{failRates}.
+#' 
 #' @details
 #' More periods will generally be supplied in output than those that are input.
 #' The intent is to enable expected event calculations in a tidy format to
 #' maximize flexibility for a variety of purposes.
+#' 
 #' @examples
 #' library(tibble)
 #' # Default arguments, simple output (total event count only)
 #' eEvents_df()
+#' 
 #' # Event count by time period
-#' eEvents_df(simple=FALSE)
+#' eEvents_df(simple = FALSE)
+#' 
 #' # Early cutoff
-#' eEvents_df(totalDuration=.5)
+#' eEvents_df(totalDuration = .5)
+#' 
 #' # Single time period example
-#' eEvents_df(enrollRates=tibble(duration=10,rate=10),
-#'            failRates=tibble(duration=100,failRate=log(2)/6,dropoutRate=.01),
-#'            totalDuration=22,
-#'            simple=FALSE
-#'            )
-#' # Single time period example, multiple enrolment periods
-#' eEvents_df(enrollRates=tibble(duration=c(5,5), rate=c(10,20)),
-#'            failRates=tibble(duration=100,failRate=log(2)/6,dropoutRate=.01),
-#'            totalDuration=22,
-#'            simple=FALSE
-#'            )
+#' eEvents_df(enrollRates = tibble(duration = 10,rate = 10),
+#'            failRates = tibble(duration=100, failRate = log(2) / 6 ,dropoutRate = .01),
+#'            totalDuration = 22,
+#'            simple = FALSE)
+#' 
+#' # Single time period example, multiple enrollment periods
+#' eEvents_df(enrollRates = tibble(duration = c(5,5), rate = c(10, 20)),
+#'            failRates = tibble(duration = 100, failRate = log(2)/6, dropoutRate = .01),
+#'            totalDuration = 22, simple = FALSE)
 #' @export
 eEvents_df <- function(enrollRates = tibble::tibble(duration = c(2, 2, 10),
                                                     rate = c(3, 6, 9)),
@@ -117,14 +120,15 @@ eEvents_df <- function(enrollRates = tibble::tibble(duration = c(2, 2, 10),
   if(!is.logical(simple)){stop("gsDesign2: simple in `eEvents()` must be logical")}
   
   # ----------------------------#
-  #    create 2 tables          #
+  #    divide the time line     #
+  #     into sub-intervals      #
   # ----------------------------#
-  ## df_1 is a table for enrollRates 
+  ## by piecewise enrollment rates 
   df_1 <- tibble::tibble(startEnroll = c(0, cumsum(enrollRates$duration)),
-                         endFail = totalDuration - startEnroll,
-                         rate = c(enrollRates$rate, 0)) %>% subset(endFail > 0)
-  
-  ## df_1 is a table for failRates 
+                         endFail = totalDuration - startEnroll
+                         #rate = c(enrollRates$rate, 0)
+                         ) %>% subset(endFail > 0)
+  ## by piecewise failure & dropout rates 
   df_2 <- tibble::tibble(endFail = cumsum(failRates$duration),
                          startEnroll = totalDuration - endFail,
                          failRate = failRates$failRate,
@@ -136,11 +140,14 @@ eEvents_df <- function(enrollRates = tibble::tibble(duration = c(2, 2, 10),
   }
 
   # ----------------------------#
-  #    create 4 step functions  #
+  # create 3 step functions (sf)#
   # ----------------------------#
-  startFail <- c(0, cumsum(failRates$duration))
-  
+  # Step function to define enrollment rates over time
+  sf.enrollRate <- stepfun(c(0, cumsum(enrollRates$duration)),
+                           c(0, enrollRates$rate,0),
+                           right = FALSE)
   # step function to define failure rates over time
+  startFail <- c(0, cumsum(failRates$duration))
   sf.failRate <- stepfun(startFail,
                          c(0, failRates$failRate, last(failRates$failRate)),
                          right = FALSE)
@@ -148,48 +155,50 @@ eEvents_df <- function(enrollRates = tibble::tibble(duration = c(2, 2, 10),
   sf.dropoutRate <- stepfun(startFail,
                             c(0, failRates$dropoutRate, last(failRates$dropoutRate)),
                             right = FALSE)
-  
-  sf.startFail <- stepfun(startFail, 
-                          c(0, startFail), 
-                          right = FALSE)
-  
-  # Step function to define enrollment rates over time
-  sf.enrollRate <- stepfun(c(0, cumsum(enrollRates$duration)),
-                           c(0, enrollRates$rate,0),
-                           right = FALSE)
-  
+
   # ----------------------------#
-  #    combine the output       #
+  #    combine sub-intervals    #
+  #          from               #
+  #  enroll + failure + dropout #
   # ----------------------------#
-  # Put everything together as laid out in vignette
-  # "Computing expected events by interval at risk"
-  df_join <- full_join(df_1, df_2, by = c("startEnroll", "endFail")) %>%
+  # impute the NA by step functions
+  df <- full_join(df_1, df_2, by = c("startEnroll", "endFail")) %>%
     arrange(endFail) %>%
     mutate(endEnroll = lag(startEnroll, default = as.numeric(totalDuration)),
            startFail = lag(endFail, default = 0),
            duration = endEnroll - startEnroll,
            failRate = sf.failRate(startFail),
            dropoutRate = sf.dropoutRate(startFail),
-           enrollRate = sf.enrollRate(startEnroll),
-           q = exp(-duration * (failRate + dropoutRate)),
+           enrollRate = sf.enrollRate(startEnroll)) %>% 
+    # create 2 auxiliary variable for failure & dropout rate
+    # q: number of expected events in a sub-interval
+    # Q: cumulative product of q (pool all sub-intervals)
+    mutate(q = exp(-duration * (failRate + dropoutRate)),
            Q = lag(cumprod(q), default = 1)) %>%
     arrange(desc(startFail)) %>%
+    # create another 2 auxiliary variable for enroll rate
+    # g: number of expected subjects in a sub-interval
+    # G: cumulative sum of g (pool all sub-intervals)
     mutate(g = enrollRate * duration,
            G = lag(cumsum(g), default = 0)) %>%
     arrange(startFail) %>%
+    # compute expected events as nbar in a sub-interval
     mutate(d = ifelse(failRate == 0, 0, Q * (1 - q) * failRate / (failRate + dropoutRate)),
            nbar = ifelse(failRate == 0, 0, G * d + (failRate * Q * enrollRate) / (failRate + dropoutRate) * (duration - (1 - q) / (failRate + dropoutRate))))
   
-  # output if simple is TRUE
+  # ----------------------------#
+  #       output results        #
+  # ----------------------------#
   if(simple){
-    return(as.numeric(sum(df_join$nbar)))
-  } 
-  
-  # output if simple is FALSE
-  df_join %>% 
-    transmute(t = endFail, failRate = failRate, Events = nbar, startFail = sf.startFail(startFail)) %>% 
+    ans <- as.numeric(sum(df$nbar))
+  }else{
+    sf.startFail <- stepfun(startFail, c(0, startFail), right = FALSE)
+    ans <- df %>% 
+    transmute(t = endFail, failRate = failRate, Events = nbar, startFail = sf.startFail(startFail)) %>%  
     group_by(startFail) %>%
     summarize(failRate = first(failRate), Events = sum(Events)) %>%
     mutate(t = startFail) %>% 
     select("t", "failRate", "Events")
+  }
+  return(ans)
 }

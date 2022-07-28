@@ -73,5 +73,5 @@ articles:
   desc: The following vignettes cover the usage of the key functions in gsDesign2.
   contents: 
   - check_eEvents_df
-
+  - check_AHR
  
