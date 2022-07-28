@@ -73,8 +73,6 @@ NULL
 #' \code{failRate} failure rate during the period
 #' \code{Events} expected events during the period,
 #' 
-#' @noRd
-#' 
 #' The records in the returned \code{tibble} correspond to the input \code{tibble} \code{failRates}.
 #' @details
 #' More periods will generally be supplied in output than those that are input.
@@ -83,23 +81,26 @@ NULL
 #' @examples
 #' library(tibble)
 #' # Default arguments, simple output (total event count only)
-#' eEvents_df()
+#' eEvents_df_()
 #' # Event count by time period
-#' eEvents_df(simple=FALSE)
+#' eEvents_df_(simple=FALSE)
 #' # Early cutoff
-#' eEvents_df(totalDuration=.5)
+#' eEvents_df_(totalDuration=.5)
 #' # Single time period example
-#' eEvents_df(enrollRates=tibble(duration=10,rate=10),
+#' eEvents_df_(enrollRates=tibble(duration=10,rate=10),
 #'            failRates=tibble(duration=100,failRate=log(2)/6,dropoutRate=.01),
 #'            totalDuration=22,
 #'            simple=FALSE
 #'            )
 #' # Single time period example, multiple enrolment periods
-#' eEvents_df(enrollRates=tibble(duration=c(5,5), rate=c(10,20)),
+#' eEvents_df_(enrollRates=tibble(duration=c(5,5), rate=c(10,20)),
 #'            failRates=tibble(duration=100,failRate=log(2)/6,dropoutRate=.01),
 #'            totalDuration=22,
 #'            simple=FALSE
 #'            )
+#'            
+#' @noRd
+#' 
 eEvents_df_ <- function(enrollRates=tibble::tibble(duration=c(2,2,10),
                                                   rate=c(3,6,9)),
                        failRates=tibble::tibble(duration=c(3,100),

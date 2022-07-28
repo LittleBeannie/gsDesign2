@@ -56,7 +56,6 @@ reference:
 - title: Summary functions
   contents: 
   - "AHR"
-  - "AHR"
 - title: Lower level functions
   contents: 
   - "gridpts"
