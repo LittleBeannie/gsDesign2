@@ -63,14 +63,16 @@ reference:
   - "hupdate"
   
 articles:
-- title: "Usage of functions"
+- title: "Use case of functions"
+  navbar: Use case of functions
   desc: The following vignettes cover the usage of the key functions in gsDesign2.
   contents: 
   - usage_eEvents_df
   - usage_AHR
   
 - title: "Check of functions"
-  desc: The following vignettes cover the usage of the key functions in gsDesign2.
+  navbar: Testing & checks of functions
+  desc: The following vignettes cover the tests and checks of the key functions in gsDesign2.
   contents: 
   - check_eEvents_df
   - check_AHR

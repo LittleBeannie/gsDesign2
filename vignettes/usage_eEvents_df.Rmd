@@ -27,13 +27,17 @@ devtools::load_all()
 ```
 
 # Introduction of `eEvents_df`
-**eEvents_df** computes expected number of events over time and by strata under the assumption of piecewise model:
+
+`eEvents_df()` computes expected number of events at a **given analysis time by strata** under the assumption of piecewise model:
 
 - piecewise constant enrollment rates 
 - piecewise exponential failure rates
 - piecewise censoring rates.
 
 The above piecewise exponential distribution allows a simple method to specify a distribution and enrollment pattern where the enrollment, failure and dropout rates changes over time.
+
+
+Here the `df` in `eEvents_df()` is short for data frame, since its output is a data frame.
 
 # Use Cases
 

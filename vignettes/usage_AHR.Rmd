@@ -166,3 +166,27 @@ cat("The overall expected number of events over the time is \n")
 events
 ```
 
+Please note that, in the output, the `info` column is based on the following input.
+```{r, eval=FALSE}
+enrollRates <- tibble(Stratum = "All",
+                      duration = c(2, 10, 4),
+                      rate = c(5, 10, 0))
+failRates <- tibble(Stratum = "All",
+                    duration = 1,
+                    failRate = c(.1, .2),
+                    hr = c(.9, .75),
+                    dropoutRate = .001)
+```
+If the alternative hypothesis $H_1$ is 
+$$
+  \text{hr}
+  =
+  \left\{
+  \begin{array}{ll}
+    0.9  & \text{for the first 1 month} \\
+    0.75 & \text{afterwards},
+  \end{array}
+  \right.
+$$
+then `info = info1`, where `info1` is the statistical information under $H_1$. 
+But notice that the above `enrollRates` and `failRates` is not always the $H_1$, so we call it as `info`, rather than `info1`. 
