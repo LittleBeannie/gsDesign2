@@ -69,6 +69,7 @@ articles:
   contents: 
   - usage_eEvents_df
   - usage_AHR
+  - usage_tEvents
   
 - title: "Check of functions"
   navbar: Testing & checks of functions
@@ -76,4 +77,5 @@ articles:
   contents: 
   - check_eEvents_df
   - check_AHR
+  - check_tEvents
  
