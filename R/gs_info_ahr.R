@@ -27,6 +27,7 @@ NULL
 #' @param ratio Experimental:Control randomization ratio
 #' @param events Targeted minimum events at each analysis
 #' @param analysisTimes Targeted minimum study duration at each analysis
+#' 
 #' @section Specification:
 #' \if{latex}{
 #'  \itemize{
@@ -48,18 +49,31 @@ NULL
 #' For analysis \code{k}, \code{Time[k]} is the maximum of \code{analysisTimes[k]} and the expected time
 #' required to accrue the targeted \code{events[k]}.
 #' \code{AHR} is expected average hazard ratio at each analysis.
+#' 
 #' @details The \code{AHR()} function computes statistical information at targeted event times.
 #' The \code{tEvents()} function is used to get events and average HR at targeted \code{analysisTimes}.
+#' 
 #' @export
 #'
 #' @examples
 #' library(gsDesign)
 #' library(gsDesign2)
 #' 
+#' # ------------------------ #
+#' #       Example 1          #
+#' # ------------------------ #
 #' # Only put in targeted events
 #' gs_info_ahr(events = c(30, 40, 50))
+#' 
+#' # ------------------------ #
+#' #       Example 2          #
+#' # ------------------------ #
 #' # Only put in targeted analysis times
 #' gs_info_ahr(analysisTimes = c(18, 27, 36))
+#' 
+#' # ------------------------ #
+#' #       Example 3          #
+#' # ------------------------ #
 #' # Some analysis times after time at which targeted events accrue
 #' # Check that both Time >= input analysisTime and Events >= input events
 #' gs_info_ahr(events = c(30, 40, 50), analysisTimes = c(16, 19, 26))
@@ -80,18 +94,22 @@ gs_info_ahr <- function(enrollRates = tibble::tibble(Stratum = "All",
   # ----------------------------#
   #    check input values       #
   # ----------------------------#
-  K <- 0
+  check_enrollRates(enrollRates)
+  check_failRates(failRates)
+  check_enrollRates_failRates(enrollRates, failRates)
   
   if(is.null(analysisTimes) && is.null(events)){
-    stop("gs_info_ahr(): One of events and analysisTimes must be a numeric value or vector with increasing values")
+    stop("gs_info_ahr(): One of `events` and `analysisTimes` must be a numeric value or vector with increasing values")
   } 
   
+  K <- 0
   if(!is.null(analysisTimes)){
     check_analysisTimes(analysisTimes)
     K <- length(analysisTimes)
   }
   
   if (!is.null(events)){
+    check_events(events)
     if(K == 0){
       K <- length(events)
     }else if(K != length(events)){
@@ -104,22 +122,33 @@ gs_info_ahr <- function(enrollRates = tibble::tibble(Stratum = "All",
   # ----------------------------#
   avehr <- NULL
   if(!is.null(analysisTimes)){
-    avehr <- gsDesign2::AHR(enrollRates = enrollRates, failRates = failRates, ratio = ratio,
-                            totalDuration = analysisTimes)
+    # calculate AHR, Events, info, info0 given the analysisTimes
+    avehr <- gsDesign2::AHR(enrollRates = enrollRates, failRates = failRates, 
+                            ratio = ratio, totalDuration = analysisTimes)
+    # check if the output Events is larger enough than the targeted events
     for(i in seq_along(events)){
       if (avehr$Events[i] < events[i]){
-        avehr[i,] <- gsDesign2::tEvents(enrollRates = enrollRates, failRates = failRates, ratio = ratio,
-                                        targetEvents = events[i])
+        avehr[i,] <- gsDesign2::tEvents(enrollRates = enrollRates, failRates = failRates, 
+                                        ratio = ratio, targetEvents = events[i])
       }
     }
   }else{
     for(i in seq_along(events)){
       avehr <- rbind(avehr,
-                     gsDesign2::tEvents(enrollRates = enrollRates, failRates = failRates, ratio = ratio,
-                                        targetEvents = events[i]))
+                     gsDesign2::tEvents(enrollRates = enrollRates, failRates = failRates, 
+                                        ratio = ratio, targetEvents = events[i]))
     }
   }
+  
+  # ----------------------------#
+  #    compute theta            #
+  # ----------------------------#
   avehr$Analysis <- 1:nrow(avehr)
   avehr$theta = -log(avehr$AHR)
-  return(avehr %>% dplyr::transmute(Analysis, Time, Events, AHR, theta, info, info0))
+  
+  # ----------------------------#
+  #    output results           #
+  # ----------------------------#
+  ans <- avehr %>% dplyr::transmute(Analysis, Time, Events, AHR, theta, info, info0)
+  return(ans)
 }

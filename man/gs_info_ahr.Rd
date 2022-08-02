@@ -62,10 +62,21 @@ The \code{tEvents()} function is used to get events and average HR at targeted \
 library(gsDesign)
 library(gsDesign2)
 
+# ------------------------ #
+#       Example 1          #
+# ------------------------ #
 # Only put in targeted events
 gs_info_ahr(events = c(30, 40, 50))
+
+# ------------------------ #
+#       Example 2          #
+# ------------------------ #
 # Only put in targeted analysis times
 gs_info_ahr(analysisTimes = c(18, 27, 36))
+
+# ------------------------ #
+#       Example 3          #
+# ------------------------ #
 # Some analysis times after time at which targeted events accrue
 # Check that both Time >= input analysisTime and Events >= input events
 gs_info_ahr(events = c(30, 40, 50), analysisTimes = c(16, 19, 26))
