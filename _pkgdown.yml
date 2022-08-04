@@ -66,7 +66,7 @@ articles:
   - usage_eEvents_df
   - usage_AHR
   - usage_tEvents
-  - usage_ge_info_ahr
+  - usage_gs_info_ahr
   - usage_gs_b
   - usage_gs_spending_bound
   
@@ -78,4 +78,3 @@ articles:
   - check_AHR
   - check_tEvents
   - check_gs_power_npe
- 

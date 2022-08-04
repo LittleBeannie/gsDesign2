@@ -33,17 +33,26 @@ x2 <- gsDesign2:::gs_power_npe_(theta = 0) %>% filter(Bound == "Upper")
 x1 %>% union_all(x2) %>% mutate(`Computated from` = c("new version", "old version"))
 ```
 
+## Fixed bound
 ```{r, eval=FALSE}
-'
-' # Fixed bound
-' gs_power_npe(
-'   theta = c(.1, .2, .3),
-'   info = (1:3) * 40,
-'   upper = gs_b,
-'   upar = list(par = gsDesign::gsDesign(k = 3,sfu = gsDesign::sfLDOF)$upper$bound),
-'   lower = gs_b,
-'   lpar = list(par = c(-1, 0, 0)))
-'
+x1 <- gs_power_npe(theta = c(.1, .2, .3),
+                   info = (1:3) * 40,
+                   upper = gs_b,
+                   upar = list(par = gsDesign::gsDesign(k = 3,sfu = gsDesign::sfLDOF)$upper$bound),
+                   lower = gs_b,
+                   lpar = list(par = c(-1, 0, 0)))
+
+x2 <- gsDesign2:::gs_power_npe_(theta = c(.1, .2, .3),
+                                info = (1:3) * 40,
+                                upper = gs_b,
+                                upar = list(par = gsDesign::gsDesign(k = 3,sfu = gsDesign::sfLDOF)$upper$bound),
+                                lower = gs_b,
+                                lpar = list(par = c(-1, 0, 0)))
+
+x1 %>% union_all(x2) %>% mutate(`Computated from` = c("new version", "old version"))
+```
+
+```{r, eval=FALSE}
 ' # Same fixed efficacy bounds, no futility bound (i.e., non-binding bound), null hypothesis
 ' gs_power_npe(
 '   theta = rep(0, 3),
