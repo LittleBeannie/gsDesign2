@@ -79,12 +79,6 @@ cat("The upper boundary at the 2nd analysis is (", a2, ", ", b2, ").\n")
 ```
 
 
-## Example 2
-
-```{r}
-
-```
-
 
 # Inner Logic of `gs_spending_bound()`
 
