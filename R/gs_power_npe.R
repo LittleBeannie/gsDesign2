@@ -18,6 +18,7 @@
 #' @importFrom tibble tibble
 #' @importFrom stats qnorm
 NULL
+
 #' Group sequential bound computation with non-constant effect
 #'
 #' \code{gs_power_npe()} derives group sequential bounds and boundary crossing probabilities for a design.
@@ -254,13 +255,14 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
     }else{
       # compute the probability to cross upper bound
       upperProb[k] <- if(b[k]< Inf){
-        hupdate(r = r, theta = theta[k], I = info[k], a = b[k], b = Inf,
-                thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = hgm1) %>% summarise(sum(h)) %>% as.numeric()
+        sum(hupdate(theta = theta[k], thetam1 = theta[k - 1],
+                    I = info[k], Im1 = info[k - 1], 
+                    a = b[k], b = Inf, r = r, gm1 = hgm1)$h)
       }else{0}
       # compute the probability to cross lower bound
       lowerProb[k] <- if(a[k] > -Inf){
-        hupdate(r = r, theta = theta[k], I = info[k], a = -Inf, b = a[k],
-                thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = hgm1) %>% summarise(sum(h)) %>% as.numeric()
+        sum(hupdate(r = r, theta = theta[k], I = info[k], a = -Inf, b = a[k],
+                thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = hgm1)$h)
       }else{0}
       
       # update the grids

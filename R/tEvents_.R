@@ -41,9 +41,11 @@ NULL
 #'    \item Return a tibble with a single row with the output from `AHR()` got the specified output.
 #'    }
 #'  }
+#' 
 #' @return A `tibble` with `Time` (computed to match events in `targetEvents`), `AHR` (average hazard ratio),
 #' `Events` (`targetEvents` input), info (information under given scenarios),
 #' and info0 (information under related null hypothesis) for each value of `totalDuration` input;
+#' 
 #' @examples
 #' # Example 1: default
 #' gsDesign2:::tEvents_()

@@ -1,5 +1,5 @@
 ---
-title: "Usage of gs_b"
+title: "Usage of gs_spending_bound"
 output:
   rmarkdown::html_document:
     toc: true
@@ -21,9 +21,9 @@ library(dplyr)
 devtools::load_all()
 ```
 
-# Introduction of `gs_b()`
+# Introduction of `gs_spending_bound()`
 
-`gs_b()` can be used to derive spending boundary in group sequential design. It is usually used in the `upper = ...` and `lower = ...` arguments in 
+`gs_spending_bound()` can be used to derive spending boundary in group sequential design. It is usually used in the `upper = ...` and `lower = ...` arguments in 
 + `gs_power_npe()`
 + `gs_design_npe()`
 + `gs_power_ahr()`
