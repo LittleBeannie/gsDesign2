@@ -33,7 +33,7 @@ x2 <- gsDesign2:::gs_power_npe_(theta = 0) %>% filter(Bound == "Upper")
 x1 %>% union_all(x2) %>% mutate(`Computated from` = c("new version", "old version"))
 ```
 
-```{r}
+```{r, eval=FALSE}
 '
 ' # Fixed bound
 ' gs_power_npe(
