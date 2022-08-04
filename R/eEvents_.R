@@ -60,8 +60,8 @@ NULL
 #' xx
 #' # Next we check that the function confirms the timing of the final analysis.
 #' tEvents_(enrollRates,failRates,targetEvents=xx$Events,interval=c(.5,1.5)*xx$Time)
-#' @export
-#'
+#' 
+#' @noRd
 tEvents_ <- function(enrollRates=tibble::tibble(Stratum="All",
                                                duration=c(2, 2, 10),
                                                rate=c(3, 6, 9) * 5),

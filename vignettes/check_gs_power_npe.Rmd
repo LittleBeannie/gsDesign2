@@ -1,0 +1,105 @@
+---
+title: "Check gs_power_npe"
+output:
+  rmarkdown::html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+    highlight: "textmate"
+    css: "custom.css"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{What the Vignette Does (Title Case)}
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(gt)
+library(dplyr)
+library(tibble)
+library(testthat)
+devtools::load_all()
+```
+
+
+# Test 1: examples from spec
+
+## Default
+The default of `gs_power_npe` is a single analysis with type I error controlled.
+```{r}
+x1 <- gs_power_npe(theta = 0) %>% filter(Bound == "Upper")
+x2 <- gsDesign2:::gs_power_npe_(theta = 0) %>% filter(Bound == "Upper")
+
+x1 %>% union_all(x2) %>% mutate(`Computated from` = c("new version", "old version"))
+```
+
+```{r}
+'
+' # Fixed bound
+' gs_power_npe(
+'   theta = c(.1, .2, .3),
+'   info = (1:3) * 40,
+'   upper = gs_b,
+'   upar = list(par = gsDesign::gsDesign(k = 3,sfu = gsDesign::sfLDOF)$upper$bound),
+'   lower = gs_b,
+'   lpar = list(par = c(-1, 0, 0)))
+'
+' # Same fixed efficacy bounds, no futility bound (i.e., non-binding bound), null hypothesis
+' gs_power_npe(
+'   theta = rep(0, 3),
+'   info = (1:3) * 40,
+'   upar = list(par = gsDesign::gsDesign(k = 3,sfu = gsDesign::sfLDOF)$upper$bound),
+'   lpar = list(par = rep(-Inf, 3))) %>%
+'   filter(Bound == "Upper")
+'
+' # Fixed bound with futility only at analysis 1; efficacy only at analyses 2, 3
+' gs_power_npe(
+'   theta = c(.1, .2, .3),
+'   info = (1:3) * 40,
+'   upper = gs_b,
+'   upar = list(par = c(Inf, 3, 2)),
+'   lower = gs_b,
+'   lpar = list(par = c(qnorm(.1), -Inf, -Inf)))
+'
+' # Spending function bounds
+' # Lower spending based on non-zero effect
+' gs_power_npe(
+'   theta = c(.1, .2, .3),
+'   info = (1:3) * 40,
+'   upper = gs_spending_bound,
+'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+'   lower = gs_spending_bound,
+'   lpar = list(par = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)))
+'
+' # Same bounds, but power under different theta
+' gs_power_npe(
+'   theta = c(.15, .25, .35),
+'   info = (1:3) * 40,
+'   upper = gs_spending_bound,
+'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+'   lower = gs_spending_bound,
+'   lpar = list(par = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)))
+'
+' # Two-sided symmetric spend, O'Brien-Fleming spending
+' # Typically, 2-sided bounds are binding
+' x <- gs_power_npe(
+'   theta = rep(0, 3),
+'   info = (1:3) * 40,
+'   binding = TRUE,
+'   upper = gs_spending_bound,
+'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+'   lower = gs_spending_bound,
+'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
+'
+' # Re-use these bounds under alternate hypothesis
+' # Always use binding = TRUE for power calculations
+' gs_power_npe(
+'   theta = c(.1, .2, .3),
+'   info = (1:3) * 40,
+'   binding = TRUE,
+'   upar = list(par = (x %>% filter(Bound == "Upper"))$Z),
+'   lpar = list(par = -(x %>% filter(Bound == "Upper"))$Z))
+
+```
+
+

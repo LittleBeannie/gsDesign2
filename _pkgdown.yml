@@ -48,15 +48,10 @@ reference:
 - title: Max Combo
   contents: 
   - "AHR"
-- title: Fixed design wapper
+- title: Boundary functions
   contents: 
-  - "AHR"
-- title: Group sequential design wapper
-  contents: 
-  - "AHR"
-- title: Summary functions
-  contents: 
-  - "AHR"
+  - "gs_b"
+  - "gs_spending_bound"
 - title: Lower level functions
   contents: 
   - "gridpts"
@@ -72,6 +67,8 @@ articles:
   - usage_AHR
   - usage_tEvents
   - usage_ge_info_ahr
+  - usage_gs_b
+  - usage_gs_spending_bound
   
 - title: "Check of functions"
   navbar: Testing & checks of functions
@@ -80,4 +77,5 @@ articles:
   - check_eEvents_df
   - check_AHR
   - check_tEvents
+  - check_gs_power_npe
  
