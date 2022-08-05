@@ -57,6 +57,7 @@ reference:
   - "gridpts"
   - "h1"
   - "hupdate"
+  - "gs_power_npe"
   
 articles:
 - title: "Use case of functions"
