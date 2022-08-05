@@ -79,3 +79,4 @@ articles:
   - check_AHR
   - check_tEvents
   - check_gs_power_npe
+  - check_gs_design_npe
