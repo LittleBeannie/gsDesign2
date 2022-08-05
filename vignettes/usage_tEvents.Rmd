@@ -23,8 +23,8 @@ library(gt)
 library(tibble)
 library(dplyr)
 library(testthat)
-library(gsDesign2)
-#devtools::load_all()
+#library(gsDesign2)
+devtools::load_all()
 ```
 
 # Introduction of `tEvents`

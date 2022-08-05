@@ -21,7 +21,8 @@ library(dplyr)
 library(tibble)
 library(testthat)
 library(gsDesign)
-library(gsDesign2)
+#library(gsDesign2)
+devtools::load_all()
 ```
 
 
