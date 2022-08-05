@@ -27,7 +27,6 @@ Suggests:
     rmarkdown,
     purrr,
     devtools,
-    simtrial,
     kableExtra,
     gt,
     ggplot2,
