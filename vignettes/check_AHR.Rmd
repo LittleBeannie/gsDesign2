@@ -17,7 +17,7 @@ vignette: >
 library(tibble)
 library(dplyr)
 library(testthat)
-devtools::load_all()
+library(gsDesign2)
 ```
 
 # Test 1: unstratified population

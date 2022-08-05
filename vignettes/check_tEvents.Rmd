@@ -17,7 +17,7 @@ vignette: >
 library(gt)
 library(dplyr)
 library(tibble)
-devtools::load_all()
+library(gsDesign2)
 ```
 
 

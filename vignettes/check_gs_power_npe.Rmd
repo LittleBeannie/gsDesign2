@@ -11,7 +11,7 @@ output:
 bibliography: "ggsd.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{What the Vignette Does (Title Case)}
+  %\VignetteIndexEntry{Check gs_power_npe}
   
 ---
 
@@ -21,7 +21,7 @@ library(dplyr)
 library(tibble)
 library(testthat)
 library(gsDesign)
-devtools::load_all()
+library(gsDesign2)
 ```
 
 
@@ -361,7 +361,9 @@ z <- gsDesign::gsProbability(k = 3, theta = .1,
                              n.I = info,
                              a = rep(-20, 3),
                              b = gsDesign(k = 3, test.type=1, sfu = sfLDOF, n.I = info)$upper$bound)
+```
 
+```{r, echo=FALSE}
 tibble(`Calculated from` = rep(c("new version", "old version", "gsDesign"), each = 3),
        Analysis = rep(1:3, 3),
        `upper bound` = c(x %>% filter(Bound == "Upper") %>% select(Z) %>% unlist() %>% as.numeric(),
@@ -401,3 +403,4 @@ endpoint <- 'info'
 n.fix <- 0
 ```
 
+# References

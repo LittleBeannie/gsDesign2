@@ -23,7 +23,7 @@ library(gt)
 library(tibble)
 library(dplyr)
 library(testthat)
-devtools::load_all()
+library(gsDesign2)
 ```
 
 # Introduction of `eEvents_df`

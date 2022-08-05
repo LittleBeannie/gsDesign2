@@ -17,8 +17,8 @@ vignette: >
 ```{r, message=FALSE}
 library(tibble)
 library(dplyr)
-#library(gsDesign2)
-devtools::load_all()
+library(gsDesign2)
+#devtools::load_all()
 ```
 
 # Introduction of `gs_b()`
