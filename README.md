@@ -9,7 +9,7 @@ The goal of **gsDesign2** is to enable group sequential trial design for time-to
 
 ## Installation
 
-You can install `gsdmvn` with:
+You can install `gsDesign2` with:
 
 ``` r
 remotes::install_github("LittleBeannie/gsDesign2")
