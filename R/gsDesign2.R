@@ -63,4 +63,5 @@
 #' @keywords design survival nonparametric
 #' @import Rcpp
 #' @useDynLib gsDesign2, .registration = TRUE
+#' @noRd
 NULL
