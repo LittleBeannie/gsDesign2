@@ -170,7 +170,7 @@ NULL
 #'              upar = upar,
 #'              lpar = -upar)
 #'
-#'@noRD
+#' @noRD
 gs_power_npe_ <- function(theta = .1, theta1 = NULL, info = 1, info1 = NULL, info0 = NULL,
                          binding = FALSE,
                          upper=gs_b, lower=gs_b, upar = qnorm(.975), lpar= -Inf,
