@@ -267,3 +267,95 @@ check_ratio <- function(ratio){
     stop("The input argument `ratio` must be a positive number!")
   }
 }
+
+#' A function to check the arguments \code{info} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
+#'
+#' @param info  
+#'
+#' @return TURE or FALSE
+#' 
+#' @examples
+#' info <- 1:3
+#' check_info(info)
+#' 
+#' @noRd
+check_info <- function(info){
+  if(!is.vector(info, mode = "numeric")){
+    stop("gs_design_npe() or gs_power_npe(): info must be specified numeric vector!")
+  } 
+  if (min(info - lag(info, default = 0) <= 0)){
+    stop("gs_design_npe() or gs_power_npe(): info much be strictly increasing and positive!")
+  } 
+}
+
+#' A function to check the arguments \code{theta} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
+#'
+#' @param theta  
+#' @param K
+#'
+#' @return TURE or FALSE
+#' 
+#' @examples
+#' theta <- 0.5
+#' check_theta(theta)
+#' 
+#' @noRd
+check_theta <- function(theta, K){
+  if(!is.vector(theta, mode = "numeric")){
+    stop("gs_design_npe() or gs_power_npe(): theta must be a real vector!")
+  } 
+  
+  if(length(theta) != K){
+    stop("gs_design_npe() or gs_power_npe(): if length(theta) > 1, must be same as info!")
+  }
+  
+  if(theta[K] <= 0){
+    stop("gs_design_npe() or gs_power_npe(): final effect size must be > 0!")
+  } 
+}
+
+#' A function to check the arguments \code{test_upper} and \code{text_lower} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
+#'
+#' @param test_upper_lower  
+#' @param K
+#'
+#' @return TURE or FALSE
+#' 
+#' @examples
+#' test_upper <- TRUE
+#' check_test_upper_lower(test_upper)
+#' 
+#' @noRd
+check_test_upper_lower <- function(test_upper_lower, K){
+  ## Check test_upper and test_lower are logical and correct length
+  if (!is.vector(test_upper_lower, mode = "logical")){
+    stop("gs_design_npe() or gs_power_npe(): test_upper or test_lower must be logical!")
+  }
+    
+  if (!(length(test_upper_lower) == 1 || length(test_upper_lower) == K)){
+    stop("gs_design_npe() or gs_power_npe(): test_upper or test_lower must be length 1 or same length as info!")
+  }
+}
+
+
+#' A function to check the arguments \code{alpha} and \code{beta} in gsDesign2
+#'
+#' @param alpha
+#' @param beta  
+#'
+#' @return TURE or FALSE
+#' 
+#' @examples
+#' alpha <- 0.025
+#' beta <- 0.2
+#' check_alpha_beta(alpha, beta)
+#' 
+#' @noRd
+check_alpha_beta <- function(alpha, beta){
+  if (!is.numeric(alpha)) stop("alpha must be numeric!")
+  if (!is.numeric(beta)) stop("beta must be numeric!")
+  if (length(alpha) != 1 || length(beta) != 1) stop("alpha and beta must be length 1!")
+  if (alpha <= 0 || 1 - beta <= alpha || beta <= 0) stop("must have 0 < alpha < 1 - beta < 1!")
+}
+
+

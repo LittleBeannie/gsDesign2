@@ -20,7 +20,8 @@ Imports:
     npsurvSS,
     corpcor,
     utils,
-    mvtnorm
+    mvtnorm,
+    Rcpp
 Suggests:
     testthat,
     knitr,
