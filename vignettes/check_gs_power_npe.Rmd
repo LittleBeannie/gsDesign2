@@ -240,6 +240,54 @@ gs_power_npe(theta = 0,
              lower = gs_b, lpar = list(par = -Inf))
 ```
 
+
+# Test 3: Spending fucntions
+
+If one inputs `info` in `upar`
+```{r}
+gs_power_npe(theta = 0, 
+             info = 50,
+             upper = gs_spending_bound, 
+             upar = list(par = list(sf = gsDesign::sfLDOF, param = NULL, total_spend = 0.025),
+                         info = 60),
+             lower = gs_b, 
+             lpar = list(par = -Inf)) %>% gt()
+```
+
+```{r}
+gs_power_npe(theta = 0, 
+             info = 50,
+             info0 = 70,
+             upper = gs_spending_bound, 
+             upar = list(par = list(sf = gsDesign::sfLDOF, param = NULL, total_spend = 0.025),
+                         info = 60),
+             lower = gs_b, 
+             lpar = list(par = -Inf)) %>% gt()
+```
+
+If one inputs `info` in `lpar`
+
+```{r}
+gs_power_npe(theta = 0, 
+             info = 50,
+             upper = gs_b, 
+             upar = list(par = qnorm(0.025)),
+             lower = gs_spending_bound, 
+             lpar = list(par = list(sf = gsDesign::sfLDOF, param = NULL, total_spend = 0.1), 
+                         info = 40)) %>% gt()
+```
+
+```{r}
+gs_power_npe(theta = 0, 
+             info = 50,
+             info1 = 30,
+             upper = gs_b, 
+             upar = list(par = qnorm(0.025)),
+             lower = gs_spending_bound, 
+             lpar = list(par = list(sf = gsDesign::sfLDOF, param = NULL, total_spend = 0.1), 
+                         info = 40)) %>% gt()
+```
+
 # Test 3: Developer Tests
 
 ## 1-sided test

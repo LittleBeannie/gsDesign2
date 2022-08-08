@@ -206,8 +206,8 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
   
   ## if the lower bound is spending bound
   if(!fixed_lower_bound){
-    if(is.null(info1) &  "info" %in% names(upar)){info1 <- lpar$info}
-    if(is.null(info1) & !"info" %in% names(upar)){info1 <- info}
+    if(is.null(info1) &  "info" %in% names(lpar)){info1 <- lpar$info}
+    if(is.null(info1) & !"info" %in% names(lpar)){info1 <- info}
   } 
   
   # --------------------------------------------- #
