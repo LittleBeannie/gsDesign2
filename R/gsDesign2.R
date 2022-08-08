@@ -60,8 +60,7 @@
 #' Methods with Applications to Clinical Trials}. Boca Raton: Chapman and Hall.
 #' @docType package
 #' @name gsDesign2
-#' @keywords design survival nonparametric
+#' @keywords internal
 #' @import Rcpp
 #' @useDynLib gsDesign2, .registration = TRUE
-#' @noRd
-NULL
+"_PACKAGE"
