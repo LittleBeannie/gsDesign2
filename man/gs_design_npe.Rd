@@ -136,11 +136,6 @@ info <- 1 / (pc * (1 - pc) * 2 + pe * (1 - pe) * 2)
 # Divide information needed under H1 by information per patient added
 gs_design_npe(theta = pe - pc, info = info, info0 = info0)
 
-# One can try `info_scale` argument. But it gives the same results as above. 
-# This is because the above example use fixed design.
-gs_design_npe(theta = pe - pc, info = info, info0 = info0, info_scale = 0)
-gs_design_npe(theta = pe - pc, info = info, info0 = info0, info_scale = 1)
-gs_design_npe(theta = pe - pc, info = info, info0 = info0, info_scale = 2) # default 
 
 # ---------------------------------# 
 #         example 2                #

@@ -15,8 +15,8 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#' @importFrom tibble tibble
-#' @importFrom stats qnorm uniroot
+#' @import tibble 
+#' @import stats 
 NULL
 #' Group sequential design computation with non-constant effect and information
 #'
@@ -112,11 +112,6 @@ NULL
 #' # Divide information needed under H1 by information per patient added
 #' gs_design_npe(theta = pe - pc, info = info, info0 = info0)
 #' 
-#' # One can try `info_scale` argument. But it gives the same results as above. 
-#' # This is because the above example use fixed design.
-#' gs_design_npe(theta = pe - pc, info = info, info0 = info0, info_scale = 0)
-#' gs_design_npe(theta = pe - pc, info = info, info0 = info0, info_scale = 1)
-#' gs_design_npe(theta = pe - pc, info = info, info0 = info0, info_scale = 2) # default 
 #' 
 #' # ---------------------------------# 
 #' #         example 2                #
