@@ -54,9 +54,6 @@ reference:
   - "gs_spending_bound"
 - title: Lower level functions
   contents: 
-  - "gridpts"
-  - "h1"
-  - "hupdate"
   - "gs_power_npe"
   - "gs_design_npe"
   
