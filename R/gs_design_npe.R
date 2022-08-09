@@ -90,7 +90,7 @@ NULL
 #' @author Keaven Anderson \email{keaven\_anderson@@merck.}
 #'
 #' @export
-#' @useDynLib gsDesign2, .registration = TRUE
+#' 
 #' @examples
 #' library(dplyr)
 #' library(gsDesign)
