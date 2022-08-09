@@ -1,6 +1,6 @@
 #' A function to check the arguments \code{enrollRates} used in gsDesign2
 #'
-#' @param enrollRates 
+#' @param enrollRates enrollment rates
 #'
 #' @return TURE or FALSE
 #'
@@ -58,7 +58,7 @@ check_enrollRates <- function(enrollRates){
 
 #' A function to check the arguments \code{failRates} used in gsDesign2
 #'
-#' @param enrollRates 
+#' @param failRates failure rates
 #'
 #' @return TURE or FALSE
 #'
@@ -148,8 +148,8 @@ check_failRates <- function(failRates){
 
 #' A function to check the arguments \code{enrollRates} and \code{failRates} used in gsDesign2
 #'
-#' @param enrollRates 
-#'
+#' @param enrollRates enrollment rates
+#' @param failRates failure rates
 #' @return TURE or FALSE
 #'
 #' @examples
@@ -178,7 +178,7 @@ check_enrollRates_failRates <- function(enrollRates, failRates){
 
 #' A function to check the arguments \code{analysisTimes} used in gsDesign2
 #'
-#' @param analysisTimes  
+#' @param analysisTimes analysis time
 #'
 #' @return TURE or FALSE
 #'
@@ -202,7 +202,7 @@ check_analysisTimes <- function(analysisTimes){
 
 #' A function to check the arguments \code{events} used in gsDesign2
 #'
-#' @param analysisTimes  
+#' @param events number of events  
 #'
 #' @return TURE or FALSE
 #' 
@@ -225,7 +225,7 @@ check_events <- function(events){
 
 #' A function to check the arguments \code{totalDuration} used in gsDesign2
 #'
-#' @param totalDuration  
+#' @param totalDuration total duration
 #'
 #' @return TURE or FALSE
 #' 
@@ -249,7 +249,7 @@ check_totalDuration <- function(totalDuration){
 
 #' A function to check the arguments \code{ratio} used in gsDesign2
 #'
-#' @param ratio  
+#' @param ratio  randomization ratio
 #'
 #' @return TURE or FALSE
 #' 
@@ -270,7 +270,7 @@ check_ratio <- function(ratio){
 
 #' A function to check the arguments \code{info} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
 #'
-#' @param info  
+#' @param info statistical information
 #'
 #' @return TURE or FALSE
 #' 
@@ -290,8 +290,8 @@ check_info <- function(info){
 
 #' A function to check the arguments \code{theta} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
 #'
-#' @param theta  
-#' @param K
+#' @param theta  treatment effect
+#' @param K number of total analysis
 #'
 #' @return TURE or FALSE
 #' 
@@ -316,8 +316,8 @@ check_theta <- function(theta, K){
 
 #' A function to check the arguments \code{test_upper} and \code{text_lower} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
 #'
-#' @param test_upper_lower  
-#' @param K
+#' @param test_upper_lower  test upper or lower
+#' @param K number of total analysis
 #'
 #' @return TURE or FALSE
 #' 
@@ -340,8 +340,8 @@ check_test_upper_lower <- function(test_upper_lower, K){
 
 #' A function to check the arguments \code{alpha} and \code{beta} in gsDesign2
 #'
-#' @param alpha
-#' @param beta  
+#' @param alpha type I error
+#' @param beta  type II error
 #'
 #' @return TURE or FALSE
 #' 
