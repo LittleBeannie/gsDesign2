@@ -37,30 +37,43 @@ navbar:
 
 reference:
 - title: AHR
+  desc: >
+    Functions for the average hazard ratio (AHR) method. 
   contents: 
-  - "AHR"
-  - "tEvents"
-  - "eEvents_df"
-  - "gs_info_ahr"
-- title: WLR
+  - AHR
+  - tEvents
+  - eEvents_df
+  - gs_info_ahr
+- title: "WLR"
+  desc: >
+    Functions for the weighted logrank test (WLR) method. 
   contents: 
-  - "AHR"
+  - AHR
 - title: Max Combo
+  desc: >
+    Functions for the max combo method. 
   contents: 
-  - "AHR"
+  - AHR
 - title: Boundary functions
+  desc: >
+    Functions to specify the upper and lower bound in group sequential designs.
+    They are not recommended to use alone. 
+    Instead, they should be used companied with gs_design_npe, gs_power_npe, ect..
   contents: 
-  - "gs_b"
-  - "gs_spending_bound"
+  - gs_b
+  - gs_spending_bound
 - title: Lower level functions
+  desc: >
+    Functions to calculate sample size or number of events under non-constant treatment effect over time.
   contents: 
-  - "gs_power_npe"
-  - "gs_design_npe"
+  - gs_power_npe
+  - gs_design_npe
   
 articles:
 - title: "Use case of functions"
-  navbar: Use case of functions
-  desc: The following vignettes cover the usage of the key functions in gsDesign2.
+  navbar: ~
+  desc: >
+    The following vignettes cover the usage of the key functions in gsDesign2.
   contents: 
   - usage_eEvents_df
   - usage_AHR
@@ -72,7 +85,8 @@ articles:
   
 - title: "Check of functions"
   navbar: Testing & checks of functions
-  desc: The following vignettes cover the tests and checks of the key functions in gsDesign2.
+  desc: >
+    The following vignettes cover the tests and checks of the key functions in gsDesign2.
   contents: 
   - check_eEvents_df
   - check_AHR
