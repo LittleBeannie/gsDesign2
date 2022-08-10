@@ -1,5 +1,5 @@
 ---
-title: "Usage of gs_spending_bound"
+title: "gs_spending_bound: compute spending boundary in group sequential design"
 output:
   rmarkdown::html_document:
     toc: true

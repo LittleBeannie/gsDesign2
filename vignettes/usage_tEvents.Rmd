@@ -1,5 +1,5 @@
 ---
-title: "Usage of eEvents_df"
+title: "tEvents: compute time when a targeted number of events is made"
 output:
   rmarkdown::html_document:
     toc: true
@@ -29,7 +29,7 @@ devtools::load_all()
 
 # Introduction of `tEvents`
 
-`tEvents()` predicts time at which a targeted even is made. 
+`tEvents()` predicts time at which a targeted events is made. 
 It is designed as a twins to `AHR()`: it matches input/output format with `AHR()`. 
 
 # Use Cases

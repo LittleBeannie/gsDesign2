@@ -1,5 +1,5 @@
 ---
-title: "Usage of AHR"
+title: "AHR: computes AHR under NPH assumptions and (stratified) populations"
 output:
   rmarkdown::html_document:
     toc: true

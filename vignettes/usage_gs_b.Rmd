@@ -1,5 +1,5 @@
 ---
-title: "Usage of gs_b"
+title: "gs_b: specify fixed boundaries in group sequential designs"
 output:
   rmarkdown::html_document:
     toc: true

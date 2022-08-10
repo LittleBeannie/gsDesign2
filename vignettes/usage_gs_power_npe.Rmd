@@ -1,5 +1,5 @@
 ---
-title: "Usage of gs_power_npe"
+title: "gs_power_npe: derives bounds and crossing probabilities for group sequential designs under NPH assumptions"
 output:
   rmarkdown::html_document:
     toc: true

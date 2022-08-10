@@ -1,5 +1,5 @@
 ---
-title: "Usage of gs_info_ahr"
+title: "gs_info_ahr: compute statistical information by the AHR method"
 output:
   rmarkdown::html_document:
     toc: true

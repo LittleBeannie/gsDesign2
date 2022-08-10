@@ -1,5 +1,5 @@
 ---
-title: "Usage of eEvents_df"
+title: "eEvents_df: compute expected number of events at 1 time point"
 output:
   rmarkdown::html_document:
     toc: true
