@@ -193,7 +193,7 @@ x2 <- gs_design_npe_(theta = c(.1, .2, .3),
                     test_upper = c(FALSE, TRUE, TRUE)) %>% mutate(`Computated from` = "old version", `Info scale` = 0)
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE}
 x1_a %>% 
   union_all(x1_b) %>% 
   union_all(x1_c) %>% 
@@ -237,7 +237,7 @@ x2 <- gs_design_npe_(theta = c(.1, .2, .3),
                      lpar = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)) %>% mutate(`Computated from` = "old version")
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE}
 x1_a %>% 
   union_all(x1_b) %>% 
   union_all(x1_c) %>% 
