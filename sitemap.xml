@@ -13,6 +13,15 @@
     <loc>https://littlebeannie.github.io/gsDesign2/articles/check_eEvents_df.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/check_gs_design_npe.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/check_gs_power_npe.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/check_tEvents.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/index.html</loc>
   </url>
   <url>
@@ -20,6 +29,21 @@
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_eEvents_df.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_b.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_info_ahr.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_power_npe.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_spending_bound.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_tEvents.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/authors.html</loc>
@@ -34,18 +58,27 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/eEvents_df.html</loc>
   </url>
   <url>
-    <loc>https://littlebeannie.github.io/gsDesign2/reference/gridpts.html</loc>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gsDesign2-package.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_b.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_npe.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_info_ahr.html</loc>
   </url>
   <url>
-    <loc>https://littlebeannie.github.io/gsDesign2/reference/h1.html</loc>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_npe.html</loc>
   </url>
   <url>
-    <loc>https://littlebeannie.github.io/gsDesign2/reference/hupdate.html</loc>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_spending_bound.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/tEvents.html</loc>
   </url>
 </urlset>
