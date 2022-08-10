@@ -326,13 +326,13 @@ check_theta <- function(theta, K){
 #' check_test_upper(test_upper)
 #' 
 #' @noRd
-check_test_upper_lower <- function(test_upper, K){
+check_test_upper <- function(test_upper, K){
   ## Check test_upper and test_lower are logical and correct length
   if(!is.vector(test_upper, mode = "logical")){
     stop("gs_design_npe() or gs_power_npe(): test_upper must be logical!")
   }
     
-  if(!(length(test_upper_lower) == 1 || length(test_upper_lower) == K)){
+  if(!(length(test_upper) == 1 || length(test_upper) == K)){
     stop("gs_design_npe() or gs_power_npe(): test_upper must be length 1 or same length as info!")
   }
   

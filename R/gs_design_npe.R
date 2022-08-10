@@ -15,8 +15,8 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#' @import tibble 
-#' @import stats 
+#' @import tibble tibble
+#' @importFrom stats qnorm uniroot
 #' @import Rcpp
 NULL
 #' Group sequential design computation with non-constant effect and information
@@ -310,57 +310,55 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   #     fixed design                              #
   # --------------------------------------------- #
   # compute fixed sample size for desired power and Type I error.
-  minx <- ((qnorm(alpha) / sqrt(info0[K]) + qnorm(beta) / sqrt(info[K])) / theta[K])^2
+  min_x <- ((qnorm(alpha) / sqrt(info0[K]) + qnorm(beta) / sqrt(info[K])) / theta[K])^2
   # for a fixed design, this is all you need.
   if (K == 1){
-    ans <- tibble::tibble(
-      Analysis = 1, Bound = "Upper", Z = qnorm(1 - alpha),
-      Probability = 1 - beta, Probability0 = alpha, theta = theta, 
-      info = info * minx, info0 = info0 * minx, info1 = info1 * minx,
-      IF = info / max(info)
-    )
+    ans <- tibble(Analysis = 1, Bound = "Upper", Z = qnorm(1 - alpha),
+                  Probability = 1 - beta, Probability0 = alpha, theta = theta, 
+                  info = info * min_x, info0 = info0 * min_x, info1 = info1 * min_x,
+                  IF = info / max(info))
     return(ans)
   } 
   
   # find an interval for information inflation to give correct power
-  if(!"info" %in%  names(upar)){
-    upar_new <- c(upar, info = list(info0 * minx))
-  }else{
-    upar_new <- upar
-  }
+  # if(!"info" %in%  names(upar)){
+  #   upar_new <- c(upar, info = list(info0 * min_x))
+  # }else{
+  #   upar_new <- upar
+  # }
   
   # --------------------------------------------- #
   #     search for the inflation factor to info   #
   # --------------------------------------------- #
-  # ensure `minx` gives power < 1 - beta 
-  # and `maxx` gives power > 1 - beta
+  # ensure `min_x` gives power < 1 - beta 
+  # and `max_x` gives power > 1 - beta
+  min_temp <- gs_power_npe(theta = theta, theta1 = theta1,
+                           info = info * min_x, info0 = info0 * min_x, info1 = info * min_x, info_scale = info_scale,
+                           upper = upper, upar = upar, test_upper = test_upper,
+                           lower = lower, lpar = lpar, test_lower = test_lower,
+                           binding = binding, r = r, tol = tol) 
+  min_power <- (min_temp[min_temp$Bound == "Upper" & min_temp$Analysis == K, ])$Probability
   
-  minpwr <- gs_power_npe(theta = theta, theta1 = theta1,
-                         info = info * minx, info0 = info0 * minx, info1 = info * minx, info_scale = info_scale,
-                         upper = upper, upar = upar_new, test_upper = test_upper,
-                         lower = lower, lpar = lpar, test_lower = test_lower,
-                         binding = binding, r = r, tol = tol) 
-  minpwr <- (minpwr[minpwr$Bound == "Upper" & minpwr$Analysis == K, ])$Probability
-  
-  # a flag indicates if maxx can be found
+  # a flag indicates if max_x can be found
   flag <- FALSE                   
-  if (minpwr < 1 - beta){
-    # if minpwr < 1 - beta
-    # then increase `minx` to `maxx` until `maxpwr` > 1 - beta
-    maxx <- 1.05 * minx           
-    upar_new$info <- info * maxx
+  if (min_power < 1 - beta){
+    # if min_power < 1 - beta
+    # then find a max_power > 1 - beta 
+    # by increasing `min_x` to `max_x` until `max_power` > 1 - beta
+    max_x <- 1.05 * min_x           
+    #upar_new$info <- info * max_x
     
     for(i in 1:10){
-      maxpwr <- gs_power_npe(theta = theta, theta1 = theta1,
-                             info = info * maxx, info0 = info0 * maxx, info1 = info * maxx, info_scale = info_scale,
-                             upper = upper, upar = upar_new, test_upper = test_upper, 
-                             lower = lower, lpar = lpar, test_lower = test_lower,
-                             binding = binding, r = r, tol = tol) 
-      maxpwr <- (maxpwr[maxpwr$Bound == "Upper" & maxpwr$Analysis == K, ])$Probability
+      max_temp <- gs_power_npe(theta = theta, theta1 = theta1,
+                               info = info * max_x, info0 = info0 * max_x, info1 = info * max_x, info_scale = info_scale,
+                               upper = upper, upar = upar, test_upper = test_upper, 
+                               lower = lower, lpar = lpar, test_lower = test_lower,
+                               binding = binding, r = r, tol = tol) 
+      max_power <- (max_temp[max_temp$Bound == "Upper" & max_temp$Analysis == K, ])$Probability
     
-      if (maxpwr < 1 - beta){
-        minx <- maxx
-        maxx <- 1.05 * maxx
+      if (max_power < 1 - beta){
+        min_x <- max_x
+        max_x <- 1.05 * max_x
       }else{
         flag <- TRUE
         break
@@ -368,41 +366,43 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     }
     if(!flag) stop("gs_design_npe: could not inflate information to bracket power before root finding!")
   }else{
-    # if minpwr  > 1 - beta
-    # then decrease `minx` to a new `minx` until `minpwr` < 1 - beta
-    maxx <- minx
-    minx <- maxx / 1.05
+    # if min_power  > 1 - beta
+    # then find a micro_power < 1 - beta 
+    # by decreasing `min_x` to `micro_x` until `micro_power` < 1 - beta
+    micro_x <- min_x / 1.05
+    
     for(i in 1:10){
-      minpwr <- gs_power_npe(theta = theta, theta1 = theta1,
-                             info = info * minx, info0 = info0 * minx, info1 = info * minx, info_scale = info_scale,
-                             upper = upper, upar = c(upar, info = list(info0 * minx)),
-                             lower = lower, lpar = lpar,
-                             test_upper = test_upper, test_lower = test_lower,
-                             binding = binding, r = r, tol = tol)
-      minpwr <- (minpwr[minpwr$Bound == "Upper" & minpwr$Analysis == K, ])$Probability
+      micro_temp <- gs_power_npe(theta = theta, theta1 = theta1,
+                                 info = info * micro_x, info0 = info0 * micro_x, info1 = info * micro_x, info_scale = info_scale,
+                                 upper = upper, upar = upar, test_upper = test_upper, #c(upar, info = list(info0 * min_x)),
+                                 lower = lower, lpar = lpar, test_lower = test_lower,
+                                 binding = binding, r = r, tol = tol)
+      micro_power <- (micro_temp[micro_temp$Bound == "Upper" & micro_temp$Analysis == K, ])$Probability
       
-      if(minpwr > 1 - beta){
-        maxx <- minx
-        minx <- minx / 1.05
+      if(micro_power > 1 - beta){
+        min_x <- micro_x
+        micro_x <- micro_x / 1.05
       }else{
         flag <- TRUE
         break
       }
     }
+    
+    min_x <- micro_x
+    max_x <- min_x
+    
     if(!flag) stop("gs_design_npe: could not deflate information to bracket targeted power before root finding!")
   }
   
   # use root finding with the above function to find needed sample size inflation
   # now we can solve for the inflation factor for the enrollment rate to achieve the desired power
   res <- try(uniroot(errbeta, 
-                     lower = minx, upper = maxx,
-                     theta = theta, theta1 = theta1, K = K, 
-                     beta = beta,
+                     lower = min_x, upper = max_x,
+                     theta = theta, theta1 = theta1, 
                      info = info, info0 = info0, info1 = info1, info_scale = info_scale,
-                     Zupper = upper, upar = upar,
-                     Zlower = lower, lpar = lpar,
-                     test_upper = test_upper, test_lower = test_lower,
-                     binding = binding, r = r, tol = tol))
+                     Zupper = upper, upar = upar, test_upper = test_upper,
+                     Zlower = lower, lpar = lpar, test_lower = test_lower,
+                     beta = beta, K = K, binding = binding, r = r, tol = tol))
   if(inherits(res, "try-error")){
     stop("gs_design_npe(): Sample size solution not found!")
   }else{
@@ -416,7 +416,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   ans_H1 <- gs_power_npe(theta = theta, theta1 = theta1,
                          info = info * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor, 
                          info_scale = info_scale,
-                         upper = upper, upar = c(upar, info = list(info0 * inflation_factor)),
+                         upper = upper, upar = upar, #c(upar, info = list(info0 * inflation_factor)),
                          lower = lower, lpar = lpar, 
                          test_upper = test_upper, test_lower = test_lower,
                          binding = binding, r = r, tol = tol)
@@ -434,7 +434,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   
   # calculate the probability under H0
   ans_H0 <- gs_power_npe(theta = 0, 
-                         info = info * inflation_factor, info0 = info0 * inflation_factor,info1 = info1 * inflation_factor,
+                         info = info * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor,
                          info_scale = info_scale,
                          upper = gs_b, upar = list(par = (bound_H1 %>% filter(Bound == "Upper"))$Z), 
                          lower = gs_b, lpar = list(par = (bound_H1 %>% filter(Bound == "Lower"))$Z), 
@@ -465,14 +465,13 @@ errbeta <- function(x = 1, K = 1,
                     test_upper = TRUE, test_lower = TRUE,
                     binding = FALSE, r = 18, tol = 1e-6){
   
-  x_power <- gs_power_npe(theta = theta,  theta1 = theta1,
-                             info = info * x, info0 = info0 * x, info1 = info1 * x, info_scale = info_scale,
-                             upper = Zupper, upar = c(upar, info = list(info0 * x)),
-                             lower = Zlower, lpar = lpar,
-                             test_upper = test_upper, test_lower = test_lower,
-                             binding = binding, r = r, tol = tol)
+  x_temp <- gs_power_npe(theta = theta,  theta1 = theta1,
+                         info = info * x, info0 = info0 * x, info1 = info1 * x, info_scale = info_scale,
+                         upper = Zupper, upar = upar, test_upper = test_upper, #c(upar, info = list(info0 * x)),
+                         lower = Zlower, lpar = lpar, test_lower = test_lower,
+                         binding = binding, r = r, tol = tol)
   
-  x_power <- (x_power[x_power$Bound == "Upper" & x_power$Analysis == K, ])$Probability
+  x_power <- (x_temp[x_temp$Bound == "Upper" & x_temp$Analysis == K, ])$Probability
   
   ans <- 1 - beta - x_power 
   return(ans) 
