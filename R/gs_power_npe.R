@@ -176,43 +176,17 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
   if (length(test_lower) == 1 && K > 1) test_lower <- rep(test_lower, K)
   
   # --------------------------------------------- #
-  #     discriminate if it is spending bound      #
-  # --------------------------------------------- #
-  fixed_upper_bound <- identical(upper, gs_b)
-  fixed_lower_bound <- identical(lower, gs_b)
-  
-  # --------------------------------------------- #
   #     set up info                               #
   # --------------------------------------------- #
-  ## if the upper bound is fixed bound
-  if(fixed_upper_bound){
-    if(is.null(info0)){
-      info0 <- info
-    }
+  if(is.null(info0)){
+    info0 <- info
   }
   
-  ## if the upper bound is spending bound
-  if(!fixed_upper_bound){
-    if(is.null(info0) &  "info" %in% names(upar)){info0 <- upar$info}
-    if(is.null(info0) & !"info" %in% names(upar)){info0 <- info}
-  } 
-  
-  ## if the lower bound is fixed bound
-  if(fixed_lower_bound){
-    if(is.null(info1)){
-      info1 <- info
-    }
+  if(is.null(info1)){
+    info1 <- info
   }
   
-  ## if the lower bound is spending bound
-  if(!fixed_lower_bound){
-    if(is.null(info1) &  "info" %in% names(lpar)){info1 <- lpar$info}
-    if(is.null(info1) & !"info" %in% names(lpar)){info1 <- info}
-  } 
-  
-  # --------------------------------------------- #
-  #     set up info_scale                         #
-  # --------------------------------------------- #
+  # set up info_scale
   info_scale <- if(methods::missingArg(info_scale)){2}else{match.arg(as.character(info_scale), choices = 0:2)}
   if(info_scale == 0){
     info <- info0
@@ -222,6 +196,13 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
     info <- info1
     info0 <- info1
   }
+  
+  check_info(info)
+  check_info(info0)
+  check_info(info1)
+  if(length(info0) != length(info)) stop("gs_design_npe(): length of info, info0 must be the same!")
+  if(length(info1) != length(info)) stop("gs_design_npe(): length of info, info1 must be the same!")
+  
   
   # --------------------------------------------- #
   #     initialization                            #

@@ -248,35 +248,13 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   # --------------------------------------------- #
   #     set up info                               #
   # --------------------------------------------- #
-  # discriminate if it is spending bound      
-  fixed_upper_bound <- identical(upper, gs_b)
-  fixed_lower_bound <- identical(lower, gs_b)
-  
-  # if the upper bound is fixed bound
-  if(fixed_upper_bound){
-    if(is.null(info0)){
-      info0 <- info
-    }
+  if(is.null(info0)){
+    info0 <- info
   }
   
-  # if the upper bound is spending bound
-  if(!fixed_upper_bound){
-    if(is.null(info0) &  "info" %in% names(upar)){info0 <- upar$info}
-    if(is.null(info0) & !"info" %in% names(upar)){info0 <- info}
-  } 
-  
-  # if the lower bound is fixed bound
-  if(fixed_lower_bound){
-    if(is.null(info1)){
-      info1 <- info
-    }
+  if(is.null(info1)){
+    info1 <- info
   }
-  
-  # if the lower bound is spending bound
-  if(!fixed_lower_bound){
-    if(is.null(info1) &  "info" %in% names(lpar)){info1 <- lpar$info}
-    if(is.null(info1) & !"info" %in% names(lpar)){info1 <- info}
-  } 
   
   # set up info_scale
   info_scale <- if(methods::missingArg(info_scale)){2}else{match.arg(as.character(info_scale), choices = 0:2)}
@@ -320,13 +298,6 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     return(ans)
   } 
   
-  # find an interval for information inflation to give correct power
-  # if(!"info" %in%  names(upar)){
-  #   upar_new <- c(upar, info = list(info0 * min_x))
-  # }else{
-  #   upar_new <- upar
-  # }
-  
   # --------------------------------------------- #
   #     search for the inflation factor to info   #
   # --------------------------------------------- #
@@ -346,7 +317,6 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     # then find a max_power > 1 - beta 
     # by increasing `min_x` to `max_x` until `max_power` > 1 - beta
     max_x <- 1.05 * min_x           
-    #upar_new$info <- info * max_x
     
     for(i in 1:10){
       max_temp <- gs_power_npe(theta = theta, theta1 = theta1,
@@ -373,8 +343,8 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     
     for(i in 1:10){
       micro_temp <- gs_power_npe(theta = theta, theta1 = theta1,
-                                 info = info * micro_x, info0 = info0 * micro_x, info1 = info * micro_x, info_scale = info_scale,
-                                 upper = upper, upar = upar, test_upper = test_upper, #c(upar, info = list(info0 * min_x)),
+                                 info = info * min_x, info0 = info0 * min_x, info1 = info * min_x, info_scale = info_scale,
+                                 upper = upper, upar = upar, test_upper = test_upper, 
                                  lower = lower, lpar = lpar, test_lower = test_lower,
                                  binding = binding, r = r, tol = tol)
       micro_power <- (micro_temp[micro_temp$Bound == "Upper" & micro_temp$Analysis == K, ])$Probability
@@ -387,9 +357,6 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
         break
       }
     }
-    
-    min_x <- micro_x
-    max_x <- min_x
     
     if(!flag) stop("gs_design_npe: could not deflate information to bracket targeted power before root finding!")
   }
@@ -416,7 +383,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   ans_H1 <- gs_power_npe(theta = theta, theta1 = theta1,
                          info = info * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor, 
                          info_scale = info_scale,
-                         upper = upper, upar = upar, #c(upar, info = list(info0 * inflation_factor)),
+                         upper = upper, upar = upar, 
                          lower = lower, lpar = lpar, 
                          test_upper = test_upper, test_lower = test_lower,
                          binding = binding, r = r, tol = tol)
@@ -426,7 +393,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     bound_H1 <- ans_H1 %>% 
       select(Analysis, Bound, Z) %>%
       dplyr::rename(Z1 = Z) %>% 
-      right_join(tibble::tibble(Analysis = rep(1:K, 2), Bound = rep(c("Upper", "Lower"), each = K), Z2 = rep(c(Inf, -Inf), each = K))) %>% 
+      right_join(tibble(Analysis = rep(1:K, 2), Bound = rep(c("Upper", "Lower"), each = K), Z2 = rep(c(Inf, -Inf), each = K))) %>% 
       mutate(Z = dplyr::coalesce(Z1, Z2)) %>% 
       select(Analysis, Bound, Z) %>% 
       arrange(Analysis, desc(Bound))
@@ -448,7 +415,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   
   ans <- ans %>% select(Analysis, Bound, Z, Probability, Probability0, theta, IF, info, info0, info1) 
   
-  ans <- ans %>% arrange(Analysis, desc(Bound))
+  ans <- ans %>% arrange(Analysis)
   
   return(ans)
 }
@@ -467,7 +434,7 @@ errbeta <- function(x = 1, K = 1,
   
   x_temp <- gs_power_npe(theta = theta,  theta1 = theta1,
                          info = info * x, info0 = info0 * x, info1 = info1 * x, info_scale = info_scale,
-                         upper = Zupper, upar = upar, test_upper = test_upper, #c(upar, info = list(info0 * x)),
+                         upper = Zupper, upar = upar, test_upper = test_upper, 
                          lower = Zlower, lpar = lpar, test_lower = test_lower,
                          binding = binding, r = r, tol = tol)
   
