@@ -13,6 +13,9 @@
     <loc>https://littlebeannie.github.io/gsDesign2/articles/check_eEvents_df.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/check_gs_design_npe.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/check_gs_power_npe.html</loc>
   </url>
   <url>
@@ -32,6 +35,9 @@
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_info_ahr.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_power_npe.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/usage_gs_spending_bound.html</loc>
@@ -79,10 +85,16 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gridpts.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gsDesign2-package.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gsDesign2.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_b.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_npe.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_info_ahr.html</loc>

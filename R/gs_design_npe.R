@@ -17,6 +17,7 @@
 
 #' @import tibble 
 #' @import stats 
+#' @import Rcpp
 NULL
 #' Group sequential design computation with non-constant effect and information
 #'
@@ -241,10 +242,8 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   # check test_upper & test_lower
   if (length(test_upper) == 1 && K > 1) test_upper <- rep(test_upper, K)
   if (length(test_lower) == 1 && K > 1) test_lower <- rep(test_lower, K)
-  check_test_upper_lower(test_upper, K)
-  check_test_upper_lower(test_lower, K)
-  # check that final test_upper value is TRUE
-  if (!dplyr::last(test_upper)) stop("gs_design_npe(): last value of test_upper must be TRUE!")
+  check_test_upper(test_upper, K)
+  check_test_lower(test_lower, K)
   
   # --------------------------------------------- #
   #     set up info                               #

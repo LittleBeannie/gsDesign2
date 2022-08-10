@@ -31,7 +31,10 @@ Suggests:
     kableExtra,
     gt,
     ggplot2,
-    tidyr
+    tidyr,
+    covr,
+    bench,
+    microbenchmark
 Remotes: 
     Merck/simtrial
 Roxygen: list(markdown = TRUE)

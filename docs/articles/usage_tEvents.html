@@ -75,6 +75,10 @@
 
     
     
+<pre><code><span class="co">## Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when</span>
+<span class="co">## loading 'gsDesign2'</span></code></pre>
+<pre><code><span class="co">## Warning: replacing previous import 'stats::lag' by 'dplyr::lag' when loading</span>
+<span class="co">## 'gsDesign2'</span></code></pre>
 <div class="section level1">
 <h1 id="introduction-of-tevents">Introduction of <code>tEvents</code><a class="anchor" aria-label="anchor" href="#introduction-of-tevents"></a>
 </h1>
@@ -86,7 +90,7 @@
 <div class="section level2">
 <h2 id="example-1">Example 1:<a class="anchor" aria-label="anchor" href="#example-1"></a>
 </h2>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">enrollRates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">9</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">)</span>
 <span class="va">failRates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">100</span><span class="op">)</span>, failRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">18</span><span class="op">)</span>, hr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.9</span>, <span class="fl">.6</span><span class="op">)</span>, dropoutRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">.001</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fl">1</span>
@@ -95,12 +99,12 @@
              ratio <span class="op">=</span> <span class="va">ratio</span>, targetEvents <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
 
 <span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="fgwormttnu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lcuroezltz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fgwormttnu .gt_table {
+#lcuroezltz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -125,7 +129,7 @@
   border-left-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_heading {
+#lcuroezltz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -137,7 +141,7 @@
   border-right-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_title {
+#lcuroezltz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -149,7 +153,7 @@
   border-bottom-width: 0;
 }
 
-#fgwormttnu .gt_subtitle {
+#lcuroezltz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -161,13 +165,13 @@
   border-top-width: 0;
 }
 
-#fgwormttnu .gt_bottom_border {
+#lcuroezltz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_col_headings {
+#lcuroezltz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -182,7 +186,7 @@
   border-right-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_col_heading {
+#lcuroezltz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -202,7 +206,7 @@
   overflow-x: hidden;
 }
 
-#fgwormttnu .gt_column_spanner_outer {
+#lcuroezltz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -214,15 +218,15 @@
   padding-right: 4px;
 }
 
-#fgwormttnu .gt_column_spanner_outer:first-child {
+#lcuroezltz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fgwormttnu .gt_column_spanner_outer:last-child {
+#lcuroezltz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fgwormttnu .gt_column_spanner {
+#lcuroezltz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -234,7 +238,7 @@
   width: 100%;
 }
 
-#fgwormttnu .gt_group_heading {
+#lcuroezltz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -259,7 +263,7 @@
   vertical-align: middle;
 }
 
-#fgwormttnu .gt_empty_group_heading {
+#lcuroezltz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -274,15 +278,15 @@
   vertical-align: middle;
 }
 
-#fgwormttnu .gt_from_md > :first-child {
+#lcuroezltz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fgwormttnu .gt_from_md > :last-child {
+#lcuroezltz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fgwormttnu .gt_row {
+#lcuroezltz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -301,7 +305,7 @@
   overflow-x: hidden;
 }
 
-#fgwormttnu .gt_stub {
+#lcuroezltz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -314,7 +318,7 @@
   padding-right: 5px;
 }
 
-#fgwormttnu .gt_stub_row_group {
+#lcuroezltz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -328,11 +332,11 @@
   vertical-align: top;
 }
 
-#fgwormttnu .gt_row_group_first td {
+#lcuroezltz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fgwormttnu .gt_summary_row {
+#lcuroezltz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -342,16 +346,16 @@
   padding-right: 5px;
 }
 
-#fgwormttnu .gt_first_summary_row {
+#lcuroezltz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_first_summary_row.thick {
+#lcuroezltz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fgwormttnu .gt_last_summary_row {
+#lcuroezltz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -361,7 +365,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_grand_summary_row {
+#lcuroezltz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -371,7 +375,7 @@
   padding-right: 5px;
 }
 
-#fgwormttnu .gt_first_grand_summary_row {
+#lcuroezltz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -381,11 +385,11 @@
   border-top-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_striped {
+#lcuroezltz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fgwormttnu .gt_table_body {
+#lcuroezltz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -394,7 +398,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_footnotes {
+#lcuroezltz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -408,7 +412,7 @@
   border-right-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_footnote {
+#lcuroezltz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -417,7 +421,7 @@
   padding-right: 5px;
 }
 
-#fgwormttnu .gt_sourcenotes {
+#lcuroezltz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -431,7 +435,7 @@
   border-right-color: #D3D3D3;
 }
 
-#fgwormttnu .gt_sourcenote {
+#lcuroezltz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -439,60 +443,60 @@
   padding-right: 5px;
 }
 
-#fgwormttnu .gt_left {
+#lcuroezltz .gt_left {
   text-align: left;
 }
 
-#fgwormttnu .gt_center {
+#lcuroezltz .gt_center {
   text-align: center;
 }
 
-#fgwormttnu .gt_right {
+#lcuroezltz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fgwormttnu .gt_font_normal {
+#lcuroezltz .gt_font_normal {
   font-weight: normal;
 }
 
-#fgwormttnu .gt_font_bold {
+#lcuroezltz .gt_font_bold {
   font-weight: bold;
 }
 
-#fgwormttnu .gt_font_italic {
+#lcuroezltz .gt_font_italic {
   font-style: italic;
 }
 
-#fgwormttnu .gt_super {
+#lcuroezltz .gt_super {
   font-size: 65%;
 }
 
-#fgwormttnu .gt_footnote_marks {
+#lcuroezltz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#fgwormttnu .gt_asterisk {
+#lcuroezltz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fgwormttnu .gt_slash_mark {
+#lcuroezltz .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#fgwormttnu .gt_fraction_numerator {
+#lcuroezltz .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#fgwormttnu .gt_fraction_denominator {
+#lcuroezltz .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -520,7 +524,7 @@
 <h2 id="example-2">Example 2:<a class="anchor" aria-label="anchor" href="#example-2"></a>
 </h2>
 <p>In this example, we verify <code><a href="../reference/tEvents.html">tEvents()</a></code> by <code><a href="../reference/AHR.html">AHR()</a></code>.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">enrollRates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">9</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">)</span>
 <span class="va">failRates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">100</span><span class="op">)</span>, failRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">18</span><span class="op">)</span>, hr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.9</span>, <span class="fl">.6</span><span class="op">)</span>, dropoutRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">.001</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fl">1</span>
@@ -529,7 +533,7 @@
          ratio <span class="op">=</span> <span class="va">ratio</span>, totalDuration <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"The number of events by 20 months is "</span>, <span class="va">x</span><span class="op">$</span><span class="va">Events</span>, <span class="st">".\n"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## The number of events by 20 months is  208.3641 .</span></code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tEvents.html">tEvents</a></span><span class="op">(</span>enrollRates <span class="op">=</span> <span class="va">enrollRates</span>, failRates <span class="op">=</span> <span class="va">failRates</span>,
              ratio <span class="op">=</span> <span class="va">ratio</span>, targetEvents <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">Events</span><span class="op">)</span>
 
@@ -542,13 +546,13 @@
 </h1>
 <p>The inner logic of <code><a href="../reference/tEvents.html">tEvents()</a></code> is to uniroot <code><a href="../reference/AHR.html">AHR()</a></code> on <code>totalDuration</code>.</p>
 <p><strong>Step 1:</strong> find the difference between <code><a href="../reference/AHR.html">AHR()</a></code> and different values of <code>totalDuration</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
   <span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AHR.html">AHR</a></span><span class="op">(</span>enrollRates <span class="op">=</span> <span class="va">enrollRates</span>, failRates <span class="op">=</span> <span class="va">failRates</span>, 
              totalDuration <span class="op">=</span> <span class="va">x</span>, ratio <span class="op">=</span> <span class="va">ratio</span><span class="op">)</span><span class="op">$</span><span class="va">Events</span> <span class="op">-</span> <span class="va">targetEvents</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">enrollRates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">9</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">)</span>
 <span class="va">failRates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">100</span><span class="op">)</span>, failRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">18</span><span class="op">)</span>, hr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.9</span>, <span class="fl">.6</span><span class="op">)</span>, dropoutRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">.001</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fl">1</span>
@@ -557,7 +561,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"The difference between `targetEvents = 200` and the events after 30 months is "</span>, <span class="fu">foo</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>, <span class="st">".\n"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## The difference between `targetEvents = 200` and the events after 30 months is  92.45484 .</span></code></pre>
 <p><strong>Step 2:</strong> uniroot <code><a href="../reference/AHR.html">AHR()</a></code> on <code>totalDuration</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/uniroot.html" class="external-link">uniroot</a></span><span class="op">(</span><span class="va">foo</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AHR.html">AHR</a></span><span class="op">(</span>enrollRates <span class="op">=</span> <span class="va">enrollRates</span>, failRates <span class="op">=</span> <span class="va">failRates</span>, 

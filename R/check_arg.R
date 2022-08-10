@@ -314,29 +314,57 @@ check_theta <- function(theta, K){
   } 
 }
 
-#' A function to check the arguments \code{test_upper} and \code{text_lower} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
+#' A function to check the arguments \code{test_upper} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
 #'
-#' @param test_upper_lower  test upper or lower
+#' @param test_upper  test upper or lower
 #' @param K number of total analysis
 #'
 #' @return TURE or FALSE
 #' 
 #' @examples
 #' test_upper <- TRUE
-#' check_test_upper_lower(test_upper)
+#' check_test_upper(test_upper)
 #' 
 #' @noRd
-check_test_upper_lower <- function(test_upper_lower, K){
+check_test_upper_lower <- function(test_upper, K){
   ## Check test_upper and test_lower are logical and correct length
-  if (!is.vector(test_upper_lower, mode = "logical")){
-    stop("gs_design_npe() or gs_power_npe(): test_upper or test_lower must be logical!")
+  if(!is.vector(test_upper, mode = "logical")){
+    stop("gs_design_npe() or gs_power_npe(): test_upper must be logical!")
   }
     
-  if (!(length(test_upper_lower) == 1 || length(test_upper_lower) == K)){
-    stop("gs_design_npe() or gs_power_npe(): test_upper or test_lower must be length 1 or same length as info!")
+  if(!(length(test_upper_lower) == 1 || length(test_upper_lower) == K)){
+    stop("gs_design_npe() or gs_power_npe(): test_upper must be length 1 or same length as info!")
   }
+  
+  # check that final test_upper value is TRUE
+  if(!dplyr::last(test_upper)){
+    stop("gs_design_npe(): last value of test_upper must be TRUE!")
+  }
+  
 }
 
+#' A function to check the arguments \code{text_lower} used in `gs_power_npe` or `gs_design_npe` in gsDesign2
+#'
+#' @param test_lower  test upper or lower
+#' @param K number of total analysis
+#'
+#' @return TURE or FALSE
+#' 
+#' @examples
+#' test_lower <- TRUE
+#' check_test_lower(test_lower)
+#' 
+#' @noRd
+check_test_lower <- function(test_lower, K){
+  ## Check test_upper and test_lower are logical and correct length
+  if (!is.vector(test_lower, mode = "logical")){
+    stop("gs_design_npe() or gs_power_npe(): test_lower must be logical!")
+  }
+  
+  if (!(length(test_lower) == 1 || length(test_lower) == K)){
+    stop("gs_design_npe() or gs_power_npe(): test_lower must be length 1 or same length as info!")
+  }
+}
 
 #' A function to check the arguments \code{alpha} and \code{beta} in gsDesign2
 #'
