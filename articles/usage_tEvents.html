@@ -6,13 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="gsDesign2">
-<title>Usage of eEvents_df • gsDesign2</title>
+<title>tEvents: compute time when a targeted number of events is made • gsDesign2</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Usage of eEvents_df">
+<meta property="og:title" content="tEvents: compute time when a targeted number of events is made">
 <meta property="og:description" content="gsDesign2">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -68,7 +68,7 @@
 
 <script src="usage_tEvents_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Usage of eEvents_df</h1>
+      <img src="" class="logo" alt=""><h1>tEvents: compute time when a targeted number of events is made</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/LittleBeannie/gsDesign2/blob/HEAD/vignettes/usage_tEvents.Rmd" class="external-link"><code>vignettes/usage_tEvents.Rmd</code></a></small>
@@ -80,7 +80,7 @@
 <div class="section level2">
 <h2 id="introduction-of-tevents">Introduction of <code>tEvents</code><a class="anchor" aria-label="anchor" href="#introduction-of-tevents"></a>
 </h2>
-<p><code><a href="../reference/tEvents.html">tEvents()</a></code> predicts time at which a targeted even is made. It is designed as a twins to <code><a href="../reference/AHR.html">AHR()</a></code>: it matches input/output format with <code><a href="../reference/AHR.html">AHR()</a></code>.</p>
+<p><code><a href="../reference/tEvents.html">tEvents()</a></code> predicts time at which a targeted events is made. It is designed as a twins to <code><a href="../reference/AHR.html">AHR()</a></code>: it matches input/output format with <code><a href="../reference/AHR.html">AHR()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="use-cases">Use Cases<a class="anchor" aria-label="anchor" href="#use-cases"></a>
@@ -97,12 +97,12 @@
 <span>             ratio <span class="op">=</span> <span class="va">ratio</span>, targetEvents <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="mwmxzvigah" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mbnmntybdv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mwmxzvigah .gt_table {
+#mbnmntybdv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -127,7 +127,7 @@
   border-left-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_heading {
+#mbnmntybdv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -139,7 +139,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_title {
+#mbnmntybdv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -151,7 +151,7 @@
   border-bottom-width: 0;
 }
 
-#mwmxzvigah .gt_subtitle {
+#mbnmntybdv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -163,13 +163,13 @@
   border-top-width: 0;
 }
 
-#mwmxzvigah .gt_bottom_border {
+#mbnmntybdv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_col_headings {
+#mbnmntybdv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -184,7 +184,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_col_heading {
+#mbnmntybdv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -204,7 +204,7 @@
   overflow-x: hidden;
 }
 
-#mwmxzvigah .gt_column_spanner_outer {
+#mbnmntybdv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -216,15 +216,15 @@
   padding-right: 4px;
 }
 
-#mwmxzvigah .gt_column_spanner_outer:first-child {
+#mbnmntybdv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mwmxzvigah .gt_column_spanner_outer:last-child {
+#mbnmntybdv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mwmxzvigah .gt_column_spanner {
+#mbnmntybdv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -236,7 +236,7 @@
   width: 100%;
 }
 
-#mwmxzvigah .gt_group_heading {
+#mbnmntybdv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -261,7 +261,7 @@
   vertical-align: middle;
 }
 
-#mwmxzvigah .gt_empty_group_heading {
+#mbnmntybdv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -276,15 +276,15 @@
   vertical-align: middle;
 }
 
-#mwmxzvigah .gt_from_md > :first-child {
+#mbnmntybdv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mwmxzvigah .gt_from_md > :last-child {
+#mbnmntybdv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mwmxzvigah .gt_row {
+#mbnmntybdv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -303,7 +303,7 @@
   overflow-x: hidden;
 }
 
-#mwmxzvigah .gt_stub {
+#mbnmntybdv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -316,7 +316,7 @@
   padding-right: 5px;
 }
 
-#mwmxzvigah .gt_stub_row_group {
+#mbnmntybdv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -330,11 +330,11 @@
   vertical-align: top;
 }
 
-#mwmxzvigah .gt_row_group_first td {
+#mbnmntybdv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mwmxzvigah .gt_summary_row {
+#mbnmntybdv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -344,16 +344,16 @@
   padding-right: 5px;
 }
 
-#mwmxzvigah .gt_first_summary_row {
+#mbnmntybdv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_first_summary_row.thick {
+#mbnmntybdv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mwmxzvigah .gt_last_summary_row {
+#mbnmntybdv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -363,7 +363,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_grand_summary_row {
+#mbnmntybdv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -373,7 +373,7 @@
   padding-right: 5px;
 }
 
-#mwmxzvigah .gt_first_grand_summary_row {
+#mbnmntybdv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -383,11 +383,11 @@
   border-top-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_striped {
+#mbnmntybdv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mwmxzvigah .gt_table_body {
+#mbnmntybdv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -396,7 +396,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_footnotes {
+#mbnmntybdv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -410,7 +410,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_footnote {
+#mbnmntybdv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -419,7 +419,7 @@
   padding-right: 5px;
 }
 
-#mwmxzvigah .gt_sourcenotes {
+#mbnmntybdv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -433,7 +433,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mwmxzvigah .gt_sourcenote {
+#mbnmntybdv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -441,36 +441,36 @@
   padding-right: 5px;
 }
 
-#mwmxzvigah .gt_left {
+#mbnmntybdv .gt_left {
   text-align: left;
 }
 
-#mwmxzvigah .gt_center {
+#mbnmntybdv .gt_center {
   text-align: center;
 }
 
-#mwmxzvigah .gt_right {
+#mbnmntybdv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mwmxzvigah .gt_font_normal {
+#mbnmntybdv .gt_font_normal {
   font-weight: normal;
 }
 
-#mwmxzvigah .gt_font_bold {
+#mbnmntybdv .gt_font_bold {
   font-weight: bold;
 }
 
-#mwmxzvigah .gt_font_italic {
+#mbnmntybdv .gt_font_italic {
   font-style: italic;
 }
 
-#mwmxzvigah .gt_super {
+#mbnmntybdv .gt_super {
   font-size: 65%;
 }
 
-#mwmxzvigah .gt_two_val_uncert {
+#mbnmntybdv .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -479,31 +479,31 @@
   margin-left: 0.1em;
 }
 
-#mwmxzvigah .gt_footnote_marks {
+#mbnmntybdv .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#mwmxzvigah .gt_asterisk {
+#mbnmntybdv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mwmxzvigah .gt_slash_mark {
+#mbnmntybdv .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#mwmxzvigah .gt_fraction_numerator {
+#mbnmntybdv .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#mwmxzvigah .gt_fraction_denominator {
+#mbnmntybdv .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
