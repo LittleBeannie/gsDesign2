@@ -91,5 +91,6 @@ articles:
   - check_eEvents_df
   - check_AHR
   - check_tEvents
+  - check_gridpts
   - check_gs_power_npe
   - check_gs_design_npe
