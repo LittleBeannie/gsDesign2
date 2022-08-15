@@ -12,8 +12,12 @@ bibliography: "ggsd.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Test of the function gs_power_npe}
-  
+  %\VignetteEncoding{UTF-8}
 ---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r, echo=FALSE, message=FALSE}
 library(gt)
@@ -421,7 +425,7 @@ tibble(`Calculated from` = rep(c("new version", "old version", "gsDesign"), each
 # Test 5: Compare with `gsDesign` under information-based design
 
 Information-based design is useful when testing for a natural parameter $\delta$ (e.g., treatment difference on a relevant scale such as risk difference) where the variance of the estimate of $\delta$ is unknown. 
-The basic *canonical form* of @JTBook represents information-based design, so it is a particularly simple way to check corresponding basic calculations for sample size, bounds and power in `gs_power_npe()` and `gs_design_npe()`.
+The basic *canonical form* of represents information-based design, so it is a particularly simple way to check corresponding basic calculations for sample size, bounds and power in `gs_power_npe()` and `gs_design_npe()`.
 
 ## Step 1: set the design assumptions
 
