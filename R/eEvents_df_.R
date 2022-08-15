@@ -80,20 +80,22 @@ NULL
 #' maximize flexibility for a variety of purposes.
 #' @examples
 #' library(tibble)
+#' library(gsDesign2)
+#' 
 #' # Default arguments, simple output (total event count only)
-#' eEvents_df_()
+#' gsDesign2:::eEvents_df_()
 #' # Event count by time period
-#' eEvents_df_(simple=FALSE)
+#' gsDesign2:::eEvents_df_(simple=FALSE)
 #' # Early cutoff
-#' eEvents_df_(totalDuration=.5)
+#' gsDesign2:::eEvents_df_(totalDuration=.5)
 #' # Single time period example
-#' eEvents_df_(enrollRates=tibble(duration=10,rate=10),
+#' gsDesign2:::eEvents_df_(enrollRates=tibble(duration=10,rate=10),
 #'            failRates=tibble(duration=100,failRate=log(2)/6,dropoutRate=.01),
 #'            totalDuration=22,
 #'            simple=FALSE
 #'            )
 #' # Single time period example, multiple enrolment periods
-#' eEvents_df_(enrollRates=tibble(duration=c(5,5), rate=c(10,20)),
+#' gsDesign2:::eEvents_df_(enrollRates=tibble(duration=c(5,5), rate=c(10,20)),
 #'            failRates=tibble(duration=100,failRate=log(2)/6,dropoutRate=.01),
 #'            totalDuration=22,
 #'            simple=FALSE

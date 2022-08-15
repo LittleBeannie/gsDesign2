@@ -12,8 +12,6 @@ gs_b(par = NULL, k = NULL, ...)
 \item{k}{is NULL (default), return \code{par}, else return \code{par[k]}}
 
 \item{...}{further arguments passed to or from other methods}
-
-\item{info}{Information at analyses; not used in this function; present as it is a standard parameter for other boundary computation routines}
 }
 \value{
 returns the vector input \code{par} if \code{k} is NULL, otherwise, \code{par[k]}

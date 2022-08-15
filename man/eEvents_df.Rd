@@ -80,6 +80,8 @@ maximize flexibility for a variety of purposes.
 
 \examples{
 library(tibble)
+library(gsDesign2)
+
 # Default arguments, simple output (total event count only)
 eEvents_df()
 

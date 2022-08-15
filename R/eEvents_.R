@@ -46,8 +46,11 @@ NULL
 #' and info0 (information under related null hypothesis) for each value of `totalDuration` input;
 #' 
 #' @examples
+#' library(dplyr)
+#' library(gsDesign2)
+#' 
 #' # Example 1: default
-#' tEvents_()
+#' gsDesign2:::tEvents_()
 #' 
 #' # Example 2: check that result matches a finding using AHR()
 #' # Start by deriving an expected event count
@@ -58,10 +61,10 @@ NULL
 #' failRates=tibble::tibble(Stratum="All",duration=c(3,100),failRate=log(2)/c(9,18),
 #'                          hr=c(.9,.6),dropoutRate=rep(.001,2))
 #' totalDuration <- 20
-#' xx <- AHR(enrollRates,failRates,totalDuration)
+#' xx <- gsDesign2:::AHR_(enrollRates,failRates,totalDuration)
 #' xx
 #' # Next we check that the function confirms the timing of the final analysis.
-#' tEvents_(enrollRates,failRates,targetEvents=xx$Events,interval=c(.5,1.5)*xx$Time)
+#' gsDesign2:::tEvents_(enrollRates,failRates,targetEvents=xx$Events,interval=c(.5,1.5)*xx$Time)
 #' 
 #' @noRd
 tEvents_ <- function(enrollRates=tibble::tibble(Stratum="All",

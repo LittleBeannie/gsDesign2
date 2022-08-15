@@ -23,10 +23,11 @@
 #' it simply returns the vector input in the input vector \code{Z} or, if \code{k} is specified \code{par[k]j} is returned.
 #' Note that if bounds need to change with changing information at analyses, \code{gs_b()} should not be used.
 #' For instance, for spending function bounds use
+#' 
 #' @param par For \code{gs_b()}, this is just Z-values for the boundaries; can include infinite values
-#' @param info Information at analyses; not used in this function; present as it is a standard parameter for other boundary computation routines
 #' @param k is NULL (default), return \code{par}, else return \code{par[k]}
 #' @param ... further arguments passed to or from other methods
+#' 
 #' @section Specification:
 #' \if{latex}{
 #'  \itemize{

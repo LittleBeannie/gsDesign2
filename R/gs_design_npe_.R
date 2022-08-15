@@ -94,7 +94,9 @@ NULL
 #' @examples
 #'
 #' library(gsDesign)
+#' library(gsDesign2)
 #' library(dplyr)
+#' 
 #' # Single analysis
 #' # Lachin book p 71 difference of proportions example
 #' pc <- .28 # Control response rate
@@ -108,8 +110,7 @@ NULL
 #' gsDesign2:::gs_design_npe_(theta = pe - pc, info = info1, info0 = info0)$info[1] / info1
 #'
 #' # Fixed bound
-#' design <-
-#' gsDesign2:::gs_design_npe_(theta = c(.1, .2, .3), info = (1:3) * 80, 
+#' design <- gsDesign2:::gs_design_npe_(theta = c(.1, .2, .3), info = (1:3) * 80, 
 #'               info0 = (1:3) * 80, info1 = (1:3) * 80,
 #'               upper = gs_b, upar = gsDesign::gsDesign(k=3,sfu=gsDesign::sfLDOF)$upper$bound,
 #'               lower = gs_b, lpar = c(-1, 0, 0))
@@ -130,8 +131,7 @@ NULL
 #' # Spending bound for efficacy; fixed bound for futility
 #' # NOTE: test_upper and test_lower DO NOT WORK with gs_b; must explicitly make bounds infinite
 #' # test_upper and test_lower DO WORK with gs_spending_bound
-#' design <-
-#' gsDesign2:::gs_design_npe_(theta = c(.1, .2, .3), info = (1:3) * 40, info0 = (1:3) * 40,
+#' design <- gsDesign2:::gs_design_npe_(theta = c(.1, .2, .3), info = (1:3) * 40, info0 = (1:3) * 40,
 #'               upper = gs_spending_bound,
 #'               upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, 
 #'                           param = NULL, timing = NULL),
