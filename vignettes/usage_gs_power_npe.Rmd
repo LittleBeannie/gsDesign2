@@ -11,7 +11,7 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Usage of gs_power_npe}
+  %\VignetteIndexEntry{gs_power_npe: derives bounds and crossing probabilities for group sequential designs under NPH assumptions}
 ---
 
 ```{r, message=FALSE}

@@ -11,7 +11,7 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Usage of AHR}
+  %\VignetteIndexEntry{gs_spending_bound: compute spending boundary in group sequential design}
 ---
 
 ```{r, message=FALSE}

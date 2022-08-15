@@ -11,7 +11,7 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Usage of AHR}
+  %\VignetteIndexEntry{gs_b: specify fixed boundaries in group sequential designs}
 ---
 
 ```{r, message=FALSE}

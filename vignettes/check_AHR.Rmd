@@ -1,5 +1,5 @@
 ---
-title: "check AHR()"
+title: "Test of the function AHR"
 output:
   rmarkdown::html_document:
     toc: true
@@ -10,7 +10,7 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Check AHR}
+  %\VignetteIndexEntry{Test of the function AHR}
 ---
 
 ```{r, message=FALSE}

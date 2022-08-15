@@ -1,5 +1,5 @@
 ---
-title: "check of gs_design_npe"
+title: "Test of the function gs_design_npe"
 output:
   rmarkdown::html_document:
     toc: true
@@ -11,7 +11,7 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{check of gs_design_npe}
+  %\VignetteIndexEntry{Test of the function gs_design_npe}
 ---
 
 ```{r, message=FALSE}

@@ -11,7 +11,7 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Usage of AHR}
+  %\VignetteIndexEntry{AHR: computes AHR under NPH assumptions and (stratified) populations}
 ---
 
 ```{r, message=FALSE}

@@ -10,7 +10,7 @@ output:
     css: "custom.css"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Usage of eEvents_df}
+  %\VignetteIndexEntry{tEvents: compute time when a targeted number of events is made}
 ---
 
 

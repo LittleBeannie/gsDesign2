@@ -10,7 +10,7 @@ output:
     css: "custom.css"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Usage of gs_info_ahr}
+  %\VignetteIndexEntry{gs_info_ahr: compute statistical information by the AHR method}
 ---
 
 

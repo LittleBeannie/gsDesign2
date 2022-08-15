@@ -1,5 +1,5 @@
 ---
-title: "Check tEvents"
+title: "Test of the function tEvents"
 output:
   rmarkdown::html_document:
     toc: true
@@ -10,7 +10,7 @@ output:
     css: "custom.css"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{What the Vignette Does (Title Case)}
+  %\VignetteIndexEntry{Test of the function tEvents}
 ---
 
 ```{r, echo=FALSE, message=FALSE}
