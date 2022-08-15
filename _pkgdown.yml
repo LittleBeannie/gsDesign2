@@ -88,6 +88,7 @@ articles:
   desc: >
     The following vignettes cover the tests and checks of the key functions in gsDesign2.
   contents: 
+  - check_gridpts_h1_hupdate
   - check_eEvents_df
   - check_AHR
   - check_tEvents

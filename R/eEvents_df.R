@@ -119,7 +119,8 @@ eEvents_df <- function(enrollRates = tibble::tibble(duration = c(2, 2, 10),
   check_failRates(failRates)
   check_enrollRates_failRates(enrollRates, failRates)
   check_totalDuration(totalDuration)
-  if(!is.logical(simple)){stop("gsDesign2: simple in `eEvents()` must be logical")}
+  if(length(totalDuration) > 1){stop("gsDesign2: totalDuration in `events_df()` must be a numeric number!")}
+  if(!is.logical(simple)){stop("gsDesign2: simple in `eEvents_df()` must be logical")}
   
   # ----------------------------#
   #    divide the time line     #

@@ -1,0 +1,48 @@
+---
+title: "Test of the functions gridpts, h1, hupdate"
+output:
+  rmarkdown::html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    highlight: "textmate"
+    css: "custom.css"
+# bibliography: "example.bib"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Test of the functions gridpts, h1, hupdate}
+---
+
+```{r, message=FALSE}
+library(tibble)
+library(dplyr)
+library(testthat)
+devtools::load_all()
+```
+
+
+# Tests of `gridpts`
+
+## default (N(0,1))
+
+approximate variance of standard normal (i.e., 1)
+```{r}
+x1 <- gridpts_()
+x2 <- gridpts()
+```
+
+```{r}
+tibble(diff_z = sum(abs(x1$z - x2$z)),
+       diff_w = sum(abs(x1$w - x2$w)))
+```
+
+## approximate probability above .95 quantile (i.e., .05)
+```{r}
+x1 <- gridpts(a = qnorm(.95), b = Inf) 
+x2 <- gridpts_(a = qnorm(.95), b = Inf) 
+```
+
+```{r}
+tibble(diff_z = sum(abs(x1$z - x2$z)),
+       diff_w = sum(abs(x1$w - x2$w)))
+```
