@@ -21,7 +21,8 @@ Imports:
     corpcor,
     utils,
     mvtnorm,
-    Rcpp
+    Rcpp,
+    methods
 Suggests:
     testthat,
     knitr,
