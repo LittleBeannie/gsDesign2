@@ -90,7 +90,7 @@ NULL
 #' The design returned will change these by some constant scale factor to ensure the design has power \code{1 - beta}.
 #' The bound specifications in \code{upper, lower, upar, lpar} will be used to ensure Type I error and other boundary properties are as specified.
 #' 
-#' @author Keaven Anderson \email{keaven_anderson@@merck.}
+#' @author Keaven Anderson \email{keaven_anderson@@merck.com}
 #'
 #' @export
 #' 
