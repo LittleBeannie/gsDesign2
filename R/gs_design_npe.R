@@ -359,6 +359,8 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     }
     
     if(!flag) stop("gs_design_npe: could not deflate information to bracket targeted power before root finding!")
+    max_x <- min_x
+    min_x <- min_x
   }
   
   # use root finding with the above function to find needed sample size inflation

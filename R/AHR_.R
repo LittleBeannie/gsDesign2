@@ -77,11 +77,14 @@ NULL
 #' and info0 (information under related null hypothesis) for each value of `totalDuration` input;
 #' if `simple=FALSE`, `Stratum` and `t` (beginning of each constant HR period) are also returned
 #' and `HR` is returned instead of `AHR`
+#' 
 #' @examples
 #' # Example: default
-#' AHR()
+#' gsDesign2:::AHR_()
+#' 
 #' # Example; default with multiple analysis times (varying totalDuration)
-#' AHR(totalDuration=c(15,30))
+#' gsDesign2:::AHR_(totalDuration = c(15,30))
+#' 
 #' # Stratified population
 #' enrollRates <- tibble::tibble(Stratum=c(rep("Low",2),rep("High",3)),
 #'                               duration=c(2,10,4,4,8),
@@ -93,12 +96,12 @@ NULL
 #'                             hr=c(.9,.75,.8,.6),
 #'                             dropoutRate=.001
 #' )
-#' AHR(enrollRates=enrollRates,
+#' gsDesign2:::AHR_(enrollRates=enrollRates,
 #'     failRates=failRates,
 #'     totalDuration=c(15,30)
 #'    )
 #' # Same example, give results by strata and time period
-#' AHR(enrollRates=enrollRates,
+#' gsDesign2:::AHR_(enrollRates=enrollRates,
 #'     failRates=failRates,
 #'     totalDuration=c(15,30),
 #'     simple=FALSE
