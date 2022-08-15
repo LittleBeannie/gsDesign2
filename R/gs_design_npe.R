@@ -343,7 +343,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     
     for(i in 1:10){
       micro_temp <- gs_power_npe(theta = theta, theta1 = theta1,
-                                 info = info * min_x, info0 = info0 * min_x, info1 = info * min_x, info_scale = info_scale,
+                                 info = info * micro_x, info0 = info0 * micro_x, info1 = info * micro_x, info_scale = info_scale,
                                  upper = upper, upar = upar, test_upper = test_upper, 
                                  lower = lower, lpar = lpar, test_lower = test_lower,
                                  binding = binding, r = r, tol = tol)
@@ -360,7 +360,7 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
     
     if(!flag) stop("gs_design_npe: could not deflate information to bracket targeted power before root finding!")
     max_x <- min_x
-    min_x <- min_x
+    min_x <- micro_x
   }
   
   # use root finding with the above function to find needed sample size inflation

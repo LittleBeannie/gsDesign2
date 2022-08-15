@@ -44,9 +44,11 @@ NULL
 #' @return A `tibble` with `Time` (computed to match events in `targetEvents`), `AHR` (average hazard ratio),
 #' `Events` (`targetEvents` input), info (information under given scenarios),
 #' and info0 (information under related null hypothesis) for each value of `totalDuration` input;
+#' 
 #' @examples
 #' # Example 1: default
 #' tEvents_()
+#' 
 #' # Example 2: check that result matches a finding using AHR()
 #' # Start by deriving an expected event count
 #' enrollRates <-
