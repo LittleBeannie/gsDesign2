@@ -135,7 +135,8 @@ eEvents_df <- function(enrollRates = tibble::tibble(duration = c(2, 2, 10),
                          startEnroll = totalDuration - endFail,
                          failRate = failRates$failRate,
                          dropoutRate = failRates$dropoutRate)
-  if(last(cumsum(failRates$duration)) < totalDuration){
+  temp <- cumsum(failRates$duration)
+  if(temp[length(temp)] < totalDuration){
     df_2 <- df_2[-nrow(df_2), ]
   }else{
     df_2 <- df_2[df_2$startEnroll > 0, ]
