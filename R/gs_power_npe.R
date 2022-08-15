@@ -16,7 +16,7 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #' @importFrom tibble tibble
-#' @importFrom stats qnorm
+#' @importFrom stats qnorm pnorm
 NULL
 
 #' Group sequential bound computation with non-constant effect
