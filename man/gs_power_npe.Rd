@@ -36,7 +36,7 @@ impacts null hypothesis bound calculation}
 \item{info1}{statistical information under hypothesis used for futility bound calculation if different from
 \code{info}; impacts futility hypothesis bound calculation}
 
-\item{info_scale}{only used when \code{gs_spending_bound} is used}
+\item{info_scale}{the information scale for calculation}
 
 \item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 

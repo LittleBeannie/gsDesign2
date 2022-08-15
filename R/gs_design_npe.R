@@ -42,6 +42,7 @@ NULL
 #' impacts null hypothesis bound calculation
 #' @param info1 proportionate statistical information under alternate hypothesis;
 #' impacts null hypothesis bound calculation
+#' @param info_scale the information scale for calculation
 #' @param alpha One-sided Type I error
 #' @param beta Type II error
 #' @param binding indicator of whether futility bound is binding; default of FALSE is recommended

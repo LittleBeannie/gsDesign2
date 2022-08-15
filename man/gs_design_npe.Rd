@@ -39,6 +39,8 @@ impacts null hypothesis bound calculation}
 \item{info1}{proportionate statistical information under alternate hypothesis;
 impacts null hypothesis bound calculation}
 
+\item{info_scale}{the information scale for calculation}
+
 \item{alpha}{One-sided Type I error}
 
 \item{beta}{Type II error}
