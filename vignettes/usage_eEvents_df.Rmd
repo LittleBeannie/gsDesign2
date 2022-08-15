@@ -8,6 +8,7 @@ output:
     number_sections: true
     highlight: "textmate"
     css: "custom.css"
+bibliography: ggsd.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{eEvents_df: compute expected number of events at 1 time point}
