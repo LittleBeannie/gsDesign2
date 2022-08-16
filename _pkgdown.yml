@@ -79,9 +79,11 @@ articles:
   - usage_AHR
   - usage_tEvents
   - usage_gs_info_ahr
+  - usage_gs_power_ahr
   - usage_gs_b
   - usage_gs_spending_bound
   - usage_gs_power_npe
+  - usage_eAccural
   
 - title: "Check of functions"
   navbar: Testing & checks of functions
