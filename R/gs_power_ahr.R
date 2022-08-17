@@ -29,6 +29,7 @@ NULL
 #' @param events Targeted events at each analysis
 #' @param analysisTimes Minimum time of analysis
 #' @param binding indicator of whether futility bound is binding; default of FALSE is recommended
+#' @param info_scale the information scale for calculation
 #' @param upper Function to compute upper bound
 #' @param upar Parameter passed to \code{upper()}
 #' @param lower Function to compute lower bound

@@ -52,6 +52,8 @@ otherwise, a logical vector of the same length as \code{info} should indicate wh
 
 \item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 
+\item{info_scale}{the information scale for calculation}
+
 \item{r}{Integer, at least 2; default of 18 recommended by Jennison and Turnbull}
 
 \item{tol}{Tolerance parameter for boundary convergence (on Z-scale)}
