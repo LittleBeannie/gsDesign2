@@ -53,6 +53,8 @@ reference:
   - wlr_weight_fh
   - wlr_weight_1
   - gs_info_wlr
+  - gs_power_wlr
+  - gs_design_wlr
 - title: Max Combo
   desc: >
     Functions for the max combo method. 
