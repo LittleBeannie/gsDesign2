@@ -82,9 +82,9 @@ NULL
 #'   events = NULL,
 #'   binding = TRUE,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))) 
+#'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)) 
 #' 
 #' # -------------------------#
 #' #       example 3          #
@@ -96,21 +96,10 @@ NULL
 #'   events = c(20, 50, 70),
 #'   binding = TRUE,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
+#'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))
 #' 
-#' # if users change the info in \code{upar}, the the boundary will be changed
-#' gs_power_ahr(
-#'   analysisTimes = NULL,
-#'   events = c(20, 50, 70),
-#'   binding = TRUE,
-#'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
-#'               info = c(5, 15, 20)),
-#'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
-
 #' # -------------------------#
 #' #       example 4          #
 #' # -------------------------#
@@ -125,31 +114,21 @@ NULL
 #'   events = c(30, 40, 50),
 #'   binding = TRUE,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
-#'   
-#' # if users change the info in `upar`, the the boundary will be changed  
-#' gs_power_ahr(
-#'   analysisTimes = c(12, 24, 36),
-#'   events = c(30, 40, 50),
-#'   binding = TRUE,
-#'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
-#'               info = c(8, 15, 20)),
-#'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
+#'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))
 #'   
 gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2, 10), rate = c(3, 6, 9)),
                          failRates = tibble(Stratum = "All", duration = c(3, 100), failRate = log(2)/c(9, 18), 
                                             hr = c(.9, .6), dropoutRate = rep(.001, 2)),
                          events = c(30, 40, 50), analysisTimes = NULL, 
                          upper = gs_b, lower = gs_b,
-                         upar = list(par = gsDesign(k = length(events), test.type = 1, n.I = events, maxn.IPlan = max(events), sfu = sfLDOF, sfupar = NULL)$upper$bound),
-                         lpar = list(par = c(qnorm(.1), rep(-Inf, length(events) - 1))), 
+                         upar = gsDesign(k = length(events), test.type = 1, n.I = events, maxn.IPlan = max(events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
+                         lpar = c(qnorm(.1), rep(-Inf, 2)), 
                          test_lower = TRUE, test_upper = TRUE,
                          ratio = 1, binding = FALSE, info_scale = c(0, 1, 2), r = 18, tol = 1e-6
-){
+                         ){
+  
   # get the number of analysis
   K <- max(length(events), length(analysisTimes), na.rm = TRUE)
   

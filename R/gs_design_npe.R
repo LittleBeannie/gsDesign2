@@ -125,9 +125,9 @@ NULL
 #'   info = (1:3) * 80,
 #'   info0 = (1:3) * 80,
 #'   upper = gs_b,
-#'   upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
+#'   upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
 #'   lower = gs_b,
-#'   lpar = list(par = c(-1, 0, 0)))
+#'   lpar = c(-1, 0, 0))
 #' x
 #' 
 #' # Same upper bound; this represents non-binding Type I error and will total 0.025
@@ -135,9 +135,9 @@ NULL
 #'   theta = rep(0, 3),
 #'   info = (x %>% filter(Bound == "Upper"))$info,
 #'   upper = gs_b,
-#'   upar = list(par = (x %>% filter(Bound == "Upper"))$Z),
+#'   upar = (x %>% filter(Bound == "Upper"))$Z,
 #'   lower = gs_b,
-#'   lpar = list(par = rep(-Inf, 3)))
+#'   lpar = rep(-Inf, 3))
 #' 
 #' # ---------------------------------# 
 #' #         example 3                #
@@ -152,10 +152,11 @@ NULL
 #'   info = (1:3) * 40,
 #'   info0 = (1:3) * 40,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_b,
-#'   lpar = list(par = c(-1, -Inf, -Inf)),
+#'   lpar = c(-1, -Inf, -Inf),
 #'   test_upper = c(FALSE, TRUE, TRUE))
+#'   
 #' # one can try `info_scale = 1` or `info_scale = 0` here
 #' gs_design_npe(
 #'   theta = c(.1, .2, .3),
@@ -163,9 +164,9 @@ NULL
 #'   info0 = (1:3) * 30,
 #'   info_scale = 1,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_b,
-#'   lpar = list(par = c(-1, -Inf, -Inf)),
+#'   lpar = c(-1, -Inf, -Inf),
 #'   test_upper = c(FALSE, TRUE, TRUE))
 #' 
 #' # ---------------------------------# 
@@ -179,10 +180,9 @@ NULL
 #'   info = (1:3) * 40,
 #'   info0 = (1:3) * 30,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
-#'               info = (1:3) * 30),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)))
+#'   lpar = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL))
 #' 
 #' # ---------------------------------# 
 #' #         example 5                #
@@ -194,9 +194,9 @@ NULL
 #'   info = (1:3) * 40,
 #'   binding = TRUE,
 #'   upper = gs_spending_bound,
-#'   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
 #'   lower = gs_spending_bound,
-#'   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
+#'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))
 #' xx
 #' 
 #' # Re-use these bounds under alternate hypothesis
@@ -207,15 +207,15 @@ NULL
 #'   binding = TRUE,
 #'   upper = gs_b,
 #'   lower = gs_b,
-#'   upar = list(par = (xx %>% filter(Bound == "Upper"))$Z),
-#'   lpar = list(par = -(xx %>% filter(Bound == "Upper"))$Z))
+#'   upar = (xx %>% filter(Bound == "Upper"))$Z,
+#'   lpar = -(xx %>% filter(Bound == "Upper"))$Z)
 #'   
 gs_design_npe <- function(theta = .1, theta1 = NULL,
                           info = 1, info0 = NULL, info1 = NULL,
                           info_scale = c(0, 1, 2),
                           alpha = 0.025, beta = .1, 
-                          upper = gs_b, upar = list(par = qnorm(.975)),
-                          lower = gs_b, lpar = list(par = -Inf),
+                          upper = gs_b, upar = qnorm(.975),
+                          lower = gs_b, lpar = -Inf,
                           test_upper = TRUE, test_lower = TRUE, binding = FALSE,
                           r = 18, tol = 1e-6){
   
@@ -407,8 +407,8 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   ans_H0 <- gs_power_npe(theta = 0, 
                          info = info * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor,
                          info_scale = info_scale,
-                         upper = gs_b, upar = list(par = (bound_H1 %>% filter(Bound == "Upper"))$Z), 
-                         lower = gs_b, lpar = list(par = (bound_H1 %>% filter(Bound == "Lower"))$Z), 
+                         upper = gs_b, upar = (bound_H1 %>% filter(Bound == "Upper"))$Z, 
+                         lower = gs_b, lpar = (bound_H1 %>% filter(Bound == "Lower"))$Z, 
                          test_upper = test_upper, test_lower = test_lower,
                          binding = binding,r = r, tol = tol)
   

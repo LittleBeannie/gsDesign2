@@ -28,17 +28,17 @@ devtools::load_all()
 ```{r}
 x <- gs_design_npe(theta = c(.1, .2, .3), info = (1:3) * 40, beta = 0.1,
                    upper = gs_spending_bound,
-                   upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                    lower = gs_spending_bound,
-                   lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)), binding = TRUE)
+                   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL), binding = TRUE)
 x %>% gt()
 ```
 The power is 0.9. If we re-use these bounds under alternate hypothesis, then we can get a power close to 0.9.
 
 ```{r}
 gs_power_npe(theta = c(.1, .2, .3),info = (1:3) * 40,
-             upper = gs_b, upar = list(par = (x %>% filter(Bound == "Upper"))$Z),
-             lower = gs_b, lpar = list(par = -(x %>% filter(Bound == "Upper"))$Z),
+             upper = gs_b, upar = (x %>% filter(Bound == "Upper"))$Z,
+             lower = gs_b, lpar = -(x %>% filter(Bound == "Upper"))$Z,
              binding = TRUE # Always use binding = TRUE for power calculations
              ) %>% gt()
 ```
@@ -103,16 +103,16 @@ x1_a %>%
 ```{r}
 x1_a <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 80, info_scale = 0,
-                      upper = gs_b, upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
-                      lower = gs_b, lpar = list(par = c(-1, 0, 0))) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
+                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
+                      lower = gs_b, lpar = c(-1, 0, 0)) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
 x1_b <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 80, info_scale = 1,
-                      upper = gs_b, upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
-                      lower = gs_b, lpar = list(par = c(-1, 0, 0))) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
+                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
+                      lower = gs_b, lpar = c(-1, 0, 0)) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
 x1_c <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 80, info_scale = 2,
-                      upper = gs_b, upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
-                      lower = gs_b, lpar = list(par = c(-1, 0, 0))) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
+                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
+                      lower = gs_b, lpar = c(-1, 0, 0)) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
 x2 <- gs_design_npe_(theta = c(.1, .2, .3), 
                      info = (1:3) * 80,
                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
@@ -136,16 +136,16 @@ x1_a %>%
 ```{r}
 x1_a <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 80, info0 = (1:3) * 90 + 10, info1 = (1:3) * 70 - 5, info_scale = 0,
-                      upper = gs_b, upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
-                      lower = gs_b, lpar = list(par = c(-1, 0, 0))) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
+                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
+                      lower = gs_b, lpar = c(-1, 0, 0)) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
 x1_b <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 80, info0 = (1:3) * 90+ 10, info1 = (1:3) * 70 - 5, info_scale = 1,
-                      upper = gs_b, upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
-                      lower = gs_b, lpar = list(par = c(-1, 0, 0))) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
+                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
+                      lower = gs_b, lpar = c(-1, 0, 0)) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
 x1_c <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 80, info0 = (1:3) * 90+ 10, info1 = (1:3) * 70 - 5, info_scale = 2,
-                      upper = gs_b, upar = list(par = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound),
-                      lower = gs_b, lpar = list(par = c(-1, 0, 0))) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
+                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
+                      lower = gs_b, lpar = c(-1, 0, 0)) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
 x2 <- gs_design_npe_(theta = c(.1, .2, .3), 
                      info = (1:3) * 80, info0 = (1:3) * 90+ 10, info1 = (1:3) * 70 - 5, 
                      upper = gs_b, upar = gsDesign::gsDesign(k = 3, sfu = gsDesign::sfLDOF)$upper$bound,
@@ -170,20 +170,20 @@ x1_a %>%
 ```{r}
 x1_a <- gs_design_npe(theta = c(.1, .2, .3),
                       info = (1:3) * 40, info0 = (1:3) * 40, info_scale = 0,
-                      upper = gs_spending_bound, upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
-                      lower = gs_b, lpar = list(par = c(-1, -Inf, -Inf)),
+                      upper = gs_spending_bound, upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
+                      lower = gs_b, lpar = c(-1, -Inf, -Inf),
                       test_upper = c(FALSE, TRUE, TRUE)) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
 
 x1_b <- gs_design_npe(theta = c(.1, .2, .3),
                       info = (1:3) * 40, info0 = (1:3) * 40, info_scale = 1,
-                      upper = gs_spending_bound, upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
-                      lower = gs_b, lpar = list(par = c(-1, -Inf, -Inf)),
+                      upper = gs_spending_bound, upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
+                      lower = gs_b, lpar = c(-1, -Inf, -Inf),
                       test_upper = c(FALSE, TRUE, TRUE)) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
 
 x1_c <- gs_design_npe(theta = c(.1, .2, .3),
                       info = (1:3) * 40, info0 = (1:3) * 40, info_scale = 2,
-                      upper = gs_spending_bound, upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
-                      lower = gs_b, lpar = list(par = c(-1, -Inf, -Inf)),
+                      upper = gs_spending_bound, upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
+                      lower = gs_b, lpar = c(-1, -Inf, -Inf),
                       test_upper = c(FALSE, TRUE, TRUE)) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
 
 x2 <- gs_design_npe_(theta = c(.1, .2, .3),
@@ -211,23 +211,23 @@ x1_a %>%
 x1_a <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 40, info0 = (1:3) * 50, info_scale = 0,
                       upper = gs_spending_bound,
-                      upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                      upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                       lower = gs_spending_bound,
-                      lpar = list(par = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL))) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
+                      lpar = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
 
 x1_b <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 40, info0 = (1:3) * 50, info_scale = 1,
                       upper = gs_spending_bound,
-                      upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                      upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                       lower = gs_spending_bound,
-                      lpar = list(par = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL))) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
+                      lpar = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
 
 x1_c <- gs_design_npe(theta = c(.1, .2, .3), 
                       info = (1:3) * 40, info0 = (1:3) * 50, info_scale = 2,
                       upper = gs_spending_bound,
-                      upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                      upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                       lower = gs_spending_bound,
-                      lpar = list(par = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL))) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
+                      lpar = list(sf = gsDesign::sfHSD, total_spend = 0.1, param = -1, timing = NULL)) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
 
 x2 <- gs_design_npe_(theta = c(.1, .2, .3), 
                      info = (1:3) * 40, info0 = (1:3) * 50, 
@@ -256,25 +256,25 @@ x1_a <- gs_design_npe(theta = c(.1, .2, .3),
                       info = (1:3) * 40, info_scale = 0,
                       binding = TRUE,
                       upper = gs_spending_bound,
-                      upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                      upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                       lower = gs_spending_bound,
-                      lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
+                      lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)) %>% mutate(`Computated from` = "new version", `Info scale` = 0)
 
 x1_b <- gs_design_npe(theta = c(.1, .2, .3),
                       info = (1:3) * 40, info_scale = 1,
                       binding = TRUE,
                       upper = gs_spending_bound,
-                      upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                      upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                       lower = gs_spending_bound,
-                      lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
+                      lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)) %>% mutate(`Computated from` = "new version", `Info scale` = 1)
 
 x1_c <- gs_design_npe(theta = c(.1, .2, .3),
                       info = (1:3) * 40, info_scale = 2,
                       binding = TRUE,
                       upper = gs_spending_bound,
-                      upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                      upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                       lower = gs_spending_bound,
-                      lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
+                      lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)) %>% mutate(`Computated from` = "new version", `Info scale` = 2)
 
 x2 <- gs_design_npe_(theta = c(.1, .2, .3),
                       info = (1:3) * 40, 
