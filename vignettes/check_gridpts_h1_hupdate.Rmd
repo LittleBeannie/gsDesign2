@@ -35,6 +35,15 @@ x3b <- gsDesign::normalGrid(bounds = c(-20, 20), mu = 0, sigma = 1, r = 18)
 x3c <- gsDesign::normalGrid(bounds = c(-80, 80), mu = 0, sigma = 1, r = 18)
 ```
 
+```{r}
+tibble(z_x1 = x1$z,
+       z_x2 = x2$z,
+       z_x3b = x3b$z,
+       z_diff = x2$z - x3b$z)
+```
+
+
+
 ```{r, echo=FALSE}
 tibble(Rcpp = length(x1$z), 
        R = length(x2$z),
@@ -87,18 +96,18 @@ tibble(diff_z = sum(abs(x1$z - x2$z)),
 ```
 
 ```{r, echo=FALSE, warning=FALSE}
-tibble(diff_z = sum(abs(x1$z - x3a$z)),
-       diff_w = sum(abs(x1$w - x3a$gridwgts))) %>% gt() %>% tab_header(title = "Difference between gsDesign (C) and gsdmvn (Rcpp)", subtitle = "under (a, b) = (-10, 10)")
+tibble(diff_z = sum(abs(x2$z - x3a$z)),
+       diff_w = sum(abs(x2$w - x3a$gridwgts))) %>% gt() %>% tab_header(title = "Difference between gsDesign (C) and gsdmvn (Rcpp)", subtitle = "under (a, b) = (-10, 10)")
 ```
 
 ```{r, echo=FALSE}
-tibble(diff_z = sum(abs(x1$z - x3b$z)),
-       diff_w = sum(abs(x1$w - x3b$gridwgts))) %>% gt() %>% tab_header(title = "Difference between gsDesign and gsdmvn", subtitle = "under (a, b) = (-20, 20)")
+tibble(diff_z = sum(abs(x2$z - x3b$z)),
+       diff_w = sum(abs(x2$w - x3b$gridwgts))) %>% gt() %>% tab_header(title = "Difference between gsDesign and gsdmvn", subtitle = "under (a, b) = (-20, 20)")
 ```
 
 ```{r, echo=FALSE}
-tibble(diff_z = sum(abs(x1$z - x3b$z)),
-       diff_w = sum(abs(x1$w - x3b$gridwgts))) %>% gt() %>% tab_header(title = "Difference between gsDesign and gsdmvn", subtitle = "under (a, b) = (-80, 80)")
+tibble(diff_z = sum(abs(x2$z - x3b$z)),
+       diff_w = sum(abs(x2$w - x3b$gridwgts))) %>% gt() %>% tab_header(title = "Difference between gsDesign and gsdmvn", subtitle = "under (a, b) = (-80, 80)")
 ```
 
 

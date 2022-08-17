@@ -50,7 +50,8 @@ reference:
   desc: >
     Functions for the weighted logrank test (WLR) method. 
   contents: 
-  - AHR
+  - wlr_weight_fh
+  - wlr_weight_1
 - title: Max Combo
   desc: >
     Functions for the max combo method. 
