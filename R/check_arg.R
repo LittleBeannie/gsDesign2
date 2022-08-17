@@ -309,7 +309,7 @@ check_theta <- function(theta, K){
     stop("gs_design_npe() or gs_power_npe(): if length(theta) > 1, must be same as info!")
   }
   
-  if(theta[K] <= 0){
+  if(theta[K] < 0){
     stop("gs_design_npe() or gs_power_npe(): final effect size must be > 0!")
   } 
 }
@@ -380,10 +380,27 @@ check_test_lower <- function(test_lower, K){
 #' 
 #' @noRd
 check_alpha_beta <- function(alpha, beta){
-  if (!is.numeric(alpha)) stop("alpha must be numeric!")
-  if (!is.numeric(beta)) stop("beta must be numeric!")
-  if (length(alpha) != 1 || length(beta) != 1) stop("alpha and beta must be length 1!")
-  if (alpha <= 0 || 1 - beta <= alpha || beta <= 0) stop("must have 0 < alpha < 1 - beta < 1!")
+  if(!is.numeric(alpha)) stop("alpha must be numeric!")
+  if(!is.numeric(beta)) stop("beta must be numeric!")
+  if(length(alpha) != 1 || length(beta) != 1) stop("alpha and beta must be length 1!")
+  if(alpha <= 0 || 1 - beta <= alpha || beta <= 0) stop("must have 0 < alpha < 1 - beta < 1!")
 }
 
+#' A function to check the arguments \code{IF} in gsDesign2
+#'
+#' @param IF statistical informational fraction
+#'
+#' @return TURE or FALSE
+#' 
+#' @examples
+#' IF <- 1:3/3
+#' check_IF(IF)
+#' 
+#' @noRd
+check_IF <- function(IF){
+  msg <- "gs_design_ahr(): IF must be a positive number or positive increasing sequence on (0, 1] with final value of 1"
+  if(!is.vector(IF, mode = "numeric")) stop(msg)
+  if(min(IF - dplyr::lag(IF, def = 0)) <= 0) stop(msg)
+  if(max(IF) != 1) stop(msg)
+}
 

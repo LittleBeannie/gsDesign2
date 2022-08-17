@@ -45,6 +45,7 @@ reference:
   - eEvents_df
   - gs_info_ahr
   - gs_power_ahr
+  - gs_design_ahr
 - title: "WLR"
   desc: >
     Functions for the weighted logrank test (WLR) method. 
@@ -100,3 +101,4 @@ articles:
   - check_gs_power_npe
   - check_gs_design_npe
   - check_gs_power_ahr
+  - check_gs_design_ahr
