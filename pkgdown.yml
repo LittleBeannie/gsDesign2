@@ -7,6 +7,7 @@ articles:
   check_gridpts: check_gridpts.html
   check_gridpts_h1_hupdate: check_gridpts_h1_hupdate.html
   check_gs_design_npe: check_gs_design_npe.html
+  check_gs_power_ahr: check_gs_power_ahr.html
   check_gs_power_npe: check_gs_power_npe.html
   check_tEvents: check_tEvents.html
   usage_AHR: usage_AHR.html
@@ -18,7 +19,7 @@ articles:
   usage_gs_power_npe: usage_gs_power_npe.html
   usage_gs_spending_bound: usage_gs_spending_bound.html
   usage_tEvents: usage_tEvents.html
-last_built: 2022-08-16T22:17Z
+last_built: 2022-08-17T15:48Z
 urls:
   reference: https://littlebeannie.github.io/gsDesign2/reference
   article: https://littlebeannie.github.io/gsDesign2/articles
