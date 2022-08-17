@@ -34,9 +34,9 @@ x <- gs_power_ahr(enrollRates = tibble(Stratum = "All", duration = c(2, 2, 10), 
                   analysisTimes = c(12, 24, 36), events = NULL,
                   binding = TRUE,
                   upper = gs_spending_bound,
-                  upar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)),
+                  upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
                   lower = gs_spending_bound,
-                  lpar = list(par = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL)))
+                  lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL))
 x
 ```
 
