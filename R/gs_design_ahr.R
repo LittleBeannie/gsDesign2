@@ -1,8 +1,8 @@
 #  Copyright (c) 2021 Merck Sharp & Dohme Corp. a subsidiary of Merck & Co., Inc., Kenilworth, NJ, USA.
 #
-#  This file is part of the gsdmvn program.
+#  This file is part of the gsDesign2 program.
 #
-#  gsdmvn is free software: you can redistribute it and/or modify
+#  gsDesign2 is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation, either version 3 of the License, or
 #  (at your option) any later version.
@@ -20,6 +20,7 @@
 #' @importFrom stats qnorm
 #' @importFrom dplyr mutate full_join select arrange desc
 NULL
+
 #' Group sequential design using average hazard ratio under non-proportional hazards
 #'
 #' @param enrollRates enrollment rates
@@ -34,6 +35,7 @@ NULL
 #' @param upar Parameter passed to \code{upper()}
 #' @param lower Function to compute lower bound
 #' @param lpar Parameter passed to \code{lower()}
+#' @param info_scale the information scale for calculation
 #' @param h1_spending Indicator that lower bound to be set by spending under alternate hypothesis (input \code{failRates})
 #' if spending is used for lower bound
 #' @param test_upper indicator of which analyses should include an upper (efficacy) bound; single value of TRUE (default) indicates all analyses;
