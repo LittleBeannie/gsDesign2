@@ -20,6 +20,8 @@ a gt table
 This is the function to format the bounds summary table of fixed design into gt style.
 }
 \examples{
+library(dplyr)
+
 # Enrollment rate
 enrollRates <- tibble::tibble(
   Stratum = "All", 

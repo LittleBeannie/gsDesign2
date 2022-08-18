@@ -30,6 +30,8 @@ as_gt <- function(x, ...) {
 #' @exportS3Method 
 #' 
 #' @examples
+#' library(dplyr)
+#' 
 #' # Enrollment rate
 #' enrollRates <- tibble::tibble(
 #'   Stratum = "All", 
