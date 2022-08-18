@@ -88,6 +88,9 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_ahr.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_combo.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_npe.html</loc>
   </url>
   <url>
@@ -106,6 +109,9 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_ahr.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_combo.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_npe.html</loc>
   </url>
   <url>
@@ -115,7 +121,13 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_spending_bound.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_spending_combo.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/pmvnorm_combo.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/tEvents.html</loc>
