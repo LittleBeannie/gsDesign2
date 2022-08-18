@@ -16,7 +16,9 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #' Lower and Upper Bound of Group Sequential Design
-#'
+#' 
+#' @importFrom mvtnorm GenzBretz
+#' 
 #' @param alpha a numeric vector of cumulative allocated alpha in each interim analysis
 #' @param beta  a numeric vector of cumulative allocated beta in each interim analysis
 #' @param theta a numeric vector of effect size under alternative.
@@ -27,6 +29,7 @@
 #' @param alpha_bound logical value to indicate if alpha is Type I error or upper bound. Default is FALSE.
 #' @param beta_bound logical value to indicate if beta is Type II error or lower bound. Default is FALSE.
 #' @inheritParams pmvnorm_combo
+#' 
 #' @section Specification:
 #' \if{latex}{
 #'  \itemize{
@@ -60,7 +63,7 @@
 #'          theta = x$theta[2] * sqrt(x$n.I),
 #'          corr = outer(1:3, 1:3, function(x,y) pmin(x,y) / pmax(x,y)))
 #'
-#' @importFrom mvtnorm GenzBretz
+#' @noRd
 #'
 gs_bound <- function(alpha,
                      beta,
