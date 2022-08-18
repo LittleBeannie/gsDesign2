@@ -59,7 +59,12 @@ reference:
   desc: >
     Functions for the max combo method. 
   contents: 
+  - gs_bound
+  - pmvnorm_combo
   - gs_info_combo
+  - gs_spending_combo
+  - gs_power_combo
+  - gs_design_combo
 - title: Boundary functions
   desc: >
     Functions to specify the upper and lower bound in group sequential designs.

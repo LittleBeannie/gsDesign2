@@ -15,7 +15,7 @@ gs_power_wlr(
   lower = gs_b,
   upar = gsDesign(k = 3, test.type = 1, n.I = c(30, 40, 50), maxn.IPlan = 50, sfu =
     sfLDOF, sfupar = NULL)$upper$bound,
-  lpar = c(qnorm(0.1), rep(-Inf, length(events) - 1)),
+  lpar = c(qnorm(0.1), rep(-Inf, 2)),
   test_upper = TRUE,
   test_lower = TRUE,
   ratio = 1,
@@ -122,7 +122,7 @@ gs_power_wlr(
   upper = gs_b,
   upar = gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
   lower = gs_b,
-  lpar = c(qnorm(.1), rep(-Inf, length(events) - 1)))
+  lpar = c(qnorm(.1), rep(-Inf, 2)))
   
 # -------------------------#
 #       example 2          #
@@ -136,7 +136,7 @@ gs_power_wlr(
   upper = gs_b,
   upar = gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
   lower = gs_b,
-  lpar = c(qnorm(.1), rep(-Inf, length(events) - 1)))
+  lpar = c(qnorm(.1), rep(-Inf, 2)))
 
 # -------------------------#
 #       example 3          #
@@ -150,7 +150,7 @@ gs_power_wlr(
   upper = gs_b,
   upar = gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
   lower = gs_b,
-  lpar = c(qnorm(.1), rep(-Inf, length(events) - 1)))
+  lpar = c(qnorm(.1), rep(-Inf, 2)))
   
 # -------------------------#
 #       example 4          #

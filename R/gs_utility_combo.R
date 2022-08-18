@@ -17,6 +17,12 @@
 
 #' @importFrom mvtnorm GenzBretz
 #' 
+#' @param enrollRates enrollment rates
+#' @param failRates failure and dropout rates
+#' @param ratio Experimental:Control randomization ratio (not yet implemented)
+#' @param fh_test weighting tests
+#' @param algorithm numerical algorithms
+#' 
 #' @section Specification:
 #' \if{latex}{
 #'  \itemize{
@@ -129,7 +135,7 @@ gs_utility_combo <- function(enrollRates,
 #'
 #'   $$Pr( lower < max(G) < upper )$$
 #'
-#' @noRd
+#' @export
 pmvnorm_combo <- function(lower,
                           upper,
                           group,
@@ -314,7 +320,11 @@ gs_create_arm <- function(enrollRates,
   
 }
 
-
+#' Create weight in max combo test
+#' @param rho weighting parameter
+#' @param gamma weighting parameter
+#' @param tau weighting parameter
+#' 
 #' @noRd
 get_combo_weight <- function(rho, gamma, tau){
   
@@ -343,6 +353,7 @@ get_combo_weight <- function(rho, gamma, tau){
   weight
 }
 
+#' Compute delta in max combo test
 #' @noRd
 gs_delta_combo <- function(arm0,
                            arm1,
@@ -366,6 +377,7 @@ gs_delta_combo <- function(arm0,
   
 }
 
+#' Compute delta in max combo test
 #' @noRd
 gs_sigma2_combo <- function(arm0,
                             arm1,
@@ -396,5 +408,71 @@ gs_sigma2_combo <- function(arm0,
   }
   
   sigma2
+  
+}
+
+#' MaxCombo Group sequential boundary crossing probabilities
+#'
+#' @inheritParams pmvnorm_combo
+#' @param upper_bound a numeric vector of upper bound
+#' @param lower_bound a numeric vector of lower bound
+#' @param analysis an integer vector of the interim analysis index
+#' @param theta a numeric vector of effect size under alternative hypothesis
+#' @param corr a matrix of correlation matrix
+#'
+#' @importFrom mvtnorm GenzBretz
+#'
+#' @noRd
+gs_prob_combo <- function(upper_bound,
+                          lower_bound,
+                          analysis,
+                          theta,
+                          corr,
+                          algorithm = GenzBretz(maxpts= 1e5, abseps= 1e-5),
+                          ...){
+  
+  n_analysis <- length(unique(analysis))
+  
+  p <- c()
+  q <- c()
+  for(k in 1:n_analysis){
+    k_ind <- analysis <= k
+    
+    
+    # Efficacy Bound
+    if(k == 1){
+      lower <- upper_bound[1]
+      upper <- Inf
+    }else{
+      lower <- c(lower_bound[1:(k-1)], upper_bound[k])
+      upper <- c(upper_bound[1:(k-1)], Inf)
+    }
+    
+    
+    p[k] <- pmvnorm_combo(lower,
+                          upper,
+                          group = analysis[k_ind],
+                          mean = theta[k_ind],
+                          corr = corr[k_ind, k_ind])
+    
+    # Futility Bound
+    if(k == 1){
+      lower <- -Inf
+      upper <- lower_bound[k]
+    }else{
+      lower <- c(lower_bound[1:(k-1)], -Inf)
+      upper <- c(upper_bound[1:(k-1)], lower_bound[k])
+    }
+    
+    q[k] <- pmvnorm_combo(lower,
+                          upper,
+                          group = analysis[k_ind],
+                          mean  = theta[k_ind],
+                          corr  = corr[k_ind, k_ind])
+    
+  }
+  
+  data.frame(Bound = rep(c("Upper", "Lower"), each = n_analysis),
+             Probability = c(cumsum(p),cumsum(q)))
   
 }
