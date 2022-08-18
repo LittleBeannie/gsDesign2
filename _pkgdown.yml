@@ -59,7 +59,6 @@ reference:
   desc: >
     Functions for the max combo method. 
   contents: 
-  - gs_bound
   - pmvnorm_combo
   - gs_info_combo
   - gs_spending_combo
