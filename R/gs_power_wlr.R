@@ -19,6 +19,8 @@
 #'
 #' @importFrom tibble tibble
 #' @importFrom gsDesign gsDesign
+#' @importFrom dplyr left_join
+#' 
 #' @inheritParams gs_design_wlr
 #' @inheritParams gs_power_ahr
 #' 
