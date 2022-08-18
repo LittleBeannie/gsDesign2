@@ -55,7 +55,8 @@ fixed_design(
   studyDuration = studyDuration, 
   ratio = ratio
   ) \%>\% summary() 
-  
+
+\dontrun{
 # under fixed sample size  
 fixed_design(
   x = "AHR", 
@@ -65,7 +66,7 @@ fixed_design(
   studyDuration = studyDuration, 
   ratio = ratio
   ) \%>\% summary()
-  
+} 
 # ------------------------- #
 #        FH                 #
 # ------------------------- #
@@ -81,6 +82,7 @@ fixed_design(
   ) \%>\% summary() 
   
 # under fixed sample size
+\dontrun{
 fixed_design(
   x = "FH", 
   alpha = alpha,  
@@ -89,5 +91,5 @@ fixed_design(
   studyDuration = studyDuration, 
   ratio = ratio
   ) \%>\% summary()
-  
+}
 }

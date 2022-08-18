@@ -68,7 +68,8 @@ summary <- function(x, ...) {
 #'   studyDuration = studyDuration, 
 #'   ratio = ratio
 #'   ) %>% summary() 
-#'   
+#' 
+#' \dontrun{
 #' # under fixed sample size  
 #' fixed_design(
 #'   x = "AHR", 
@@ -78,7 +79,7 @@ summary <- function(x, ...) {
 #'   studyDuration = studyDuration, 
 #'   ratio = ratio
 #'   ) %>% summary()
-#'   
+#' } 
 #' # ------------------------- #
 #' #        FH                 #
 #' # ------------------------- #
@@ -94,6 +95,7 @@ summary <- function(x, ...) {
 #'   ) %>% summary() 
 #'   
 #' # under fixed sample size
+#' \dontrun{
 #' fixed_design(
 #'   x = "FH", 
 #'   alpha = alpha,  
@@ -102,7 +104,7 @@ summary <- function(x, ...) {
 #'   studyDuration = studyDuration, 
 #'   ratio = ratio
 #'   ) %>% summary()
-#'   
+#' }
 summary.fixed_design <- function(x, ...){
   x_design <- switch(x$design,
                      "AHR" = {"Average hazard ratio"},
