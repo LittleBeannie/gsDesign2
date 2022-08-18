@@ -141,12 +141,12 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
               "FH" = {
                 
                 if(has_weight + has_rho + has_gamma == 0){
-                  weight <- function(x, arm0, arm1){gsdmvn:::wlr_weight_fh(x, arm0, arm1, rho = 0, gamma = 0.5)}
+                  weight <- function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = 0, gamma = 0.5)}
                 }
                 if(has_weight == 0 & has_rho + has_gamma >= 1){
-                  weight <- function(x, arm0, arm1){gsdmvn:::wlr_weight_fh(x, arm0, arm1, 
-                                                                           rho = ifelse(has_rho, args$rho, 0), 
-                                                                           gamma = ifelse(has_gamma, args$gamma, 0.5))}
+                  weight <- function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, 
+                                                                  rho = ifelse(has_rho, args$rho, 0), 
+                                                                  gamma = ifelse(has_gamma, args$gamma, 0.5))}
                 }
                 if (!is.null(power)){
                   d <- gs_design_wlr(alpha = alpha, beta = 1 - power,
@@ -188,9 +188,8 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                                      enrollRates = enrollRates, 
                                      failRates = failRates,
                                      ratio = 1, 
-                                     weight = function(x, arm0, arm1){
-                                       gsdmvn:::wlr_weight_fh(x, arm0, arm1, rho = -1, gamma = 0,
-                                                              tau = ifelse(has_tau, args$tau, 6))},
+                                     weight = function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = -1, gamma = 0,
+                                                                                    tau = ifelse(has_tau, args$tau, 6))},
                                      upper = gs_b,
                                      upar = list(par = qnorm(1 - alpha)),
                                      lower = gs_b,
@@ -200,9 +199,8 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                   d <- gs_power_wlr(enrollRates = enrollRates, 
                                     failRates = failRates,
                                     ratio = 1, 
-                                    weight = function(x, arm0, arm1){
-                                      gsdmvn:::wlr_weight_fh(x, arm0, arm1, rho = -1, gamma = 0,
-                                                             tau = ifelse(has_tau, args$tau, 6))},
+                                    weight = function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = -1, gamma = 0,
+                                                                                   tau = ifelse(has_tau, args$tau, 6))},
                                     upper = gs_b,
                                     upar = list(par = qnorm(1 - alpha)),
                                     lower = gs_b,
