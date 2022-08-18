@@ -35,6 +35,8 @@ Computes fixed design sample size for many sample size methods.
 Returns a \code{tibble} with a basic summary
 }
 \examples{
+library(dplyr)
+
 # Average hazard ratio
 x <- fixed_design("AHR", 
                   alpha = .025, power = .9, 

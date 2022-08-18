@@ -14,6 +14,8 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr)
+#' 
 #' # Average hazard ratio
 #' x <- fixed_design("AHR", 
 #'                   alpha = .025, power = .9, 
