@@ -47,6 +47,8 @@ This is the function to format the bounds summary table into gt style.
 }
 \examples{
 # the default output 
+library(dplyr)
+
 gs_design_ahr() \%>\% 
   summary() \%>\% 
   as_gt()
@@ -63,6 +65,7 @@ gs_power_wlr() \%>\%
   summary() \%>\%
   as_gt()
 
+\dontrun{
 gs_design_combo() \%>\% 
   summary() \%>\% 
   as_gt() 
@@ -78,7 +81,7 @@ gs_design_rd() \%>\%
 gs_power_rd() \%>\% 
   summary() \%>\% 
   as_gt()
-  
+} 
 # usage of title = ..., subtitle = ...
 # to edit the title/subtitle 
 gs_power_wlr() \%>\% 

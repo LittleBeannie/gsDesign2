@@ -151,6 +151,7 @@ summary.fixed_design <- function(x, ...){
 #' library(tibble)
 #' library(gsDesign)
 #' library(gsDesign2)
+#' library(dplyr)
 #' 
 #' # enrollment/failure rates
 #' enrollRates <- tibble(Stratum = "All", 

@@ -168,10 +168,14 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 #' @param display_inf_bound a logic value (TRUE or FALSE) whether to display the +-inf bound
 #' 
 #' @return a gt table summarizing the bounds table in group sequential designs
+#' 
 #' @export as_gt
 #' @exportS3Method
+#'
 #' @examples 
 #' # the default output 
+#' library(dplyr)
+#' 
 #' gs_design_ahr() %>% 
 #'   summary() %>% 
 #'   as_gt()
@@ -188,6 +192,7 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 #'   summary() %>%
 #'   as_gt()
 #' 
+#' \dontrun{
 #' gs_design_combo() %>% 
 #'   summary() %>% 
 #'   as_gt() 
@@ -203,7 +208,7 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 #' gs_power_rd() %>% 
 #'   summary() %>% 
 #'   as_gt()
-#'   
+#' } 
 #' # usage of title = ..., subtitle = ...
 #' # to edit the title/subtitle 
 #' gs_power_wlr() %>% 
