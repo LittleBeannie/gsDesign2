@@ -238,7 +238,7 @@ gs_design_combo <- function(enrollRates = tibble(Stratum = "All",
       Events = Events * n / max(N),
       N = N * n / max(N)) %>% 
     # arrange the dataset by Upper bound first and then Lower bound
-    arrange(desc(Bound))
+    arrange(Analysis, desc(Bound))
   
   
   # out <- db[order(db$Bound, decreasing = TRUE), c("Analysis", "Bound", "Time", "N", "Events", "Z", "Probability", "Probability_Null")]

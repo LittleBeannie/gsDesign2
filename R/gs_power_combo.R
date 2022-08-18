@@ -172,17 +172,18 @@ gs_power_combo <- function(enrollRates = tibble(Stratum = "All",
     info_fh  %>% 
       tibble::as_tibble() %>% 
       select(Analysis, Time, N, Events) %>% 
-      unique()) %>% 
-    arrange(desc(Bound))
+      unique()) %>%
+    arrange(Analysis, desc(Bound))
   
   # --------------------------------------------- #
   #     get bounds to output                      #
   # --------------------------------------------- #
   bounds <- db %>% 
     dplyr::mutate(`Nominal p` = pnorm(Z * (-1))) %>% 
-    dplyr::select(Analysis, Bound, Probability, Z, `Nominal p`)  %>%  
-    arrange(Analysis,desc(Bound))  
-  
+    dplyr::select(Analysis, Bound, Probability, Probability_Null, Z, `Nominal p`)  %>%  
+    dplyr::rename(Probability0 = Probability_Null) %>% 
+    arrange(Analysis,desc(Bound)) 
+
   # --------------------------------------------- #
   #     get analysis summary to output            #
   # --------------------------------------------- #

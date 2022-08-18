@@ -64,6 +64,12 @@ reference:
   - gs_spending_combo
   - gs_power_combo
   - gs_design_combo
+- title: Summary and display tables
+  desc: >
+    Functions to summarize fixed / group sequential design results. 
+  contents: 
+  - summary
+  - as_gt
 - title: Boundary functions
   desc: >
     Functions to specify the upper and lower bound in group sequential designs.
