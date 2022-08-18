@@ -107,12 +107,14 @@ Group sequential design using weighted log-rank test under non-proportional haza
 library(dplyr)
 library(mvtnorm)
 library(gsDesign)
+library(tibble)
+library(gsDesign2)
 
 # set enrollment rates
-enrollRates <- tibble::tibble(Stratum = "All", duration = 12, rate = 500/12)
+enrollRates <- tibble(Stratum = "All", duration = 12, rate = 500/12)
 
 # set failure rates
-failRates <- tibble::tibble(
+failRates <- tibble(
   Stratum = "All",
   duration = c(4, 100),
   failRate = log(2) / 15,  # median survival 15 month
@@ -123,7 +125,7 @@ failRates <- tibble::tibble(
 #       example 1          #
 # ------------------------ #
 # Boundary is fixed 
-x <- gsDesign::gsSurv(
+x <- gsSurv(
   k = 3, 
   test.type = 4, 
   alpha = 0.025, beta = 0.2, 
@@ -142,7 +144,7 @@ gs_design_wlr(
   failRates = failRates,
   ratio = 1, 
   alpha = 0.025, beta = 0.2,
-  weight = function(x, arm0, arm1){gsdmvn:::wlr_weight_fh(x, arm0, arm1, rho = 0, gamma = 0.5)},
+  weight = function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = 0, gamma = 0.5)},
   upper = gs_b,
   upar = x$upper$bound,
   lower = gs_b,
@@ -158,9 +160,7 @@ gs_design_wlr(
   failRates = failRates,
   ratio = 1, 
   alpha = 0.025, beta = 0.2,
-  weight = function(x, arm0, arm1){
-    gsdmvn:::wlr_weight_fh(x, arm0, arm1, rho = 0, gamma = 0.5)
-  },
+  weight = function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = 0, gamma = 0.5)},
   upper = gs_spending_bound,
   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025),
   lower = gs_spending_bound,

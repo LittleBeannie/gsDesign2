@@ -93,6 +93,9 @@ Group sequential design power using weighted log rank test under non-proportiona
 
 \examples{
 library(tibble)
+library(gsDesign)
+library(gsDesign2)
+
 # set enrollment rates
 enrollRates <- tibble(Stratum = "All", duration = 12, rate = 500/12)
 
@@ -118,7 +121,7 @@ gs_power_wlr(
   events = target_events,
   analysisTimes = NULL,
   upper = gs_b,
-  upar = gsDesign::gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  upar = gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
   lower = gs_b,
   lpar = c(qnorm(.1), rep(-Inf, length(events) - 1)))
   
@@ -132,7 +135,7 @@ gs_power_wlr(
   events = NULL,
   analysisTimes = target_analysisTime,
   upper = gs_b,
-  upar = gsDesign::gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  upar = gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
   lower = gs_b,
   lpar = c(qnorm(.1), rep(-Inf, length(events) - 1)))
 
@@ -146,9 +149,9 @@ gs_power_wlr(
   events = target_events,
   analysisTimes = target_analysisTime,
   upper = gs_b,
-  upar = list(par = gsDesign::gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound),
+  upar = gsDesign(k = length(target_events), test.type = 1, n.I = target_events, maxn.IPlan = max(target_events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
   lower = gs_b,
-  lpar = list(par = c(qnorm(.1), rep(-Inf, length(events) - 1))))
+  lpar = c(qnorm(.1), rep(-Inf, length(events) - 1)))
   
 # -------------------------#
 #       example 4          #
