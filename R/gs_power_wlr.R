@@ -219,9 +219,9 @@ gs_power_wlr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
     bounds <- y_H0 %>%
       select(Analysis, Bound, Z, Probability) %>% 
       dplyr::rename(Probability0 = Probability) %>%
-      left_join(x %>% select(Analysis, Events)) %>% 
+      dplyr::left_join(x %>% select(Analysis, Events)) %>% 
       mutate(`~HR at bound` = gsDesign::zn2hr(z = Z, n = Events, ratio = ratio), `Nominal p` = pnorm(-Z)) %>% 
-      left_join(y_H1 %>% select(Analysis, Bound, Probability)) %>% 
+      dplyr::left_join(y_H1 %>% select(Analysis, Bound, Probability)) %>% 
       select(Analysis, Bound, Probability, Probability0, Z, `~HR at bound`, `Nominal p`) %>% 
       arrange(Analysis, desc(Bound))
   )
@@ -231,8 +231,8 @@ gs_power_wlr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
     analysis <- x %>% 
       select(Analysis, Time, Events, AHR) %>% 
       mutate(N = gsDesign2::eAccrual(x = x$Time, enrollRates = enrollRates)) %>% 
-      left_join(y_H1 %>% select(Analysis, info, IF, theta) %>% unique()) %>%
-      left_join(y_H0 %>% select(Analysis, info, IF) %>% dplyr::rename(info0 = info, IF0 = IF) %>% unique()) %>%
+      dplyr::left_join(y_H1 %>% select(Analysis, info, IF, theta) %>% unique()) %>%
+      dplyr::left_join(y_H0 %>% select(Analysis, info, IF) %>% dplyr::rename(info0 = info, IF0 = IF) %>% unique()) %>%
       select(Analysis, Time, N, Events, AHR, theta, info, info0, IF, IF0) %>% 
       arrange(Analysis)
   )
