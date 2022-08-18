@@ -31,15 +31,16 @@ as_gt <- function(x, ...) {
 #' 
 #' @examples
 #' library(dplyr)
+#' library(tibble)
 #' 
 #' # Enrollment rate
-#' enrollRates <- tibble::tibble(
+#' enrollRates <- tibble(
 #'   Stratum = "All", 
 #'   duration = 18, 
 #'   rate = 20)
 #' 
 #' # Failure rates
-#' failRates <- tibble::tibble(
+#' failRates <- tibble(
 #'   Stratum = "All", 
 #'   duration = c(4, 100), 
 #'   failRate = log(2) / 12,
@@ -54,6 +55,7 @@ as_gt <- function(x, ...) {
 #' 
 #' # 1-sided Type I error
 #' alpha <- 0.025 
+#' 
 #' # Type II error (1 - power)
 #' beta <- 0.1 
 #' 

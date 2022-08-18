@@ -15,6 +15,8 @@
 summary function to fixed_design class
 }
 \examples{
+library(dplyr)
+
 # Enrollment rate
 enrollRates <- tibble::tibble(
   Stratum = "All", 

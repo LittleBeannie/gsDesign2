@@ -23,9 +23,13 @@ summary <- function(x, ...) {
 #' @title summary for \code{fixed_design()} object
 #' @param x a fixed design object returned by \code{fixed_design()}
 #' @param ... additional arguments
+#' 
 #' @export summary
-#' @exportS3Method 
+#' @exportS3Method
+#'  
 #' @examples
+#' library(dplyr)
+#' 
 #' # Enrollment rate
 #' enrollRates <- tibble::tibble(
 #'   Stratum = "All", 
