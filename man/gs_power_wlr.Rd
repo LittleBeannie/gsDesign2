@@ -6,15 +6,15 @@
 \usage{
 gs_power_wlr(
   enrollRates = tibble(Stratum = "All", duration = c(2, 2, 10), rate = c(3, 6, 9)),
-  failRates = tibble::tibble(Stratum = "All", duration = c(3, 100), failRate =
-    log(2)/c(9, 18), hr = c(0.9, 0.6), dropoutRate = rep(0.001, 2)),
+  failRates = tibble(Stratum = "All", duration = c(3, 100), failRate = log(2)/c(9, 18),
+    hr = c(0.9, 0.6), dropoutRate = rep(0.001, 2)),
   events = c(30, 40, 50),
   analysisTimes = NULL,
   binding = FALSE,
   upper = gs_b,
   lower = gs_b,
-  upar = gsDesign::gsDesign(k = 3, test.type = 1, n.I = c(30, 40, 50), maxn.IPlan = 50,
-    sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  upar = gsDesign(k = 3, test.type = 1, n.I = c(30, 40, 50), maxn.IPlan = 50, sfu =
+    sfLDOF, sfupar = NULL)$upper$bound,
   lpar = c(qnorm(0.1), rep(-Inf, length(events) - 1)),
   test_upper = TRUE,
   test_lower = TRUE,
@@ -78,7 +78,6 @@ lower bound}
 Group sequential design power using weighted log rank test under non-proportional hazards
 }
 \section{Specification}{
-
 
 \if{latex}{
  \itemize{
