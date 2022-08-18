@@ -36,6 +36,11 @@ navbar:
     href: articles/index.html
 
 reference:
+- title: High-level Functions
+  desc: >
+    Functions to calculate fixed/group sequential design under multiple tests.
+  contents:
+    - fixed_design
 - title: AHR
   desc: >
     Functions for the average hazard ratio (AHR) method. 
