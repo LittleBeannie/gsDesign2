@@ -73,10 +73,19 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/AHR.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/as_gt.fixed_design.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/as_gt.gs_design.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/eAccrual.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/eEvents_df.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/fixed_design.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gsDesign2-package.html</loc>
@@ -128,6 +137,12 @@
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/pmvnorm_combo.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/summary.fixed_design.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/summary.gs_design.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/tEvents.html</loc>
