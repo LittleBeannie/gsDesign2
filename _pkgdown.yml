@@ -96,6 +96,12 @@ reference:
   - eAccrual
   
 articles:
+- title: "Use gsDesign2 to solve practical problems"
+  navbar: ~
+  desc: >
+    The following vignettes cover cases where gsDesin2 can be used to solve problems in practics.
+  contents: 
+  - story_summarize_designs
 - title: "Use case of functions"
   navbar: ~
   desc: >
