@@ -36,7 +36,7 @@ as_gt <- function(x, ...) {
 #' @return a gt table
 #' 
 #' @export as_gt
-#' @exportS3Method 
+#' @export as_gt.fixed_design
 #' 
 #' @examples
 #' library(dplyr)
@@ -183,7 +183,7 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 #' @return a gt table summarizing the bounds table in group sequential designs
 #' 
 #' @export as_gt
-#' @exportS3Method
+#' @export as_gt.gs_design
 #'
 #' @examples 
 #' # the default output 

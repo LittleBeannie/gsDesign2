@@ -33,7 +33,7 @@ summary <- function(x, ...) {
 #' @param ... additional arguments
 #' 
 #' @export summary
-#' @exportS3Method
+#' @export summary.fixed_design
 #'  
 #' @examples
 #' library(dplyr)
@@ -156,8 +156,7 @@ summary.fixed_design <- function(x, ...){
 #' @return a summary table
 #' 
 #' @export summary
-#' 
-#' @exportS3Method
+#' @export summary.gs_design
 #' @examples
 #' # ---------------------------- #
 #' #     design parameters        #
