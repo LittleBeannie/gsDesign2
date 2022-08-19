@@ -14,6 +14,15 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#' S3 class method to get summary table into a gt table
+#'
+#' @param x a summary of fixed or group sequential design
+#' @param ... additional arguments
+#'
+#' @return a gt table
+#' @noRd
+#'
 as_gt <- function(x, ...) {
   UseMethod("as_gt", x)
 }

@@ -15,6 +15,14 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#' S3 class method to summary fixed or group sequential design
+#'
+#' @param x a fixed design object or a group sequential design object
+#' @param ... additional arguments
+#'
+#' @return a R data frame
+#' @noRd
+#' 
 summary <- function(x, ...) {
   UseMethod("summary", x)
 }
