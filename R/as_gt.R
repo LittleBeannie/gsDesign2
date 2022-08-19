@@ -21,7 +21,7 @@
 #' @param ... additional arguments
 #'
 #' @return a gt table
-#' @noRd
+#' @export
 #'
 as_gt <- function(x, ...) {
   UseMethod("as_gt", x)

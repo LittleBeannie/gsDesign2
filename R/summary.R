@@ -21,7 +21,7 @@
 #' @param ... additional arguments
 #'
 #' @return a R data frame
-#' @noRd
+#' @export
 #' 
 summary <- function(x, ...) {
   UseMethod("summary", x)
