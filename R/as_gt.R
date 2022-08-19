@@ -28,7 +28,8 @@ as_gt <- function(x, ...) {
 }
 
 #' This is the function to format the bounds summary table of fixed design into gt style.
-#'
+#' @rdname as_gt.fixed_design
+#' 
 #' @param x a summary object of group sequential design
 #' @param title title to be displayed
 #' @param footnote footnotes to be displayed
@@ -167,7 +168,7 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 
 
 #' This is the function to format the bounds summary table into gt style.
-#'
+#' @rdname as_gt.gs_design
 #' @param x an object returned by \code{summary_bound}
 #' @param title a string to specify the title of the gt table
 #' @param subtitle a string to specify the subtitle of the gt table
