@@ -3,7 +3,10 @@ Title: Group sequential design with non-constant effect
 Version: 0.2.0
 Authors@R: c(
     person("Keaven", "Anderson", email = "keaven_anderson@merck.com", role = c("aut", "cre")),
+    person("Yilong", "Zhang", email = "elong0527@gmail.com", role = c("aut")),
     person("Yujie", "Zhao", email = "yujie.zhao@merck.com", role = c("aut")),
+    person("Jianxiao", "Yang", email = "yangjx@ucla.edu", role = c("aut")),
+    person("Nan", "Xiao", email = "nan.xiao1@merck.com", role = c("aut")),
     person("Merck Sharp & Dohme Corp", role = "cph")
     )
 Description: Basic group sequential design computations extended.
