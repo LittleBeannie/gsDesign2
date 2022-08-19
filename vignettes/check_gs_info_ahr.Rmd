@@ -1,5 +1,5 @@
 ---
-title: "Test of the function gridpts"
+title: "Test of the function gs_info_ahr"
 output:
   rmarkdown::html_document:
     toc: true
@@ -10,17 +10,16 @@ output:
 # bibliography: "example.bib"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Test of the function gridpts}
+  %\VignetteIndexEntry{Test of the function gs_info_ahr}
 ---
 
 ```{r, message=FALSE}
 library(tibble)
 library(dplyr)
-library(gsDesign)
+library(testthat)
 devtools::load_all()
 ```
 
 # Test 1: 
-```{r}
-```
 
+TODO

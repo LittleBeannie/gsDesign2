@@ -105,7 +105,14 @@ articles:
   - usage_AHR
   - usage_tEvents
   - usage_gs_info_ahr
+  - usage_gs_info_wlr
+  - usage_gs_info_combo
   - usage_gs_power_ahr
+  - usage_gs_power_wlr
+  - usage_gs_power_combo
+  - usage_gs_design_ahr
+  - usage_gs_design_wlr
+  - usage_gs_design_combo
   - usage_gs_b
   - usage_gs_spending_bound
   - usage_gs_power_npe
@@ -120,8 +127,13 @@ articles:
   - check_eEvents_df
   - check_AHR
   - check_tEvents
-  - check_gridpts
   - check_gs_power_npe
   - check_gs_design_npe
   - check_gs_power_ahr
   - check_gs_design_ahr
+  - check_gs_info_wlr
+  - check_gs_power_wlr
+  - check_gs_design_wlr
+  - check_gs_info_combo
+  - check_gs_power_combo
+  - check_gs_design_combo

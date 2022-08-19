@@ -28,8 +28,8 @@ devtools::load_all()
 
 approximate variance of standard normal (i.e., 1)
 ```{r}
-x1 <- gridpts_(mu = 0, a = -Inf, b = Inf, r = 18)
-x2 <- gridpts(mu = 0, a = -Inf, b = Inf, r = 18)
+x1 <- gridpts_(mu = 0, a = -20, b = 20, r = 18)
+x2 <- gridpts(mu = 0, a = -20, b = 20, r = 18)
 x3a <- gsDesign::normalGrid(bounds = c(-10, 10), mu = 0, sigma = 1, r = 18)
 x3b <- gsDesign::normalGrid(bounds = c(-20, 20), mu = 0, sigma = 1, r = 18)
 x3c <- gsDesign::normalGrid(bounds = c(-80, 80), mu = 0, sigma = 1, r = 18)
