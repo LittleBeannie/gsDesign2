@@ -4,7 +4,7 @@
 \alias{summary.fixed_design}
 \title{summary for \code{fixed_design()} object}
 \usage{
-\method{summary}{gs_design}(x, ...)
+\method{summary}{fixed_design}(x, ...)
 }
 \arguments{
 \item{x}{a fixed design object returned by \code{fixed_design()}}
