@@ -111,10 +111,11 @@
 <span class="r-in"><span>  studyDuration <span class="op">=</span> <span class="va">studyDuration</span>, </span></span>
 <span class="r-in"><span>  ratio <span class="op">=</span> <span class="va">ratio</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Design                   N Events  Time Bound alpha Power</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Average hazard ratio  463.   325.    36  1.96 0.025   0.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Length Class  Mode     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> enrollRates 3      tbl_df list     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> failRates   5      tbl_df list     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> analysis    7      tbl_df list     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> design      1      -none- character</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co"># under fixed sample size  </span></span></span>
@@ -140,10 +141,12 @@
 <span class="r-in"><span>  studyDuration <span class="op">=</span> <span class="va">studyDuration</span>,</span></span>
 <span class="r-in"><span>   ratio <span class="op">=</span> <span class="va">ratio</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Design                            N Events  Time Bound alpha Power</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Fleming-Harrington FH(0, 0.5)  356.   249.    36  1.96 0.025   0.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Length Class  Mode     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> enrollRates 3      tbl_df list     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> failRates   5      tbl_df list     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> analysis    7      tbl_df list     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> design      1      -none- character</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> design_par  2      -none- list     </span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="co"># under fixed sample size</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
