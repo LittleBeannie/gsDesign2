@@ -102,6 +102,7 @@ articles:
     The following vignettes cover cases where gsDesin2 can be used to solve problems in practics.
   contents: 
   - story_summarize_designs
+  - story_compare_power_delay_effect
 - title: "Use case of functions"
   navbar: ~
   desc: >
