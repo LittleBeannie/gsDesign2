@@ -73,8 +73,10 @@ reference:
   desc: >
     Functions to summarize fixed / group sequential design results. 
   contents: 
+  - summary
   - summary.fixed_design
   - summary.gs_design
+  - as_gt
   - as_gt.fixed_design
   - as_gt.gs_design
 - title: Boundary functions
