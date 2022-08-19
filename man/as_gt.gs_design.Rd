@@ -13,7 +13,8 @@
   footnote = NULL,
   display_bound = c("Efficacy", "Futility"),
   display_columns = NULL,
-  display_inf_bound = TRUE
+  display_inf_bound = TRUE,
+  ...
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ users can use the functions in the \code{gt} package to custom themselves.}
 \item{display_columns}{a vector of strings specifying the variables to be displayed in the summary table}
 
 \item{display_inf_bound}{a logic value (TRUE or FALSE) whether to display the +-inf bound}
+
+\item{...}{additional arguments}
 }
 \value{
 a gt table summarizing the bounds table in group sequential designs

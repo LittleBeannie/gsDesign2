@@ -157,7 +157,7 @@ summary.fixed_design <- function(x, ...){
 #' @param col_vars the variables to be displayed 
 #' @param col_decimals the decimals to be displayed for the displayed variables in \code{col_vars}
 #' @param bound_names names for bounds; default = c("Efficacy", "Futility").
-#' 
+#' @param ... additional arguments
 #' @return a summary table
 #' 
 #' @export summary
@@ -339,7 +339,8 @@ summary.gs_design <- function(
   analysis_decimals = NULL,
   col_vars = NULL,
   col_decimals = NULL,
-  bound_names = c("Efficacy", "Futility")
+  bound_names = c("Efficacy", "Futility"),
+  ...
 ){
   method <- class(x)[class(x) %in% c("ahr", "wlr", "combo", "rd")]
   x_bounds <- x$bounds

@@ -4,7 +4,7 @@
 \alias{as_gt.fixed_design}
 \title{This is the function to format the bounds summary table of fixed design into gt style.}
 \usage{
-\method{as_gt}{fixed_design}(x, title = NULL, footnote = NULL)
+\method{as_gt}{fixed_design}(x, title = NULL, footnote = NULL, ...)
 }
 \arguments{
 \item{x}{a summary object of group sequential design}
@@ -12,6 +12,8 @@
 \item{title}{title to be displayed}
 
 \item{footnote}{footnotes to be displayed}
+
+\item{...}{additional arguments}
 }
 \value{
 a gt table

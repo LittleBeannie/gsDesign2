@@ -33,6 +33,7 @@ as_gt <- function(x, ...) {
 #' @param x a summary object of group sequential design
 #' @param title title to be displayed
 #' @param footnote footnotes to be displayed
+#' @param ... additional arguments
 #' 
 #' @return a gt table
 #' 
@@ -97,7 +98,7 @@ as_gt <- function(x, ...) {
 #'   summary() %>% 
 #'   as_gt()
 #'   
-as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
+as_gt.fixed_design <- function(x, title = NULL, footnote = NULL, ...){
   # get the design method 
   if("AHR" %in% class(x)){
     design_mtd <- "AHR"
@@ -169,6 +170,7 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 
 #' This is the function to format the bounds summary table into gt style.
 #' @rdname as_gt.gs_design
+#' 
 #' @param x an object returned by \code{summary_bound}
 #' @param title a string to specify the title of the gt table
 #' @param subtitle a string to specify the subtitle of the gt table
@@ -182,6 +184,7 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 #' @param display_bound a vector of strings specifying the label of the bounds. The default is \code{c("Efficacy", "Futility")}
 #' @param display_columns a vector of strings specifying the variables to be displayed in the summary table
 #' @param display_inf_bound a logic value (TRUE or FALSE) whether to display the +-inf bound
+#' @param ... additional arguments
 #' 
 #' @return a gt table summarizing the bounds table in group sequential designs
 #' 
@@ -275,7 +278,8 @@ as_gt.gs_design <- function(
   footnote = NULL,
   display_bound = c("Efficacy", "Futility"),
   display_columns = NULL,
-  display_inf_bound = TRUE
+  display_inf_bound = TRUE,
+  ...
 ){
   method <- class(x)[class(x) %in% c("ahr", "wlr", "combo", "rd")]
   
