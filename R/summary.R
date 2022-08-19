@@ -34,7 +34,9 @@ summary <- function(x, ...) {
 #' 
 #' @export summary
 #' @export summary.fixed_design
-#'  
+#' @exportS3Method 
+#' @method summary gs_design
+#' 
 #' @examples
 #' library(dplyr)
 #' 
@@ -157,6 +159,9 @@ summary.fixed_design <- function(x, ...){
 #' 
 #' @export summary
 #' @export summary.gs_design
+#' @exportS3Method 
+#' @method summary gs_design
+#' 
 #' @examples
 #' # ---------------------------- #
 #' #     design parameters        #

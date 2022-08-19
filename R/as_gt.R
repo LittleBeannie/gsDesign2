@@ -37,6 +37,8 @@ as_gt <- function(x, ...) {
 #' 
 #' @export as_gt
 #' @export as_gt.fixed_design
+#' @exportS3Method 
+#' @method as_gt fixed_design
 #' 
 #' @examples
 #' library(dplyr)
@@ -184,7 +186,8 @@ as_gt.fixed_design <- function(x, title = NULL, footnote = NULL){
 #' 
 #' @export as_gt
 #' @export as_gt.gs_design
-#'
+#' @exportS3Method 
+#' @method as_gt gs_design
 #' @examples 
 #' # the default output 
 #' library(dplyr)
