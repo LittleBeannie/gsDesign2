@@ -175,7 +175,7 @@ enrollRates %>% gt() %>% tab_header(title = "Enrollment Table of Scenario 2")
 failRates %>% gt() %>% tab_header(title = "Failure Table of Scenario 2")
 ```
 
-```{r}
+```{r, message=FALSE}
 tab <- NULL
 
 for(trial_duration in seq(20, 60, 4)){
