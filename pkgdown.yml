@@ -18,6 +18,8 @@ articles:
   check_gs_power_wlr: check_gs_power_wlr.html
   check_tEvents: check_tEvents.html
   story_compare_power_delay_effect: story_compare_power_delay_effect.html
+  story_design_with_ahr: story_design_with_ahr.html
+  story_design_with_spending: story_design_with_spending.html
   story_summarize_designs: story_summarize_designs.html
   usage_AHR: usage_AHR.html
   usage_eAccural: usage_eAccural.html
@@ -35,7 +37,7 @@ articles:
   usage_gs_power_wlr: usage_gs_power_wlr.html
   usage_gs_spending_bound: usage_gs_spending_bound.html
   usage_tEvents: usage_tEvents.html
-last_built: 2022-08-19T21:39Z
+last_built: 2022-08-23T21:33Z
 urls:
   reference: https://littlebeannie.github.io/gsDesign2/reference
   article: https://littlebeannie.github.io/gsDesign2/articles
