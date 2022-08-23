@@ -103,6 +103,8 @@ articles:
   contents: 
   - story_summarize_designs
   - story_compare_power_delay_effect
+  - story_design_with_ahr
+  - story_design_with_spending
 - title: "Use case of functions"
   navbar: ~
   desc: >
