@@ -107,6 +107,7 @@ articles:
   - story_summarize_designs
   - story_compare_power_delay_effect
   - story_compute_npe_bound
+  - story_npe_integration
   
 - title: "Use case of functions"
   navbar: ~
