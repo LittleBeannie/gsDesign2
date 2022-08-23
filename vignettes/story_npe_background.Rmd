@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 library(tibble)
 library(dplyr)
 library(knitr)
-library(gsdmvn)
+devtools::load_all()
 ```
 
 ## Overview
