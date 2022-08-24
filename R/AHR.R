@@ -185,14 +185,17 @@ AHR <- function(enrollRates = tibble::tibble(Stratum = "All",
     ans <- ans %>% 
            select(Time, Stratum, t, HR, Events, info, info0) %>%
            group_by(Time, Stratum) %>% 
-           arrange(t, .by_group = TRUE)
+           arrange(t, .by_group = TRUE) %>% 
+           ungroup()
   }else{
     ans <- ans %>%
            group_by(Time) %>%
            summarize(AHR = exp(sum(log(HR) * Events) / sum(Events)),
                      Events = sum(Events),
                      info = sum(info),
-                     info0 = sum(info0))
+                     info0 = sum(info0)) %>%
+           ungroup()
+      
   }
   return(ans)
 }
