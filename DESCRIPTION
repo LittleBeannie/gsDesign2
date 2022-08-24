@@ -39,7 +39,8 @@ Suggests:
     covr,
     bench,
     microbenchmark,
-    simtrial
+    simtrial,
+    kableExtra
 Remotes: 
     Merck/simtrial
 Roxygen: list(markdown = TRUE)

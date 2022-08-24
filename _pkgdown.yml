@@ -113,6 +113,7 @@ articles:
   - story_compute_npe_bound
   - story_npe_integration
   - story_arbitrary_distribution
+  - story_compute_expected_events
   
 - title: "Use case of functions"
   navbar: ~
