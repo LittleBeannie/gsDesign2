@@ -213,22 +213,23 @@ sampleSize
 We examine the average hazard ratio as a function of trial duration with the modified enrollment required to power the trial. We also plot expected event accrual over time; although the graphs go through 40 months, recall that the targeted trial duration is 30 months.
 A key design consideration is selecting trial duration based on things like the degree of AHR improvement over time versus the urgency of completing the trial as quickly as possible, noting that the required sample size will decrease with longer follow-up.
 
-```{r avehrplot,warning = FALSE,message = FALSE,fig.width = 4.5}
+```{r avehrplot, warning=FALSE, message=FALSE, fig.width=3.5}
 avehrtbl <- AHR(
   enrollRates = enrollRates,
   failRates = failRates,
-  totalDuration = 1:(totalDuration + 10)
-)
+  totalDuration = 1:(totalDuration + 10))
+
 ggplot(avehrtbl, aes(x = Time, y = AHR)) +
   geom_line() +
   ylab("Average HR") +
-  ggtitle("Average HR as a function of study duration") +
-  scale_x_continuous(breaks = seq(0, 48, 6))
+  ggtitle("Average HR as a function of study duration") #+
+  #scale_x_continuous(breaks = seq(0, 48, 6))
+
 ggplot(avehrtbl, aes(x = Time, y = Events)) +
   geom_line() +
   ylab("Expected events") +
-  ggtitle("Expected event accumulation as a function of study duration") +
-  scale_x_continuous(breaks = seq(0, 48, 6))
+  ggtitle("Expected event accumulation as a function of study duration") #+
+  #scale_x_continuous(breaks = seq(0, 48, 6))
 ```
 
 ## Simulation to verify power
@@ -389,14 +390,14 @@ avehrtbl <- AHR(
 ggplot(avehrtbl, aes(x = Time, y = AHR)) +
   geom_line() +
   ylab("Average HR") +
-  ggtitle("Average HR as a function of study duration") +
-  scale_x_continuous(breaks = seq(0, 48, 6))
+  ggtitle("Average HR as a function of study duration") #+
+  #scale_x_continuous(breaks = seq(0, 48, 6))
 
 ggplot(avehrtbl, aes(x = Time, y = Events)) +
   geom_line() +
   ylab("Expected events") +
-  ggtitle("Expected event accumulation as a function of study duration") +
-  scale_x_continuous(breaks = seq(0, 48, 6))
+  ggtitle("Expected event accumulation as a function of study duration") #+
+  #scale_x_continuous(breaks = seq(0, 48, 6))
 ```
 
 ## Simulation to verify power
