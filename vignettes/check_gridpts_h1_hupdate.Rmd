@@ -35,13 +35,6 @@ x3b <- gsDesign::normalGrid(bounds = c(-20, 20), mu = 0, sigma = 1, r = 18)
 x3c <- gsDesign::normalGrid(bounds = c(-80, 80), mu = 0, sigma = 1, r = 18)
 ```
 
-```{r}
-tibble(z_x1 = x1$z,
-       z_x2 = x2$z,
-       z_x3b = x3b$z,
-       z_diff = x2$z - x3b$z)
-```
-
 
 
 ```{r, echo=FALSE}
