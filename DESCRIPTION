@@ -38,7 +38,8 @@ Suggests:
     tidyr,
     covr,
     bench,
-    microbenchmark
+    microbenchmark,
+    simtrial
 Remotes: 
     Merck/simtrial
 Roxygen: list(markdown = TRUE)

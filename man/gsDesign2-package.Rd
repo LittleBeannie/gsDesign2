@@ -22,7 +22,10 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Yilong Zhang \email{elong0527@gmail.com}
   \item Yujie Zhao \email{yujie.zhao@merck.com}
+  \item Jianxiao Yang \email{yangjx@ucla.edu}
+  \item Nan Xiao \email{nan.xiao1@merck.com}
 }
 
 Other contributors:
