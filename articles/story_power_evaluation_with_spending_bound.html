@@ -70,7 +70,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Power Evaluation with Spending bounds</h1>
             
-            <h4 data-toc-skip class="date">23 August, 2022</h4>
+            <h4 data-toc-skip class="date">24 August, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/LittleBeannie/gsDesign2/blob/HEAD/vignettes/story_power_evaluation_with_spending_bound.Rmd" class="external-link"><code>vignettes/story_power_evaluation_with_spending_bound.Rmd</code></a></small>
       <div class="d-none name"><code>story_power_evaluation_with_spending_bound.Rmd</code></div>
@@ -215,7 +215,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   = 
   \frac{ p_0(1-p_0)\left(1/\xi_1+ 1/\xi_2\right)}{p_1(1-p_1)/\xi_1+p_2(1-p_2)/\xi_2}.
 \]</span> We also note by definition that <span class="math inline">\(\sigma^2_{0k}/\sigma^2_{1k}=\mathcal I_k/\mathcal I_{0k}.\)</span> Based on an input <span class="math inline">\(p_1, p_2, n_k, \xi_1, \xi_2 = 1-\xi_1\)</span> we will compute <span class="math inline">\(\theta, \mathcal{I}_k, \mathcal{I}_{0k}\)</span> for any <span class="math inline">\(k = 1, 2, \ldots, K\)</span>.</p>
-<p>We note that <span class="math inline">\(\chi^2=Z^2_k\)</span> is the <span class="math inline">\(\chi^2\)</span> test without continuity correction as recommended by <span class="citation">(<span class="citeproc-not-found" data-reference-id="CCmyth"><strong>???</strong></span>)</span>. Note finally that this extends in a straightforward way the non-inferiority test of <span class="citation">Farrington and Manning (1990)</span> if the null hypothesis is <span class="math inline">\(\theta = p_1 - p_2 - \delta = 0\)</span> for some non-inferiority margin <span class="math inline">\(\delta &gt; 0\)</span>; <span class="math inline">\(\delta &lt; 0\)</span> would correspond to what is referred to as super-superiority <span class="citation">(<span class="citeproc-not-found" data-reference-id="Chan2002"><strong>???</strong></span>)</span>, requiring that experimental therapy has been shown to be superior to control by at least a margin <span class="math inline">\(-\delta&gt;0\)</span>.</p>
+<p>We note that <span class="math inline">\(\chi^2=Z^2_k\)</span> is the <span class="math inline">\(\chi^2\)</span> test without continuity correction as recommended by <span class="citation">Gordon and Watson (1996)</span>. Note finally that this extends in a straightforward way the non-inferiority test of <span class="citation">Farrington and Manning (1990)</span> if the null hypothesis is <span class="math inline">\(\theta = p_1 - p_2 - \delta = 0\)</span> for some non-inferiority margin <span class="math inline">\(\delta &gt; 0\)</span>; <span class="math inline">\(\delta &lt; 0\)</span> would correspond to what is referred to as super-superiority <span class="citation">Chan (2002)</span>, requiring that experimental therapy has been shown to be superior to control by at least a margin <span class="math inline">\(-\delta&gt;0\)</span>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -251,12 +251,12 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h1</span> <span class="op">&lt;-</span> <span class="fu">gs_info_binomial</span><span class="op">(</span>p1 <span class="op">=</span> <span class="fl">.15</span>, p2 <span class="op">=</span> <span class="fl">.1</span>, xi1 <span class="op">=</span> <span class="fl">.5</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">350</span>, <span class="fl">700</span>, <span class="fl">1400</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">h1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="fcopwbfbvw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rmulaupxuw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fcopwbfbvw .gt_table {
+#rmulaupxuw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -281,7 +281,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-left-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_heading {
+#rmulaupxuw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -293,7 +293,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_title {
+#rmulaupxuw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -305,7 +305,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-width: 0;
 }
 
-#fcopwbfbvw .gt_subtitle {
+#rmulaupxuw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -317,13 +317,13 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-top-width: 0;
 }
 
-#fcopwbfbvw .gt_bottom_border {
+#rmulaupxuw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_col_headings {
+#rmulaupxuw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -338,7 +338,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_col_heading {
+#rmulaupxuw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -358,7 +358,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   overflow-x: hidden;
 }
 
-#fcopwbfbvw .gt_column_spanner_outer {
+#rmulaupxuw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -370,15 +370,15 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 4px;
 }
 
-#fcopwbfbvw .gt_column_spanner_outer:first-child {
+#rmulaupxuw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fcopwbfbvw .gt_column_spanner_outer:last-child {
+#rmulaupxuw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fcopwbfbvw .gt_column_spanner {
+#rmulaupxuw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -390,7 +390,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   width: 100%;
 }
 
-#fcopwbfbvw .gt_group_heading {
+#rmulaupxuw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -415,7 +415,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: middle;
 }
 
-#fcopwbfbvw .gt_empty_group_heading {
+#rmulaupxuw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -430,15 +430,15 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: middle;
 }
 
-#fcopwbfbvw .gt_from_md > :first-child {
+#rmulaupxuw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fcopwbfbvw .gt_from_md > :last-child {
+#rmulaupxuw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fcopwbfbvw .gt_row {
+#rmulaupxuw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,7 +457,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   overflow-x: hidden;
 }
 
-#fcopwbfbvw .gt_stub {
+#rmulaupxuw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -470,7 +470,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#fcopwbfbvw .gt_stub_row_group {
+#rmulaupxuw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,11 +484,11 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: top;
 }
 
-#fcopwbfbvw .gt_row_group_first td {
+#rmulaupxuw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fcopwbfbvw .gt_summary_row {
+#rmulaupxuw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -498,16 +498,16 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#fcopwbfbvw .gt_first_summary_row {
+#rmulaupxuw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_first_summary_row.thick {
+#rmulaupxuw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fcopwbfbvw .gt_last_summary_row {
+#rmulaupxuw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -517,7 +517,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_grand_summary_row {
+#rmulaupxuw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -527,7 +527,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#fcopwbfbvw .gt_first_grand_summary_row {
+#rmulaupxuw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -537,11 +537,11 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-top-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_striped {
+#rmulaupxuw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fcopwbfbvw .gt_table_body {
+#rmulaupxuw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -550,7 +550,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_footnotes {
+#rmulaupxuw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -564,7 +564,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_footnote {
+#rmulaupxuw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -573,7 +573,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#fcopwbfbvw .gt_sourcenotes {
+#rmulaupxuw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -587,7 +587,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#fcopwbfbvw .gt_sourcenote {
+#rmulaupxuw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -595,36 +595,36 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#fcopwbfbvw .gt_left {
+#rmulaupxuw .gt_left {
   text-align: left;
 }
 
-#fcopwbfbvw .gt_center {
+#rmulaupxuw .gt_center {
   text-align: center;
 }
 
-#fcopwbfbvw .gt_right {
+#rmulaupxuw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fcopwbfbvw .gt_font_normal {
+#rmulaupxuw .gt_font_normal {
   font-weight: normal;
 }
 
-#fcopwbfbvw .gt_font_bold {
+#rmulaupxuw .gt_font_bold {
   font-weight: bold;
 }
 
-#fcopwbfbvw .gt_font_italic {
+#rmulaupxuw .gt_font_italic {
   font-style: italic;
 }
 
-#fcopwbfbvw .gt_super {
+#rmulaupxuw .gt_super {
   font-size: 65%;
 }
 
-#fcopwbfbvw .gt_two_val_uncert {
+#rmulaupxuw .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -633,31 +633,31 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   margin-left: 0.1em;
 }
 
-#fcopwbfbvw .gt_footnote_marks {
+#rmulaupxuw .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#fcopwbfbvw .gt_asterisk {
+#rmulaupxuw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fcopwbfbvw .gt_slash_mark {
+#rmulaupxuw .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#fcopwbfbvw .gt_fraction_numerator {
+#rmulaupxuw .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#fcopwbfbvw .gt_fraction_denominator {
+#rmulaupxuw .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -719,12 +719,12 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
 <span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">10</span>, decimals <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<div id="wuquuylckx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nmyllrhlos" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wuquuylckx .gt_table {
+#nmyllrhlos .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -749,7 +749,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-left-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_heading {
+#nmyllrhlos .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -761,7 +761,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_title {
+#nmyllrhlos .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -773,7 +773,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-width: 0;
 }
 
-#wuquuylckx .gt_subtitle {
+#nmyllrhlos .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -785,13 +785,13 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-top-width: 0;
 }
 
-#wuquuylckx .gt_bottom_border {
+#nmyllrhlos .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_col_headings {
+#nmyllrhlos .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -806,7 +806,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_col_heading {
+#nmyllrhlos .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -826,7 +826,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   overflow-x: hidden;
 }
 
-#wuquuylckx .gt_column_spanner_outer {
+#nmyllrhlos .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -838,15 +838,15 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 4px;
 }
 
-#wuquuylckx .gt_column_spanner_outer:first-child {
+#nmyllrhlos .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wuquuylckx .gt_column_spanner_outer:last-child {
+#nmyllrhlos .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wuquuylckx .gt_column_spanner {
+#nmyllrhlos .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -858,7 +858,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   width: 100%;
 }
 
-#wuquuylckx .gt_group_heading {
+#nmyllrhlos .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -883,7 +883,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: middle;
 }
 
-#wuquuylckx .gt_empty_group_heading {
+#nmyllrhlos .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -898,15 +898,15 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: middle;
 }
 
-#wuquuylckx .gt_from_md > :first-child {
+#nmyllrhlos .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wuquuylckx .gt_from_md > :last-child {
+#nmyllrhlos .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wuquuylckx .gt_row {
+#nmyllrhlos .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -925,7 +925,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   overflow-x: hidden;
 }
 
-#wuquuylckx .gt_stub {
+#nmyllrhlos .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -938,7 +938,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wuquuylckx .gt_stub_row_group {
+#nmyllrhlos .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -952,11 +952,11 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: top;
 }
 
-#wuquuylckx .gt_row_group_first td {
+#nmyllrhlos .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wuquuylckx .gt_summary_row {
+#nmyllrhlos .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -966,16 +966,16 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wuquuylckx .gt_first_summary_row {
+#nmyllrhlos .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_first_summary_row.thick {
+#nmyllrhlos .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wuquuylckx .gt_last_summary_row {
+#nmyllrhlos .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -985,7 +985,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_grand_summary_row {
+#nmyllrhlos .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -995,7 +995,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wuquuylckx .gt_first_grand_summary_row {
+#nmyllrhlos .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1005,11 +1005,11 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-top-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_striped {
+#nmyllrhlos .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wuquuylckx .gt_table_body {
+#nmyllrhlos .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1018,7 +1018,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_footnotes {
+#nmyllrhlos .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1032,7 +1032,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_footnote {
+#nmyllrhlos .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1041,7 +1041,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wuquuylckx .gt_sourcenotes {
+#nmyllrhlos .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1055,7 +1055,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wuquuylckx .gt_sourcenote {
+#nmyllrhlos .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1063,36 +1063,36 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wuquuylckx .gt_left {
+#nmyllrhlos .gt_left {
   text-align: left;
 }
 
-#wuquuylckx .gt_center {
+#nmyllrhlos .gt_center {
   text-align: center;
 }
 
-#wuquuylckx .gt_right {
+#nmyllrhlos .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wuquuylckx .gt_font_normal {
+#nmyllrhlos .gt_font_normal {
   font-weight: normal;
 }
 
-#wuquuylckx .gt_font_bold {
+#nmyllrhlos .gt_font_bold {
   font-weight: bold;
 }
 
-#wuquuylckx .gt_font_italic {
+#nmyllrhlos .gt_font_italic {
   font-style: italic;
 }
 
-#wuquuylckx .gt_super {
+#nmyllrhlos .gt_super {
   font-size: 65%;
 }
 
-#wuquuylckx .gt_two_val_uncert {
+#nmyllrhlos .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1101,31 +1101,31 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   margin-left: 0.1em;
 }
 
-#wuquuylckx .gt_footnote_marks {
+#nmyllrhlos .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wuquuylckx .gt_asterisk {
+#nmyllrhlos .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wuquuylckx .gt_slash_mark {
+#nmyllrhlos .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#wuquuylckx .gt_fraction_numerator {
+#nmyllrhlos .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#wuquuylckx .gt_fraction_denominator {
+#nmyllrhlos .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1234,12 +1234,12 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
 <span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html" class="external-link">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">10</span>, decimals <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<div id="wkesduzzyq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nufxeezmyd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wkesduzzyq .gt_table {
+#nufxeezmyd .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1264,7 +1264,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-left-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_heading {
+#nufxeezmyd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1276,7 +1276,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_title {
+#nufxeezmyd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1288,7 +1288,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-width: 0;
 }
 
-#wkesduzzyq .gt_subtitle {
+#nufxeezmyd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1300,13 +1300,13 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-top-width: 0;
 }
 
-#wkesduzzyq .gt_bottom_border {
+#nufxeezmyd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_col_headings {
+#nufxeezmyd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1321,7 +1321,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_col_heading {
+#nufxeezmyd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1341,7 +1341,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   overflow-x: hidden;
 }
 
-#wkesduzzyq .gt_column_spanner_outer {
+#nufxeezmyd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1353,15 +1353,15 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 4px;
 }
 
-#wkesduzzyq .gt_column_spanner_outer:first-child {
+#nufxeezmyd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wkesduzzyq .gt_column_spanner_outer:last-child {
+#nufxeezmyd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wkesduzzyq .gt_column_spanner {
+#nufxeezmyd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1373,7 +1373,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   width: 100%;
 }
 
-#wkesduzzyq .gt_group_heading {
+#nufxeezmyd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1398,7 +1398,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: middle;
 }
 
-#wkesduzzyq .gt_empty_group_heading {
+#nufxeezmyd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1413,15 +1413,15 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: middle;
 }
 
-#wkesduzzyq .gt_from_md > :first-child {
+#nufxeezmyd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wkesduzzyq .gt_from_md > :last-child {
+#nufxeezmyd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wkesduzzyq .gt_row {
+#nufxeezmyd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1440,7 +1440,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   overflow-x: hidden;
 }
 
-#wkesduzzyq .gt_stub {
+#nufxeezmyd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1453,7 +1453,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wkesduzzyq .gt_stub_row_group {
+#nufxeezmyd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1467,11 +1467,11 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   vertical-align: top;
 }
 
-#wkesduzzyq .gt_row_group_first td {
+#nufxeezmyd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wkesduzzyq .gt_summary_row {
+#nufxeezmyd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1481,16 +1481,16 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wkesduzzyq .gt_first_summary_row {
+#nufxeezmyd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_first_summary_row.thick {
+#nufxeezmyd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wkesduzzyq .gt_last_summary_row {
+#nufxeezmyd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1500,7 +1500,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_grand_summary_row {
+#nufxeezmyd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1510,7 +1510,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wkesduzzyq .gt_first_grand_summary_row {
+#nufxeezmyd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1520,11 +1520,11 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-top-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_striped {
+#nufxeezmyd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wkesduzzyq .gt_table_body {
+#nufxeezmyd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1533,7 +1533,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-bottom-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_footnotes {
+#nufxeezmyd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1547,7 +1547,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_footnote {
+#nufxeezmyd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1556,7 +1556,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wkesduzzyq .gt_sourcenotes {
+#nufxeezmyd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1570,7 +1570,7 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   border-right-color: #D3D3D3;
 }
 
-#wkesduzzyq .gt_sourcenote {
+#nufxeezmyd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1578,36 +1578,36 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   padding-right: 5px;
 }
 
-#wkesduzzyq .gt_left {
+#nufxeezmyd .gt_left {
   text-align: left;
 }
 
-#wkesduzzyq .gt_center {
+#nufxeezmyd .gt_center {
   text-align: center;
 }
 
-#wkesduzzyq .gt_right {
+#nufxeezmyd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wkesduzzyq .gt_font_normal {
+#nufxeezmyd .gt_font_normal {
   font-weight: normal;
 }
 
-#wkesduzzyq .gt_font_bold {
+#nufxeezmyd .gt_font_bold {
   font-weight: bold;
 }
 
-#wkesduzzyq .gt_font_italic {
+#nufxeezmyd .gt_font_italic {
   font-style: italic;
 }
 
-#wkesduzzyq .gt_super {
+#nufxeezmyd .gt_super {
   font-size: 65%;
 }
 
-#wkesduzzyq .gt_two_val_uncert {
+#nufxeezmyd .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1616,31 +1616,31 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
   margin-left: 0.1em;
 }
 
-#wkesduzzyq .gt_footnote_marks {
+#nufxeezmyd .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wkesduzzyq .gt_asterisk {
+#nufxeezmyd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wkesduzzyq .gt_slash_mark {
+#nufxeezmyd .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#wkesduzzyq .gt_fraction_numerator {
+#nufxeezmyd .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#wkesduzzyq .gt_fraction_denominator {
+#nufxeezmyd .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1740,8 +1740,14 @@ Z_k = \hat\theta_k/\hat\sigma_{0k}=\frac{\hat p_{1k} - \hat p_{2k}}{\sqrt{(1/n_{
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references">
+<div id="ref-Chan2002">
+<p>Chan, Ivan SF. 2002. “Power and Sample Size Determination for Noninferiority Trials Using an Exact Method.” <em>Journal of Biopharmaceutical Statistics</em> 12 (4): 457–69.</p>
+</div>
 <div id="ref-FarringtonManning">
 <p>Farrington, Conor P, and Godfrey Manning. 1990. “Test Statistics and Sample Size Formulae for Comparative Binomial Trials with Null Hypothesis of Non-Zero Risk Difference or Non-Unity Relative Risk.” <em>Statistics in Medicine</em> 9 (12): 1447–54.</p>
+</div>
+<div id="ref-CCmyth">
+<p>Gordon, Ian, and Ray Watson. 1996. “The Myth of Continuity-Corrected Sample Size Formulae.” <em>Biometrics</em>, 71–76.</p>
 </div>
 <div id="ref-CAPTURE">
 <p>Investigators, Capture, and others. 1997. “Randomised Placebo-Controlled Trial of Abciximab Before and During Coronary Intervention in Refractory Unstable Angina: The Capture Study.” <em>Lancet</em> 349: 1429–35.</p>
