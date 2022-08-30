@@ -313,7 +313,7 @@ summary(design2ss) %>% as_gt()
 
 The bounds can be plotted easily:
 
-```{r,fig.width=6.5}
+```{r,fig.width=3}
 ggplot(
   data = design2ss$analysis %>% left_join(design2ss$bounds), 
   aes(x = Events, y = Z, group = Bound)) +
@@ -332,7 +332,7 @@ This might be considered a *disaster check*. After this point in time, there may
 For efficacy, we add an infinite bound at this first interim analysis.
 
 ```{r}
-gs_prob <- function(theta, upper=gs_b, lower=gs_b, upar, lpar, info, r = 18){
+gs_prob <- function(theta, upper = gs_b, lower = gs_b, upar, lpar, info, r = 18){
    # deal with R cmd check messages
    Z <- h <- NULL
    K <- length(info)
@@ -342,22 +342,22 @@ gs_prob <- function(theta, upper=gs_b, lower=gs_b, upar, lpar, info, r = 18){
    upperProb <- rep(NA, K)
    lowerProb <- rep(NA, K)
    for(k in seq_along(info)){
-     if(k==1){
-        upperProb[1] <- if(Zupper[1] < Inf) {pnorm(Zupper[1], mean = sqrt(info[1]) * theta[1], lower.tail = FALSE)}else{0}
-        lowerProb[1] <- if(Zlower[1] > -Inf){pnorm(Zlower[1], mean = sqrt(info[1]) * theta[1])}else{0}
+     if(k == 1){
+        upperProb[1] <- if(Zupper[1] < Inf) {pnorm( sqrt(info[1]) * (theta[1] - Zupper[1] / sqrt(info0[1])))}else{0}
+        lowerProb[1] <- if(Zlower[1] > -Inf){pnorm(-sqrt(info[1]) * (theta[1] - Zlower[1] / sqrt(info0[1])))}else{0}
+        #upperProb[1] <- if(Zupper[1] < Inf) {pnorm(Zupper[1], mean = sqrt(info[1]) * theta[1], lower.tail = FALSE)}else{0}
+        #lowerProb[1] <- if(Zlower[1] > -Inf){pnorm(Zlower[1], mean = sqrt(info[1]) * theta[1])}else{0}
         g <- h1(r = r, theta = theta[1], I = info[1], a = Zlower[1], b = Zupper[1])
      }else{
         # Cross upper bound
         upperProb[k] <- if(Zupper[k]< Inf){
-              hupdate(r = r, theta = theta[k], I = info[k], a = Zupper[k], b = Inf,
-                             thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = g) %>%
-              summarise(sum(h)) %>% as.numeric()
+              sum((hupdate(r = r, theta = theta[k], I = info[k], a = Zupper[k], b = Inf,
+                             thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = g))$h) 
            }else{0}
       # Cross lower bound
         lowerProb[k] <- if(Zlower[k] > -Inf){
-              hupdate(r = r, theta = theta[k], I = info[k], a = -Inf, b = Zlower[k],
-                             thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = g) %>%
-              summarise(sum(h)) %>% as.numeric()
+              sum((hupdate(r = r, theta = theta[k], I = info[k], a = -Inf, b = Zlower[k],
+                             thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = g))$h)
         }else{0}
         # if k < K, update numerical integration for next analy
         if (k < K) g <- hupdate(r = r, theta = theta[k], I = info[k], a = Zlower[k], b = Zupper[k],
@@ -367,7 +367,7 @@ gs_prob <- function(theta, upper=gs_b, lower=gs_b, upar, lpar, info, r = 18){
      return(tibble::tibble(
               Analysis = rep(1:K, 2),
               Bound = c(rep("Upper", K), rep("Lower", K)),
-              Z= c(Zupper, Zlower),
+              Z = c(Zupper, Zlower),
               Probability = c(cumsum(upperProb),
                               cumsum(lowerProb)),
               theta = rep(theta, 2),
@@ -401,12 +401,15 @@ gs_design_nph <- function(enrollRates = tibble(Stratum="All",
      1 -  beta - max((gs_prob(theta = theta, upper = Zupper, lower = Zlower, upar = upar, lpar = lpar,
                              info = x * info, r = r) %>% filter(Bound == "Upper"))$Probability)
   }
+  
   avehr <- AHR(enrollRates = enrollRates,
-                          failRates = failRates,
-                          totalDuration = analysisTimes,
-                          ratio = ratio)
+               failRates = failRates,
+               totalDuration = analysisTimes,
+               ratio = ratio)
+  
   K <- max(length(IF), length(analysisTimes))
   finalEvents <- max(avehr$Events)
+  
   if (is.null(IF)){
     avehr$IF <- avehr$Events/finalEvents
   }else{
@@ -462,7 +465,7 @@ gs_design_nph <- function(enrollRates = tibble(Stratum="All",
 
 
 
-```{r}
+```{r, eval=FALSE}
 b2sa <- c(Inf, 
           gsDesign(k = 3, 
                    timing = c(0.5, 0.75, 1), 
@@ -471,7 +474,7 @@ b2sa <- c(Inf,
                    sfu = gsDesign::sfLDOF)$upper$bound)   # Same efficacy bound as before
 a2sa <- c(rep(qnorm(.05), 2), rep(-Inf, 2))               # Single futility analysis bound
 
-try(
+
 design2sa <- gs_design_nph(
   enrollRates = enrollRates,
   failRates = failRates,
@@ -482,7 +485,7 @@ design2sa <- gs_design_nph(
   lpar = a2sa,                                            # Asymmetric 2-sided bound
   IF = c(.3, .5, .75, 1)
 )
-)
+
 ```
 
 We now have a slightly larger sample size to account for the possibility of an early futility stop.
