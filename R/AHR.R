@@ -133,7 +133,9 @@ AHR <- function(enrollRates = tibble::tibble(Stratum = "All",
   strata <- unique(enrollRates$Stratum)
   
   for(td in totalDuration){
+    
     events <- NULL
+    
     for(s in strata){
       # subset to stratum
       enroll <- enrollRates %>% filter(Stratum == s)
