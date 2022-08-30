@@ -229,7 +229,7 @@ $$
   f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 $$
 
-```{r, echo=FALSE, fig.width=4.5}
+```{r, echo=FALSE, fig.width=3}
 ggplot(
   data = tibble(t = (0:50) / 50, `f(t)` = 2 - 2 * pnorm(qnorm(1 - .0125) / sqrt(t))),
   aes(x = t, y = `f(t)`)) +
