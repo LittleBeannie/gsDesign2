@@ -1,0 +1,21 @@
+pandoc: 2.11.4
+pkgdown: 2.0.1
+pkgdown_sha: ~
+articles:
+  check_AHR: check_AHR.html
+  check_eEvents_df: check_eEvents_df.html
+  check_gs_design_npe: check_gs_design_npe.html
+  check_gs_power_npe: check_gs_power_npe.html
+  check_tEvents: check_tEvents.html
+  usage_AHR: usage_AHR.html
+  usage_eEvents_df: usage_eEvents_df.html
+  usage_gs_b: usage_gs_b.html
+  usage_gs_info_ahr: usage_gs_info_ahr.html
+  usage_gs_power_npe: usage_gs_power_npe.html
+  usage_gs_spending_bound: usage_gs_spending_bound.html
+  usage_tEvents: usage_tEvents.html
+last_built: 2022-08-10T16:46Z
+urls:
+  reference: https://littlebeannie.github.io/gsDesign2/reference
+  article: https://littlebeannie.github.io/gsDesign2/articles
+
