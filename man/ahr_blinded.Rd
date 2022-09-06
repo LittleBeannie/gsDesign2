@@ -65,7 +65,7 @@ library(simtrial)
 library(survival)
 ahr_blinded(Srv = Surv(time = simtrial::Ex2delayedEffect$month,
                        event = simtrial::Ex2delayedEffect$evntd),
-            intervals = c(4,100),
+            intervals = c(4, 100),
             hr = c(1, .55),
             ratio = 1)
 }

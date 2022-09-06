@@ -61,7 +61,7 @@
 #' library(survival)
 #' ahr_blinded(Srv = Surv(time = simtrial::Ex2delayedEffect$month,
 #'                        event = simtrial::Ex2delayedEffect$evntd),
-#'             intervals = c(4,100),
+#'             intervals = c(4, 100),
 #'             hr = c(1, .55),
 #'             ratio = 1)
 #' }
@@ -83,7 +83,7 @@ ahr_blinded <- function (Srv = survival::Surv(time = simtrial::Ex1delayedEffect$
   if (length(hr) < length(events)) hr <- c(hr, rep(hr[nhr], nx - nhr))
   
   # Compute blinded AHR
-  theta <- sum(log(hr[1:nx]) * events) / sum(events)
+  theta <- sum(log(hr[1 : nx]) * events) / sum(events)
   
   # Compute adjustment for information
   Qe <- ratio / (1 + ratio)

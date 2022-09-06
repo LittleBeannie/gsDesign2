@@ -69,6 +69,13 @@ reference:
   - gs_spending_combo
   - gs_power_combo
   - gs_design_combo
+- title: Risk differnce
+  desc: >
+    Functions for risk differences. 
+  contents: 
+  - gs_info_rd
+  - gs_power_rd
+  -gs_design_rd
 - title: Summary and display tables
   desc: >
     Functions to summarize fixed / group sequential design results. 
