@@ -1492,7 +1492,7 @@ save(ans, file = "./fixture/rd_simu_power_gspowernpe_3_weight_new.Rdata")
 
 
 ```{r}
-load("./fixtures/rd_simu_power_gspowernpe_3_weight_new.Rdata")
+load("./fixtures/rd_simu_power_gspowernpe_3_weight.Rdata")
 ans %>% 
   group_by(`calculated under`) %>% 
   summarize(`simulated power - ss` = mean(ss), 

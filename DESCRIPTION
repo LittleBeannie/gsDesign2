@@ -21,6 +21,7 @@ Imports:
     dplyr,
     tibble,
     npsurvSS,
+    survival,
     corpcor,
     utils,
     mvtnorm,
@@ -40,8 +41,7 @@ Suggests:
     bench,
     microbenchmark,
     simtrial,
-    kableExtra,
-    survival
+    kableExtra
 Remotes: 
     Merck/simtrial
 Roxygen: list(markdown = TRUE)
