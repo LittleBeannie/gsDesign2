@@ -43,7 +43,6 @@ NULL
 #' @param r  Integer, at least 2; default of 18 recommended by Jennison and Turnbull
 #' @param p_c rate at the control group
 #' @param p_e rate at the experimental group 
-#' @param n sample size 
 #' @param rd0 treatment effect under super-superiority designs, the default is 0
 #' @param info_scale the information scale for calculation
 #' @param weight the weighting scheme for stratified population
