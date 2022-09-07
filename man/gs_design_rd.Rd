@@ -32,6 +32,10 @@ gs_design_rd(
 
 \item{p_e}{rate at the experimental group}
 
+\item{k}{number of analysis}
+
+\item{IF}{statistical information fraction}
+
 \item{rd0}{treatment effect under super-superiority designs, the default is 0}
 
 \item{alpha}{One-sided Type I error}
@@ -61,7 +65,7 @@ otherwise, a logical vector of the same length as \code{info} should indicate wh
 single value FALSE indicated no lower bound; otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have a
 lower bound}
 
-\item{info_scale}{}
+\item{info_scale}{the information scale for calculation}
 
 \item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 

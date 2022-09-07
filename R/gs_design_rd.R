@@ -21,7 +21,8 @@
 #' @importFrom dplyr mutate full_join select arrange desc
 NULL
 #' Group sequential design using average hazard ratio under non-proportional hazards
-#'
+#' 
+#' @param k number of analysis
 #' @param ratio Experimental:Control randomization ratio (not yet implemented)
 #' @param stratum_prev randomization ratio of different stratum. 
 #' If it is un-stratified design then \code{NULL}.
@@ -38,12 +39,13 @@ NULL
 #' @param test_lower indicator of which analyses should include an lower bound; single value of TRUE (default) indicates all analyses;
 #' single value FALSE indicated no lower bound; otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have a
 #' lower bound
+#' @param IF statistical information fraction
 #' @param r  Integer, at least 2; default of 18 recommended by Jennison and Turnbull
 #' @param p_c rate at the control group
 #' @param p_e rate at the experimental group 
 #' @param n sample size 
 #' @param rd0 treatment effect under super-superiority designs, the default is 0
-#' @param info_scale 
+#' @param info_scale the information scale for calculation
 #' @param weight the weighting scheme for stratified population
 #' @param tol Tolerance parameter for boundary convergence (on Z-scale)
 #'
