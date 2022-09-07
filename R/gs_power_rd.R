@@ -47,6 +47,8 @@
 #' # --------------------- #
 #' #      example 1        #
 #' # --------------------- #
+#' library(gsDesign)
+#' 
 #' # un-stratified case with H0: rd0 = 0
 #' gs_power_rd(
 #'   p_c = tibble::tibble(Stratum = "All",
