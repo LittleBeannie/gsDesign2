@@ -251,7 +251,7 @@ summary(design2ss) %>%
 
 The bounds can be plotted easily:
 
-```{r,fig.width=6.5}
+```{r,fig.width=3}
 ggplot(
   data = design2ss$analysis %>% 
     left_join(design2ss$bounds, by="Analysis"), 
