@@ -111,7 +111,6 @@ articles:
   desc: >
     The following vignettes cover cases where gsDesin2 can be used to solve problems in practics.
   contents: 
-  - QuickStart
   - story_quick_start
   - story_npe_background
   - story_design_with_ahr
