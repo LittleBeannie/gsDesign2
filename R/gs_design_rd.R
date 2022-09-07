@@ -18,7 +18,6 @@
 #' @importFrom tibble tibble
 #' @importFrom gsDesign gsDesign sfLDOF
 #' @importFrom stats qnorm
-#' @importFrom gsDesign2 AHR
 #' @importFrom dplyr mutate full_join select arrange desc
 NULL
 #' Group sequential design using average hazard ratio under non-proportional hazards

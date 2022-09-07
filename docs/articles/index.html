@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../index.html">Home</a>
 </li>
@@ -47,37 +47,108 @@
     </div>
 
     <div class="section ">
+      <h3>Use gsDesign2 to solve practical problems</h3>
+      <p class="section-desc"></p><p>The following vignettes cover cases where gsDesin2 can be used to solve problems in practics.</p>
+
+      <dl><dt><a href="story_quick_start.html">Quick Start for NPH Sample Size and Power</a></dt>
+        <dd>
+        </dd><dt><a href="story_npe_background.html">Non-Proportional Effect Size in Group Sequential Design</a></dt>
+        <dd>
+        </dd><dt><a href="story_design_with_ahr.html">Design Using Average Hazard Ratio</a></dt>
+        <dd>
+        </dd><dt><a href="story_ahr_under_nph.html">Average hazard ratio and sample size under non-proportional hazards</a></dt>
+        <dd>
+        </dd><dt><a href="story_design_with_spending.html">Trial design with spending under NPH</a></dt>
+        <dd>
+        </dd><dt><a href="story_spending_time_example.html">Spending Time Examples</a></dt>
+        <dd>
+        </dd><dt><a href="story_power_evaluation_with_spending_bound.html">Power Evaluation with Spending bounds</a></dt>
+        <dd>
+        </dd><dt><a href="story_summarize_designs.html">Summarize Group Sequential Designs in Nice gt Tables</a></dt>
+        <dd>
+        </dd><dt><a href="story_compare_power_delay_effect.html">Power for Delayed Effect Scenarios</a></dt>
+        <dd>
+        </dd><dt><a href="story_compute_npe_bound.html">Computing Bounds Under Non-Constant Treatment Effect</a></dt>
+        <dd>
+        </dd><dt><a href="story_npe_integration.html">Numerical Integration Non-Proportional Effect Size in Group Sequential Design</a></dt>
+        <dd>
+        </dd><dt><a href="story_arbitrary_distribution.html">Approximating an Arbitrary Survival Distribution</a></dt>
+        <dd>
+        </dd><dt><a href="story_compute_expected_events.html">Computing expected events by interval at risk</a></dt>
+        <dd>
+        </dd><dt><a href="story_risk_difference.html">Group Sequential Design for Binary Outcomes</a></dt>
+        <dd>
+      </dd></dl></div>
+    <div class="section ">
       <h3>Use case of functions</h3>
       <p class="section-desc"></p><p>The following vignettes cover the usage of the key functions in gsDesign2.</p>
 
-      <dl><dt><a href="usage_eEvents_df.html">Usage of eEvents_df</a></dt>
+      <dl><dt><a href="usage_eEvents_df.html">eEvents_df: compute expected number of events at 1 time point</a></dt>
         <dd>
-        </dd><dt><a href="usage_AHR.html">Usage of AHR</a></dt>
+        </dd><dt><a href="usage_AHR.html">AHR: computes AHR under NPH assumptions and (stratified) populations</a></dt>
         <dd>
-        </dd><dt><a href="usage_tEvents.html">Usage of eEvents_df</a></dt>
+        </dd><dt><a href="usage_tEvents.html">tEvents: compute time when a targeted number of events is made</a></dt>
         <dd>
-        </dd><dt><a href="usage_gs_info_ahr.html">Usage of gs_info_ahr</a></dt>
+        </dd><dt><a href="usage_gs_info_ahr.html">gs_info_ahr: compute statistical information by the AHR method</a></dt>
         <dd>
-        </dd><dt><a href="usage_gs_b.html">Usage of gs_b</a></dt>
+        </dd><dt><a href="usage_gs_info_wlr.html">gs_info_wlr: compute statistical information by the WLR method</a></dt>
         <dd>
-        </dd><dt><a href="usage_gs_spending_bound.html">Usage of gs_spending_bound</a></dt>
+        </dd><dt><a href="usage_gs_info_combo.html">gs_info_combo: compute statistical information by the max combo method</a></dt>
         <dd>
-        </dd><dt><a href="usage_gs_power_npe.html">Usage of gs_power_npe</a></dt>
+        </dd><dt><a href="usage_gs_power_ahr.html">gs_power_ahr: computes power using average hazard ratio under non-proportional hazards</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_power_wlr.html">gs_power_wlr: compute power by the WLR method</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_power_combo.html">gs_power_combo: compute power by the max combo method</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_design_ahr.html">gs_design_ahr: compute sample size by the AHR method</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_design_wlr.html">gs_design_wlr: compute sample size by the WLR method</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_design_combo.html">gs_design_combo: compute sample size by the max combo method</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_b.html">gs_b: specify fixed boundaries in group sequential designs</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_spending_bound.html">gs_spending_bound: compute spending boundary in group sequential design</a></dt>
+        <dd>
+        </dd><dt><a href="usage_gs_power_npe.html">gs_power_npe: derives bounds and crossing probabilities for group sequential designs under NPH assumptions</a></dt>
+        <dd>
+        </dd><dt><a href="usage_eAccural.html">eAccrual: computes the expected cumulative enrollment (accrual) given a set of piecewise constant enrollment rates and times.</a></dt>
         <dd>
       </dd></dl></div>
     <div class="section ">
       <h3>Check of functions</h3>
       <p class="section-desc"></p><p>The following vignettes cover the tests and checks of the key functions in gsDesign2.</p>
 
-      <dl><dt><a href="check_eEvents_df.html">Check eEvents_df</a></dt>
+      <dl><dt><a href="check_gridpts_h1_hupdate.html">Test of the functions gridpts, h1, hupdate</a></dt>
         <dd>
-        </dd><dt><a href="check_AHR.html">check AHR()</a></dt>
+        </dd><dt><a href="check_eEvents_df.html">Test of the function eEvents_df</a></dt>
         <dd>
-        </dd><dt><a href="check_tEvents.html">Check tEvents</a></dt>
+        </dd><dt><a href="check_AHR.html">Test of the function AHR</a></dt>
         <dd>
-        </dd><dt><a href="check_gs_power_npe.html">Check gs_power_npe</a></dt>
+        </dd><dt><a href="check_tEvents.html">Test of the function tEvents</a></dt>
         <dd>
-        </dd><dt><a href="check_gs_design_npe.html">check of gs_design_npe</a></dt>
+        </dd><dt><a href="check_gs_power_npe.html">Test of the function gs_power_npe</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_design_npe.html">Test of the function gs_design_npe</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_info_ahr.html">Test of the function gs_info_ahr</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_info_wlr.html">Test of the function gs_info_wlr</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_info_combo.html">Test of the function gs_info_combo</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_power_ahr.html">Test of the function gs_power_ahr</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_power_wlr.html">Test of the function gs_power_wlr</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_power_combo.html">Test of the function gs_power_combo</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_design_ahr.html">Test of the function gs_design_ahr</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_design_wlr.html">Test of the function gs_design_wlr</a></dt>
+        <dd>
+        </dd><dt><a href="check_gs_design_combo.html">Test of the function gs_design_combo</a></dt>
         <dd>
       </dd></dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -85,7 +156,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by Keaven Anderson, Yujie Zhao. Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1. <br>Copyright © 2022 Merck &amp; Co., Inc., Rahway, NJ, USA and its affiliates. All rights reserved.</p>
+  <p></p><p>Developed by Keaven Anderson, Yilong Zhang, Yujie Zhao, Jianxiao Yang, Nan Xiao. Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6. <br>Copyright © 2022 Merck &amp; Co., Inc., Rahway, NJ, USA and its affiliates. All rights reserved.</p>
 </div>
 
 <div class="pkgdown-footer-right">

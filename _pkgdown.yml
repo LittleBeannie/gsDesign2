@@ -124,7 +124,7 @@ articles:
   - story_npe_integration
   - story_arbitrary_distribution
   - story_compute_expected_events
-  
+  - story_risk_difference
 - title: "Use case of functions"
   navbar: ~
   desc: >

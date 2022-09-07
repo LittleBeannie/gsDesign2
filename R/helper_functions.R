@@ -21,7 +21,8 @@
 #' a blinded estimate of average hazard ratio (AHR) and corresponding estimate of statistical information.
 #' This function is intended for use in computing futility bounds based on spending assuming
 #' the input hazard ratio (hr) values for intervals specified here.
-#'
+#' @importFrom tibble tibble
+#' @importFrom survival Surv
 #' @param Srv input survival object (see \code{Surv}); note that only 0=censored, 1=event for \code{Surv}
 #' @param intervals Vector containing positive values indicating interval lengths where the
 #' exponential rates are assumed.
@@ -29,6 +30,7 @@
 #' specified.
 #' @param hr vector of hazard ratios assumed for each interval
 #' @param ratio ratio of experimental to control randomization.
+#' 
 #' @section Specification:
 #' \if{latex}{
 #'  \itemize{
@@ -67,16 +69,17 @@
 #' }
 #'
 #' @export
-ahr_blinded <- function (Srv = survival::Surv(time = simtrial::Ex1delayedEffect$month,
-                                              event = simtrial::Ex1delayedEffect$evntd),
+ahr_blinded <- function (Srv = Surv(time = simtrial::Ex1delayedEffect$month,
+                                    event = simtrial::Ex1delayedEffect$evntd),
                          intervals = array(3, 3),
                          hr = c(1, .6),
                          ratio = 1){   
+  
   msg <- "hr must be a vector of positive numbers"
-  if (!is.vector(hr, mode="numeric")) stop(msg)
+  if (!is.vector(hr, mode = "numeric")) stop(msg)
   if (min(hr) <= 0) stop(msg)
   
-  events <- simtrial::pwexpfit(Srv, intervals)[,3]
+  events <- simtrial::pwexpfit(Srv, intervals)[ , 3]
   nhr <- length(hr)
   nx <- length(events)
   # Add to hr if length shorter than intervals
@@ -88,8 +91,8 @@ ahr_blinded <- function (Srv = survival::Surv(time = simtrial::Ex1delayedEffect$
   # Compute adjustment for information
   Qe <- ratio / (1 + ratio)
   
-  ans <- tibble::tibble(Events = sum(events), AHR = exp(theta), 
-                        theta = theta, info0 = sum(events) * (1 - Qe) * Qe)
+  ans <- tibble(Events = sum(events), AHR = exp(theta), 
+                theta = theta, info0 = sum(events) * (1 - Qe) * Qe)
   return(ans)
 }
 
@@ -153,7 +156,7 @@ ppwe <- function(x = 0:20,
   # check input enrollment rate assumptions
   if(!is.numeric(x)){stop("gsDesign2: x in `ppwe()` must be a strictly increasing non-negative numeric vector")}
   if(!min(x) >= 0){stop("gsDesign2: x in `ppwe()` must be a strictly increasing non-negative numeric vector")}
-  if(!min(x[x>0] - lag(x[x>0], default = 0)) > 0){stop("gsDesign2: x in `ppwe()` must be a strictly increasing non-negative numeric vector")}
+  if(!min(x[x>0] - lag(x[x > 0], default = 0)) > 0){stop("gsDesign2: x in `ppwe()` must be a strictly increasing non-negative numeric vector")}
   
   # check input failure rate assumptions
   if(!is.data.frame(failRates)){stop("gsDesign2: failRates in `ppwe()` must be a data.frame")}
@@ -209,9 +212,9 @@ NULL
 #' @return A tibble containing the duration and rate.
 #' @examples
 #' # Example: arbitrary numbers
-#' s2pwe(1:9,(9:1)/10)
+#' s2pwe(1:9, (9:1)/10)
 #' # Example: lognormal
-#' s2pwe(c(1:6,9),plnorm(c(1:6,9),meanlog=0,sdlog=2,lower.tail=FALSE))
+#' s2pwe(c(1:6,9), plnorm(c(1:6,9),meanlog = 0, sdlog = 2,lower.tail = FALSE))
 #' @export
 s2pwe <- function(times, survival){
   # check input values
@@ -231,7 +234,9 @@ s2pwe <- function(times, survival){
   if(!max(survival) <= 1){stop("gsDesign2: survival in `s2pwe()` must be non-increasing positive finite numbers less than or equal to 1 with at least 1 value < 1")}
   if(!min(survival) < 1){stop("gsDesign2: survival in `s2pwe()` must be non-increasing positive finite numbers less than or equal to 1 with at least 1 value < 1")}
   if(len > 1){
-    if(!min(survival[2 : len]-survival[1 : (len - 1)]) <= 0 ){stop("gsDesign2: survival in `s2pwe()` must be non-increasing positive finite numbers less than or equal to 1 with at least 1 value < 1")}
+    if(!min(survival[2 : len] - survival[1 : (len - 1)]) <= 0 ){
+      stop("gsDesign2: survival in `s2pwe()` must be non-increasing positive finite numbers less than or equal to 1 with at least 1 value < 1")
+    }
   }
   
   ans <- tibble::tibble(Times = times, Survival = survival) %>%
