@@ -116,7 +116,7 @@ d <- fixed_design(
   x = "AHR",                 # method for computing sample size
   enrollRates = enrollRates, # Relative enrollment rates 
   failRates = failRates,     # Failure rates from above
-  alpha = alpha,             # Ttoe U error
+  alpha = alpha,             # Type I error
   power = 1 - beta,          # Type II error = 1 - power
   studyDuration = 36         # Planned trial duration
 )
