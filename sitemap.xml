@@ -7,6 +7,9 @@
     <loc>https://littlebeannie.github.io/gsDesign2/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/QuickStart.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/check_AHR.html</loc>
   </url>
   <url>
@@ -86,6 +89,9 @@
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/story_quick_start.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/articles/story_risk_difference.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/articles/story_spending_time_example.html</loc>
@@ -187,6 +193,9 @@
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_npe.html</loc>
   </url>
   <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_rd.html</loc>
+  </url>
+  <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_design_wlr.html</loc>
   </url>
   <url>
@@ -194,6 +203,9 @@
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_info_combo.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_info_rd.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_info_wlr.html</loc>
@@ -206,6 +218,9 @@
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_npe.html</loc>
+  </url>
+  <url>
+    <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_rd.html</loc>
   </url>
   <url>
     <loc>https://littlebeannie.github.io/gsDesign2/reference/gs_power_wlr.html</loc>

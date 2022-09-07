@@ -2,6 +2,7 @@ pandoc: 2.7.3
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
+  QuickStart: QuickStart.html
   check_AHR: check_AHR.html
   check_eEvents_df: check_eEvents_df.html
   check_gridpts_h1_hupdate: check_gridpts_h1_hupdate.html
@@ -28,6 +29,7 @@ articles:
   story_npe_integration: story_npe_integration.html
   story_power_evaluation_with_spending_bound: story_power_evaluation_with_spending_bound.html
   story_quick_start: story_quick_start.html
+  story_risk_difference: story_risk_difference.html
   story_spending_time_example: story_spending_time_example.html
   story_summarize_designs: story_summarize_designs.html
   usage_AHR: usage_AHR.html
@@ -46,7 +48,7 @@ articles:
   usage_gs_power_wlr: usage_gs_power_wlr.html
   usage_gs_spending_bound: usage_gs_spending_bound.html
   usage_tEvents: usage_tEvents.html
-last_built: 2022-09-06T20:48Z
+last_built: 2022-09-07T15:56Z
 urls:
   reference: https://littlebeannie.github.io/gsDesign2/reference
   article: https://littlebeannie.github.io/gsDesign2/articles
