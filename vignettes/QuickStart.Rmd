@@ -10,7 +10,7 @@ output:
     number_sections: true
 bibliography: gsDesign.bib
 vignette: |
-  %\VignetteIndexEntry{Quick Start for NPH Sample Size and Power}
+  %\VignetteIndexEntry{Quick Start for NPH Sample Size and Power (Copy)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
