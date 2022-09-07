@@ -1,16 +1,17 @@
 ---
 title: "Quick Start for NPH Sample Size and Power"
-subtitle: "Using average hazard ratio"
-author: "Keaven M. Anderson and Yujie Zhao"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  html_document:
-    code_folding: hide
+  rmarkdown::html_document:
     toc: true
+    toc_float: true
     toc_depth: 2
     number_sections: true
-bibliography: gsDesign.bib
+    highlight: "textmate"
+    css: "custom.css"
+bibliography: "ggsd.bib"
 vignette: |
-  %\VignetteIndexEntry{Quick Start for NPH Sample Size and Power (Copy)}
+  %\VignetteIndexEntry{Quick Start for NPH Sample Size and Power}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -200,11 +201,6 @@ summary(design1s) %>% as_gt(title="1-sided group sequential bound using AHR meth
                             subtitle="Lan-DeMets spending to approximate O'Brien-Fleming bound") 
 ```
 
-
-Notes to Yujie:
-1) How should we make it clear that info_scale= 2 is the default?
-2) Have we documented info_scale in a vignette?
-3) Note that total Type I error above is 0.0252 rather than the specified 0.025. I suspect this is an issue with gs_spending_bound(). See following gsDesign example.
 
 gsDesign to replicate above bounds (this will not replicate sample size).
 
