@@ -58,7 +58,7 @@ However, features and implementation in **gsdmvn** will be allowed to change as 
 ```{r, message=FALSE, warning=FALSE}
 devtools::load_all()
 library(gsDesign)
-library(gsDesign2)
+#library(gsDesign2)
 library(simtrial)
 library(knitr)
 library(dplyr)
@@ -77,6 +77,7 @@ enrollRates <- tibble(
   Stratum = "All", 
   duration = c(2, 2, 2, 6), 
   rate = (1:4) / 4)
+
 enrollRates %>% gt()
 ```
 
@@ -100,8 +101,8 @@ failRates <- tibble::tibble(
   duration = c(4, Inf),
   failRate = log(2) / medianSurv,
   hr = c(1, .6),
-  dropoutRate = .001
-)
+  dropoutRate = .001)
+
 failRates %>% gt()
 ```
 
@@ -112,7 +113,7 @@ Under the above enrollment, failure and dropout rate assumptions we now derive s
 
 ```{r}
 alpha <- .025
-beta <- .1 # 1 - targeted power
+beta <- .1                   # 1 - targeted power
 d <- fixed_design(
   x = "AHR",                 # method for computing sample size
   enrollRates = enrollRates, # Relative enrollment rates 
@@ -165,7 +166,7 @@ For this quick start, we will only illustrate this type of efficacy bound.
 Perhaps the most common spending function for this approach is the @LanDeMets approximation to the O'Brien-Fleming bound with
 
 $$
-f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
+  f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 $$
 
 ```{r, echo=FALSE, fig.width=6.5}
@@ -184,11 +185,10 @@ design1s <- gs_design_ahr(
   beta = beta,
   enrollRates = enrollRates,
   failRates = failRates,
-  analysisTimes = c(16, 26, 36),  # Calendar time of planned analyses
-  upper = gs_spending_bound, # Spending function bound for efficacy
-  # specify spending function and total Type I error
-  upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025),
-  lower = gs_b, lpar = rep(-Inf, 3), # No futility bound
+  analysisTimes = c(16, 26, 36),                           # Calendar time of planned analyses
+  upper = gs_spending_bound,                               # Spending function bound for efficacy
+  upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025), # specify spending function and total Type I error
+  lower = gs_b, lpar = rep(-Inf, 3),                       # No futility bound
   info_scale = 2
 )
 ```
@@ -197,17 +197,19 @@ Bounds at the 3 analyses are as follows.
 Note that expected sample size at time of each data cutoff for analysis is also here in `N`. We filter on the upper bound so that lower bounds with `Z = -Inf` are not shown.
 
 ```{r}
-summary(design1s) %>% as_gt(title="1-sided group sequential bound using AHR method",
-                            subtitle="Lan-DeMets spending to approximate O'Brien-Fleming bound") 
+design1s |>
+  summary() |> 
+  as_gt(title = "1-sided group sequential bound using AHR method",
+        subtitle = "Lan-DeMets spending to approximate O'Brien-Fleming bound") 
 ```
 
 
 gsDesign to replicate above bounds (this will not replicate sample size).
 
 ```{r, class.source = 'fold-show'}
-x <- gsDesign(k=3, test.type=1, timing = design1s$analysis$IF, sfu=sfLDOF)
+x <- gsDesign(k = 3, test.type = 1, timing = design1s$analysis$IF, sfu = sfLDOF)
 cat("gsDesign\n  Upper bound: ",x$upper$bound,
-    "\n  Cumulative boundary crossing probability (H0): ", cumsum(x$upper$prob[,1]),
+    "\n  Cumulative boundary crossing probability (H0): ", cumsum(x$upper$prob[, 1]),
     "\n  Timing (IF): ", x$timing,
     "\ngs_design_ahr\n  Upper bound: ", design1s$bounds$Z,
     "\n  Cumulative boundary crossing probability (H0): ", design1s$bounds$Probability0,
@@ -231,12 +233,12 @@ design2ss <- gs_design_ahr(
   beta = beta,
   enrollRates = enrollRates,
   failRates = failRates,
-  analysisTimes = c(16, 26, 36), #  Calendar analysis times
+  analysisTimes = c(16, 26, 36),  #  Calendar analysis times
   upper = gs_spending_bound,
   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025),
   lower = gs_spending_bound,
   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025),
-  h1_spending = FALSE # This specifies futility testing with spending under NULL
+  h1_spending = FALSE             # This specifies futility testing with spending under NULL
 )
 ```
 
@@ -244,18 +246,17 @@ design2ss <- gs_design_ahr(
 Design bounds are confirmed with: 
 
 ```{r, message=FALSE}
-summary(design2ss) %>% 
-  as_gt(title="2-sided symmetric group sequential bound using AHR method",
-        subtitle="Lan-DeMets spending to approximate O'Brien-Fleming bound")
+design2ss |> 
+  summary() |> 
+  as_gt(title = "2-sided symmetric group sequential bound using AHR method",
+        subtitle = "Lan-DeMets spending to approximate O'Brien-Fleming bound")
 ```
 
 The bounds can be plotted easily:
 
-```{r,fig.width=3}
-ggplot(
-  data = design2ss$analysis %>% 
-    left_join(design2ss$bounds, by="Analysis"), 
-  aes(x = Events, y = Z, group = Bound)) +
+```{r, out.width = "50%"}
+ggplot(data = design2ss$analysis %>% left_join(design2ss$bounds, by = "Analysis"), 
+       aes(x = Events, y = Z, group = Bound)) +
   geom_line(aes(linetype = Bound)) +
   geom_point() +
   ggtitle("2-sided symmetric bounds with O'Brien-Fleming-like spending")
@@ -281,7 +282,7 @@ design2sa <- gs_design_ahr(
   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025),  # Same efficacy bound as before
   test_lower = c(FALSE, TRUE, TRUE, TRUE), # Only test efficacy after IA1
   lower = gs_b, 
-  lpar = c(rep(qnorm(.05),2),-Inf, -Inf)   # Fixed lower bound at first 2 analyses
+  lpar = c(rep(qnorm(.05),2), -Inf, -Inf)   # Fixed lower bound at first 2 analyses
 )
 ```
 
@@ -289,9 +290,10 @@ We now have a slightly larger sample size to account for the possibility of an e
 Bounds are now:
 
 ```{r}
-design2sa %>% summary() %>% 
-  as_gt(title="2-sided asymmetric group sequential bound using AHR method",
-        subtitle="Lan-DeMets spending to approximate O'Brien-Fleming bound for efficacy, futility disaster check at IA1, IA2 only")
+design2sa |> 
+  summary() |>
+  as_gt(title = "2-sided asymmetric group sequential bound using AHR method",
+        subtitle = "Lan-DeMets spending to approximate O'Brien-Fleming bound for efficacy, futility disaster check at IA1, IA2 only")
 ```
 
 
