@@ -270,10 +270,11 @@ Enrollment rates
 </table>
 <p>We define for <span class="math inline">\(m=1,\ldots,M\)</span> intermediate probability calculations for use in calculating <span class="math inline">\(\bar n(t_{m-1},t_m)\)</span> as follows:</p>
 <p><span class="math display">\[\begin{align}
-q_m&amp;=P\{\min(X_m,Y_m)&gt;t_m\}=\exp^{-(\lambda_m+\eta_m)(t_m-t_{m-1})} \label{eq:qm}\\
+q_m&amp;=P\{\min(X_m,Y_m)&gt;t_m-t_{m-1}\}=\exp^{-(\lambda_m+\eta_m)(t_m-t_{m-1})} \label{eq:qm}\\
 Q_m&amp;=P\{\min(X,Y)&gt;t_m\}=\prod_{j=1}^m q_j\label{eq:Qm}\\
 d_m&amp;=P\{t_{m-1}&lt;X\le t_m,X\le Y\}\\
-&amp;=P\{\min(X,Y)&gt;t_{m-1}\}P\{0&lt;X_m\le t_m-t_{m-1},X_m\le Y_m\}\\
+&amp;=P\{\min(X,Y)&gt;t_{m-1}\}\cdot P\{0&lt;\min (X_m,Y_m)\le t_m-t_{m-1},X_m\le Y_m\}\\
+&amp;=P\{\min(X,Y)&gt;t_{m-1}\}\cdot P\{0&lt;\min (X_m,Y_m)\le t_m-t_{m-1}\}\cdot P\{X_m\le Y_m|0&lt;\min (X_m,Y_m)\le t_m-t_{m-1}\}\\
 &amp;=Q_{m-1}(1-e^{-(\lambda_m+\eta_m)(t_m-t_{m-1})})
 \frac{\lambda_m}{\lambda_m+\eta_m}\\
 \bar n_m&amp;=E\{\bar n(t_{m-1},t_m)\}
