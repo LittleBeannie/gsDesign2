@@ -1601,18 +1601,6 @@ ans %>%
                  subtitle = "by gs_power_npe")
 ```
 
-```{r, eval=FALSE}
-load("./fixtures/rd_simu_power_pmvtnorm_3_weight.Rdata")
-ans %>% 
-  group_by(`calculated under`) %>% 
-  summarize(`simulated power - ss` = mean(ss), 
-         `simulated power - invar H0` = mean(invar_H0), 
-         `simulated power - invar H1` = mean(invar_H1)) %>% 
-  gt::gt() %>% 
-  gt::tab_header(title = "Simulated power under different weightin methods",
-                 subtitle = "by pmvtnorm")
-```
-
 # Summary
 
 +-----------------------------+----------------------------------------+
