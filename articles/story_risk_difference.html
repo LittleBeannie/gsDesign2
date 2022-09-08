@@ -435,8 +435,8 @@ w_{s,k}
 </h3>
 <p>The example discussed in this section is an unstratified fixed design with equal sized groups to detect a 30% reduction in mortality associated with congestive heart failure, where the 1-year mortality in the control group is assumed to be no greater than 0.4. So <span class="math inline">\(p_C=0.4, p_E = .28\)</span>. Under the null hypothesis, we assume <span class="math inline">\(p_C=p_E =0.34\)</span>. We desire 90% power for a two-sided test for two proportions at <span class="math inline">\(\alpha = 0.05\)</span>. And we would like to calculate the sample size to achieve the 90% power.</p>
 <div class="section level4">
-<h4 id="gs_design_rd">
-<code>gs_design_rd()</code><a class="anchor" aria-label="anchor" href="#gs_design_rd"></a>
+<h4 id="gsdesign2">
+<code>gsDesign2</code><a class="anchor" aria-label="anchor" href="#gsdesign2"></a>
 </h4>
 <p>First, we set the parameters.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -1406,7 +1406,7 @@ w_{s,k}
 <span>       `info_scale = 1` <span class="op">=</span> <span class="va">y_1</span><span class="op">$</span><span class="va">info1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">/</span> <span class="va">x</span><span class="op">$</span><span class="va">info1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>       `info_scale = 2` <span class="op">=</span> <span class="va">y_2</span><span class="op">$</span><span class="va">info</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">/</span> <span class="va">x</span><span class="op">$</span><span class="va">info1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"The sample size calculated by `gsdmvn` under 3 info_scale"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"The sample size calculated by gsDesign2 under 3 info_scale"</span><span class="op">)</span></span></code></pre></div>
 <div id="dmcrkrqrkf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -1814,7 +1814,7 @@ w_{s,k}
 </style>
 <table class="table gt_table">
 <thead class="gt_header"><tr>
-<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>The sample size calculated by `gsdmvn` under 3 info_scale</td>
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>The sample size calculated by gsDesign2 under 3 info_scale</td>
     </tr></thead>
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 0</th>
@@ -1893,20 +1893,20 @@ Sample size calculated by EAST
 <h4 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>gsdmvn_info_scale_0 <span class="op">=</span> <span class="va">z_info_scale_0</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
-<span>               gsdmvn_info_scale_1 <span class="op">=</span> <span class="va">z_info_scale_1</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
-<span>               gsdmvn_info_scale_2 <span class="op">=</span> <span class="va">z_info_scale_2</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
+<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>gsDesign2_info_scale_0 <span class="op">=</span> <span class="va">z_info_scale_0</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
+<span>               gsDesign2_info_scale_1 <span class="op">=</span> <span class="va">z_info_scale_1</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
+<span>               gsDesign2_info_scale_2 <span class="op">=</span> <span class="va">z_info_scale_2</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
 <span>               gsDesign <span class="op">=</span> <span class="va">x_gsDesign</span><span class="op">$</span><span class="va">n</span>, </span>
 <span>               EAST_unpool <span class="op">=</span> <span class="fl">645</span>, </span>
 <span>               EAST_pool <span class="op">=</span> <span class="fl">651</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"gsdmvn"</span>,</span>
-<span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">gsdmvn_info_scale_0</span>, <span class="va">gsdmvn_info_scale_1</span>, <span class="va">gsdmvn_info_scale_2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"gsDesign2"</span>,</span>
+<span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">gsDesign2_info_scale_0</span>, <span class="va">gsDesign2_info_scale_1</span>, <span class="va">gsDesign2_info_scale_2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"EAST"</span>,</span>
 <span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">EAST_unpool</span>, <span class="va">EAST_pool</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html" class="external-link">cols_label</a></span><span class="op">(</span>gsdmvn_info_scale_0 <span class="op">=</span> <span class="st">"info_scale = 0"</span>,</span>
-<span>             gsdmvn_info_scale_1 <span class="op">=</span> <span class="st">"info_scale = 1"</span>,</span>
-<span>             gsdmvn_info_scale_2 <span class="op">=</span> <span class="st">"info_scale = 2"</span>,</span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html" class="external-link">cols_label</a></span><span class="op">(</span>gsDesign2_info_scale_0 <span class="op">=</span> <span class="st">"info_scale = 0"</span>,</span>
+<span>             gsDesign2_info_scale_1 <span class="op">=</span> <span class="st">"info_scale = 1"</span>,</span>
+<span>             gsDesign2_info_scale_2 <span class="op">=</span> <span class="st">"info_scale = 2"</span>,</span>
 <span>             EAST_unpool <span class="op">=</span> <span class="st">"un-pooled"</span>,</span>
 <span>             EAST_pool <span class="op">=</span> <span class="st">"pooled"</span><span class="op">)</span></span></code></pre></div>
 <div id="cwcykjkhzj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2318,7 +2318,7 @@ Sample size calculated by EAST
 <thead class="gt_col_headings">
 <tr>
 <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup">
-        <span class="gt_column_spanner">gsdmvn</span>
+        <span class="gt_column_spanner">gsDesign2</span>
       </th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" scope="col">gsDesign</th>
       <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup">
@@ -2334,9 +2334,9 @@ Sample size calculated by EAST
     </tr>
 </thead>
 <tbody class="gt_table_body"><tr>
-<td class="gt_row gt_right">72.77363</td>
-<td class="gt_row gt_right">71.60614</td>
-<td class="gt_row gt_right">72.31093</td>
+<td class="gt_row gt_right">654.9627</td>
+<td class="gt_row gt_right">644.4553</td>
+<td class="gt_row gt_right">650.7984</td>
 <td class="gt_row gt_right">650.7984</td>
 <td class="gt_row gt_right">645</td>
 <td class="gt_row gt_right">651</td>
@@ -2351,8 +2351,8 @@ Sample size calculated by EAST
 <p>The example discussed in this section is an unstratified group sequential design with equal sized groups to detect <span class="math inline">\(p_C = 0.15, p_E = .1\)</span>.<br>
 Under the null hypothesis, we assume <span class="math inline">\(p_C = p_E = 0.125\)</span>. We desire 90% power for a two-sided test for two proportions at <span class="math inline">\(\alpha = 0.05\)</span>. And we would like to calculate the sample size to achieve the 90% power.</p>
 <div class="section level4">
-<h4 id="gsdmvn">
-<code>gsdmvn</code><a class="anchor" aria-label="anchor" href="#gsdmvn"></a>
+<h4 id="gsdesign2-1">
+<code>gsDesign2</code><a class="anchor" aria-label="anchor" href="#gsdesign2-1"></a>
 </h4>
 <p>To calculate the sample size, one can use <code><a href="../reference/gs_design_rd.html">gs_design_rd()</a></code>. The logic of <code><a href="../reference/gs_design_rd.html">gs_design_rd()</a></code> is to calculate the sample size of fixed design first.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -2865,7 +2865,7 @@ Under the null hypothesis, we assume <span class="math inline">\(p_C = p_E = 0.1
 <span>       `info_scale = 1` <span class="op">=</span> <span class="va">y_gs1</span><span class="op">$</span><span class="va">info1</span> <span class="op">/</span> <span class="va">x_gs</span><span class="op">$</span><span class="va">info1</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,</span>
 <span>       `info_scale = 2` <span class="op">=</span> <span class="va">y_gs2</span><span class="op">$</span><span class="va">info</span> <span class="op">/</span> <span class="va">x_gs</span><span class="op">$</span><span class="va">info1</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"The sample size calculated by `gsdmvn` under 3 info_scale"</span>, subtitle <span class="op">=</span> <span class="st">"under group sequential design"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"The sample size calculated by `gsDesign2` under 3 info_scale"</span>, subtitle <span class="op">=</span> <span class="st">"under group sequential design"</span><span class="op">)</span></span></code></pre></div>
 <div id="puewsuftyh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -3274,7 +3274,7 @@ Under the null hypothesis, we assume <span class="math inline">\(p_C = p_E = 0.1
 <table class="table gt_table">
 <thead class="gt_header">
 <tr>
-<td colspan="3" class="gt_heading gt_title gt_font_normal" style>The sample size calculated by `gsdmvn` under 3 info_scale</td>
+<td colspan="3" class="gt_heading gt_title gt_font_normal" style>The sample size calculated by `gsDesign2` under 3 info_scale</td>
     </tr>
 <tr>
 <td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>under group sequential design</td>
@@ -3304,10 +3304,9 @@ Under the null hypothesis, we assume <span class="math inline">\(p_C = p_E = 0.1
 </tbody>
 </table>
 </div>
-#cat("The sample size of the group sequential design is ", y_gs$info/x_gs$info[3], "\n")
 <p>The above logic is implemented in <code><a href="../reference/gs_design_rd.html">gs_design_rd()</a></code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x_gsdmvn_info_scale_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">x_gsDesign2_info_scale_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
 <span>  p_c <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span>,</span>
 <span>  p_e <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>,</span>
 <span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
@@ -3325,7 +3324,7 @@ Under the null hypothesis, we assume <span class="math inline">\(p_C = p_E = 0.1
 <span>  info_scale <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">x_gsdmvn_info_scale_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span><span class="va">x_gsDesign2_info_scale_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
 <span>  p_c <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span>,</span>
 <span>  p_e <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>,</span>
 <span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
@@ -3343,7 +3342,7 @@ Under the null hypothesis, we assume <span class="math inline">\(p_C = p_E = 0.1
 <span>  info_scale <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">x_gsdmvn_info_scale_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span><span class="va">x_gsDesign2_info_scale_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
 <span>  p_c <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span>,</span>
 <span>  p_e <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>,</span>
 <span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
@@ -3452,20 +3451,20 @@ Sample size calculated by EAST
 <h4 id="summary-1">Summary<a class="anchor" aria-label="anchor" href="#summary-1"></a>
 </h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>gsdmvn_info_scale_0 <span class="op">=</span> <span class="va">x_gsdmvn_info_scale_0</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
-<span>               gsdmvn_info_scale_1 <span class="op">=</span> <span class="va">x_gsdmvn_info_scale_1</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
-<span>               gsdmvn_info_scale_2 <span class="op">=</span> <span class="va">x_gsdmvn_info_scale_2</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
+<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>gsDesign2_info_scale_0 <span class="op">=</span> <span class="va">x_gsDesign2_info_scale_0</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
+<span>               gsDesign2_info_scale_1 <span class="op">=</span> <span class="va">x_gsDesign2_info_scale_1</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
+<span>               gsDesign2_info_scale_2 <span class="op">=</span> <span class="va">x_gsDesign2_info_scale_2</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span>,</span>
 <span>               gsDesign <span class="op">=</span> <span class="va">x_gsDesign</span><span class="op">$</span><span class="va">n.I</span>,</span>
 <span>               EAST_unpool <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">617</span>, <span class="fl">1233</span>, <span class="fl">1850</span><span class="op">)</span>,</span>
 <span>               EAST_pool <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">619</span>, <span class="fl">1238</span>, <span class="fl">1857</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"gsdmvn"</span>,</span>
-<span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">gsdmvn_info_scale_0</span>, <span class="va">gsdmvn_info_scale_1</span>, <span class="va">gsdmvn_info_scale_2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"gsDesign2"</span>,</span>
+<span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">gsDesign2_info_scale_0</span>, <span class="va">gsDesign2_info_scale_1</span>, <span class="va">gsDesign2_info_scale_2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"EAST"</span>,</span>
 <span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">EAST_unpool</span>, <span class="va">EAST_pool</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html" class="external-link">cols_label</a></span><span class="op">(</span>gsdmvn_info_scale_0 <span class="op">=</span> <span class="st">"info_scale = 0"</span>,</span>
-<span>             gsdmvn_info_scale_1 <span class="op">=</span> <span class="st">"info_scale = 1"</span>,</span>
-<span>             gsdmvn_info_scale_2 <span class="op">=</span> <span class="st">"info_scale = 2"</span>,</span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html" class="external-link">cols_label</a></span><span class="op">(</span>gsDesign2_info_scale_0 <span class="op">=</span> <span class="st">"info_scale = 0"</span>,</span>
+<span>             gsDesign2_info_scale_1 <span class="op">=</span> <span class="st">"info_scale = 1"</span>,</span>
+<span>             gsDesign2_info_scale_2 <span class="op">=</span> <span class="st">"info_scale = 2"</span>,</span>
 <span>             EAST_unpool <span class="op">=</span> <span class="st">"un-pooled"</span>,</span>
 <span>             EAST_pool <span class="op">=</span> <span class="st">"pooled"</span><span class="op">)</span></span></code></pre></div>
 <div id="hqtxylzkvq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -3877,7 +3876,7 @@ Sample size calculated by EAST
 <thead class="gt_col_headings">
 <tr>
 <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup">
-        <span class="gt_column_spanner">gsdmvn</span>
+        <span class="gt_column_spanner">gsDesign2</span>
       </th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" scope="col">gsDesign</th>
       <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup">
@@ -3927,8 +3926,8 @@ Sample size calculated by EAST
 </h3>
 <p>In this example, we consider 3 strata in a group sequential design with 3 analyses.</p>
 <div class="section level4">
-<h4 id="gsdmvn-1">
-<code>gsdmvn</code><a class="anchor" aria-label="anchor" href="#gsdmvn-1"></a>
+<h4 id="gsdesign2-2">
+<code>gsDesign2</code><a class="anchor" aria-label="anchor" href="#gsdesign2-2"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
@@ -6756,7 +6755,46 @@ Sample size calculated by EAST
 </div>
 <p>The above logic is implemented in <code><a href="../reference/gs_design_rd.html">gs_design_rd()</a></code>.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x_ss</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="co">## sample size weighting + information scale = 0</span></span>
+<span><span class="va">x_ss0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span>  p_c <span class="op">=</span> <span class="va">p_c</span>,</span>
+<span>  p_e <span class="op">=</span> <span class="va">p_e</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  IF <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">3</span>,</span>
+<span>  rd0 <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>  alpha <span class="op">=</span> <span class="fl">.025</span>,                  </span>
+<span>  beta <span class="op">=</span> <span class="fl">.2</span>,                    </span>
+<span>  ratio <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  stratum_prev <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span><span class="op">)</span>, prevalence <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>,</span>
+<span>  weight <span class="op">=</span> <span class="st">"ss"</span>,</span>
+<span>  upper <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
+<span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  info_scale <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## sample size weighting + information scale = 1</span></span>
+<span><span class="va">x_ss1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span>  p_c <span class="op">=</span> <span class="va">p_c</span>,</span>
+<span>  p_e <span class="op">=</span> <span class="va">p_e</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  IF <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">3</span>,</span>
+<span>  rd0 <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>  alpha <span class="op">=</span> <span class="fl">.025</span>,                  </span>
+<span>  beta <span class="op">=</span> <span class="fl">.2</span>,                    </span>
+<span>  ratio <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  stratum_prev <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span><span class="op">)</span>, prevalence <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>,</span>
+<span>  weight <span class="op">=</span> <span class="st">"ss"</span>,</span>
+<span>  upper <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
+<span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  info_scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## sample size weighting + information scale = 2</span></span>
+<span><span class="va">x_ss2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
 <span>  p_c <span class="op">=</span> <span class="va">p_c</span>,</span>
 <span>  p_e <span class="op">=</span> <span class="va">p_e</span>,</span>
 <span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
@@ -6772,9 +6810,48 @@ Sample size calculated by EAST
 <span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
 <span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  info_scale <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="va">x_invar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## inverse variance weighting + information scale = 0</span></span>
+<span><span class="va">x_invar0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span>  p_c <span class="op">=</span> <span class="va">p_c</span>,</span>
+<span>  p_e <span class="op">=</span> <span class="va">p_e</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  IF <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">3</span>,</span>
+<span>  rd0 <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>  alpha <span class="op">=</span> <span class="fl">.025</span>,                  </span>
+<span>  beta <span class="op">=</span> <span class="fl">.2</span>,                    </span>
+<span>  ratio <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  stratum_prev <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span><span class="op">)</span>, prevalence <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  weight <span class="op">=</span> <span class="st">"invar"</span>,</span>
+<span>  upper <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
+<span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  info_scale <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## inverse variance weighting + information scale = 1</span></span>
+<span><span class="va">x_invar1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
+<span>  p_c <span class="op">=</span> <span class="va">p_c</span>,</span>
+<span>  p_e <span class="op">=</span> <span class="va">p_e</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  IF <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">3</span>,</span>
+<span>  rd0 <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>  alpha <span class="op">=</span> <span class="fl">.025</span>,                  </span>
+<span>  beta <span class="op">=</span> <span class="fl">.2</span>,                    </span>
+<span>  ratio <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  stratum_prev <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span><span class="op">)</span>, prevalence <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  weight <span class="op">=</span> <span class="st">"invar"</span>,</span>
+<span>  upper <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span>
+<span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
+<span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  info_scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## inverse variance weighting + information scale = 2</span></span>
+<span><span class="va">x_invar2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gs_design_rd.html">gs_design_rd</a></span><span class="op">(</span></span>
 <span>  p_c <span class="op">=</span> <span class="va">p_c</span>,</span>
 <span>  p_e <span class="op">=</span> <span class="va">p_e</span>,</span>
 <span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
@@ -6790,12 +6867,27 @@ Sample size calculated by EAST
 <span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
 <span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  info_scale <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>INVAR <span class="op">=</span> <span class="va">x_invar</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
-<span>               SS <span class="op">=</span> <span class="va">x_ss</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>INVAR0 <span class="op">=</span> <span class="va">x_invar0</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span>               INVAR1 <span class="op">=</span> <span class="va">x_invar1</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span>               INVAR2 <span class="op">=</span> <span class="va">x_invar2</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span>               SS0 <span class="op">=</span> <span class="va">x_ss0</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span>               SS1 <span class="op">=</span> <span class="va">x_ss1</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span>               SS2 <span class="op">=</span> <span class="va">x_ss2</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">N</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> </span>
+<span><span class="va">ans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Sample size calculated by INVAR and SS"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Sample size calculated by INVAR and SS"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Inverse variance weighting"</span>,</span>
+<span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">INVAR0</span>, <span class="va">INVAR1</span>, <span class="va">INVAR2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Sample size wighting"</span>,</span>
+<span>                  columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">SS0</span>, <span class="va">SS1</span>, <span class="va">SS2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html" class="external-link">cols_label</a></span><span class="op">(</span>INVAR0 <span class="op">=</span> <span class="st">"info_scale = 0"</span>,</span>
+<span>             INVAR1 <span class="op">=</span> <span class="st">"info_scale = 1"</span>,</span>
+<span>             INVAR2 <span class="op">=</span> <span class="st">"info_scale = 2"</span>,</span>
+<span>             SS0 <span class="op">=</span> <span class="st">"info_scale = 0"</span>,</span>
+<span>             SS1 <span class="op">=</span> <span class="st">"info_scale = 1"</span>,</span>
+<span>             SS2 <span class="op">=</span> <span class="st">"info_scale = 2"</span><span class="op">)</span></span></code></pre></div>
 <div id="jarsrnopkf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -7203,24 +7295,50 @@ Sample size calculated by EAST
 </style>
 <table class="table gt_table">
 <thead class="gt_header"><tr>
-<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Sample size calculated by INVAR and SS</td>
+<td colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Sample size calculated by INVAR and SS</td>
     </tr></thead>
-<thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">INVAR</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">SS</th>
-    </tr></thead>
+<thead class="gt_col_headings">
+<tr>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup">
+        <span class="gt_column_spanner">Inverse variance weighting</span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup">
+        <span class="gt_column_spanner">Sample size wighting</span>
+      </th>
+    </tr>
+<tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 0</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 0</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">info_scale = 2</th>
+    </tr>
+</thead>
 <tbody class="gt_table_body">
 <tr>
-<td class="gt_row gt_right">251.8358</td>
-<td class="gt_row gt_right">270.8460</td>
+<td class="gt_row gt_right">379.9012</td>
+<td class="gt_row gt_right">377.1732</td>
+<td class="gt_row gt_right">377.7537</td>
+<td class="gt_row gt_right">408.5056</td>
+<td class="gt_row gt_right">405.6640</td>
+<td class="gt_row gt_right">406.2689</td>
 </tr>
 <tr>
-<td class="gt_row gt_right">503.6716</td>
-<td class="gt_row gt_right">541.6919</td>
-</tr>
-<tr>
+<td class="gt_row gt_right">759.8024</td>
+<td class="gt_row gt_right">754.3463</td>
 <td class="gt_row gt_right">755.5074</td>
+<td class="gt_row gt_right">817.0112</td>
+<td class="gt_row gt_right">811.3281</td>
 <td class="gt_row gt_right">812.5379</td>
+</tr>
+<tr>
+<td class="gt_row gt_right">1139.7036</td>
+<td class="gt_row gt_right">1131.5195</td>
+<td class="gt_row gt_right">1133.2611</td>
+<td class="gt_row gt_right">1225.5168</td>
+<td class="gt_row gt_right">1216.9921</td>
+<td class="gt_row gt_right">1218.8068</td>
 </tr>
 </tbody>
 </table>
@@ -7229,7 +7347,7 @@ Sample size calculated by EAST
 <div class="section level4">
 <h4 id="simulations-1">Simulations<a class="anchor" aria-label="anchor" href="#simulations-1"></a>
 </h4>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">run_simulation</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">N</span>, <span class="va">weight_method</span>, <span class="va">n_sim</span>, <span class="va">prevalence_ratio</span>, <span class="va">IF</span>, <span class="va">under_H0</span> <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">integration</span> <span class="op">=</span> <span class="st">"gs_power_npe"</span><span class="op">)</span><span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="va">ans</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
@@ -7418,48 +7536,41 @@ Sample size calculated by EAST
 <span>    <span class="op">}</span></span>
 <span>    </span>
 <span>    <span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">ans</span>, <span class="va">ans_new</span><span class="op">)</span></span>
-<span>    <span class="co">#print(simu)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">simu</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span>  </span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">n_sim</span> <span class="op">&lt;-</span> <span class="fl">1e3</span></span>
-<span><span class="co"># run simulations</span></span>
-<span><span class="va">ans_H0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">cbind</span>, </span>
-<span>                  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"ss"</span>, <span class="va">ans_math</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`Calculated under`</span> <span class="op">==</span> <span class="st">"H0"</span>, <span class="va">`Weighting method`</span> <span class="op">==</span> <span class="st">"Sample Size"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">`Sample size`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"invar_H0"</span>, <span class="va">ans_math</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`Calculated under`</span> <span class="op">==</span> <span class="st">"H0"</span>, <span class="va">`Weighting method`</span> <span class="op">==</span> <span class="st">"INVAR-H0"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">`Sample size`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"invar_H1"</span>, <span class="va">ans_math</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`Calculated under`</span> <span class="op">==</span> <span class="st">"H0"</span>, <span class="va">`Weighting method`</span> <span class="op">==</span> <span class="st">"INVAR-H1"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">`Sample size`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>                         <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu">run_simulation</span><span class="op">(</span>N <span class="op">=</span> <span class="va">x</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, </span>
-<span>                                                           weight_method <span class="op">=</span> <span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, </span>
-<span>                                                           n_sim <span class="op">=</span> <span class="va">n_sim</span>, prevalence_ratio <span class="op">=</span> <span class="va">prevalence_ratio</span>, </span>
-<span>                                                           IF <span class="op">=</span> <span class="va">IF</span>, under_H0 <span class="op">=</span> <span class="cn">TRUE</span>, integration <span class="op">=</span> <span class="st">"gs_power_npe"</span><span class="op">)</span><span class="op">)</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="va">ans_H1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">cbind</span>, </span>
-<span>                  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"ss"</span>, <span class="va">ans_math</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`Calculated under`</span> <span class="op">==</span> <span class="st">"H1"</span>, <span class="va">`Weighting method`</span> <span class="op">==</span> <span class="st">"Sample Size"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">`Sample size`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"invar_H0"</span>, <span class="va">ans_math</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`Calculated under`</span> <span class="op">==</span> <span class="st">"H1"</span>, <span class="va">`Weighting method`</span> <span class="op">==</span> <span class="st">"INVAR-H0"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">`Sample size`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"invar_H1"</span>, <span class="va">ans_math</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`Calculated under`</span> <span class="op">==</span> <span class="st">"H1"</span>, <span class="va">`Weighting method`</span> <span class="op">==</span> <span class="st">"INVAR-H1"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">`Sample size`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>                         <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu">run_simulation</span><span class="op">(</span>N <span class="op">=</span> <span class="va">x</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, </span>
-<span>                                                           weight_method <span class="op">=</span> <span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, </span>
-<span>                                                           n_sim <span class="op">=</span> <span class="va">n_sim</span>, prevalence_ratio <span class="op">=</span> <span class="va">prevalence_ratio</span>, </span>
-<span>                                                           IF <span class="op">=</span> <span class="va">IF</span>, under_H0 <span class="op">=</span> <span class="cn">FALSE</span>, integration <span class="op">=</span> <span class="st">"gs_power_npe"</span><span class="op">)</span><span class="op">)</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>simu_ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">ans_H0</span><span class="op">$</span><span class="va">simu_ID</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>                      ss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ans_H0</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span>, <span class="va">ans_H1</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>, </span>
-<span>                      invar_H0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ans_H0</span><span class="op">[</span>, <span class="fl">6</span><span class="op">]</span>, <span class="va">ans_H1</span><span class="op">[</span>, <span class="fl">6</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                      invar_H1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ans_H0</span><span class="op">[</span>, <span class="fl">9</span><span class="op">]</span>, <span class="va">ans_H1</span><span class="op">[</span>, <span class="fl">9</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                      `calculated under` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"H0"</span>, <span class="va">n_sim</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"H1"</span>, <span class="va">n_sim</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/save.html" class="external-link">save</a></span><span class="op">(</span><span class="va">ans</span>, file <span class="op">=</span> <span class="st">"./fixture/rd_simu_power_gspowernpe_3_weight_new.Rdata"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"./fixtures/rd_simu_power_gspowernpe_3_weight.Rdata"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>n_sim &lt;-<span class="st"> </span><span class="fl">1e3</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>run simulations</span>
+<span id="cb28-3"><a href="#cb28-3"></a>ans_H0 &lt;-<span class="st"> </span><span class="kw">do.call</span>(cbind,</span>
+<span id="cb28-4"><a href="#cb28-4"></a>                  <span class="kw">lapply</span>(<span class="kw">list</span>(<span class="kw">list</span>(<span class="st">"ss_H0"</span>, ans<span class="op">$</span>SS0),</span>
+<span id="cb28-5"><a href="#cb28-5"></a>                              <span class="kw">list</span>(<span class="st">"invar_H0"</span>, ans<span class="op">$</span>INVAR0)),</span>
+<span id="cb28-6"><a href="#cb28-6"></a>                         <span class="cf">function</span>(x){<span class="kw">return</span>(<span class="kw">run_simulation</span>(<span class="dt">N =</span> x[[<span class="dv">2</span>]],</span>
+<span id="cb28-7"><a href="#cb28-7"></a>                                                           <span class="dt">weight_method =</span> x[[<span class="dv">1</span>]],</span>
+<span id="cb28-8"><a href="#cb28-8"></a>                                                           <span class="dt">n_sim =</span> n_sim, <span class="dt">prevalence_ratio =</span> prevalence_ratio,</span>
+<span id="cb28-9"><a href="#cb28-9"></a>                                                           <span class="dt">IF =</span> IF, <span class="dt">under_H0 =</span> <span class="ot">TRUE</span>, <span class="dt">integration =</span> <span class="st">"gs_power_npe"</span>))}))</span>
+<span id="cb28-10"><a href="#cb28-10"></a></span>
+<span id="cb28-11"><a href="#cb28-11"></a>ans_H1 &lt;-<span class="st"> </span><span class="kw">do.call</span>(cbind,</span>
+<span id="cb28-12"><a href="#cb28-12"></a>                  <span class="kw">lapply</span>(<span class="kw">list</span>(<span class="kw">list</span>(<span class="st">"ss_H1"</span>, ans<span class="op">$</span>SS1),</span>
+<span id="cb28-13"><a href="#cb28-13"></a>                              <span class="kw">list</span>(<span class="st">"invar_H1"</span>, ans<span class="op">$</span>INVAR1)),</span>
+<span id="cb28-14"><a href="#cb28-14"></a>                         <span class="cf">function</span>(x){<span class="kw">return</span>(<span class="kw">run_simulation</span>(<span class="dt">N =</span> x[[<span class="dv">2</span>]],</span>
+<span id="cb28-15"><a href="#cb28-15"></a>                                                           <span class="dt">weight_method =</span> x[[<span class="dv">1</span>]],</span>
+<span id="cb28-16"><a href="#cb28-16"></a>                                                           <span class="dt">n_sim =</span> n_sim, <span class="dt">prevalence_ratio =</span> prevalence_ratio,</span>
+<span id="cb28-17"><a href="#cb28-17"></a>                                                           <span class="dt">IF =</span> IF, <span class="dt">under_H0 =</span> <span class="ot">FALSE</span>, <span class="dt">integration =</span> <span class="st">"gs_power_npe"</span>))}))</span>
+<span id="cb28-18"><a href="#cb28-18"></a></span>
+<span id="cb28-19"><a href="#cb28-19"></a>ans &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">simu_ID =</span> <span class="kw">rep</span>(ans_H0<span class="op">$</span>simu_ID, <span class="dv">2</span>),</span>
+<span id="cb28-20"><a href="#cb28-20"></a>                      <span class="dt">ss =</span> <span class="kw">c</span>(ans_H0[, <span class="dv">3</span>], ans_H1[, <span class="dv">3</span>]), </span>
+<span id="cb28-21"><a href="#cb28-21"></a>                      <span class="dt">invar =</span> <span class="kw">c</span>(ans_H0[, <span class="dv">6</span>], ans_H1[, <span class="dv">6</span>]),</span>
+<span id="cb28-22"><a href="#cb28-22"></a>                      <span class="st">`</span><span class="dt">calculated under</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">"H0"</span>, n_sim), <span class="kw">rep</span>(<span class="st">"H1"</span>, n_sim))) </span>
+<span id="cb28-23"><a href="#cb28-23"></a></span>
+<span id="cb28-24"><a href="#cb28-24"></a><span class="kw">save</span>(ans, <span class="dt">file =</span> <span class="st">"./fixtures/rd_simu_power_gspowernpe_2_weight.Rdata"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"./fixtures/rd_simu_power_gspowernpe_2_weight.Rdata"</span><span class="op">)</span></span>
 <span><span class="va">ans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">`calculated under`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>`simulated power - ss` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">ss</span><span class="op">)</span>, </span>
-<span>         `simulated power - invar H0` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">invar_H0</span><span class="op">)</span>, </span>
-<span>         `simulated power - invar H1` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">invar_H1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>            `simulated power - invar` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">invar</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Simulated power under different weightin methods"</span>,</span>
 <span>                 subtitle <span class="op">=</span> <span class="st">"by gs_power_npe"</span><span class="op">)</span></span></code></pre></div>
@@ -7871,35 +7982,32 @@ Sample size calculated by EAST
 <table class="table gt_table">
 <thead class="gt_header">
 <tr>
-<td colspan="4" class="gt_heading gt_title gt_font_normal" style>Simulated power under different weightin methods</td>
+<td colspan="3" class="gt_heading gt_title gt_font_normal" style>Simulated power under different weightin methods</td>
     </tr>
 <tr>
-<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>by gs_power_npe</td>
+<td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>by gs_power_npe</td>
     </tr>
 </thead>
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">calculated under</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - ss</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - invar H0</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - invar H1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - invar</th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_left">H0</td>
-<td class="gt_row gt_right">0.7785327</td>
-<td class="gt_row gt_right">0.7771331</td>
-<td class="gt_row gt_right">0.7793374</td>
+<td class="gt_row gt_right">0.7845203</td>
+<td class="gt_row gt_right">0.7502050</td>
 </tr>
 <tr>
 <td class="gt_row gt_left">H1</td>
-<td class="gt_row gt_right">0.7775115</td>
-<td class="gt_row gt_right">0.7765126</td>
-<td class="gt_row gt_right">0.7786946</td>
+<td class="gt_row gt_right">0.7812382</td>
+<td class="gt_row gt_right">0.7503223</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"./fixtures/rd_simu_power_pmvtnorm_3_weight.Rdata"</span><span class="op">)</span></span>
 <span><span class="va">ans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">`calculated under`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -7909,442 +8017,6 @@ Sample size calculated by EAST
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Simulated power under different weightin methods"</span>,</span>
 <span>                 subtitle <span class="op">=</span> <span class="st">"by pmvtnorm"</span><span class="op">)</span></span></code></pre></div>
-<div id="oabcxlsaev" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#oabcxlsaev .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#oabcxlsaev .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#oabcxlsaev .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#oabcxlsaev .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#oabcxlsaev .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#oabcxlsaev .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#oabcxlsaev .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#oabcxlsaev .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#oabcxlsaev .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#oabcxlsaev .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#oabcxlsaev .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#oabcxlsaev .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#oabcxlsaev .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#oabcxlsaev .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#oabcxlsaev .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#oabcxlsaev .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#oabcxlsaev .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#oabcxlsaev .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#oabcxlsaev .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#oabcxlsaev .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#oabcxlsaev .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#oabcxlsaev .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#oabcxlsaev .gt_left {
-  text-align: left;
-}
-
-#oabcxlsaev .gt_center {
-  text-align: center;
-}
-
-#oabcxlsaev .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#oabcxlsaev .gt_font_normal {
-  font-weight: normal;
-}
-
-#oabcxlsaev .gt_font_bold {
-  font-weight: bold;
-}
-
-#oabcxlsaev .gt_font_italic {
-  font-style: italic;
-}
-
-#oabcxlsaev .gt_super {
-  font-size: 65%;
-}
-
-#oabcxlsaev .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 75%;
-  vertical-align: 0.4em;
-}
-
-#oabcxlsaev .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#oabcxlsaev .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#oabcxlsaev .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#oabcxlsaev .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#oabcxlsaev .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#oabcxlsaev .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="table gt_table">
-<thead class="gt_header">
-<tr>
-<td colspan="4" class="gt_heading gt_title gt_font_normal" style>Simulated power under different weightin methods</td>
-    </tr>
-<tr>
-<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>by pmvtnorm</td>
-    </tr>
-</thead>
-<thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">calculated under</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - ss</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - invar H0</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">simulated power - invar H1</th>
-    </tr></thead>
-<tbody class="gt_table_body">
-<tr>
-<td class="gt_row gt_left">H0</td>
-<td class="gt_row gt_right">0.7743154</td>
-<td class="gt_row gt_right">0.7750306</td>
-<td class="gt_row gt_right">0.7742599</td>
-</tr>
-<tr>
-<td class="gt_row gt_left">H1</td>
-<td class="gt_row gt_right">0.7739484</td>
-<td class="gt_row gt_right">0.7731202</td>
-<td class="gt_row gt_right">0.7755860</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
