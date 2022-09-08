@@ -40,7 +40,7 @@ NULL
 #' impacts null hypothesis bound calculation
 #' @param info1 statistical information under hypothesis used for futility bound calculation if different from
 #' \code{info}; impacts futility hypothesis bound calculation
-#' @param info_scale the information scale for calculation
+#' @param info_scale the information scale for calculation, default is 2, other options are 0 or 1.
 #' @param binding indicator of whether futility bound is binding; default of FALSE is recommended
 #' @param upper function to compute upper bound
 #' @param lower function to compare lower bound

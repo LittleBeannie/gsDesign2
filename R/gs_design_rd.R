@@ -39,6 +39,8 @@ NULL
 #' @param test_lower indicator of which analyses should include an lower bound; single value of TRUE (default) indicates all analyses;
 #' single value FALSE indicated no lower bound; otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have a
 #' lower bound
+#' @param h1_spending Indicator that lower bound to be set by spending under alternate hypothesis (input \code{failRates})
+#' if spending is used for lower bound
 #' @param IF statistical information fraction
 #' @param r  Integer, at least 2; default of 18 recommended by Jennison and Turnbull
 #' @param p_c rate at the control group
@@ -75,7 +77,8 @@ gs_design_rd <- function(
     info_scale = c(0, 1, 2),
     binding = FALSE,
     r = 18,
-    tol = 1e-6
+    tol = 1e-6,
+    h1_spending = FALSE
 ){
   # --------------------------------------------- #
   #     check input values                        #
@@ -117,24 +120,27 @@ gs_design_rd <- function(
     weight = weight)
   
   if(k == 1){
-    y_gs <- gs_design_npe(theta = x_fix$rd, 
-                       info = x_fix$info1, #if(info_scale == 0){x_gs$info0}else{x_gs$info1}, 
-                       info0 = x_fix$info0, 
-                       info_scale = info_scale,
-                       alpha = alpha, beta = beta, binding = binding,
-                       upper = upper, upar = upar, test_upper = test_upper,
-                       lower = lower, lpar = lpar, test_lower = test_lower,
-                       r = r, tol = tol)
+    x <- x_fix
   }else{
-    y_gs <- gs_design_npe(theta = x_gs$rd, 
-                          info = x_gs$info1, #if(info_scale == 0){x_gs$info0}else{x_gs$info1}, 
-                          info0 = x_gs$info0, 
-                          info_scale = info_scale,
-                          alpha = alpha, beta = beta, binding = binding,
-                          upper = upper, upar = upar, test_upper = test_upper,
-                          lower = lower, lpar = lpar, test_lower = test_lower,
-                          r = r, tol = tol)
+    x <- x_gs
   }
+  
+  if(h1_spending){
+    theta1 <- x$theta 
+    info1 <- x$info
+  }else{
+    theta1 <- 0
+    info1 <- x$info0
+  }
+  
+  y_gs <- gs_design_npe(theta = x$rd, theta1 = theta1, 
+                        info = x$info1, info0 = x$info0, info1 = info1, 
+                        info_scale = info_scale,
+                        alpha = alpha, beta = beta, binding = binding,
+                        upper = upper, upar = upar, test_upper = test_upper,
+                        lower = lower, lpar = lpar, test_lower = test_lower,
+                        r = r, tol = tol)
+ 
   
   
   

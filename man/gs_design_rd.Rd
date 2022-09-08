@@ -24,7 +24,8 @@ gs_design_rd(
   info_scale = c(0, 1, 2),
   binding = FALSE,
   r = 18,
-  tol = 1e-06
+  tol = 1e-06,
+  h1_spending = FALSE
 )
 }
 \arguments{
@@ -72,6 +73,9 @@ lower bound}
 \item{r}{Integer, at least 2; default of 18 recommended by Jennison and Turnbull}
 
 \item{tol}{Tolerance parameter for boundary convergence (on Z-scale)}
+
+\item{h1_spending}{Indicator that lower bound to be set by spending under alternate hypothesis (input \code{failRates})
+if spending is used for lower bound}
 }
 \value{
 a \code{tibble} with columns Analysis, Bound, Z, Probability, theta, Time, AHR, Events

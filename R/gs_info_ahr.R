@@ -123,13 +123,13 @@ gs_info_ahr <- function(enrollRates = tibble::tibble(Stratum = "All",
   avehr <- NULL
   if(!is.null(analysisTimes)){
     # calculate AHR, Events, info, info0 given the analysisTimes
-    avehr <- gsDesign2::AHR(enrollRates = enrollRates, failRates = failRates, 
-                            ratio = ratio, totalDuration = analysisTimes)
+    avehr <- AHR(enrollRates = enrollRates, failRates = failRates, 
+                 ratio = ratio, totalDuration = analysisTimes)
     # check if the output Events is larger enough than the targeted events
     for(i in seq_along(events)){
       if (avehr$Events[i] < events[i]){
-        avehr[i,] <- gsDesign2::tEvents(enrollRates = enrollRates, failRates = failRates, 
-                                        ratio = ratio, targetEvents = events[i])
+        avehr[i,] <- tEvents(enrollRates = enrollRates, failRates = failRates, 
+                             ratio = ratio, targetEvents = events[i])
       }
     }
   }else{
