@@ -110,7 +110,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">load_all</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://keaven.github.io/gsDesign/" class="external-link">gsDesign</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LittleBeannie/gsDesign2" class="external-link">gsDesign2</a></span><span class="op">)</span></span>
+<span><span class="co">#library(gsDesign2)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/simtrial/" class="external-link">simtrial</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -125,13 +125,14 @@
 <span>  Stratum <span class="op">=</span> <span class="st">"All"</span>, </span>
 <span>  duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span>, </span>
 <span>  rate <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">enrollRates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="tlpipxmhst" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fscqxojukc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#tlpipxmhst .gt_table {
+#fscqxojukc .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -156,7 +157,7 @@
   border-left-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_heading {
+#fscqxojukc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -168,7 +169,7 @@
   border-right-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_title {
+#fscqxojukc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -180,7 +181,7 @@
   border-bottom-width: 0;
 }
 
-#tlpipxmhst .gt_subtitle {
+#fscqxojukc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -192,13 +193,13 @@
   border-top-width: 0;
 }
 
-#tlpipxmhst .gt_bottom_border {
+#fscqxojukc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_col_headings {
+#fscqxojukc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -213,7 +214,7 @@
   border-right-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_col_heading {
+#fscqxojukc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -233,7 +234,7 @@
   overflow-x: hidden;
 }
 
-#tlpipxmhst .gt_column_spanner_outer {
+#fscqxojukc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -245,15 +246,15 @@
   padding-right: 4px;
 }
 
-#tlpipxmhst .gt_column_spanner_outer:first-child {
+#fscqxojukc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tlpipxmhst .gt_column_spanner_outer:last-child {
+#fscqxojukc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tlpipxmhst .gt_column_spanner {
+#fscqxojukc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -265,7 +266,7 @@
   width: 100%;
 }
 
-#tlpipxmhst .gt_group_heading {
+#fscqxojukc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -290,7 +291,7 @@
   vertical-align: middle;
 }
 
-#tlpipxmhst .gt_empty_group_heading {
+#fscqxojukc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -305,15 +306,15 @@
   vertical-align: middle;
 }
 
-#tlpipxmhst .gt_from_md > :first-child {
+#fscqxojukc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tlpipxmhst .gt_from_md > :last-child {
+#fscqxojukc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tlpipxmhst .gt_row {
+#fscqxojukc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -332,7 +333,7 @@
   overflow-x: hidden;
 }
 
-#tlpipxmhst .gt_stub {
+#fscqxojukc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -345,7 +346,7 @@
   padding-right: 5px;
 }
 
-#tlpipxmhst .gt_stub_row_group {
+#fscqxojukc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -359,11 +360,11 @@
   vertical-align: top;
 }
 
-#tlpipxmhst .gt_row_group_first td {
+#fscqxojukc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tlpipxmhst .gt_summary_row {
+#fscqxojukc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -373,16 +374,16 @@
   padding-right: 5px;
 }
 
-#tlpipxmhst .gt_first_summary_row {
+#fscqxojukc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_first_summary_row.thick {
+#fscqxojukc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tlpipxmhst .gt_last_summary_row {
+#fscqxojukc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -392,7 +393,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_grand_summary_row {
+#fscqxojukc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -402,7 +403,7 @@
   padding-right: 5px;
 }
 
-#tlpipxmhst .gt_first_grand_summary_row {
+#fscqxojukc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -412,11 +413,11 @@
   border-top-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_striped {
+#fscqxojukc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tlpipxmhst .gt_table_body {
+#fscqxojukc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -425,7 +426,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_footnotes {
+#fscqxojukc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -439,7 +440,7 @@
   border-right-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_footnote {
+#fscqxojukc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -448,7 +449,7 @@
   padding-right: 5px;
 }
 
-#tlpipxmhst .gt_sourcenotes {
+#fscqxojukc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -462,7 +463,7 @@
   border-right-color: #D3D3D3;
 }
 
-#tlpipxmhst .gt_sourcenote {
+#fscqxojukc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -470,64 +471,64 @@
   padding-right: 5px;
 }
 
-#tlpipxmhst .gt_left {
+#fscqxojukc .gt_left {
   text-align: left;
 }
 
-#tlpipxmhst .gt_center {
+#fscqxojukc .gt_center {
   text-align: center;
 }
 
-#tlpipxmhst .gt_right {
+#fscqxojukc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tlpipxmhst .gt_font_normal {
+#fscqxojukc .gt_font_normal {
   font-weight: normal;
 }
 
-#tlpipxmhst .gt_font_bold {
+#fscqxojukc .gt_font_bold {
   font-weight: bold;
 }
 
-#tlpipxmhst .gt_font_italic {
+#fscqxojukc .gt_font_italic {
   font-style: italic;
 }
 
-#tlpipxmhst .gt_super {
+#fscqxojukc .gt_super {
   font-size: 65%;
 }
 
-#tlpipxmhst .gt_footnote_marks {
+#fscqxojukc .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#tlpipxmhst .gt_asterisk {
+#fscqxojukc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tlpipxmhst .gt_indent_1 {
+#fscqxojukc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tlpipxmhst .gt_indent_2 {
+#fscqxojukc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tlpipxmhst .gt_indent_3 {
+#fscqxojukc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tlpipxmhst .gt_indent_4 {
+#fscqxojukc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tlpipxmhst .gt_indent_5 {
+#fscqxojukc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -575,15 +576,15 @@
 <span>  duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="cn">Inf</span><span class="op">)</span>,</span>
 <span>  failRate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="va">medianSurv</span>,</span>
 <span>  hr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">.6</span><span class="op">)</span>,</span>
-<span>  dropoutRate <span class="op">=</span> <span class="fl">.001</span></span>
-<span><span class="op">)</span></span>
+<span>  dropoutRate <span class="op">=</span> <span class="fl">.001</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">failRates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="mjndxzqutr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kdkpcortxo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mjndxzqutr .gt_table {
+#kdkpcortxo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -608,7 +609,7 @@
   border-left-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_heading {
+#kdkpcortxo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -620,7 +621,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_title {
+#kdkpcortxo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -632,7 +633,7 @@
   border-bottom-width: 0;
 }
 
-#mjndxzqutr .gt_subtitle {
+#kdkpcortxo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -644,13 +645,13 @@
   border-top-width: 0;
 }
 
-#mjndxzqutr .gt_bottom_border {
+#kdkpcortxo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_col_headings {
+#kdkpcortxo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -665,7 +666,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_col_heading {
+#kdkpcortxo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -685,7 +686,7 @@
   overflow-x: hidden;
 }
 
-#mjndxzqutr .gt_column_spanner_outer {
+#kdkpcortxo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -697,15 +698,15 @@
   padding-right: 4px;
 }
 
-#mjndxzqutr .gt_column_spanner_outer:first-child {
+#kdkpcortxo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mjndxzqutr .gt_column_spanner_outer:last-child {
+#kdkpcortxo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mjndxzqutr .gt_column_spanner {
+#kdkpcortxo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -717,7 +718,7 @@
   width: 100%;
 }
 
-#mjndxzqutr .gt_group_heading {
+#kdkpcortxo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -742,7 +743,7 @@
   vertical-align: middle;
 }
 
-#mjndxzqutr .gt_empty_group_heading {
+#kdkpcortxo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -757,15 +758,15 @@
   vertical-align: middle;
 }
 
-#mjndxzqutr .gt_from_md > :first-child {
+#kdkpcortxo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mjndxzqutr .gt_from_md > :last-child {
+#kdkpcortxo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mjndxzqutr .gt_row {
+#kdkpcortxo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -784,7 +785,7 @@
   overflow-x: hidden;
 }
 
-#mjndxzqutr .gt_stub {
+#kdkpcortxo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -797,7 +798,7 @@
   padding-right: 5px;
 }
 
-#mjndxzqutr .gt_stub_row_group {
+#kdkpcortxo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -811,11 +812,11 @@
   vertical-align: top;
 }
 
-#mjndxzqutr .gt_row_group_first td {
+#kdkpcortxo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mjndxzqutr .gt_summary_row {
+#kdkpcortxo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -825,16 +826,16 @@
   padding-right: 5px;
 }
 
-#mjndxzqutr .gt_first_summary_row {
+#kdkpcortxo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_first_summary_row.thick {
+#kdkpcortxo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mjndxzqutr .gt_last_summary_row {
+#kdkpcortxo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -844,7 +845,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_grand_summary_row {
+#kdkpcortxo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -854,7 +855,7 @@
   padding-right: 5px;
 }
 
-#mjndxzqutr .gt_first_grand_summary_row {
+#kdkpcortxo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -864,11 +865,11 @@
   border-top-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_striped {
+#kdkpcortxo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mjndxzqutr .gt_table_body {
+#kdkpcortxo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -877,7 +878,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_footnotes {
+#kdkpcortxo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -891,7 +892,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_footnote {
+#kdkpcortxo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -900,7 +901,7 @@
   padding-right: 5px;
 }
 
-#mjndxzqutr .gt_sourcenotes {
+#kdkpcortxo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -914,7 +915,7 @@
   border-right-color: #D3D3D3;
 }
 
-#mjndxzqutr .gt_sourcenote {
+#kdkpcortxo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -922,64 +923,64 @@
   padding-right: 5px;
 }
 
-#mjndxzqutr .gt_left {
+#kdkpcortxo .gt_left {
   text-align: left;
 }
 
-#mjndxzqutr .gt_center {
+#kdkpcortxo .gt_center {
   text-align: center;
 }
 
-#mjndxzqutr .gt_right {
+#kdkpcortxo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mjndxzqutr .gt_font_normal {
+#kdkpcortxo .gt_font_normal {
   font-weight: normal;
 }
 
-#mjndxzqutr .gt_font_bold {
+#kdkpcortxo .gt_font_bold {
   font-weight: bold;
 }
 
-#mjndxzqutr .gt_font_italic {
+#kdkpcortxo .gt_font_italic {
   font-style: italic;
 }
 
-#mjndxzqutr .gt_super {
+#kdkpcortxo .gt_super {
   font-size: 65%;
 }
 
-#mjndxzqutr .gt_footnote_marks {
+#kdkpcortxo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#mjndxzqutr .gt_asterisk {
+#kdkpcortxo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mjndxzqutr .gt_indent_1 {
+#kdkpcortxo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mjndxzqutr .gt_indent_2 {
+#kdkpcortxo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mjndxzqutr .gt_indent_3 {
+#kdkpcortxo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mjndxzqutr .gt_indent_4 {
+#kdkpcortxo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mjndxzqutr .gt_indent_5 {
+#kdkpcortxo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1016,7 +1017,7 @@
 <p>Under the above enrollment, failure and dropout rate assumptions we now derive sample size for a trial targeted to complete in 36 months with no interim analysis, <span class="math inline">\(90\%\)</span> power and <span class="math inline">\(2.5\%\)</span> Type I error.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">.025</span></span>
-<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">.1</span> <span class="co"># 1 - targeted power</span></span>
+<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">.1</span>                   <span class="co"># 1 - targeted power</span></span>
 <span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fixed_design.html">fixed_design</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="st">"AHR"</span>,                 <span class="co"># method for computing sample size</span></span>
 <span>  enrollRates <span class="op">=</span> <span class="va">enrollRates</span>, <span class="co"># Relative enrollment rates </span></span>
@@ -1028,12 +1029,12 @@
 <p>A quick summary of the targeted sample size is obtained below. Note that you would normally round up <code>N</code> up to an even number and <code>Events</code> to the next integer.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="vldnfuimzl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wbwgpermbi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vldnfuimzl .gt_table {
+#wbwgpermbi .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1058,7 +1059,7 @@
   border-left-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_heading {
+#wbwgpermbi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1070,7 +1071,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_title {
+#wbwgpermbi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1082,7 +1083,7 @@
   border-bottom-width: 0;
 }
 
-#vldnfuimzl .gt_subtitle {
+#wbwgpermbi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1094,13 +1095,13 @@
   border-top-width: 0;
 }
 
-#vldnfuimzl .gt_bottom_border {
+#wbwgpermbi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_col_headings {
+#wbwgpermbi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1115,7 +1116,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_col_heading {
+#wbwgpermbi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1135,7 +1136,7 @@
   overflow-x: hidden;
 }
 
-#vldnfuimzl .gt_column_spanner_outer {
+#wbwgpermbi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1147,15 +1148,15 @@
   padding-right: 4px;
 }
 
-#vldnfuimzl .gt_column_spanner_outer:first-child {
+#wbwgpermbi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vldnfuimzl .gt_column_spanner_outer:last-child {
+#wbwgpermbi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vldnfuimzl .gt_column_spanner {
+#wbwgpermbi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1167,7 +1168,7 @@
   width: 100%;
 }
 
-#vldnfuimzl .gt_group_heading {
+#wbwgpermbi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1192,7 +1193,7 @@
   vertical-align: middle;
 }
 
-#vldnfuimzl .gt_empty_group_heading {
+#wbwgpermbi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1207,15 +1208,15 @@
   vertical-align: middle;
 }
 
-#vldnfuimzl .gt_from_md > :first-child {
+#wbwgpermbi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vldnfuimzl .gt_from_md > :last-child {
+#wbwgpermbi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vldnfuimzl .gt_row {
+#wbwgpermbi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1234,7 +1235,7 @@
   overflow-x: hidden;
 }
 
-#vldnfuimzl .gt_stub {
+#wbwgpermbi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1247,7 +1248,7 @@
   padding-right: 5px;
 }
 
-#vldnfuimzl .gt_stub_row_group {
+#wbwgpermbi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1261,11 +1262,11 @@
   vertical-align: top;
 }
 
-#vldnfuimzl .gt_row_group_first td {
+#wbwgpermbi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vldnfuimzl .gt_summary_row {
+#wbwgpermbi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1275,16 +1276,16 @@
   padding-right: 5px;
 }
 
-#vldnfuimzl .gt_first_summary_row {
+#wbwgpermbi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_first_summary_row.thick {
+#wbwgpermbi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vldnfuimzl .gt_last_summary_row {
+#wbwgpermbi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1294,7 +1295,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_grand_summary_row {
+#wbwgpermbi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1304,7 +1305,7 @@
   padding-right: 5px;
 }
 
-#vldnfuimzl .gt_first_grand_summary_row {
+#wbwgpermbi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1314,11 +1315,11 @@
   border-top-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_striped {
+#wbwgpermbi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vldnfuimzl .gt_table_body {
+#wbwgpermbi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1327,7 +1328,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_footnotes {
+#wbwgpermbi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1341,7 +1342,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_footnote {
+#wbwgpermbi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1350,7 +1351,7 @@
   padding-right: 5px;
 }
 
-#vldnfuimzl .gt_sourcenotes {
+#wbwgpermbi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1364,7 +1365,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vldnfuimzl .gt_sourcenote {
+#wbwgpermbi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1372,64 +1373,64 @@
   padding-right: 5px;
 }
 
-#vldnfuimzl .gt_left {
+#wbwgpermbi .gt_left {
   text-align: left;
 }
 
-#vldnfuimzl .gt_center {
+#wbwgpermbi .gt_center {
   text-align: center;
 }
 
-#vldnfuimzl .gt_right {
+#wbwgpermbi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vldnfuimzl .gt_font_normal {
+#wbwgpermbi .gt_font_normal {
   font-weight: normal;
 }
 
-#vldnfuimzl .gt_font_bold {
+#wbwgpermbi .gt_font_bold {
   font-weight: bold;
 }
 
-#vldnfuimzl .gt_font_italic {
+#wbwgpermbi .gt_font_italic {
   font-style: italic;
 }
 
-#vldnfuimzl .gt_super {
+#wbwgpermbi .gt_super {
   font-size: 65%;
 }
 
-#vldnfuimzl .gt_footnote_marks {
+#wbwgpermbi .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vldnfuimzl .gt_asterisk {
+#wbwgpermbi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vldnfuimzl .gt_indent_1 {
+#wbwgpermbi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vldnfuimzl .gt_indent_2 {
+#wbwgpermbi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vldnfuimzl .gt_indent_3 {
+#wbwgpermbi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vldnfuimzl .gt_indent_4 {
+#wbwgpermbi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vldnfuimzl .gt_indent_5 {
+#wbwgpermbi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1465,12 +1466,12 @@
 <p>The enrollment rates for each period have been increased proportionately to size the trial for the desired properties; the duration for each enrollment rate has not changed.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span><span class="op">$</span><span class="va">enrollRates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="qytlyedvnb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vprzazgnmp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qytlyedvnb .gt_table {
+#vprzazgnmp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1495,7 +1496,7 @@
   border-left-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_heading {
+#vprzazgnmp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1507,7 +1508,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_title {
+#vprzazgnmp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1519,7 +1520,7 @@
   border-bottom-width: 0;
 }
 
-#qytlyedvnb .gt_subtitle {
+#vprzazgnmp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1531,13 +1532,13 @@
   border-top-width: 0;
 }
 
-#qytlyedvnb .gt_bottom_border {
+#vprzazgnmp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_col_headings {
+#vprzazgnmp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1552,7 +1553,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_col_heading {
+#vprzazgnmp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1572,7 +1573,7 @@
   overflow-x: hidden;
 }
 
-#qytlyedvnb .gt_column_spanner_outer {
+#vprzazgnmp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1584,15 +1585,15 @@
   padding-right: 4px;
 }
 
-#qytlyedvnb .gt_column_spanner_outer:first-child {
+#vprzazgnmp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qytlyedvnb .gt_column_spanner_outer:last-child {
+#vprzazgnmp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qytlyedvnb .gt_column_spanner {
+#vprzazgnmp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1604,7 +1605,7 @@
   width: 100%;
 }
 
-#qytlyedvnb .gt_group_heading {
+#vprzazgnmp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1629,7 +1630,7 @@
   vertical-align: middle;
 }
 
-#qytlyedvnb .gt_empty_group_heading {
+#vprzazgnmp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1644,15 +1645,15 @@
   vertical-align: middle;
 }
 
-#qytlyedvnb .gt_from_md > :first-child {
+#vprzazgnmp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qytlyedvnb .gt_from_md > :last-child {
+#vprzazgnmp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qytlyedvnb .gt_row {
+#vprzazgnmp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1671,7 +1672,7 @@
   overflow-x: hidden;
 }
 
-#qytlyedvnb .gt_stub {
+#vprzazgnmp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1684,7 +1685,7 @@
   padding-right: 5px;
 }
 
-#qytlyedvnb .gt_stub_row_group {
+#vprzazgnmp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1698,11 +1699,11 @@
   vertical-align: top;
 }
 
-#qytlyedvnb .gt_row_group_first td {
+#vprzazgnmp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qytlyedvnb .gt_summary_row {
+#vprzazgnmp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1712,16 +1713,16 @@
   padding-right: 5px;
 }
 
-#qytlyedvnb .gt_first_summary_row {
+#vprzazgnmp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_first_summary_row.thick {
+#vprzazgnmp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qytlyedvnb .gt_last_summary_row {
+#vprzazgnmp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1731,7 +1732,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_grand_summary_row {
+#vprzazgnmp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1741,7 +1742,7 @@
   padding-right: 5px;
 }
 
-#qytlyedvnb .gt_first_grand_summary_row {
+#vprzazgnmp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1751,11 +1752,11 @@
   border-top-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_striped {
+#vprzazgnmp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qytlyedvnb .gt_table_body {
+#vprzazgnmp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1764,7 +1765,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_footnotes {
+#vprzazgnmp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1778,7 +1779,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_footnote {
+#vprzazgnmp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1787,7 +1788,7 @@
   padding-right: 5px;
 }
 
-#qytlyedvnb .gt_sourcenotes {
+#vprzazgnmp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1801,7 +1802,7 @@
   border-right-color: #D3D3D3;
 }
 
-#qytlyedvnb .gt_sourcenote {
+#vprzazgnmp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1809,64 +1810,64 @@
   padding-right: 5px;
 }
 
-#qytlyedvnb .gt_left {
+#vprzazgnmp .gt_left {
   text-align: left;
 }
 
-#qytlyedvnb .gt_center {
+#vprzazgnmp .gt_center {
   text-align: center;
 }
 
-#qytlyedvnb .gt_right {
+#vprzazgnmp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qytlyedvnb .gt_font_normal {
+#vprzazgnmp .gt_font_normal {
   font-weight: normal;
 }
 
-#qytlyedvnb .gt_font_bold {
+#vprzazgnmp .gt_font_bold {
   font-weight: bold;
 }
 
-#qytlyedvnb .gt_font_italic {
+#vprzazgnmp .gt_font_italic {
   font-style: italic;
 }
 
-#qytlyedvnb .gt_super {
+#vprzazgnmp .gt_super {
   font-size: 65%;
 }
 
-#qytlyedvnb .gt_footnote_marks {
+#vprzazgnmp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#qytlyedvnb .gt_asterisk {
+#vprzazgnmp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qytlyedvnb .gt_indent_1 {
+#vprzazgnmp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qytlyedvnb .gt_indent_2 {
+#vprzazgnmp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qytlyedvnb .gt_indent_3 {
+#vprzazgnmp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qytlyedvnb .gt_indent_4 {
+#vprzazgnmp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qytlyedvnb .gt_indent_5 {
+#vprzazgnmp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1917,7 +1918,7 @@
 \]</span> For this quick start, we will only illustrate this type of efficacy bound.</p>
 <p>Perhaps the most common spending function for this approach is the <span class="citation">Lan and DeMets (1983)</span> approximation to the O’Brien-Fleming bound with</p>
 <p><span class="math display">\[
-f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
+  f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 \]</span></p>
 <p><img src="story_quick_start_files/figure-html/unnamed-chunk-8-1.png" width="624"></p>
 <p>Suppose <span class="math inline">\(K=3\)</span> and <span class="math inline">\(t_1=0.5\)</span>, <span class="math inline">\(t_2 = 0.75\)</span>, <span class="math inline">\(t_3 = 1\)</span>. We can use the assumptions above for a group sequential design with only an efficacy bound using the Lan-DeMets O’Brien-Fleming spending function for <span class="math inline">\(\alpha = 0.025\)</span> with</p>
@@ -1927,23 +1928,24 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <span>  beta <span class="op">=</span> <span class="va">beta</span>,</span>
 <span>  enrollRates <span class="op">=</span> <span class="va">enrollRates</span>,</span>
 <span>  failRates <span class="op">=</span> <span class="va">failRates</span>,</span>
-<span>  analysisTimes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">26</span>, <span class="fl">36</span><span class="op">)</span>,  <span class="co"># Calendar time of planned analyses</span></span>
-<span>  upper <span class="op">=</span> <span class="va">gs_spending_bound</span>, <span class="co"># Spending function bound for efficacy</span></span>
-<span>  <span class="co"># specify spending function and total Type I error</span></span>
-<span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sf <span class="op">=</span> <span class="fu">gsDesign</span><span class="fu">::</span><span class="va"><a href="https://keaven.github.io/gsDesign/reference/sfLDOF.html" class="external-link">sfLDOF</a></span>, total_spend <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>,</span>
-<span>  lower <span class="op">=</span> <span class="va">gs_b</span>, lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">3</span><span class="op">)</span>, <span class="co"># No futility bound</span></span>
+<span>  analysisTimes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">26</span>, <span class="fl">36</span><span class="op">)</span>,                           <span class="co"># Calendar time of planned analyses</span></span>
+<span>  upper <span class="op">=</span> <span class="va">gs_spending_bound</span>,                               <span class="co"># Spending function bound for efficacy</span></span>
+<span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sf <span class="op">=</span> <span class="fu">gsDesign</span><span class="fu">::</span><span class="va"><a href="https://keaven.github.io/gsDesign/reference/sfLDOF.html" class="external-link">sfLDOF</a></span>, total_spend <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>, <span class="co"># specify spending function and total Type I error</span></span>
+<span>  lower <span class="op">=</span> <span class="va">gs_b</span>, lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">3</span><span class="op">)</span>,                       <span class="co"># No futility bound</span></span>
 <span>  info_scale <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Bounds at the 3 analyses are as follows. Note that expected sample size at time of each data cutoff for analysis is also here in <code>N</code>. We filter on the upper bound so that lower bounds with <code>Z = -Inf</code> are not shown.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">design1s</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"1-sided group sequential bound using AHR method"</span>,</span>
-<span>                            subtitle<span class="op">=</span><span class="st">"Lan-DeMets spending to approximate O'Brien-Fleming bound"</span><span class="op">)</span> </span></code></pre></div>
-<div id="gubzjpzlbh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<code class="sourceCode R"><span><span class="va">design1s</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"1-sided group sequential bound using AHR method"</span>,</span>
+<span>        subtitle <span class="op">=</span> <span class="st">"Lan-DeMets spending to approximate O'Brien-Fleming bound"</span><span class="op">)</span> </span></code></pre></div>
+<div id="vmvobcgrzp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gubzjpzlbh .gt_table {
+#vmvobcgrzp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1968,7 +1970,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-left-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_heading {
+#vmvobcgrzp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1980,7 +1982,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_title {
+#vmvobcgrzp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1992,7 +1994,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-width: 0;
 }
 
-#gubzjpzlbh .gt_subtitle {
+#vmvobcgrzp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2004,13 +2006,13 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-top-width: 0;
 }
 
-#gubzjpzlbh .gt_bottom_border {
+#vmvobcgrzp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_col_headings {
+#vmvobcgrzp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2025,7 +2027,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_col_heading {
+#vmvobcgrzp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2045,7 +2047,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   overflow-x: hidden;
 }
 
-#gubzjpzlbh .gt_column_spanner_outer {
+#vmvobcgrzp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2057,15 +2059,15 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 4px;
 }
 
-#gubzjpzlbh .gt_column_spanner_outer:first-child {
+#vmvobcgrzp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gubzjpzlbh .gt_column_spanner_outer:last-child {
+#vmvobcgrzp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gubzjpzlbh .gt_column_spanner {
+#vmvobcgrzp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2077,7 +2079,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   width: 100%;
 }
 
-#gubzjpzlbh .gt_group_heading {
+#vmvobcgrzp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2102,7 +2104,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: middle;
 }
 
-#gubzjpzlbh .gt_empty_group_heading {
+#vmvobcgrzp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2117,15 +2119,15 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: middle;
 }
 
-#gubzjpzlbh .gt_from_md > :first-child {
+#vmvobcgrzp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gubzjpzlbh .gt_from_md > :last-child {
+#vmvobcgrzp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gubzjpzlbh .gt_row {
+#vmvobcgrzp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2144,7 +2146,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   overflow-x: hidden;
 }
 
-#gubzjpzlbh .gt_stub {
+#vmvobcgrzp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2157,7 +2159,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#gubzjpzlbh .gt_stub_row_group {
+#vmvobcgrzp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2171,11 +2173,11 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: top;
 }
 
-#gubzjpzlbh .gt_row_group_first td {
+#vmvobcgrzp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gubzjpzlbh .gt_summary_row {
+#vmvobcgrzp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2185,16 +2187,16 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#gubzjpzlbh .gt_first_summary_row {
+#vmvobcgrzp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_first_summary_row.thick {
+#vmvobcgrzp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gubzjpzlbh .gt_last_summary_row {
+#vmvobcgrzp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2204,7 +2206,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_grand_summary_row {
+#vmvobcgrzp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2214,7 +2216,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#gubzjpzlbh .gt_first_grand_summary_row {
+#vmvobcgrzp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2224,11 +2226,11 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-top-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_striped {
+#vmvobcgrzp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gubzjpzlbh .gt_table_body {
+#vmvobcgrzp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2237,7 +2239,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_footnotes {
+#vmvobcgrzp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2251,7 +2253,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_footnote {
+#vmvobcgrzp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2260,7 +2262,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#gubzjpzlbh .gt_sourcenotes {
+#vmvobcgrzp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2274,7 +2276,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#gubzjpzlbh .gt_sourcenote {
+#vmvobcgrzp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2282,64 +2284,64 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#gubzjpzlbh .gt_left {
+#vmvobcgrzp .gt_left {
   text-align: left;
 }
 
-#gubzjpzlbh .gt_center {
+#vmvobcgrzp .gt_center {
   text-align: center;
 }
 
-#gubzjpzlbh .gt_right {
+#vmvobcgrzp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gubzjpzlbh .gt_font_normal {
+#vmvobcgrzp .gt_font_normal {
   font-weight: normal;
 }
 
-#gubzjpzlbh .gt_font_bold {
+#vmvobcgrzp .gt_font_bold {
   font-weight: bold;
 }
 
-#gubzjpzlbh .gt_font_italic {
+#vmvobcgrzp .gt_font_italic {
   font-style: italic;
 }
 
-#gubzjpzlbh .gt_super {
+#vmvobcgrzp .gt_super {
   font-size: 65%;
 }
 
-#gubzjpzlbh .gt_footnote_marks {
+#vmvobcgrzp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#gubzjpzlbh .gt_asterisk {
+#vmvobcgrzp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gubzjpzlbh .gt_indent_1 {
+#vmvobcgrzp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gubzjpzlbh .gt_indent_2 {
+#vmvobcgrzp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gubzjpzlbh .gt_indent_3 {
+#vmvobcgrzp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gubzjpzlbh .gt_indent_4 {
+#vmvobcgrzp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gubzjpzlbh .gt_indent_5 {
+#vmvobcgrzp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2377,7 +2379,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.0013</td>
 <td class="gt_row gt_right">0.6213</td>
 <td class="gt_row gt_right">0.0511</td>
-<td class="gt_row gt_right">0.0015</td>
+<td class="gt_row gt_right">0.0013</td>
 </tr>
 <tr class="gt_group_heading_row">
 <td colspan="5" class="gt_group_heading">Analysis: 2 Time: 26 N: 449 Events: 262.6 AHR: 0.72 IF: 0.8</td>
@@ -2387,7 +2389,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.0120</td>
 <td class="gt_row gt_right">0.7570</td>
 <td class="gt_row gt_right">0.6580</td>
-<td class="gt_row gt_right">0.0126</td>
+<td class="gt_row gt_right">0.0125</td>
 </tr>
 <tr class="gt_group_heading_row">
 <td colspan="5" class="gt_group_heading">Analysis: 3 Time: 36 N: 449 Events: 326.4 AHR: 0.69 IF: 1</td>
@@ -2397,7 +2399,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.0212</td>
 <td class="gt_row gt_right">0.7988</td>
 <td class="gt_row gt_right">0.9000</td>
-<td class="gt_row gt_right">0.0252</td>
+<td class="gt_row gt_right">0.0250</td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes">
@@ -2414,9 +2416,9 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 </div>
 <p>gsDesign to replicate above bounds (this will not replicate sample size).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k<span class="op">=</span><span class="fl">3</span>, test.type<span class="op">=</span><span class="fl">1</span>, timing <span class="op">=</span> <span class="va">design1s</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">IF</span>, sfu<span class="op">=</span><span class="va">sfLDOF</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, timing <span class="op">=</span> <span class="va">design1s</span><span class="op">$</span><span class="va">analysis</span><span class="op">$</span><span class="va">IF</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"gsDesign\n  Upper bound: "</span>,<span class="va">x</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span>
-<span>    <span class="st">"\n  Cumulative boundary crossing probability (H0): "</span>, <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">prob</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>    <span class="st">"\n  Cumulative boundary crossing probability (H0): "</span>, <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">prob</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>    <span class="st">"\n  Timing (IF): "</span>, <span class="va">x</span><span class="op">$</span><span class="va">timing</span>,</span>
 <span>    <span class="st">"\ngs_design_ahr\n  Upper bound: "</span>, <span class="va">design1s</span><span class="op">$</span><span class="va">bounds</span><span class="op">$</span><span class="va">Z</span>,</span>
 <span>    <span class="st">"\n  Cumulative boundary crossing probability (H0): "</span>, <span class="va">design1s</span><span class="op">$</span><span class="va">bounds</span><span class="op">$</span><span class="va">Probability0</span>,</span>
@@ -2428,7 +2430,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <span><span class="co">#&gt;   Timing (IF):  0.4850799 0.7993622 1 </span></span>
 <span><span class="co">#&gt; gs_design_ahr</span></span>
 <span><span class="co">#&gt;   Upper bound:  3.003506 2.256138 2.028823 </span></span>
-<span><span class="co">#&gt;   Cumulative boundary crossing probability (H0):  0.001470581 0.01260011 0.02521913 </span></span>
+<span><span class="co">#&gt;   Cumulative boundary crossing probability (H0):  0.001334442 0.01246455 0.025 </span></span>
 <span><span class="co">#&gt;   Timinng (IF):  0.4850799 0.7993622 1</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -2445,24 +2447,25 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <span>  beta <span class="op">=</span> <span class="va">beta</span>,</span>
 <span>  enrollRates <span class="op">=</span> <span class="va">enrollRates</span>,</span>
 <span>  failRates <span class="op">=</span> <span class="va">failRates</span>,</span>
-<span>  analysisTimes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">26</span>, <span class="fl">36</span><span class="op">)</span>, <span class="co">#  Calendar analysis times</span></span>
+<span>  analysisTimes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">26</span>, <span class="fl">36</span><span class="op">)</span>,  <span class="co">#  Calendar analysis times</span></span>
 <span>  upper <span class="op">=</span> <span class="va">gs_spending_bound</span>,</span>
 <span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sf <span class="op">=</span> <span class="fu">gsDesign</span><span class="fu">::</span><span class="va"><a href="https://keaven.github.io/gsDesign/reference/sfLDOF.html" class="external-link">sfLDOF</a></span>, total_spend <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>,</span>
 <span>  lower <span class="op">=</span> <span class="va">gs_spending_bound</span>,</span>
 <span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sf <span class="op">=</span> <span class="fu">gsDesign</span><span class="fu">::</span><span class="va"><a href="https://keaven.github.io/gsDesign/reference/sfLDOF.html" class="external-link">sfLDOF</a></span>, total_spend <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>,</span>
-<span>  h1_spending <span class="op">=</span> <span class="cn">FALSE</span> <span class="co"># This specifies futility testing with spending under NULL</span></span>
+<span>  h1_spending <span class="op">=</span> <span class="cn">FALSE</span>             <span class="co"># This specifies futility testing with spending under NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Design bounds are confirmed with:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">design2ss</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"2-sided symmetric group sequential bound using AHR method"</span>,</span>
-<span>        subtitle<span class="op">=</span><span class="st">"Lan-DeMets spending to approximate O'Brien-Fleming bound"</span><span class="op">)</span></span></code></pre></div>
-<div id="fovogtwshr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<code class="sourceCode R"><span><span class="va">design2ss</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"2-sided symmetric group sequential bound using AHR method"</span>,</span>
+<span>        subtitle <span class="op">=</span> <span class="st">"Lan-DeMets spending to approximate O'Brien-Fleming bound"</span><span class="op">)</span></span></code></pre></div>
+<div id="meokcmikoz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fovogtwshr .gt_table {
+#meokcmikoz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2487,7 +2490,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-left-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_heading {
+#meokcmikoz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2499,7 +2502,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_title {
+#meokcmikoz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2511,7 +2514,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-width: 0;
 }
 
-#fovogtwshr .gt_subtitle {
+#meokcmikoz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2523,13 +2526,13 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-top-width: 0;
 }
 
-#fovogtwshr .gt_bottom_border {
+#meokcmikoz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_col_headings {
+#meokcmikoz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2544,7 +2547,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_col_heading {
+#meokcmikoz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2564,7 +2567,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   overflow-x: hidden;
 }
 
-#fovogtwshr .gt_column_spanner_outer {
+#meokcmikoz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2576,15 +2579,15 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 4px;
 }
 
-#fovogtwshr .gt_column_spanner_outer:first-child {
+#meokcmikoz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fovogtwshr .gt_column_spanner_outer:last-child {
+#meokcmikoz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fovogtwshr .gt_column_spanner {
+#meokcmikoz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2596,7 +2599,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   width: 100%;
 }
 
-#fovogtwshr .gt_group_heading {
+#meokcmikoz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2621,7 +2624,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: middle;
 }
 
-#fovogtwshr .gt_empty_group_heading {
+#meokcmikoz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2636,15 +2639,15 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: middle;
 }
 
-#fovogtwshr .gt_from_md > :first-child {
+#meokcmikoz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fovogtwshr .gt_from_md > :last-child {
+#meokcmikoz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fovogtwshr .gt_row {
+#meokcmikoz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2663,7 +2666,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   overflow-x: hidden;
 }
 
-#fovogtwshr .gt_stub {
+#meokcmikoz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2676,7 +2679,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#fovogtwshr .gt_stub_row_group {
+#meokcmikoz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2690,11 +2693,11 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: top;
 }
 
-#fovogtwshr .gt_row_group_first td {
+#meokcmikoz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fovogtwshr .gt_summary_row {
+#meokcmikoz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2704,16 +2707,16 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#fovogtwshr .gt_first_summary_row {
+#meokcmikoz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_first_summary_row.thick {
+#meokcmikoz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fovogtwshr .gt_last_summary_row {
+#meokcmikoz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2723,7 +2726,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_grand_summary_row {
+#meokcmikoz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2733,7 +2736,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#fovogtwshr .gt_first_grand_summary_row {
+#meokcmikoz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2743,11 +2746,11 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-top-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_striped {
+#meokcmikoz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fovogtwshr .gt_table_body {
+#meokcmikoz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2756,7 +2759,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_footnotes {
+#meokcmikoz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2770,7 +2773,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_footnote {
+#meokcmikoz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2779,7 +2782,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#fovogtwshr .gt_sourcenotes {
+#meokcmikoz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2793,7 +2796,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#fovogtwshr .gt_sourcenote {
+#meokcmikoz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2801,64 +2804,64 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#fovogtwshr .gt_left {
+#meokcmikoz .gt_left {
   text-align: left;
 }
 
-#fovogtwshr .gt_center {
+#meokcmikoz .gt_center {
   text-align: center;
 }
 
-#fovogtwshr .gt_right {
+#meokcmikoz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fovogtwshr .gt_font_normal {
+#meokcmikoz .gt_font_normal {
   font-weight: normal;
 }
 
-#fovogtwshr .gt_font_bold {
+#meokcmikoz .gt_font_bold {
   font-weight: bold;
 }
 
-#fovogtwshr .gt_font_italic {
+#meokcmikoz .gt_font_italic {
   font-style: italic;
 }
 
-#fovogtwshr .gt_super {
+#meokcmikoz .gt_super {
   font-size: 65%;
 }
 
-#fovogtwshr .gt_footnote_marks {
+#meokcmikoz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#fovogtwshr .gt_asterisk {
+#meokcmikoz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fovogtwshr .gt_indent_1 {
+#meokcmikoz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fovogtwshr .gt_indent_2 {
+#meokcmikoz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fovogtwshr .gt_indent_3 {
+#meokcmikoz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fovogtwshr .gt_indent_4 {
+#meokcmikoz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fovogtwshr .gt_indent_5 {
+#meokcmikoz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2896,14 +2899,14 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.9987</td>
 <td class="gt_row gt_right">1.6096</td>
 <td class="gt_row gt_right">0.0000</td>
-<td class="gt_row gt_right">0.0015</td>
+<td class="gt_row gt_right">0.0013</td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Efficacy</td>
 <td class="gt_row gt_right">0.0013</td>
 <td class="gt_row gt_right">0.6213</td>
 <td class="gt_row gt_right">0.0511</td>
-<td class="gt_row gt_right">0.0015</td>
+<td class="gt_row gt_right">0.0013</td>
 </tr>
 <tr class="gt_group_heading_row">
 <td colspan="5" class="gt_group_heading">Analysis: 2 Time: 26 N: 449 Events: 262.6 AHR: 0.72 IF: 0.8</td>
@@ -2913,14 +2916,14 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.9880</td>
 <td class="gt_row gt_right">1.3211</td>
 <td class="gt_row gt_right">0.0000</td>
-<td class="gt_row gt_right">0.0126</td>
+<td class="gt_row gt_right">0.0125</td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Efficacy</td>
 <td class="gt_row gt_right">0.0120</td>
 <td class="gt_row gt_right">0.7570</td>
 <td class="gt_row gt_right">0.6580</td>
-<td class="gt_row gt_right">0.0126</td>
+<td class="gt_row gt_right">0.0125</td>
 </tr>
 <tr class="gt_group_heading_row">
 <td colspan="5" class="gt_group_heading">Analysis: 3 Time: 36 N: 449 Events: 326.4 AHR: 0.69 IF: 1</td>
@@ -2930,14 +2933,14 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.9788</td>
 <td class="gt_row gt_right">1.2518</td>
 <td class="gt_row gt_right">0.0000</td>
-<td class="gt_row gt_right">0.0252</td>
+<td class="gt_row gt_right">0.0250</td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Efficacy</td>
 <td class="gt_row gt_right">0.0212</td>
 <td class="gt_row gt_right">0.7988</td>
 <td class="gt_row gt_right">0.9000</td>
-<td class="gt_row gt_right">0.0252</td>
+<td class="gt_row gt_right">0.0250</td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes">
@@ -2954,14 +2957,12 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 </div>
 <p>The bounds can be plotted easily:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">design2ss</span><span class="op">$</span><span class="va">analysis</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">design2ss</span><span class="op">$</span><span class="va">bounds</span>, by<span class="op">=</span><span class="st">"Analysis"</span><span class="op">)</span>, </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Events</span>, y <span class="op">=</span> <span class="va">Z</span>, group <span class="op">=</span> <span class="va">Bound</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">design2ss</span><span class="op">$</span><span class="va">analysis</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">design2ss</span><span class="op">$</span><span class="va">bounds</span>, by <span class="op">=</span> <span class="st">"Analysis"</span><span class="op">)</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Events</span>, y <span class="op">=</span> <span class="va">Z</span>, group <span class="op">=</span> <span class="va">Bound</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="va">Bound</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"2-sided symmetric bounds with O'Brien-Fleming-like spending"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="story_quick_start_files/figure-html/unnamed-chunk-14-1.png" width="288"></p>
+<p><img src="story_quick_start_files/figure-html/unnamed-chunk-14-1.png" width="50%"></p>
 </div>
 <div class="section level4">
 <h4 id="asymmetric-2-sided-bounds">Asymmetric 2-sided bounds<a class="anchor" aria-label="anchor" href="#asymmetric-2-sided-bounds"></a>
@@ -2978,19 +2979,20 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sf <span class="op">=</span> <span class="fu">gsDesign</span><span class="fu">::</span><span class="va"><a href="https://keaven.github.io/gsDesign/reference/sfLDOF.html" class="external-link">sfLDOF</a></span>, total_spend <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>,  <span class="co"># Same efficacy bound as before</span></span>
 <span>  test_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span>, <span class="co"># Only test efficacy after IA1</span></span>
 <span>  lower <span class="op">=</span> <span class="va">gs_b</span>, </span>
-<span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.05</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>,<span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span>   <span class="co"># Fixed lower bound at first 2 analyses</span></span>
+<span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.05</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>, <span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span>   <span class="co"># Fixed lower bound at first 2 analyses</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>We now have a slightly larger sample size to account for the possibility of an early futility stop. Bounds are now:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">design2sa</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"2-sided asymmetric group sequential bound using AHR method"</span>,</span>
-<span>        subtitle<span class="op">=</span><span class="st">"Lan-DeMets spending to approximate O'Brien-Fleming bound for efficacy, futility disaster check at IA1, IA2 only"</span><span class="op">)</span></span></code></pre></div>
-<div id="epjmjamtgz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<code class="sourceCode R"><span><span class="va">design2sa</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/as_gt.html">as_gt</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"2-sided asymmetric group sequential bound using AHR method"</span>,</span>
+<span>        subtitle <span class="op">=</span> <span class="st">"Lan-DeMets spending to approximate O'Brien-Fleming bound for efficacy, futility disaster check at IA1, IA2 only"</span><span class="op">)</span></span></code></pre></div>
+<div id="ojjhjllrct" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#epjmjamtgz .gt_table {
+#ojjhjllrct .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3015,7 +3017,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-left-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_heading {
+#ojjhjllrct .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3027,7 +3029,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_title {
+#ojjhjllrct .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3039,7 +3041,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-width: 0;
 }
 
-#epjmjamtgz .gt_subtitle {
+#ojjhjllrct .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3051,13 +3053,13 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-top-width: 0;
 }
 
-#epjmjamtgz .gt_bottom_border {
+#ojjhjllrct .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_col_headings {
+#ojjhjllrct .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3072,7 +3074,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_col_heading {
+#ojjhjllrct .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3092,7 +3094,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   overflow-x: hidden;
 }
 
-#epjmjamtgz .gt_column_spanner_outer {
+#ojjhjllrct .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3104,15 +3106,15 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 4px;
 }
 
-#epjmjamtgz .gt_column_spanner_outer:first-child {
+#ojjhjllrct .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#epjmjamtgz .gt_column_spanner_outer:last-child {
+#ojjhjllrct .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#epjmjamtgz .gt_column_spanner {
+#ojjhjllrct .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3124,7 +3126,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   width: 100%;
 }
 
-#epjmjamtgz .gt_group_heading {
+#ojjhjllrct .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3149,7 +3151,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: middle;
 }
 
-#epjmjamtgz .gt_empty_group_heading {
+#ojjhjllrct .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3164,15 +3166,15 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: middle;
 }
 
-#epjmjamtgz .gt_from_md > :first-child {
+#ojjhjllrct .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#epjmjamtgz .gt_from_md > :last-child {
+#ojjhjllrct .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#epjmjamtgz .gt_row {
+#ojjhjllrct .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3191,7 +3193,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   overflow-x: hidden;
 }
 
-#epjmjamtgz .gt_stub {
+#ojjhjllrct .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3204,7 +3206,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#epjmjamtgz .gt_stub_row_group {
+#ojjhjllrct .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3218,11 +3220,11 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   vertical-align: top;
 }
 
-#epjmjamtgz .gt_row_group_first td {
+#ojjhjllrct .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#epjmjamtgz .gt_summary_row {
+#ojjhjllrct .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3232,16 +3234,16 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#epjmjamtgz .gt_first_summary_row {
+#ojjhjllrct .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_first_summary_row.thick {
+#ojjhjllrct .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#epjmjamtgz .gt_last_summary_row {
+#ojjhjllrct .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3251,7 +3253,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_grand_summary_row {
+#ojjhjllrct .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3261,7 +3263,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#epjmjamtgz .gt_first_grand_summary_row {
+#ojjhjllrct .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3271,11 +3273,11 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-top-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_striped {
+#ojjhjllrct .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#epjmjamtgz .gt_table_body {
+#ojjhjllrct .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3284,7 +3286,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-bottom-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_footnotes {
+#ojjhjllrct .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3298,7 +3300,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_footnote {
+#ojjhjllrct .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3307,7 +3309,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#epjmjamtgz .gt_sourcenotes {
+#ojjhjllrct .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3321,7 +3323,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   border-right-color: #D3D3D3;
 }
 
-#epjmjamtgz .gt_sourcenote {
+#ojjhjllrct .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3329,64 +3331,64 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
   padding-right: 5px;
 }
 
-#epjmjamtgz .gt_left {
+#ojjhjllrct .gt_left {
   text-align: left;
 }
 
-#epjmjamtgz .gt_center {
+#ojjhjllrct .gt_center {
   text-align: center;
 }
 
-#epjmjamtgz .gt_right {
+#ojjhjllrct .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#epjmjamtgz .gt_font_normal {
+#ojjhjllrct .gt_font_normal {
   font-weight: normal;
 }
 
-#epjmjamtgz .gt_font_bold {
+#ojjhjllrct .gt_font_bold {
   font-weight: bold;
 }
 
-#epjmjamtgz .gt_font_italic {
+#ojjhjllrct .gt_font_italic {
   font-style: italic;
 }
 
-#epjmjamtgz .gt_super {
+#ojjhjllrct .gt_super {
   font-size: 65%;
 }
 
-#epjmjamtgz .gt_footnote_marks {
+#ojjhjllrct .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#epjmjamtgz .gt_asterisk {
+#ojjhjllrct .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#epjmjamtgz .gt_indent_1 {
+#ojjhjllrct .gt_indent_1 {
   text-indent: 5px;
 }
 
-#epjmjamtgz .gt_indent_2 {
+#ojjhjllrct .gt_indent_2 {
   text-indent: 10px;
 }
 
-#epjmjamtgz .gt_indent_3 {
+#ojjhjllrct .gt_indent_3 {
   text-indent: 15px;
 }
 
-#epjmjamtgz .gt_indent_4 {
+#ojjhjllrct .gt_indent_4 {
   text-indent: 20px;
 }
 
-#epjmjamtgz .gt_indent_5 {
+#ojjhjllrct .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3424,7 +3426,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.9500</td>
 <td class="gt_row gt_right">1.3896</td>
 <td class="gt_row gt_right">0.0115</td>
-<td class="gt_row gt_right">0.0511</td>
+<td class="gt_row gt_right">0.0500</td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Efficacy</td>
@@ -3441,7 +3443,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.9500</td>
 <td class="gt_row gt_right">1.2932</td>
 <td class="gt_row gt_right">0.0119</td>
-<td class="gt_row gt_right">0.0773</td>
+<td class="gt_row gt_right">0.0763</td>
 </tr>
 <tr>
 <td class="gt_row gt_left">Efficacy</td>
@@ -3468,7 +3470,7 @@ f(t) = 2-2\Phi\left(\frac{\Phi^{-1}(1-\alpha/2)}{t^{1/2}}\right).
 <td class="gt_row gt_right">0.0212</td>
 <td class="gt_row gt_right">0.8013</td>
 <td class="gt_row gt_right">0.9000</td>
-<td class="gt_row gt_right">0.0251</td>
+<td class="gt_row gt_right">0.0250</td>
 </tr>
 </tbody>
 <tfoot class="gt_footnotes">
