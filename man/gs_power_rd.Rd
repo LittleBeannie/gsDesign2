@@ -29,9 +29,13 @@ gs_power_rd(
 
 \item{p_e}{rate at the experimental group}
 
+\item{N}{sample size}
+
 \item{rd0}{treatment effect under super-superiority designs, the default is 0}
 
 \item{ratio}{experimental:control randomization ratio}
+
+\item{weight}{weigting method, either "un-stratified" or "ss" or "invar"}
 
 \item{upper}{function to compute upper bound}
 
@@ -41,7 +45,7 @@ gs_power_rd(
 
 \item{lpar}{parameter to pass to lower}
 
-\item{info_scale}{}
+\item{info_scale}{the information scale for calculation}
 
 \item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 
@@ -57,10 +61,6 @@ a logical vector of the same length as \code{info} should indicate which analyse
 \item{r}{Integer, at least 2; default of 18 recommended by Jennison and Turnbull}
 
 \item{tol}{Tolerance parameter for boundary convergence (on Z-scale)}
-
-\item{n}{sample size}
-
-\item{theta0}{the standardized treatment effect under H0}
 }
 \value{
 a \code{tibble} with columns Analysis, Bound, Z, Probability, theta, Time, AHR, Events
@@ -72,6 +72,8 @@ Group sequential design power under risk difference
 # --------------------- #
 #      example 1        #
 # --------------------- #
+library(gsDesign)
+
 # un-stratified case with H0: rd0 = 0
 gs_power_rd(
   p_c = tibble::tibble(Stratum = "All",

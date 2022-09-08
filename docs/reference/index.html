@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../index.html">Home</a>
 </li>
@@ -47,9 +47,25 @@
     </div>
 
     <div class="section level2">
+      <h2 id="high-level-functions">High-level Functions<a class="anchor" aria-label="anchor" href="#high-level-functions"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions to calculate fixed/group sequential design under multiple tests.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="fixed_design.html">fixed_design()</a></code> 
+        </dt>
+        <dd>Fixed design sample size</dd>
+      </dl></div><div class="section level2">
       <h2 id="ahr">AHR<a class="anchor" aria-label="anchor" href="#ahr"></a></h2>
       
-      
+      <p class="section-desc"></p><p>Functions for the average hazard ratio (AHR) method.</p>
 
       
     </div><div id="" class="section level2">
@@ -77,10 +93,20 @@
           <code><a href="gs_info_ahr.html">gs_info_ahr()</a></code> 
         </dt>
         <dd>Information and effect size based on AHR approximation</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_power_ahr.html">gs_power_ahr()</a></code> 
+        </dt>
+        <dd>Group sequential design power using average hazard ratio under non-proportional hazards</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_design_ahr.html">gs_design_ahr()</a></code> 
+        </dt>
+        <dd>Group sequential design using average hazard ratio under non-proportional hazards</dd>
       </dl></div><div class="section level2">
       <h2 id="wlr">WLR<a class="anchor" aria-label="anchor" href="#wlr"></a></h2>
       
-      
+      <p class="section-desc"></p><p>Functions for the weighted logrank test (WLR) method.</p>
 
       
     </div><div id="" class="section level2">
@@ -90,13 +116,28 @@
 
       <dl><dt>
           
-          <code><a href="AHR.html">AHR()</a></code> 
+          <code><a href="wlr_weight.html">wlr_weight_fh()</a></code> <code><a href="wlr_weight.html">wlr_weight_1()</a></code> <code><a href="wlr_weight.html">wlr_weight_n()</a></code> 
         </dt>
-        <dd>Average hazard ratio under non-proportional hazards (test version)</dd>
+        <dd>Weight Function of Weighted Log-rank Test</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_info_wlr.html">gs_info_wlr()</a></code> 
+        </dt>
+        <dd>Information and effect size for Weighted Log-rank test</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_power_wlr.html">gs_power_wlr()</a></code> 
+        </dt>
+        <dd>Group sequential design power using weighted log rank test under non-proportional hazards</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_design_wlr.html">gs_design_wlr()</a></code> 
+        </dt>
+        <dd>Group sequential design using weighted log-rank test under non-proportional hazards</dd>
       </dl></div><div class="section level2">
       <h2 id="max-combo">Max Combo<a class="anchor" aria-label="anchor" href="#max-combo"></a></h2>
       
-      
+      <p class="section-desc"></p><p>Functions for the max combo method.</p>
 
       
     </div><div id="" class="section level2">
@@ -106,13 +147,102 @@
 
       <dl><dt>
           
-          <code><a href="AHR.html">AHR()</a></code> 
+          <code><a href="pmvnorm_combo.html">pmvnorm_combo()</a></code> 
         </dt>
-        <dd>Average hazard ratio under non-proportional hazards (test version)</dd>
+        <dd>Multivariate Normal Distribution for Multivariate Maximum Statistics</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_info_combo.html">gs_info_combo()</a></code> 
+        </dt>
+        <dd>Information and effect size for max combo test</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_spending_combo.html">gs_spending_combo()</a></code> 
+        </dt>
+        <dd>Derive spending bound for MaxCombo group sequential boundary</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_power_combo.html">gs_power_combo()</a></code> 
+        </dt>
+        <dd>Group sequential design power using MaxCombo test under non-proportional hazards</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_design_combo.html">gs_design_combo()</a></code> 
+        </dt>
+        <dd>Group sequential design using MaxCombo test under non-proportional hazards</dd>
+      </dl></div><div class="section level2">
+      <h2 id="risk-differnce">Risk differnce<a class="anchor" aria-label="anchor" href="#risk-differnce"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for risk differences.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="gs_info_rd.html">gs_info_rd()</a></code> 
+        </dt>
+        <dd>Information and effect size under risk difference</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_power_rd.html">gs_power_rd()</a></code> 
+        </dt>
+        <dd>Group sequential design power under risk difference</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gs_design_rd.html">gs_design_rd()</a></code> 
+        </dt>
+        <dd>Group sequential design using average hazard ratio under non-proportional hazards</dd>
+      </dl></div><div class="section level2">
+      <h2 id="summary-and-display-tables">Summary and display tables<a class="anchor" aria-label="anchor" href="#summary-and-display-tables"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions to summarize fixed / group sequential design results.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="summary.html">summary()</a></code> 
+        </dt>
+        <dd>S3 class method to summary fixed or group sequential design</dd>
+      </dl><dl><dt>
+          
+          <code><a href="summary.fixed_design.html">summary(<i>&lt;fixed_design&gt;</i>)</a></code> 
+        </dt>
+        <dd>summary for <code><a href="../reference/fixed_design.html">fixed_design()</a></code> object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="summary.gs_design.html">summary(<i>&lt;gs_design&gt;</i>)</a></code> 
+        </dt>
+        <dd>This is the function to generate a R table summarizing the bounds
+in the group sequential design generated by
+<code>gs_design_ahr</code> or <code>gs_design_wlr</code> or <code>gs_design_combo</code>.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_gt.html">as_gt()</a></code> 
+        </dt>
+        <dd>S3 class method to get summary table into a gt table</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_gt.fixed_design.html">as_gt(<i>&lt;fixed_design&gt;</i>)</a></code> 
+        </dt>
+        <dd>This is the function to format the bounds summary table of fixed design into gt style.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_gt.gs_design.html">as_gt(<i>&lt;gs_design&gt;</i>)</a></code> 
+        </dt>
+        <dd>This is the function to format the bounds summary table into gt style.</dd>
       </dl></div><div class="section level2">
       <h2 id="boundary-functions">Boundary functions<a class="anchor" aria-label="anchor" href="#boundary-functions"></a></h2>
       
-      
+      <p class="section-desc"></p><p>Functions to specify the upper and lower bound in group sequential designs. They are not recommended to use alone. Instead, they should be used companied with gs_design_npe, gs_power_npe, ect..</p>
 
       
     </div><div id="" class="section level2">
@@ -131,9 +261,9 @@
         </dt>
         <dd>Derive spending bound for group sequential boundary</dd>
       </dl></div><div class="section level2">
-      <h2 id="lower-level-functions">Lower level functions<a class="anchor" aria-label="anchor" href="#lower-level-functions"></a></h2>
+      <h2 id="lower-level-helper-functions">Lower level helper functions<a class="anchor" aria-label="anchor" href="#lower-level-helper-functions"></a></h2>
       
-      
+      <p class="section-desc"></p><p>Functions to calculate sample size or number of events under non-constant treatment effect over time.</p>
 
       
     </div><div id="" class="section level2">
@@ -151,13 +281,33 @@
           <code><a href="gs_design_npe.html">gs_design_npe()</a></code> 
         </dt>
         <dd>Group sequential design computation with non-constant effect and information</dd>
+      </dl><dl><dt>
+          
+          <code><a href="eAccrual.html">eAccrual()</a></code> 
+        </dt>
+        <dd>Piecewise constant expected accrual</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ahr_blinded.html">ahr_blinded()</a></code> 
+        </dt>
+        <dd>Blinded estimation of average hazard ratio</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ppwe.html">ppwe()</a></code> 
+        </dt>
+        <dd>Piecewise exponential cumulative distribution function</dd>
+      </dl><dl><dt>
+          
+          <code><a href="s2pwe.html">s2pwe()</a></code> 
+        </dt>
+        <dd>Approximate survival distribution with piecewise exponential distribution</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by Keaven Anderson, Yujie Zhao. Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1. <br>Copyright © 2022 Merck &amp; Co., Inc., Rahway, NJ, USA and its affiliates. All rights reserved.</p>
+  <p></p><p>Developed by Keaven Anderson, Yilong Zhang, Yujie Zhao, Jianxiao Yang, Nan Xiao. Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6. <br>Copyright © 2022 Merck &amp; Co., Inc., Rahway, NJ, USA and its affiliates. All rights reserved.</p>
 </div>
 
 <div class="pkgdown-footer-right">

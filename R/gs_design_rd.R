@@ -18,11 +18,11 @@
 #' @importFrom tibble tibble
 #' @importFrom gsDesign gsDesign sfLDOF
 #' @importFrom stats qnorm
-#' @importFrom gsDesign2 AHR
 #' @importFrom dplyr mutate full_join select arrange desc
 NULL
 #' Group sequential design using average hazard ratio under non-proportional hazards
-#'
+#' 
+#' @param k number of analysis
 #' @param ratio Experimental:Control randomization ratio (not yet implemented)
 #' @param stratum_prev randomization ratio of different stratum. 
 #' If it is un-stratified design then \code{NULL}.
@@ -39,12 +39,12 @@ NULL
 #' @param test_lower indicator of which analyses should include an lower bound; single value of TRUE (default) indicates all analyses;
 #' single value FALSE indicated no lower bound; otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have a
 #' lower bound
+#' @param IF statistical information fraction
 #' @param r  Integer, at least 2; default of 18 recommended by Jennison and Turnbull
 #' @param p_c rate at the control group
 #' @param p_e rate at the experimental group 
-#' @param n sample size 
 #' @param rd0 treatment effect under super-superiority designs, the default is 0
-#' @param info_scale 
+#' @param info_scale the information scale for calculation
 #' @param weight the weighting scheme for stratified population
 #' @param tol Tolerance parameter for boundary convergence (on Z-scale)
 #'
@@ -54,11 +54,10 @@ NULL
 #'
 #' @examples
 #' gs_design_rd()
+#' 
 gs_design_rd <- function(
-    p_c = tibble::tibble(Stratum = "All", 
-                         Rate = .2),
-    p_e = tibble::tibble(Stratum = "All",
-                         Rate = .15),
+    p_c = tibble(Stratum = "All", Rate = .2),
+    p_e = tibble(Stratum = "All", Rate = .15),
     k = 3,
     IF = 1:3/3,
     rd0 = 0, 
@@ -92,13 +91,9 @@ gs_design_rd <- function(
   x_fix <- gs_info_rd(
     p_c = p_c, 
     p_e = p_e,
-    N = tibble::tibble(Analysis = 1, 
-                       Stratum = p_c$Stratum, 
-                       N = if(is.null(stratum_prev)){
-                         1
-                       }else{
-                         (stratum_prev %>% mutate(x = prevalence / sum(prevalence)))$x
-                       }), 
+    N = tibble(Analysis = 1, 
+               Stratum = p_c$Stratum, 
+               N = if(is.null(stratum_prev)){1}else{(stratum_prev %>% mutate(x = prevalence / sum(prevalence)))$x}), 
     rd0 = rd0,
     ratio = ratio,
     weight = weight) 
@@ -110,39 +105,52 @@ gs_design_rd <- function(
   x_gs <- gs_info_rd(
     p_c = p_c, 
     p_e = p_e,
-    N = tibble::tibble(Analysis = rep(1:k, n_strata), 
-                       Stratum = rep(p_c$Stratum, each = k), 
-                       N = if(is.null(stratum_prev)){
-                         IF
-                       }else{
-                         rep((stratum_prev %>% mutate(x = prevalence / sum(prevalence)))$x, each = 3) * IF
-                       }), 
+    N = tibble(Analysis = rep(1:k, n_strata), 
+               Stratum = rep(p_c$Stratum, each = k), 
+               N = if(is.null(stratum_prev)){
+                      IF
+                   }else{
+                     rep((stratum_prev %>% mutate(x = prevalence / sum(prevalence)))$x, each = 3) * IF
+                   }), 
     rd0 = rd0,
     ratio = ratio,
     weight = weight)
   
-  y_gs <- gs_design_npe(
-    theta = x_gs$rd, 
-    info = if(info_scale == 0){x_gs$info0}else{x_gs$info1}, 
-    info0 = x_gs$info0, 
-    info_scale = info_scale,
-    alpha = alpha, beta = beta, binding = binding,
-    upper = upper, upar = upar, test_upper = test_upper,
-    lower = lower, lpar = lpar, test_lower = test_lower,
-    r = r, tol = tol)
+  if(k == 1){
+    y_gs <- gs_design_npe(theta = x_fix$rd, 
+                       info = x_fix$info1, #if(info_scale == 0){x_gs$info0}else{x_gs$info1}, 
+                       info0 = x_fix$info0, 
+                       info_scale = info_scale,
+                       alpha = alpha, beta = beta, binding = binding,
+                       upper = upper, upar = upar, test_upper = test_upper,
+                       lower = lower, lpar = lpar, test_lower = test_lower,
+                       r = r, tol = tol)
+  }else{
+    y_gs <- gs_design_npe(theta = x_gs$rd, 
+                          info = x_gs$info1, #if(info_scale == 0){x_gs$info0}else{x_gs$info1}, 
+                          info0 = x_gs$info0, 
+                          info_scale = info_scale,
+                          alpha = alpha, beta = beta, binding = binding,
+                          upper = upper, upar = upar, test_upper = test_upper,
+                          lower = lower, lpar = lpar, test_lower = test_lower,
+                          r = r, tol = tol)
+  }
+  
+  
   
   # --------------------------------------------- #
   #     get statistical information               #
   # --------------------------------------------- #
-  allout <-  y_gs%>%
+  allout <-  y_gs %>%
     mutate(rd = x_fix$rd,
            rd0 = rd0,
            "~Risk difference at bound" = Z / sqrt(info) / theta * (rd -rd0)  + rd0, 
            "Nominal p" = pnorm(-Z),
            IF0 = if(sum(!is.na(info0)) == 0){NA}else{info0 / max(info0)},
-           N = y_gs$info[k] / ifelse(info_scale == 0, x_fix$info0[1], x_fix$info1[1])  * IF) %>% 
+           N = (y_gs %>% filter(Bound == "Upper", Analysis == k))$info
+               / ifelse(info_scale == 0, x_fix$info0[1], x_fix$info1[1])  * IF) %>% 
     select(c(Analysis, Bound,  N, rd, rd0, Z, Probability, Probability0, info, info0, IF, IF0, `~Risk difference at bound`, `Nominal p`)) %>% 
-    arrange(desc(Bound), Analysis) 
+    arrange(Analysis, desc(Bound)) 
   
   # --------------------------------------------- #
   #     get bounds to output                      #
@@ -154,6 +162,7 @@ gs_design_rd <- function(
   #     get analysis summary to output            #
   # --------------------------------------------- #
   analysis <- allout %>% 
+    filter(Bound == "Upper") %>% 
     select(Analysis, N, rd, rd0, info, info0, IF, IF0) 
   
   # --------------------------------------------- #

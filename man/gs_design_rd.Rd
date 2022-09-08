@@ -5,8 +5,8 @@
 \title{Group sequential design using average hazard ratio under non-proportional hazards}
 \usage{
 gs_design_rd(
-  p_c = tibble::tibble(Stratum = "All", Rate = 0.2),
-  p_e = tibble::tibble(Stratum = "All", Rate = 0.15),
+  p_c = tibble(Stratum = "All", Rate = 0.2),
+  p_e = tibble(Stratum = "All", Rate = 0.15),
   k = 3,
   IF = 1:3/3,
   rd0 = 0,
@@ -31,6 +31,10 @@ gs_design_rd(
 \item{p_c}{rate at the control group}
 
 \item{p_e}{rate at the experimental group}
+
+\item{k}{number of analysis}
+
+\item{IF}{statistical information fraction}
 
 \item{rd0}{treatment effect under super-superiority designs, the default is 0}
 
@@ -61,15 +65,13 @@ otherwise, a logical vector of the same length as \code{info} should indicate wh
 single value FALSE indicated no lower bound; otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have a
 lower bound}
 
-\item{info_scale}{}
+\item{info_scale}{the information scale for calculation}
 
 \item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 
 \item{r}{Integer, at least 2; default of 18 recommended by Jennison and Turnbull}
 
 \item{tol}{Tolerance parameter for boundary convergence (on Z-scale)}
-
-\item{n}{sample size}
 }
 \value{
 a \code{tibble} with columns Analysis, Bound, Z, Probability, theta, Time, AHR, Events
@@ -82,4 +84,5 @@ Need to be added
 }
 \examples{
 gs_design_rd()
+
 }

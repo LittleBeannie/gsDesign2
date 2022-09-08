@@ -405,12 +405,12 @@ gs_design_npe <- function(theta = .1, theta1 = NULL,
   
   # calculate the probability under H0
   ans_H0 <- gs_power_npe(theta = 0, 
-                         info = info * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor,
+                         info = info0 * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor,
                          info_scale = info_scale,
                          upper = gs_b, upar = (bound_H1 %>% filter(Bound == "Upper"))$Z, 
                          lower = gs_b, lpar = (bound_H1 %>% filter(Bound == "Lower"))$Z, 
                          test_upper = test_upper, test_lower = test_lower,
-                         binding = binding,r = r, tol = tol)
+                         binding = binding, r = r, tol = tol)
   
   # combine probability under H0 and H1
   suppressMessages(

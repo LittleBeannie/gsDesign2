@@ -19,15 +19,15 @@
 #'
 #' @param p_c rate at the control group
 #' @param p_e rate at the experimental group 
-#' @param n sample size 
-#' @param theta0 the standardized treatment effect under H0  
+#' @param N sample size 
 #' @param rd0 treatment effect under super-superiority designs, the default is 0
 #' @param ratio experimental:control randomization ratio
 #' @param upper function to compute upper bound
 #' @param upar parameter to pass to upper
 #' @param lower function to compare lower bound
 #' @param lpar parameter to pass to lower
-#' @param info_scale 
+#' @param info_scale the information scale for calculation
+#' @param weight weigting method, either "un-stratified" or "ss" or "invar"
 #' @param binding indicator of whether futility bound is binding; default of FALSE is recommended
 #' @param test_upper indicator of which analyses should include an upper (efficacy) bound;
 #' single value of TRUE (default)  indicates all analyses; otherwise,
@@ -47,6 +47,8 @@
 #' # --------------------- #
 #' #      example 1        #
 #' # --------------------- #
+#' library(gsDesign)
+#' 
 #' # un-stratified case with H0: rd0 = 0
 #' gs_power_rd(
 #'   p_c = tibble::tibble(Stratum = "All",

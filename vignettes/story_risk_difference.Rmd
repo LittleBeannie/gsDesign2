@@ -484,7 +484,7 @@ $p_C=p_E =0.34$. We desire 90% power for a two-sided test for two
 proportions at $\alpha = 0.05$. And we would like to calculate the
 sample size to achieve the 90% power.
 
-### `gs_design_rd()`
+### `gsDesign2`
 
 First, we set the parameters.
 
@@ -618,7 +618,7 @@ tibble(`info_scale = 0` = y_0$info0[1] / x$info0[1],
        `info_scale = 1` = y_1$info1[1] / x$info1[1],
        `info_scale = 2` = y_2$info[1] / x$info1[1]) %>% 
   gt::gt() %>% 
-  gt::tab_header(title = "The sample size calculated by `gsdmvn` under 3 info_scale")
+  gt::tab_header(title = "The sample size calculated by gsDesign2 under 3 info_scale")
 ```
 
 The above logic is implement in `gs_design_rd()` to calculate the sample
@@ -685,20 +685,20 @@ knitr::include_graphics("./figures/east_n_fix.png")
 
 ### Summary
 ```{r}
-tibble::tibble(gsdmvn_info_scale_0 = z_info_scale_0$analysis$N,
-               gsdmvn_info_scale_1 = z_info_scale_1$analysis$N,
-               gsdmvn_info_scale_2 = z_info_scale_2$analysis$N,
+tibble::tibble(gsDesign2_info_scale_0 = z_info_scale_0$analysis$N,
+               gsDesign2_info_scale_1 = z_info_scale_1$analysis$N,
+               gsDesign2_info_scale_2 = z_info_scale_2$analysis$N,
                gsDesign = x_gsDesign$n, 
                EAST_unpool = 645, 
                EAST_pool = 651) %>% 
   gt::gt() %>% 
-  gt::tab_spanner(label = "gsdmvn",
-                  columns = c(gsdmvn_info_scale_0, gsdmvn_info_scale_1, gsdmvn_info_scale_2)) %>% 
+  gt::tab_spanner(label = "gsDesign2",
+                  columns = c(gsDesign2_info_scale_0, gsDesign2_info_scale_1, gsDesign2_info_scale_2)) %>% 
   gt::tab_spanner(label = "EAST",
                   columns = c(EAST_unpool, EAST_pool)) %>% 
-  cols_label(gsdmvn_info_scale_0 = "info_scale = 0",
-             gsdmvn_info_scale_1 = "info_scale = 1",
-             gsdmvn_info_scale_2 = "info_scale = 2",
+  cols_label(gsDesign2_info_scale_0 = "info_scale = 0",
+             gsDesign2_info_scale_1 = "info_scale = 1",
+             gsDesign2_info_scale_2 = "info_scale = 2",
              EAST_unpool = "un-pooled",
              EAST_pool = "pooled")
 ```
@@ -712,7 +712,7 @@ Under the null hypothesis, we assume $p_C = p_E = 0.125$. We desire 90%
 power for a two-sided test for two proportions at $\alpha = 0.05$. And
 we would like to calculate the sample size to achieve the 90% power.
 
-### `gsdmvn`
+### `gsDesign2`
 
 To calculate the sample size, one can use `gs_design_rd()`. The logic of
 `gs_design_rd()` is to calculate the sample size of fixed design first.
@@ -776,14 +776,13 @@ tibble(`info_scale = 0` = y_gs0$info0 / x_gs$info0[3],
        `info_scale = 1` = y_gs1$info1 / x_gs$info1[3],
        `info_scale = 2` = y_gs2$info / x_gs$info1[3]) %>% 
   gt::gt() %>% 
-  gt::tab_header(title = "The sample size calculated by `gsdmvn` under 3 info_scale", subtitle = "under group sequential design")
-#cat("The sample size of the group sequential design is ", y_gs$info/x_gs$info[3], "\n")
+  gt::tab_header(title = "The sample size calculated by `gsDesign2` under 3 info_scale", subtitle = "under group sequential design")
 ```
 
 The above logic is implemented in `gs_design_rd()`.
 
 ```{r}
-x_gsdmvn_info_scale_0 <- gs_design_rd(
+x_gsDesign2_info_scale_0 <- gs_design_rd(
   p_c = tibble::tibble(Stratum = "All", Rate = .15),
   p_e = tibble::tibble(Stratum = "All", Rate = .1),
   k = 3,
@@ -801,7 +800,7 @@ x_gsdmvn_info_scale_0 <- gs_design_rd(
   info_scale = 0
 )
 
-x_gsdmvn_info_scale_1 <- gs_design_rd(
+x_gsDesign2_info_scale_1 <- gs_design_rd(
   p_c = tibble::tibble(Stratum = "All", Rate = .15),
   p_e = tibble::tibble(Stratum = "All", Rate = .1),
   k = 3,
@@ -819,7 +818,7 @@ x_gsdmvn_info_scale_1 <- gs_design_rd(
   info_scale = 1
 )
 
-x_gsdmvn_info_scale_2 <- gs_design_rd(
+x_gsDesign2_info_scale_2 <- gs_design_rd(
   p_c = tibble::tibble(Stratum = "All", Rate = .15),
   p_e = tibble::tibble(Stratum = "All", Rate = .1),
   k = 3,
@@ -905,20 +904,20 @@ knitr::include_graphics("./figures/east_n_gs_pool.png")
 ### Summary
 
 ```{r}
-tibble::tibble(gsdmvn_info_scale_0 = x_gsdmvn_info_scale_0$analysis$N,
-               gsdmvn_info_scale_1 = x_gsdmvn_info_scale_1$analysis$N,
-               gsdmvn_info_scale_2 = x_gsdmvn_info_scale_2$analysis$N,
+tibble::tibble(gsDesign2_info_scale_0 = x_gsDesign2_info_scale_0$analysis$N,
+               gsDesign2_info_scale_1 = x_gsDesign2_info_scale_1$analysis$N,
+               gsDesign2_info_scale_2 = x_gsDesign2_info_scale_2$analysis$N,
                gsDesign = x_gsDesign$n.I,
                EAST_unpool = c(617, 1233, 1850),
                EAST_pool = c(619, 1238, 1857)) %>% 
   gt::gt() %>% 
-  gt::tab_spanner(label = "gsdmvn",
-                  columns = c(gsdmvn_info_scale_0, gsdmvn_info_scale_1, gsdmvn_info_scale_2)) %>% 
+  gt::tab_spanner(label = "gsDesign2",
+                  columns = c(gsDesign2_info_scale_0, gsDesign2_info_scale_1, gsDesign2_info_scale_2)) %>% 
   gt::tab_spanner(label = "EAST",
                   columns = c(EAST_unpool, EAST_pool)) %>% 
-  cols_label(gsdmvn_info_scale_0 = "info_scale = 0",
-             gsdmvn_info_scale_1 = "info_scale = 1",
-             gsdmvn_info_scale_2 = "info_scale = 2",
+  cols_label(gsDesign2_info_scale_0 = "info_scale = 0",
+             gsDesign2_info_scale_1 = "info_scale = 1",
+             gsDesign2_info_scale_2 = "info_scale = 2",
              EAST_unpool = "un-pooled",
              EAST_pool = "pooled")
 ```
@@ -928,7 +927,7 @@ tibble::tibble(gsdmvn_info_scale_0 = x_gsdmvn_info_scale_0$analysis$N,
 In this example, we consider 3 strata in a group sequential design with
 3 analyses.
 
-### `gsdmvn`
+### `gsDesign2`
 
 ```{r, message=FALSE}
 ratio <- 1
@@ -1216,7 +1215,50 @@ ans_math %>%
 The above logic is implemented in `gs_design_rd()`.
 
 ```{r}
-x_ss <- gs_design_rd(
+## sample size weighting + information scale = 0
+x_ss0 <- gs_design_rd(
+  p_c = p_c,
+  p_e = p_e,
+  k = 3,
+  IF = 1:3/3,
+  rd0 = 0, 
+  alpha = .025,                  
+  beta = .2,                    
+  ratio = 1,
+  stratum_prev = tibble::tibble(Stratum = c("S1", "S2", "S3"), prevalence = 4:6),
+  weight = "ss",
+  upper = gs_b,
+  lower = gs_b,
+  upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  lpar = c(qnorm(.1), rep(-Inf, 2)),
+  info_scale = 0,
+  binding = FALSE) 
+```
+
+```{r}
+## sample size weighting + information scale = 1
+x_ss1 <- gs_design_rd(
+  p_c = p_c,
+  p_e = p_e,
+  k = 3,
+  IF = 1:3/3,
+  rd0 = 0, 
+  alpha = .025,                  
+  beta = .2,                    
+  ratio = 1,
+  stratum_prev = tibble::tibble(Stratum = c("S1", "S2", "S3"), prevalence = 4:6),
+  weight = "ss",
+  upper = gs_b,
+  lower = gs_b,
+  upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  lpar = c(qnorm(.1), rep(-Inf, 2)),
+  info_scale = 1,
+  binding = FALSE) 
+```
+
+```{r}
+## sample size weighting + information scale = 2
+x_ss2 <- gs_design_rd(
   p_c = p_c,
   p_e = p_e,
   k = 3,
@@ -1233,8 +1275,53 @@ x_ss <- gs_design_rd(
   lpar = c(qnorm(.1), rep(-Inf, 2)),
   info_scale = 2,
   binding = FALSE) 
+```
 
-x_invar <- gs_design_rd(
+```{r}
+## inverse variance weighting + information scale = 0
+x_invar0 <- gs_design_rd(
+  p_c = p_c,
+  p_e = p_e,
+  k = 3,
+  IF = 1:3/3,
+  rd0 = 0, 
+  alpha = .025,                  
+  beta = .2,                    
+  ratio = 1,
+  stratum_prev = tibble::tibble(Stratum = c("S1", "S2", "S3"), prevalence = 1:3),
+  weight = "invar",
+  upper = gs_b,
+  lower = gs_b,
+  upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  lpar = c(qnorm(.1), rep(-Inf, 2)),
+  info_scale = 0,
+  binding = FALSE) 
+```
+
+```{r}
+## inverse variance weighting + information scale = 1
+x_invar1 <- gs_design_rd(
+  p_c = p_c,
+  p_e = p_e,
+  k = 3,
+  IF = 1:3/3,
+  rd0 = 0, 
+  alpha = .025,                  
+  beta = .2,                    
+  ratio = 1,
+  stratum_prev = tibble::tibble(Stratum = c("S1", "S2", "S3"), prevalence = 1:3),
+  weight = "invar",
+  upper = gs_b,
+  lower = gs_b,
+  upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  lpar = c(qnorm(.1), rep(-Inf, 2)),
+  info_scale = 1,
+  binding = FALSE) 
+```
+
+```{r}
+## inverse variance weighting + information scale = 2
+x_invar2 <- gs_design_rd(
   p_c = p_c,
   p_e = p_e,
   k = 3,
@@ -1251,11 +1338,28 @@ x_invar <- gs_design_rd(
   lpar = c(qnorm(.1), rep(-Inf, 2)),
   info_scale = 2,
   binding = FALSE) 
+```
 
-tibble::tibble(INVAR = x_invar$analysis$N[1:3],
-               SS = x_ss$analysis$N[1:3]) %>% 
+```{r}
+ans <- tibble::tibble(INVAR0 = x_invar0$analysis$N[1:3],
+               INVAR1 = x_invar1$analysis$N[1:3],
+               INVAR2 = x_invar2$analysis$N[1:3],
+               SS0 = x_ss0$analysis$N[1:3],
+               SS1 = x_ss1$analysis$N[1:3],
+               SS2 = x_ss2$analysis$N[1:3]) 
+ans %>% 
   gt::gt() %>% 
-  gt::tab_header(title = "Sample size calculated by INVAR and SS")
+  gt::tab_header(title = "Sample size calculated by INVAR and SS") %>% 
+  gt::tab_spanner(label = "Inverse variance weighting",
+                  columns = c(INVAR0, INVAR1, INVAR2)) %>% 
+  gt::tab_spanner(label = "Sample size wighting",
+                  columns = c(SS0, SS1, SS2)) %>% 
+  cols_label(INVAR0 = "info_scale = 0",
+             INVAR1 = "info_scale = 1",
+             INVAR2 = "info_scale = 2",
+             SS0 = "info_scale = 0",
+             SS1 = "info_scale = 1",
+             SS2 = "info_scale = 2")
 ```
 
 ### Simulations
@@ -1450,7 +1554,7 @@ run_simulation <- function(N, weight_method, n_sim, prevalence_ratio, IF, under_
     }
     
     ans <- rbind(ans, ans_new)
-    #print(simu)
+    print(simu)
   }
   
   return(ans)
@@ -1460,59 +1564,41 @@ run_simulation <- function(N, weight_method, n_sim, prevalence_ratio, IF, under_
 
 ```{r, message=FALSE, eval=FALSE}
 n_sim <- 1e3
-# run simulations
-ans_H0 <- do.call(cbind, 
-                  lapply(list(
-                    list("ss", ans_math %>% filter(`Calculated under` == "H0", `Weighting method` == "Sample Size") %>% select(`Sample size`) %>% as.numeric()), 
-                    list("invar_H0", ans_math %>% filter(`Calculated under` == "H0", `Weighting method` == "INVAR-H0") %>% select(`Sample size`) %>% as.numeric()), 
-                    list("invar_H1", ans_math %>% filter(`Calculated under` == "H0", `Weighting method` == "INVAR-H1") %>% select(`Sample size`) %>% as.numeric())), 
-                         function(x){return(run_simulation(N = x[[2]], 
-                                                           weight_method = x[[1]], 
-                                                           n_sim = n_sim, prevalence_ratio = prevalence_ratio, 
-                                                           IF = IF, under_H0 = TRUE, integration = "gs_power_npe"))})) 
+run simulations
+ans_H0 <- do.call(cbind,
+                  lapply(list(list("ss_H0", ans$SS0),
+                              list("invar_H0", ans$INVAR0)),
+                         function(x){return(run_simulation(N = x[[2]],
+                                                           weight_method = x[[1]],
+                                                           n_sim = n_sim, prevalence_ratio = prevalence_ratio,
+                                                           IF = IF, under_H0 = TRUE, integration = "gs_power_npe"))}))
 
-ans_H1 <- do.call(cbind, 
-                  lapply(list(
-                    list("ss", ans_math %>% filter(`Calculated under` == "H1", `Weighting method` == "Sample Size") %>% select(`Sample size`) %>% as.numeric()), 
-                    list("invar_H0", ans_math %>% filter(`Calculated under` == "H1", `Weighting method` == "INVAR-H0") %>% select(`Sample size`) %>% as.numeric()), 
-                    list("invar_H1", ans_math %>% filter(`Calculated under` == "H1", `Weighting method` == "INVAR-H1") %>% select(`Sample size`) %>% as.numeric())), 
-                         function(x){return(run_simulation(N = x[[2]], 
-                                                           weight_method = x[[1]], 
-                                                           n_sim = n_sim, prevalence_ratio = prevalence_ratio, 
-                                                           IF = IF, under_H0 = FALSE, integration = "gs_power_npe"))})) 
+ans_H1 <- do.call(cbind,
+                  lapply(list(list("ss_H1", ans$SS1),
+                              list("invar_H1", ans$INVAR1)),
+                         function(x){return(run_simulation(N = x[[2]],
+                                                           weight_method = x[[1]],
+                                                           n_sim = n_sim, prevalence_ratio = prevalence_ratio,
+                                                           IF = IF, under_H0 = FALSE, integration = "gs_power_npe"))}))
 
 ans <- tibble::tibble(simu_ID = rep(ans_H0$simu_ID, 2),
                       ss = c(ans_H0[, 3], ans_H1[, 3]), 
-                      invar_H0 = c(ans_H0[, 6], ans_H1[, 6]),
-                      invar_H1 = c(ans_H0[, 9], ans_H1[, 9]),
+                      invar = c(ans_H0[, 6], ans_H1[, 6]),
                       `calculated under` = c(rep("H0", n_sim), rep("H1", n_sim))) 
 
-save(ans, file = "./fixture/rd_simu_power_gspowernpe_3_weight_new.Rdata")
+save(ans, file = "./fixtures/rd_simu_power_gspowernpe_2_weight.Rdata")
 ```
 
 
 ```{r}
-load("./fixtures/rd_simu_power_gspowernpe_3_weight_new.Rdata")
+load("./fixtures/rd_simu_power_gspowernpe_2_weight.Rdata")
 ans %>% 
   group_by(`calculated under`) %>% 
   summarize(`simulated power - ss` = mean(ss), 
-         `simulated power - invar H0` = mean(invar_H0), 
-         `simulated power - invar H1` = mean(invar_H1)) %>% 
+            `simulated power - invar` = mean(invar)) %>% 
   gt::gt() %>% 
   gt::tab_header(title = "Simulated power under different weightin methods",
                  subtitle = "by gs_power_npe")
-```
-
-```{r}
-load("./fixtures/rd_simu_power_pmvtnorm_3_weight.Rdata")
-ans %>% 
-  group_by(`calculated under`) %>% 
-  summarize(`simulated power - ss` = mean(ss), 
-         `simulated power - invar H0` = mean(invar_H0), 
-         `simulated power - invar H1` = mean(invar_H1)) %>% 
-  gt::gt() %>% 
-  gt::tab_header(title = "Simulated power under different weightin methods",
-                 subtitle = "by pmvtnorm")
 ```
 
 # Summary

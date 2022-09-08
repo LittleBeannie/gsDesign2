@@ -18,11 +18,13 @@ gs_info_rd(
 
 \item{p_e}{rate at the experimental group}
 
+\item{N}{sample size}
+
 \item{rd0}{the risk difference under H0}
 
 \item{ratio}{Experimental:Control randomization ratio}
 
-\item{n}{sample size}
+\item{weight}{weigting method, either "un-stratified" or "ss" or "invar"}
 }
 \description{
 Information and effect size under risk difference

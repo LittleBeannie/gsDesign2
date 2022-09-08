@@ -5,7 +5,7 @@
 \title{Blinded estimation of average hazard ratio}
 \usage{
 ahr_blinded(
-  Srv = survival::Surv(time = simtrial::Ex1delayedEffect$month, event =
+  Srv = Surv(time = simtrial::Ex1delayedEffect$month, event =
     simtrial::Ex1delayedEffect$evntd),
   intervals = array(3, 3),
   hr = c(1, 0.6),
