@@ -186,10 +186,11 @@ kable(x) %>%
 We define for $m=1,\ldots,M$ intermediate probability calculations for use in calculating $\bar n(t_{m-1},t_m)$ as follows:
 
 \begin{align}
-q_m&=P\{\min(X_m,Y_m)>t_m\}=\exp^{-(\lambda_m+\eta_m)(t_m-t_{m-1})} \label{eq:qm}\\
+q_m&=P\{\min(X_m,Y_m)>t_m-t_{m-1}\}=\exp^{-(\lambda_m+\eta_m)(t_m-t_{m-1})} \label{eq:qm}\\
 Q_m&=P\{\min(X,Y)>t_m\}=\prod_{j=1}^m q_j\label{eq:Qm}\\
 d_m&=P\{t_{m-1}<X\le t_m,X\le Y\}\\
-&=P\{\min(X,Y)>t_{m-1}\}P\{0<X_m\le t_m-t_{m-1},X_m\le Y_m\}\\
+&=P\{\min(X,Y)>t_{m-1}\}\cdot P\{0<\min (X_m,Y_m)\le t_m-t_{m-1},X_m\le Y_m\}\\
+&=P\{\min(X,Y)>t_{m-1}\}\cdot P\{0<\min (X_m,Y_m)\le t_m-t_{m-1}\}\cdot P\{X_m\le Y_m|0<\min (X_m,Y_m)\le t_m-t_{m-1}\}\\
 &=Q_{m-1}(1-e^{-(\lambda_m+\eta_m)(t_m-t_{m-1})})
 \frac{\lambda_m}{\lambda_m+\eta_m}\\
 \bar n_m&=E\{\bar n(t_{m-1},t_m)\}
