@@ -128,7 +128,7 @@ A quick summary of the targeted sample size is obtained below.
 Note that you would normally round up `N` up to an even number and `Events` to the next integer. 
 
 ```{r}
-d |> summary() |> as_gt()
+d %>% summary() %>% as_gt()
 ```
 
 
@@ -197,8 +197,8 @@ Bounds at the 3 analyses are as follows.
 Note that expected sample size at time of each data cutoff for analysis is also here in `N`. We filter on the upper bound so that lower bounds with `Z = -Inf` are not shown.
 
 ```{r}
-design1s |>
-  summary() |> 
+design1s %>%
+  summary() %>% 
   as_gt(title = "1-sided group sequential bound using AHR method",
         subtitle = "Lan-DeMets spending to approximate O'Brien-Fleming bound") 
 ```
@@ -246,8 +246,8 @@ design2ss <- gs_design_ahr(
 Design bounds are confirmed with: 
 
 ```{r, message=FALSE}
-design2ss |> 
-  summary() |> 
+design2ss %>% 
+  summary() %>% 
   as_gt(title = "2-sided symmetric group sequential bound using AHR method",
         subtitle = "Lan-DeMets spending to approximate O'Brien-Fleming bound")
 ```
@@ -290,8 +290,8 @@ We now have a slightly larger sample size to account for the possibility of an e
 Bounds are now:
 
 ```{r}
-design2sa |> 
-  summary() |>
+design2sa %>% 
+  summary() %>%
   as_gt(title = "2-sided asymmetric group sequential bound using AHR method",
         subtitle = "Lan-DeMets spending to approximate O'Brien-Fleming bound for efficacy, futility disaster check at IA1, IA2 only")
 ```
