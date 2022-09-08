@@ -5,8 +5,8 @@
 \title{Group sequential design using average hazard ratio under non-proportional hazards}
 \usage{
 gs_design_rd(
-  p_c = tibble::tibble(Stratum = "All", Rate = 0.2),
-  p_e = tibble::tibble(Stratum = "All", Rate = 0.15),
+  p_c = tibble(Stratum = "All", Rate = 0.2),
+  p_e = tibble(Stratum = "All", Rate = 0.15),
   k = 3,
   IF = 1:3/3,
   rd0 = 0,
@@ -84,4 +84,5 @@ Need to be added
 }
 \examples{
 gs_design_rd()
+
 }
