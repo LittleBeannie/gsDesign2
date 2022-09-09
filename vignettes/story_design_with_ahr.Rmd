@@ -164,7 +164,7 @@ s <- rbind(s, s %>% mutate(Treatment = "Experimental", rate = rate * hr)) %>%
      mutate(Survival = exp(-cumsum(duration * rate)))
 ```
 
-```{r, fig.width=3.5}
+```{r, fig.width=3}
 # plot the survival curve
 ggplot(s, aes(x = Month, y = Survival, col = Scenario, lty = Treatment, shape = Treatment)) + 
   geom_line() + 
