@@ -68,7 +68,7 @@ rows and strata as needed can be specified to approximate whatever
 patterns you wish.
 
 ```{r, collapse = TRUE}
-failRates %>% gt()
+failRates %>% gt() %>% as_raw_html(inline_css = FALSE)
 ```
 
 ### Step 2: compute the design 
@@ -89,20 +89,20 @@ x <- gs_design_ahr(enrollRates, failRates,
 The input enrollment rates are scaled to achieve power:
 
 ```{r, collapse = TRUE}
-x$enrollRates %>% gt()
+x$enrollRates %>% gt() %>% as_raw_html(inline_css = FALSE)
 ```
 
 The failure and dropout rates remain unchanged from what was input:
 
 ```{r, collapse = TRUE}
-x$failRates %>% gt()
+x$failRates %>% gt() %>% as_raw_html(inline_css = FALSE)
 ```
 
 Additionally, the summary of bounds and crossing probability is
 available at 
 
 ```{r, collapse = TRUE}
-x$bounds %>% gt()
+x$bounds %>% gt() %>% as_raw_html(inline_css = FALSE)
 ```
 
 Finally, the expected analysis time is in `Time`, sample size `N`,
@@ -113,11 +113,11 @@ statistical information under the alternate hypothesis are in `info` and
 under the null hypothesis in `info0`.
 
 ```{r, collapse = TRUE}
-x$analysis %>% gt()
+x$analysis %>% gt() %>% as_raw_html(inline_css = FALSE)
 ```
 
 ### Step 3: summarize the design
 
 ```{r, collapse = TRUE}
-x %>% summary() %>% as_gt()
+x %>% summary() %>% as_gt() %>% as_raw_html(inline_css = FALSE)
 ```
