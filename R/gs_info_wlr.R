@@ -27,9 +27,9 @@ prob_risk <- function(arm, teval, tmax) {
     tmax <- arm$total_time
   }
   
-  npsurvSS::psurv(teval, arm, lower.tail=F) *
-    npsurvSS::ploss(teval, arm, lower.tail=F) *
-    npsurvSS::paccr(pmin(arm$accr_time, tmax-teval), arm)
+  npsurvSS::psurv(teval, arm, lower.tail = F) *
+    npsurvSS::ploss(teval, arm, lower.tail = F) *
+    npsurvSS::paccr(pmin(arm$accr_time, tmax - teval), arm)
 }
 
 #' For a subject in the provided arm, calculate the density of event
@@ -42,25 +42,25 @@ dens_event <- function(arm, teval, tmax = NULL) {
   }
   
   npsurvSS::dsurv(teval, arm) *
-    npsurvSS::ploss(teval, arm, lower.tail=F) *
+    npsurvSS::ploss(teval, arm, lower.tail = F) *
     npsurvSS::paccr(pmin(arm$accr_time, tmax - teval), arm)
 }
 
 #' For a subject in the provided arm, calculate the probability he or
 #' she is observed to have experienced an event by time=teval after enrollment.
 #' @noRd
-prob_event <- function(arm, tmin=0, tmax=arm$total_time) {
+prob_event <- function(arm, tmin = 0, tmax = arm$total_time) {
   UseMethod("prob_event", arm)
 }
 
 #' prob_event for arm of class "arm"
 #' @noRd
-prob_event.arm <- function(arm, tmin=0, tmax=arm$total_time) {
+prob_event.arm <- function(arm, tmin = 0, tmax = arm$total_time) {
   l = length(tmax)
-  if (l==1) {
-    return(stats::integrate(function(x) dens_event(arm, x, tmax = tmax), lower=tmin, upper=tmax)$value)
+  if (l == 1) {
+    return(stats::integrate(function(x) dens_event(arm, x, tmax = tmax), lower = tmin, upper = tmax)$value)
   } else {
-    if (length(tmin)==1) {
+    if (length(tmin) == 1) {
       tmin = rep(tmin, l)
     }
     return(sapply(seq(l), function(i) prob_event(arm, tmin[i], tmax[i])))
@@ -87,14 +87,14 @@ gs_delta_wlr <- function(arm0,
     if (sum(arm0$surv_shape != arm1$surv_shape) > 0 |
         length( unique(arm1$surv_scale / arm0$surv_scale) ) > 1) {
       
-      stop("gs_delta_wlr(): Hazard is not proportional over time.", call.=F)
+      stop("gs_delta_wlr(): Hazard is not proportional over time.", call. = F)
       
     } else if (wlr_weight_fh(seq(0,tmax,length.out = 10), arm0, arm1) != "1") {
       
-      stop("gs_delta_wlr(): Weight must equal `1`.", call.=F)
+      stop("gs_delta_wlr(): Weight must equal `1`.", call. = F)
     }
     
-    theta <- c(arm0$surv_shape * log( arm1$surv_scale / arm0$surv_scale ))[1] # log hazard ratio
+    theta <- c(arm0$surv_shape * log( arm1$surv_scale / arm0$surv_scale ))[1]        # log hazard ratio
     nu    <- p0 * prob_event(arm0, tmax = tmax) + p1 * prob_event(arm1, tmax = tmax) # probability of event
     delta <- theta * p0 * p1 * nu
     
@@ -107,8 +107,8 @@ gs_delta_wlr <- function(arm0,
       term  <- (term0 * term1) / (term0 + term1)
       term  <- ifelse(is.na(term), 0, term)
       weight(x, arm0, arm1) *  term * ( npsurvSS::hsurv(x, arm1) - npsurvSS::hsurv(x, arm0) )},
-      lower=0,
-      upper= tmax, rel.tol = 1e-5)$value
+      lower = 0,
+      upper = tmax, rel.tol = 1e-5)$value
     
     
   } else if (approx == "generalized schoenfeld") {
@@ -126,11 +126,11 @@ gs_delta_wlr <- function(arm0,
         p0 * prob_risk(arm0, x, tmax) * p1 * prob_risk(arm1, x, tmax) /
         ( p0 * prob_risk(arm0, x, tmax) + p1 * prob_risk(arm1, x, tmax) )^2 *
         ( p0 * dens_event(arm0, x, tmax) + p1 * dens_event(arm1, x, tmax))},
-      lower=0,
-      upper= tmax)$valu
+      lower = 0,
+      upper = tmax)$value
   } else {
     
-    stop("gs_delta_wlr(): Please specify a valid approximation for the mean.", call.=F)
+    stop("gs_delta_wlr(): Please specify a valid approximation for the mean.", call. = F)
     
   }
   
@@ -163,11 +163,11 @@ gs_sigma2_wlr <- function(arm0,
                                   p0 * prob_risk(arm0, x, tmax) * p1 * prob_risk(arm1, x, tmax) /
                                   ( p0 * prob_risk(arm0, x, tmax) + p1 * prob_risk(arm1, x, tmax) )^2 *
                                   ( p0 * dens_event(arm0, x, tmax) + p1 * dens_event(arm1, x, tmax)),
-                                lower=0,
+                                lower = 0,
                                 upper= tmax)$value
     
   } else {
-    stop("gs_sigma2_wlr(): Please specify a valid approximation for the mean.", call.=F)
+    stop("gs_sigma2_wlr(): Please specify a valid approximation for the mean.", call. = F)
   }
   
   return(sigma2)
@@ -219,7 +219,7 @@ gs_info_wlr <- function(enrollRates=tibble::tibble(Stratum="All",
 ){
   
   if (is.null(analysisTimes) && is.null(events)){
-    stop("gs_info_wlr(): One of events and analysisTimes must be a numeric value or vector with increasing values")
+    stop("gs_info_wlr(): One of events and analysisTimes must be a numeric value or vector with increasing values!")
   }
   
   # Obtain Analysis time
@@ -249,31 +249,42 @@ gs_info_wlr <- function(enrollRates=tibble::tibble(Stratum="All",
   arm0 <- gs_arm$arm0
   arm1 <- gs_arm$arm1
   
-  arm_null <- arm0
-  arm_null$surv_scale <- (arm0$surv_scale + arm1$surv_scale)/2
+  
   
   # Randomization ratio
   p0 <- arm0$size/(arm0$size + arm1$size)
   p1 <- 1 - p0
   
-  # Group sequential sample size ratio
-  n_ratio <- (npsurvSS::paccr(time, arm0) + npsurvSS::paccr(time, arm1))/2
+  # Null arm
+  arm_null <- arm0
+  arm_null$surv_scale <- p0* arm0$surv_scale + p1 * arm1$surv_scale
+  
+  arm_null1 <- arm_null
+  arm_null1$size <- arm1$size
   
   delta <- c()     # delta of effect size in each analysis
   sigma2_h1 <- c()    # sigma square of effect size in each analysis under null
   sigma2_h0 <- c()    # sigma square of effect size in each analysis under alternative
   p_event <- c()   # probability of events in each analysis
   p_subject <- c() # probability of subjects enrolled
-  log_ahr <- c()
+  num_log_ahr <- c()
+  dem_log_ahr <- c()
+  
+  # Used to calculate average hazard ratio
+  arm01 <- arm0; arm01$size <- 1
+  arm11 <- arm1; arm11$size <- 1
+  
   for(i in seq_along(time)){
     t <- time[i]
     p_event[i]      <- p0 * prob_event.arm(arm0, tmax = t) + p1 * prob_event.arm(arm1, tmax = t)
     p_subject[i]    <- p0 * npsurvSS::paccr(t, arm0) + p1 * npsurvSS::paccr(t, arm1)
     delta[i]        <- gs_delta_wlr(arm0, arm1, tmax = t, weight = weight, approx = approx)
-    log_ahr[i]          <- delta[i] / gs_delta_wlr(arm0, arm1, tmax = t, weight = weight,
-                                                   approx = "generalized schoenfeld", normalization = TRUE)
+    num_log_ahr[i] <- gs_delta_wlr(arm01, arm11, tmax = t, weight = weight, approx = approx)
+    dem_log_ahr[i] <- gs_delta_wlr(arm01, arm11, tmax = t, weight = weight,
+                                   approx = "generalized schoenfeld", normalization = TRUE)
+    
     sigma2_h1[i]    <- gs_sigma2_wlr(arm0, arm1, tmax = t, weight = weight, approx = approx)
-    sigma2_h0[i]    <- gs_sigma2_wlr(arm_null, arm_null, tmax = t, weight = weight, approx = approx)
+    sigma2_h0[i]    <- gs_sigma2_wlr(arm_null, arm_null1, tmax = t, weight = weight, approx = approx)
   }
   
   N <- tail(avehr$Events / p_event,1) * p_subject
@@ -282,7 +293,7 @@ gs_info_wlr <- function(enrollRates=tibble::tibble(Stratum="All",
              Time = time,
              N = N,
              Events = avehr$Events,
-             AHR = exp(log_ahr),
+             AHR = exp(num_log_ahr/dem_log_ahr),
              delta = delta,
              sigma2 = sigma2_h1,
              theta = theta,
