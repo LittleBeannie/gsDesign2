@@ -20,15 +20,19 @@
 #' @importFrom stats qnorm
 #' @importFrom dplyr mutate full_join select arrange desc
 NULL
+
 #' Group sequential design using average hazard ratio under non-proportional hazards
 #' 
-#' @param k number of analysis
+#' @param p_c rate at the control group
+#' @param p_e rate at the experimental group 
+#' @param IF statistical information fraction
+#' @param rd0 treatment effect under super-superiority designs, the default is 0
+#' @param alpha One-sided Type I error
+#' @param beta Type II error
 #' @param ratio Experimental:Control randomization ratio (not yet implemented)
 #' @param stratum_prev randomization ratio of different stratum. 
 #' If it is un-stratified design then \code{NULL}.
 #' Otherwise it is a tibble containing two columns (Stratum and prevalence).
-#' @param alpha One-sided Type I error
-#' @param beta Type II error
 #' @param binding indicator of whether futility bound is binding; default of FALSE is recommended
 #' @param upper Function to compute upper bound
 #' @param upar Parameter passed to \code{upper()}
@@ -41,11 +45,10 @@ NULL
 #' lower bound
 #' @param h1_spending Indicator that lower bound to be set by spending under alternate hypothesis (input \code{failRates})
 #' if spending is used for lower bound
-#' @param IF statistical information fraction
+#' 
 #' @param r  Integer, at least 2; default of 18 recommended by Jennison and Turnbull
-#' @param p_c rate at the control group
-#' @param p_e rate at the experimental group 
-#' @param rd0 treatment effect under super-superiority designs, the default is 0
+
+#' 
 #' @param info_scale the information scale for calculation
 #' @param weight the weighting scheme for stratified population
 #' @param tol Tolerance parameter for boundary convergence (on Z-scale)
@@ -55,12 +58,51 @@ NULL
 #' @export 
 #'
 #' @examples
-#' gs_design_rd()
+#' library(tibble)
+#' library(gsDesign)
+#' 
+#' # ----------------- #
+#' #    example 1      #
+#' #------------------ #
+#' # un-stratified group sequential design
+#' gs_design_rd(
+#'   p_c = tibble(Stratum = "All", Rate = .2),
+#'   p_e = tibble(Stratum = "All", Rate = .15),
+#'   IF = c(0.7, 1),
+#'   rd0 = 0, 
+#'   alpha = .025,                  
+#'   beta = .1,                    
+#'   ratio = 1,
+#'   stratum_prev = NULL,
+#'   weight = "un-stratified",
+#'   upper = gs_b,
+#'   lower = gs_b,
+#'   upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
+#'   lpar = c(qnorm(.1), rep(-Inf, 2))
+#'   )
+#'   
+#' # ----------------- #
+#' #     example 2     #
+#' # ----------------- #
+#' # stratified group sequential design
+#' gs_design_rd(
+#'   p_c = tibble(Stratum = c("biomarker positive", "biomarker negative"), Rate = c(.2, .25)),
+#'   p_e = tibble(Stratum = c("biomarker positive", "biomarker negative"), Rate = c(.15,.22)),
+#'   IF = c(0.7, 1),
+#'   rd0 = 0, 
+#'   alpha = .025,                  
+#'   beta = .1,                    
+#'   ratio = 1,
+#'   stratum_prev = tibble(Stratum = c("biomarker positive", "biomarker negative"), prevalence = c(.4, .6)),
+#'   weight = "ss",
+#'   upper = gs_spending_bound,lower = gs_b,
+#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
+#'   lpar = rep(-Inf, 2)
+#' )
 #' 
 gs_design_rd <- function(
     p_c = tibble(Stratum = "All", Rate = .2),
     p_e = tibble(Stratum = "All", Rate = .15),
-    k = 3,
     IF = 1:3/3,
     rd0 = 0, 
     alpha = .025,                  
@@ -86,7 +128,7 @@ gs_design_rd <- function(
   info_scale <- if(methods::missingArg(info_scale)){2}else{match.arg(as.character(info_scale), choices = 0:2)}
   weight <- if(methods::missingArg(weight)){"un-stratified"}else{match.arg(weight)}
   n_strata <- length(unique(p_c$Stratum))
-  
+  k <- length(IF)
   # --------------------------------------------- #
   #     calculate the sample size                 #
   #          under fixed design                   #
@@ -113,7 +155,7 @@ gs_design_rd <- function(
                N = if(is.null(stratum_prev)){
                       IF
                    }else{
-                     rep((stratum_prev %>% mutate(x = prevalence / sum(prevalence)))$x, each = 3) * IF
+                     rep((stratum_prev %>% mutate(x = prevalence / sum(prevalence)))$x, each = k) * IF
                    }), 
     rd0 = rd0,
     ratio = ratio,

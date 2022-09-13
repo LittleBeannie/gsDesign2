@@ -16,7 +16,8 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #' Group sequential design using weighted log-rank test under non-proportional hazards
-#'
+#' 
+#' @import tibble tibble
 #' @inheritParams gs_design_ahr
 #' @inheritParams gs_info_wlr
 #' @section Specification:
@@ -98,44 +99,24 @@
 #'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.2),
 #'   analysisTimes = c(12, 24, 36))
 #'
-gs_design_wlr <- function(
-  # enrollment rate
-  enrollRates = tibble::tibble(
-    Stratum = "All",
-    duration = c(2, 2, 10),
-    rate = c(3, 6, 9)),
-  # failure rate
-  failRates = tibble::tibble(
-    Stratum = "All",
-    duration = c(3, 100),
-    failRate = log(2)/c(9, 18),
-    hr = c(.9, .6),
-    dropoutRate = rep(.001, 2)),
-  # Experimental:Control randomization ratio
-  ratio = 1,            
-  weight = wlr_weight_fh,
-  approx = "asymptotic",
-  # One-sided Type I error
-  alpha = 0.025,    
-  # NULL if enrollment is not adapted
-  beta = 0.1,         
-  # relative information fraction timing (vector, if not NULL; increasing to 1)
-  IF = NULL,        
-  # Targeted times of analysis or just planned study duration
-  analysisTimes = 36,    
-  binding = FALSE,
-  # Default is Lan-DeMets approximation of
-  upper = gs_b,
-  upar = gsDesign(k = 3, test.type = 1, n.I = c(.25, .75, 1), sfu = sfLDOF, sfupar = NULL)$upper$bound,
-  # Futility only at IA1
-  lower = gs_b,
-  lpar = c(qnorm(.1), -Inf, -Inf), 
-  h1_spending = TRUE,
-  test_upper = TRUE,
-  test_lower = TRUE,
-  info_scale = c(0, 1, 2),
-  r = 18,
-  tol = 1e-6
+gs_design_wlr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2, 10), 
+                                               rate = c(3, 6, 9)),
+                          failRates = tibble(Stratum = "All", duration = c(3, 100),
+                                             failRate = log(2)/c(9, 18), hr = c(.9, .6),
+                                             dropoutRate = rep(.001, 2)),
+                          weight = wlr_weight_fh, approx = "asymptotic",
+                          alpha = 0.025, beta = 0.1, ratio = 1,           
+                          IF = NULL, info_scale = c(0, 1, 2),     
+                          analysisTimes = 36,    
+                          binding = FALSE,
+                          upper = gs_b,
+                          upar = gsDesign(k = 3, test.type = 1, n.I = c(.25, .75, 1), sfu = sfLDOF, sfupar = NULL)$upper$bound,
+                          lower = gs_b,
+                          lpar = c(qnorm(.1), -Inf, -Inf), 
+                          test_upper = TRUE,
+                          test_lower = TRUE,
+                          h1_spending = TRUE,
+                          r = 18, tol = 1e-6
 ){
   # --------------------------------------------- #
   #     check input values                        #
@@ -172,12 +153,15 @@ gs_design_wlr <- function(
     IFindx <- IF[1 : (K-1)]
     for(i in seq_along(IFindx)){
       if(length(IFalt) == 1){
-        y <-rbind(
-          gsDesign2::tEvents(enrollRates, failRates, targetEvents = IF[K - i] * finalEvents, ratio = ratio, interval = c(.01, nextTime)) %>% 
-            mutate(theta = -log(AHR), Analysis = K - i),
-          y)
+        y <- rbind(tEvents(enrollRates, failRates, 
+                          targetEvents = IF[K - i] * finalEvents, 
+                          ratio = ratio, interval = c(.01, nextTime)) %>% 
+                     mutate(theta = -log(AHR), Analysis = K - i),
+                   y)
       }else if(IF[K-i] > IFalt[K-i]){
-        y[K - i,] <- gsDesign2::tEvents(enrollRates, failRates, targetEvents = IF[K - i] * finalEvents, ratio = ratio, interval = c(.01, nextTime)) %>%
+        y[K - i,] <- tEvents(enrollRates, failRates, 
+                             targetEvents = IF[K - i] * finalEvents,
+                             ratio = ratio, interval = c(.01, nextTime)) %>%
           dplyr::transmute(Analysis = K - i, Time, Events, AHR, theta = -log(AHR), info, info0)
       } 
       nextTime <- y$Time[K - i]
@@ -185,7 +169,9 @@ gs_design_wlr <- function(
   }
   
   y$Analysis <- 1:K
-  y$N <- gsDesign2::eAccrual(x = y$Time, enrollRates = enrollRates)
+  y$N <- eAccrual(x = y$Time, enrollRates = enrollRates)
+  
+  # h1 spending
   if(h1_spending){
     theta1 <- y$theta
     info1 <- y$info
@@ -198,50 +184,51 @@ gs_design_wlr <- function(
   #     combine all the calculations              #
   # --------------------------------------------- #
   suppressMessages(
-  allout <- gs_design_npe(
-    theta = y$theta, theta1 = theta1,
-    info = y$info, info0 = y$info0, info1 = info1, info_scale = info_scale,
-    alpha = alpha, beta = beta, binding = binding,
-    upper = upper, upar = upar, test_upper = test_upper,
-    lower = lower, lpar = lpar, test_lower = test_lower,
-    r = r, tol = tol) %>%
-    # Add Time, Events, AHR, N from gs_info_ahr call above
-    full_join(y %>% select(-c(info, info0, theta)), by = "Analysis") %>%
-    select(c("Analysis", "Bound", "Time","N", "Events", "Z", "Probability", "Probability0","AHR", "theta", "info", "info0", "IF")) %>%  
-    arrange(Analysis, desc(Bound))  
+    allout <- gs_design_npe(theta = y$theta, theta1 = theta1,
+                            info = y$info, info0 = y$info0, info1 = info1, info_scale = info_scale,
+                            alpha = alpha, beta = beta, binding = binding,
+                            upper = upper, upar = upar, test_upper = test_upper,
+                            lower = lower, lpar = lpar, test_lower = test_lower,
+                            r = r, tol = tol) %>%
+      full_join(y %>% select(-c(info, info0, theta)), by = "Analysis") %>%
+      select(c("Analysis", "Bound", "Time", "N", "Events", "Z", 
+               "Probability", "Probability0", "AHR", "theta", "info", "info0", "IF")) %>%  
+      arrange(Analysis, desc(Bound))  
   )
   
-  allout$Events <- allout$Events * allout$info[K] / y$info[K]
-  allout$N <- allout$N * allout$info[K] / y$info[K]
+  # calculate sample size & events
+  inflac_fct <- (allout %>% filter(Analysis == K, Bound == "Upper"))$info / (y %>% filter(Analysis == K))$info
+  allout$Events <- allout$Events * inflac_fct
+  allout$N <- allout$N * inflac_fct
   
   # add `~HR at bound`, `HR generic` and `Nominal p`
   allout <- allout %>% mutate(
     "~HR at bound" = gsDesign::zn2hr(z = Z, n = Events, ratio = ratio),
     "Nominal p" = pnorm(-Z)
   ) 
-  # --------------------------------------------- #
-  #     get bounds to output                      #
-  # --------------------------------------------- #
-  bounds <- allout %>% 
-    select(all_of(c("Analysis", "Bound", "Probability", "Probability0", "Z", "~HR at bound", "Nominal p" ))) %>%  
-    arrange(Analysis, desc(Bound))  
-  # --------------------------------------------- #
-  #     get analysis summary to output            #
-  # --------------------------------------------- #
-  analysis <- allout %>% 
-    select(Analysis, Time, N, Events, AHR, theta, info, info0, IF) %>% 
-    unique() %>%  
-    arrange(Analysis)  
   
   # --------------------------------------------- #
   #     return the output                         #
   # --------------------------------------------- #
+  # bounds table
+  bounds <- allout %>% 
+    select(all_of(c("Analysis", "Bound", "Probability", "Probability0", "Z", "~HR at bound", "Nominal p" ))) %>%  
+    arrange(Analysis, desc(Bound))  
+  
+  # analysis table
+  analysis <- allout %>% 
+    select(Analysis, Time, N, Events, AHR, theta, info, info0, IF) %>% 
+    unique() %>%  
+    arrange(Analysis)
+  
+  # final output
   ans <- list(
     enrollRates = enrollRates %>% mutate(rate = rate * allout$info[K] / y$info[K]),
     failRates = failRates,
     bounds = bounds,
     analysis = analysis)
   class(ans) <- c("wlr", "gs_design", class(ans))
+  
   return(ans)
   
 }

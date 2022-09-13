@@ -238,12 +238,13 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
       upperProb[k] <- if(b[k]< Inf){
         sum(hupdate(theta = theta[k], thetam1 = theta[k - 1],
                     I = info[k], Im1 = info[k - 1], 
-                    a = b[k], b = Inf, r = r, gm1 = hgm1)$h)
+                    a = b[k], b = Inf, gm1 = hgm1, r = r)$h)
       }else{0}
       # compute the probability to cross lower bound
       lowerProb[k] <- if(a[k] > -Inf){
-        sum(hupdate(r = r, theta = theta[k], I = info[k], a = -Inf, b = a[k],
-                    thetam1 = theta[k - 1], Im1 = info[k - 1], gm1 = hgm1)$h)
+        sum(hupdate(theta = theta[k], thetam1 = theta[k - 1],
+                    I = info[k], Im1 = info[k - 1], 
+                    a = -Inf, b = a[k], gm1 = hgm1, r = r)$h)
       }else{0}
       
       # update the grids

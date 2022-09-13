@@ -5,16 +5,16 @@
 \title{Group sequential design using weighted log-rank test under non-proportional hazards}
 \usage{
 gs_design_wlr(
-  enrollRates = tibble::tibble(Stratum = "All", duration = c(2, 2, 10), rate = c(3, 6,
-    9)),
-  failRates = tibble::tibble(Stratum = "All", duration = c(3, 100), failRate =
-    log(2)/c(9, 18), hr = c(0.9, 0.6), dropoutRate = rep(0.001, 2)),
-  ratio = 1,
+  enrollRates = tibble(Stratum = "All", duration = c(2, 2, 10), rate = c(3, 6, 9)),
+  failRates = tibble(Stratum = "All", duration = c(3, 100), failRate = log(2)/c(9, 18),
+    hr = c(0.9, 0.6), dropoutRate = rep(0.001, 2)),
   weight = wlr_weight_fh,
   approx = "asymptotic",
   alpha = 0.025,
   beta = 0.1,
+  ratio = 1,
   IF = NULL,
+  info_scale = c(0, 1, 2),
   analysisTimes = 36,
   binding = FALSE,
   upper = gs_b,
@@ -22,10 +22,9 @@ gs_design_wlr(
     NULL)$upper$bound,
   lower = gs_b,
   lpar = c(qnorm(0.1), -Inf, -Inf),
-  h1_spending = TRUE,
   test_upper = TRUE,
   test_lower = TRUE,
-  info_scale = c(0, 1, 2),
+  h1_spending = TRUE,
   r = 18,
   tol = 1e-06
 )
@@ -34,8 +33,6 @@ gs_design_wlr(
 \item{enrollRates}{enrollment rates}
 
 \item{failRates}{failure and dropout rates}
-
-\item{ratio}{Experimental:Control randomization ratio (not yet implemented)}
 
 \item{weight}{weight of weighted log rank test
 \itemize{
@@ -55,7 +52,11 @@ gs_design_wlr(
 
 \item{beta}{Type II error}
 
+\item{ratio}{Experimental:Control randomization ratio (not yet implemented)}
+
 \item{IF}{Targeted information fraction at each analysis}
+
+\item{info_scale}{the information scale for calculation}
 
 \item{analysisTimes}{Minimum time of analysis}
 
@@ -69,9 +70,6 @@ gs_design_wlr(
 
 \item{lpar}{Parameter passed to \code{lower()}}
 
-\item{h1_spending}{Indicator that lower bound to be set by spending under alternate hypothesis (input \code{failRates})
-if spending is used for lower bound}
-
 \item{test_upper}{indicator of which analyses should include an upper (efficacy) bound; single value of TRUE (default) indicates all analyses;
 otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have an efficacy bound}
 
@@ -79,7 +77,8 @@ otherwise, a logical vector of the same length as \code{info} should indicate wh
 single value FALSE indicated no lower bound; otherwise, a logical vector of the same length as \code{info} should indicate which analyses will have a
 lower bound}
 
-\item{info_scale}{the information scale for calculation}
+\item{h1_spending}{Indicator that lower bound to be set by spending under alternate hypothesis (input \code{failRates})
+if spending is used for lower bound}
 
 \item{r}{Integer, at least 2; default of 18 recommended by Jennison and Turnbull}
 

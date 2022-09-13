@@ -7,7 +7,6 @@
 gs_design_rd(
   p_c = tibble(Stratum = "All", Rate = 0.2),
   p_e = tibble(Stratum = "All", Rate = 0.15),
-  k = 3,
   IF = 1:3/3,
   rd0 = 0,
   alpha = 0.025,
@@ -32,8 +31,6 @@ gs_design_rd(
 \item{p_c}{rate at the control group}
 
 \item{p_e}{rate at the experimental group}
-
-\item{k}{number of analysis}
 
 \item{IF}{statistical information fraction}
 
@@ -87,6 +84,46 @@ Group sequential design using average hazard ratio under non-proportional hazard
 Need to be added
 }
 \examples{
-gs_design_rd()
+library(tibble)
+library(gsDesign)
+
+# ----------------- #
+#    example 1      #
+#------------------ #
+# un-stratified group sequential design
+gs_design_rd(
+  p_c = tibble(Stratum = "All", Rate = .2),
+  p_e = tibble(Stratum = "All", Rate = .15),
+  IF = c(0.7, 1),
+  rd0 = 0, 
+  alpha = .025,                  
+  beta = .1,                    
+  ratio = 1,
+  stratum_prev = NULL,
+  weight = "un-stratified",
+  upper = gs_b,
+  lower = gs_b,
+  upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  lpar = c(qnorm(.1), rep(-Inf, 2))
+  )
+  
+# ----------------- #
+#     example 2     #
+# ----------------- #
+# stratified group sequential design
+gs_design_rd(
+  p_c = tibble(Stratum = c("biomarker positive", "biomarker negative"), Rate = c(.2, .25)),
+  p_e = tibble(Stratum = c("biomarker positive", "biomarker negative"), Rate = c(.15,.22)),
+  IF = c(0.7, 1),
+  rd0 = 0, 
+  alpha = .025,                  
+  beta = .1,                    
+  ratio = 1,
+  stratum_prev = tibble(Stratum = c("biomarker positive", "biomarker negative"), prevalence = c(.4, .6)),
+  weight = "ss",
+  upper = gs_spending_bound,lower = gs_b,
+  upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, timing = NULL),
+  lpar = rep(-Inf, 2)
+)
 
 }
