@@ -114,13 +114,13 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
               "AHR" = {
                 if (!is.null(power)){
                   d <- gs_design_ahr(alpha = alpha, beta = 1 - power,
-                                     upar = list(par = qnorm(1 - alpha)), lpar = list(par = -Inf),
+                                     upar = qnorm(1 - alpha), lpar = -Inf,
                                      enrollRates = enrollRates,
                                      failRates = failRates,
                                      ratio  = ratio, 
                                      analysisTimes = studyDuration)
                 }else{
-                  d <- gs_power_ahr(upar = list(par = qnorm(1 - alpha)), lpar = list(par = -Inf),
+                  d <- gs_power_ahr(upar = qnorm(1 - alpha), lpar = -Inf,
                                     enrollRates = enrollRates,
                                     failRates = failRates,
                                     ratio  = ratio, 
@@ -150,14 +150,14 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                 }
                 if (!is.null(power)){
                   d <- gs_design_wlr(alpha = alpha, beta = 1 - power,
-                                     upar = list(par = qnorm(1 - alpha)), lpar = list(par = -Inf),
+                                     upar = qnorm(1 - alpha), lpar = -Inf,
                                      enrollRates = enrollRates, 
                                      failRates = failRates,
                                      ratio = ratio, 
                                      weight = weight,
                                      analysisTimes = studyDuration)
                 }else{
-                  d <- gs_power_wlr(upar = list(par = qnorm(1 - alpha)), lpar = list(par = -Inf),
+                  d <- gs_power_wlr(upar = qnorm(1 - alpha), lpar = -Inf,
                                     enrollRates = enrollRates, 
                                     failRates = failRates,
                                     ratio = ratio, 
@@ -191,9 +191,9 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                                      weight = function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = -1, gamma = 0,
                                                                                     tau = ifelse(has_tau, args$tau, 6))},
                                      upper = gs_b,
-                                     upar = list(par = qnorm(1 - alpha)),
+                                     upar = qnorm(1 - alpha),
                                      lower = gs_b,
-                                     lpar = list(par = -Inf),
+                                     lpar = -Inf,
                                      analysisTimes = studyDuration) 
                 }else{
                   d <- gs_power_wlr(enrollRates = enrollRates, 
@@ -202,9 +202,9 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                                     weight = function(x, arm0, arm1){wlr_weight_fh(x, arm0, arm1, rho = -1, gamma = 0,
                                                                                    tau = ifelse(has_tau, args$tau, 6))},
                                     upper = gs_b,
-                                    upar = list(par = qnorm(1 - alpha)),
+                                    upar = qnorm(1 - alpha),
                                     lower = gs_b,
-                                    lpar = list(par = -Inf),
+                                    lpar = -Inf,
                                     analysisTimes = studyDuration,
                                     events = NULL) 
                 }
@@ -276,15 +276,15 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                                        enrollRates = enrollRates, 
                                        failRates = failRates,
                                        fh_test = max_combo_test, 
-                                       upper = gs_b, upar = list(par = qnorm(1 - alpha)),
-                                       lower = gs_b, lpar = list(par = -Inf)) 
+                                       upper = gs_b, upar = qnorm(1 - alpha),
+                                       lower = gs_b, lpar = -Inf) 
                 }else{
                   d <- gs_power_combo(ratio = ratio,
                                       enrollRates = enrollRates,  
                                       failRates = failRates,  
                                       fh_test = max_combo_test, 
-                                      upper = gs_b, upar = list(par = qnorm(1 - alpha)),
-                                      lower = gs_b, lpar = list(par = -Inf)) 
+                                      upper = gs_b, upar = qnorm(1 - alpha),
+                                      lower = gs_b, lpar = -Inf) 
                 }
                 
                 # get the output of max combo
@@ -307,15 +307,15 @@ fixed_design <- function(x = c("AHR", "FH", "MB", "LF", "RD", "MaxCombo", "RMST"
                   d <- gs_design_rd(p_c = tibble::tibble(Stratum = "All", Rate = args$p_c),
                                     p_e = tibble::tibble(Stratum = "All", Rate = args$p_e),
                                     alpha = alpha, beta = 1 - power, ratio = ratio,
-                                    upper = gs_b, upar = list(par = qnorm(1 - alpha)),
-                                    lower = gs_b, lpar = list(par = -Inf),
-                                    rd0 = args$rd0, weight = "un-stratified", k = 1, IF = 1) 
+                                    upper = gs_b, upar = qnorm(1 - alpha),
+                                    lower = gs_b, lpar = -Inf,
+                                    rd0 = args$rd0, weight = "un-stratified") 
                 }else{
                   d <- gs_power_rd(p_c = tibble::tibble(Stratum = "All", Rate = args$p_c),
                                    p_e = tibble::tibble(Stratum = "All", Rate = args$p_e),
                                    ratio = ratio,
-                                   upper = gs_b, upar = list(par = qnorm(1 - alpha)),
-                                   lower = gs_b, lpar = list(par = -Inf),
+                                   upper = gs_b, upar = qnorm(1 - alpha),
+                                   lower = gs_b, lpar = -Inf,
                                    N = tibble::tibble(Stratum = "All", N = args$N, Analysis = 1),
                                    rd0 = args$rd0,  weight = "un-stratified") 
                 }

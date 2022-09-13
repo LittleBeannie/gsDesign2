@@ -146,6 +146,8 @@ articles:
   - usage_gs_spending_bound
   - usage_gs_power_npe
   - usage_eAccural
+  - usage_summary_as_gt
+  - usage_fixed_design
   
 - title: "Check of functions"
   navbar: Testing & checks of functions
