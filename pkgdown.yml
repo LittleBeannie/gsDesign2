@@ -34,6 +34,7 @@ articles:
   usage_AHR: usage_AHR.html
   usage_eAccural: usage_eAccural.html
   usage_eEvents_df: usage_eEvents_df.html
+  usage_fixed_design: usage_fixed_design.html
   usage_gs_b: usage_gs_b.html
   usage_gs_design_ahr: usage_gs_design_ahr.html
   usage_gs_design_combo: usage_gs_design_combo.html
@@ -46,8 +47,9 @@ articles:
   usage_gs_power_npe: usage_gs_power_npe.html
   usage_gs_power_wlr: usage_gs_power_wlr.html
   usage_gs_spending_bound: usage_gs_spending_bound.html
+  usage_summary_as_gt: usage_summary_as_gt.html
   usage_tEvents: usage_tEvents.html
-last_built: 2022-09-12T14:54Z
+last_built: 2022-09-13T15:54Z
 urls:
   reference: https://littlebeannie.github.io/gsDesign2/reference
   article: https://littlebeannie.github.io/gsDesign2/articles

@@ -57,7 +57,6 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gs_design_rd</span><span class="op">(</span></span>
 <span>  p_c <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>,</span>
 <span>  p_e <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">0.15</span><span class="op">)</span>,</span>
-<span>  k <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  IF <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">3</span>,</span>
 <span>  rd0 <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  alpha <span class="op">=</span> <span class="fl">0.025</span>,</span>
@@ -87,10 +86,6 @@
 
 <dt>p_e</dt>
 <dd><p>rate at the experimental group</p></dd>
-
-
-<dt>k</dt>
-<dd><p>number of analysis</p></dd>
 
 
 <dt>IF</dt>
@@ -184,24 +179,79 @@ if spending is used for lower bound</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">gs_design_rd</span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://keaven.github.io/gsDesign/" class="external-link">gsDesign</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># ----------------- #</span></span></span>
+<span class="r-in"><span><span class="co">#    example 1      #</span></span></span>
+<span class="r-in"><span><span class="co">#------------------ #</span></span></span>
+<span class="r-in"><span><span class="co"># un-stratified group sequential design</span></span></span>
+<span class="r-in"><span><span class="fu">gs_design_rd</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  p_c <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  p_e <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="st">"All"</span>, Rate <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  IF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  rd0 <span class="op">=</span> <span class="fl">0</span>, </span></span>
+<span class="r-in"><span>  alpha <span class="op">=</span> <span class="fl">.025</span>,                  </span></span>
+<span class="r-in"><span>  beta <span class="op">=</span> <span class="fl">.1</span>,                    </span></span>
+<span class="r-in"><span>  ratio <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  stratum_prev <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>  weight <span class="op">=</span> <span class="st">"un-stratified"</span>,</span></span>
+<span class="r-in"><span>  upper <span class="op">=</span> <span class="va">gs_b</span>,</span></span>
+<span class="r-in"><span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span></span>
+<span class="r-in"><span>  upar <span class="op">=</span> <span class="fu"><a href="https://keaven.github.io/gsDesign/reference/gsDesign.html" class="external-link">gsDesign</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, test.type <span class="op">=</span> <span class="fl">1</span>, sfu <span class="op">=</span> <span class="va">sfLDOF</span>, sfupar <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">$</span><span class="va">upper</span><span class="op">$</span><span class="va">bound</span>,</span></span>
+<span class="r-in"><span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bounds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0     Z ~Risk difference at bo…¹ Nomin…²</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper    0.033<span style="text-decoration: underline;">4</span>       0.000<span style="text-decoration: underline;">104</span>  3.71                   0.098<span style="text-decoration: underline;">4</span> 1.04<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower    0.000<span style="text-decoration: underline;">764</span>     0.100    -<span style="color: #BB0000;">1.28</span>                  -<span style="color: #BB0000;">0.034</span><span style="color: #BB0000; text-decoration: underline;">0</span> 9   <span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper    0.561        0.006<span style="text-decoration: underline;">05</span>   2.51                   0.047<span style="text-decoration: underline;">1</span> 6.01<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        3 Upper    0.900        0.025<span style="text-decoration: underline;">0</span>    1.99                   0.030<span style="text-decoration: underline;">5</span> 2.31<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper  0.297          0.000<span style="text-decoration: underline;">104</span>  3.71                   0.058<span style="text-decoration: underline;">2</span> 1.04<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower  0.000<span style="text-decoration: underline;">003</span>89     0.100    -<span style="color: #BB0000;">1.28</span>                  -<span style="color: #BB0000;">0.020</span><span style="color: #BB0000; text-decoration: underline;">1</span> 9   <span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper  0.900          0.006<span style="text-decoration: underline;">02</span>   2.51                   0.033<span style="text-decoration: underline;">0</span> 6.01<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​`~Risk difference at bound`, ²​`Nominal p`</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis     N    rd   rd0  info info0    IF   IF0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1  817.  0.05     0 <span style="text-decoration: underline;">1</span>421. <span style="text-decoration: underline;">1</span>415. 0.333 0.333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        2 <span style="text-decoration: underline;">1</span>635.  0.05     0 <span style="text-decoration: underline;">2</span>843. <span style="text-decoration: underline;">2</span>830. 0.667 0.667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        3 <span style="text-decoration: underline;">2</span>452.  0.05     0 <span style="text-decoration: underline;">4</span>264. <span style="text-decoration: underline;">4</span>246. 1     1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 <span style="text-decoration: underline;">2</span>336.  0.05     0 <span style="text-decoration: underline;">4</span>062. <span style="text-decoration: underline;">4</span>044.   0.7   0.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        2 <span style="text-decoration: underline;">3</span>337.  0.05     0 <span style="text-decoration: underline;">5</span>803. <span style="text-decoration: underline;">5</span>778.   1     1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "rd"        "gs_design" "list"     </span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="co"># ----------------- #</span></span></span>
+<span class="r-in"><span><span class="co">#     example 2     #</span></span></span>
+<span class="r-in"><span><span class="co"># ----------------- #</span></span></span>
+<span class="r-in"><span><span class="co"># stratified group sequential design</span></span></span>
+<span class="r-in"><span><span class="fu">gs_design_rd</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  p_c <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"biomarker positive"</span>, <span class="st">"biomarker negative"</span><span class="op">)</span>, Rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.2</span>, <span class="fl">.25</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  p_e <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"biomarker positive"</span>, <span class="st">"biomarker negative"</span><span class="op">)</span>, Rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.15</span>,<span class="fl">.22</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  IF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  rd0 <span class="op">=</span> <span class="fl">0</span>, </span></span>
+<span class="r-in"><span>  alpha <span class="op">=</span> <span class="fl">.025</span>,                  </span></span>
+<span class="r-in"><span>  beta <span class="op">=</span> <span class="fl">.1</span>,                    </span></span>
+<span class="r-in"><span>  ratio <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  stratum_prev <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"biomarker positive"</span>, <span class="st">"biomarker negative"</span><span class="op">)</span>, prevalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.4</span>, <span class="fl">.6</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  weight <span class="op">=</span> <span class="st">"ss"</span>,</span></span>
+<span class="r-in"><span>  upper <span class="op">=</span> <span class="va">gs_spending_bound</span>,lower <span class="op">=</span> <span class="va">gs_b</span>,</span></span>
+<span class="r-in"><span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sf <span class="op">=</span> <span class="fu">gsDesign</span><span class="fu">::</span><span class="va"><a href="https://keaven.github.io/gsDesign/reference/sfLDOF.html" class="external-link">sfLDOF</a></span>, total_spend <span class="op">=</span> <span class="fl">0.025</span>, param <span class="op">=</span> <span class="cn">NULL</span>, timing <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bounds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0     Z ~Risk difference at bo…¹ Nomin…²</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper       0.616      0.007<span style="text-decoration: underline;">38</span>  2.44                   0.033<span style="text-decoration: underline;">9</span> 0.007<span style="text-decoration: underline;">38</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        2 Upper       0.900      0.025<span style="text-decoration: underline;">0</span>   2.00                   0.023<span style="text-decoration: underline;">2</span> 0.022<span style="text-decoration: underline;">8</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​`~Risk difference at bound`, ²​`Nominal p`</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis     N    rd   rd0  info info0    IF   IF0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 <span style="text-decoration: underline;">3</span>426. 0.038     0 <span style="text-decoration: underline;">5</span>184. <span style="text-decoration: underline;">5</span>172.   0.7   0.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        2 <span style="text-decoration: underline;">4</span>894. 0.038     0 <span style="text-decoration: underline;">7</span>406. <span style="text-decoration: underline;">7</span>388.   1     1  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "rd"        "gs_design" "list"     </span>
