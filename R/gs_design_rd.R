@@ -128,7 +128,12 @@ gs_design_rd <- function(
   info_scale <- if(methods::missingArg(info_scale)){2}else{match.arg(as.character(info_scale), choices = 0:2)}
   weight <- if(methods::missingArg(weight)){"un-stratified"}else{match.arg(weight)}
   n_strata <- length(unique(p_c$Stratum))
-  k <- length(IF)
+  if(methods::missingArg(IF)){
+    k <- 1
+  }else{
+    k <- length(IF)
+  }
+  
   # --------------------------------------------- #
   #     calculate the sample size                 #
   #          under fixed design                   #
