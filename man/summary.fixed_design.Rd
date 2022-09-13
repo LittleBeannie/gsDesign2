@@ -56,17 +56,6 @@ fixed_design(
   ratio = ratio
   ) \%>\% summary() 
 
-\dontrun{
-# under fixed sample size  
-fixed_design(
-  x = "AHR", 
-  alpha = alpha,  
-  enrollRates = enrollRates, 
-  failRates = failRates, 
-  studyDuration = studyDuration, 
-  ratio = ratio
-  ) \%>\% summary()
-} 
 # ------------------------- #
 #        FH                 #
 # ------------------------- #
@@ -81,15 +70,4 @@ fixed_design(
    ratio = ratio
   ) \%>\% summary() 
   
-# under fixed sample size
-\dontrun{
-fixed_design(
-  x = "FH", 
-  alpha = alpha,  
-  enrollRates = enrollRates, 
-  failRates = failRates, 
-  studyDuration = studyDuration, 
-  ratio = ratio
-  ) \%>\% summary()
-}
 }

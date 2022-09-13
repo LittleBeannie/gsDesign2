@@ -80,17 +80,6 @@ summary <- function(x, ...) {
 #'   ratio = ratio
 #'   ) %>% summary() 
 #' 
-#' \dontrun{
-#' # under fixed sample size  
-#' fixed_design(
-#'   x = "AHR", 
-#'   alpha = alpha,  
-#'   enrollRates = enrollRates, 
-#'   failRates = failRates, 
-#'   studyDuration = studyDuration, 
-#'   ratio = ratio
-#'   ) %>% summary()
-#' } 
 #' # ------------------------- #
 #' #        FH                 #
 #' # ------------------------- #
@@ -105,17 +94,6 @@ summary <- function(x, ...) {
 #'    ratio = ratio
 #'   ) %>% summary() 
 #'   
-#' # under fixed sample size
-#' \dontrun{
-#' fixed_design(
-#'   x = "FH", 
-#'   alpha = alpha,  
-#'   enrollRates = enrollRates, 
-#'   failRates = failRates, 
-#'   studyDuration = studyDuration, 
-#'   ratio = ratio
-#'   ) %>% summary()
-#' }
 summary.fixed_design <- function(x, ...){
   x_design <- switch(x$design,
                      "AHR" = {"Average hazard ratio"},
@@ -235,18 +213,6 @@ summary.fixed_design <- function(x, ...){
 #' x_ahr %>% summary(analysis_vars = c("Time", "Events", "IF"), analysis_decimals = c(1, 0, 2))
 #' x_ahr %>% summary(bound_names = c("A is better", "B is better"))
 #' 
-#' gs_power_ahr(
-#'   enrollRates = x_ahr$enrollRates,
-#'   failRates = x_ahr$failRates,
-#'   events = x_ahr$analysis$Events - 20,
-#'   upper = upper,
-#'   upar = upar,
-#'   lower = lower,
-#'   lpar = lpar
-#' ) %>% 
-#'   summary()
-#' 
-#' 
 #' # ---------------------------- #
 #' #         wlr                  #
 #' # ---------------------------- #
@@ -266,16 +232,6 @@ summary.fixed_design <- function(x, ...){
 #' )
 #' x_wlr %>% summary()
 #' 
-#' gs_power_wlr(
-#'   enrollRates = x_wlr$enrollRates,
-#'   failRates = x_wlr$failRates,
-#'   events = x_wlr$analysis$Events - 20,
-#'   upper = upper,
-#'   upar = upar,
-#'   lower = lower,
-#'   lpar = lpar
-#' ) %>% summary()
-#' 
 #' # ---------------------------- #
 #' #         max combo            #
 #' # ---------------------------- #
@@ -293,46 +249,25 @@ summary.fixed_design <- function(x, ...){
 #'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.2))
 #' x_combo %>% summary()
 #' 
-#' gs_power_combo(
-#'   enrollRates = x_combo$enrollRates,
-#'   failRates = x_combo$failRates,
-#'   fh_test = fh_test,
-#'   upper = gs_spending_combo,
-#'   upar = list(sf = gsDesign::sfLDOF, total_spend = 0.025),
-#'   lower = gs_spending_combo,
-#'   lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.2)
-#' ) %>% summary()
-#' 
 #' # ---------------------------- #
 #' #      risk difference         #
 #' # ---------------------------- #
-#' \dontrun{
-#' gs_power_rd(
-#'   p_c = .15,
-#'   p_e = .13,
-#'   n = c(50, 80, 100),
+#' gs_design_rd(
+#'   p_c = tibble(Stratum = "All", Rate = .2),
+#'   p_e = tibble(Stratum = "All", Rate = .15),
+#'   IF = c(0.7, 1),
+#'   rd0 = 0,
+#'   alpha = .025,
+#'   beta = .1,
 #'   ratio = 1,
-#'   theta0 = 0,
-#'   delta0 = 0, 
+#'   stratum_prev = NULL,
+#'   weight = "un-stratified",
 #'   upper = gs_b,
-#'   upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
 #'   lower = gs_b,
+#'   upar = gsDesign::gsDesign(k = 3, test.type = 1, sfu = gsDesign::sfLDOF, sfupar = NULL)$upper$bound,
 #'   lpar = c(qnorm(.1), rep(-Inf, 2))
 #' ) %>% summary()
 #' 
-#' gs_design_rd(
-#'   p_c = .15,
-#'   p_e = .13,
-#'   n = 1:3,
-#'   ratio = 1,
-#'   theta0 = 0,
-#'   delta0 = 0, 
-#'   upper = gs_b,
-#'   upar = gsDesign(k = 3, test.type = 1, sfu = sfLDOF, sfupar = NULL)$upper$bound,
-#'   lower = gs_b,
-#'   lpar = c(qnorm(.1), rep(-Inf, 2))
-#' ) %>% summary()
-#' }
 summary.gs_design <- function(
   x,
   analysis_vars = NULL,

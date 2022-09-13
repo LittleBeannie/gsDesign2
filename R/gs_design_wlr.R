@@ -223,7 +223,7 @@ gs_design_wlr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 
   
   # final output
   ans <- list(
-    enrollRates = enrollRates %>% mutate(rate = rate * allout$info[K] / y$info[K]),
+    enrollRates = enrollRates %>% mutate(rate = rate * inflac_fct),
     failRates = failRates,
     bounds = bounds,
     analysis = analysis)
