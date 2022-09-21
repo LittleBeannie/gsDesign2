@@ -1,0 +1,169 @@
+---
+title: "Futility bounds at design and analysis under non-proportional hazards"
+output:
+  rmarkdown::html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+    highlight: "textmate"
+    css: "custom.css"
+# bibliography: "ggsd.bib"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Futility Bounds at Design and Analysis Under Non-proportional Hazards}
+---
+
+
+```{r, warning=FALSE, message = FALSE}
+library(gsDesign2)
+library(gt)
+library(dplyr)
+library(tibble)
+```
+
+
+# Overview
+
+We set up futility bounds under a non-proportional hazards assumption.
+We consider methods presented by @kornfreidlin2018 for setting such bounds and then consider an alternate futility bound based on $\beta-$spending under a delayed or crossing treatment effect to simplify implementation.
+
+## Korn and Freidlin approach
+
+@kornfreidlin2018 considered delayed effect scenarios and proposed a futility bound that is a modification of an earlier method proposed by @wieand. 
+We will attempt to reproduce a line of @kornfreidlin2018 Table 1 as follows.
+We begin with the enrollment and failure rate assumptions which they based on an example by @ttchen2013.
+
+```{r}
+# Enrollment assumed to be 680 patients over 12 months with no ramp-up
+enrollRates <- tibble(Stratum = "All", duration = 12, rate = 680 / 12)
+# Failure rates
+## Control exponential with median of 12 mos
+## Delayed effect with HR = 1 for 3 months and HR = .693 thereafter
+## Censoring rate is 0
+failRates <- tibble(Stratum = "All", duration = c(3, 100), 
+                   failRate = -log(.5) / 12, hr = c(1, .693), dropoutRate = 0)
+## Events at final analysis
+studyDuration <- 35 
+```
+
+We now derive a fixed sample size based on these assumptions.
+
+```{r}
+fixed <- fixed_design(x = "AHR", alpha = 0.025, power = .9, 
+                      enrollRates = enrollRates,
+                      failRates = failRates,
+                      studyDuration = studyDuration)
+fixed %>% summary() %>% as_gt()
+```
+
+
+This compares with the design from @kornfreidlin2013 with 680 patients and 512 events:
+
+ 
+```{r}
+fixedevents <- fixed_design(x = "AHR", alpha = 0.025, power = NULL, 
+                      enrollRates = enrollRates %>% mutate(rate = 680 / 12),
+                      failRates = failRates,
+                      studyDuration = 35,
+                      events = 512)
+fixedevents %>% summary() %>% as_gt()
+```
+
+
+The Wieand rule recommends stopping after 50% of planned events accrue if the observed HR > 1.
+The Korn and Freidlin modification of this is to add a second interim analysis after 75% of planned events and stop if the observed HR > 1.
+
+
+
+### Heading 3
+
+# Markdown syntax
+
+This is an **R Markdown** HTML vignette. Markdown is a simple _formatting syntax_
+for authoring HTML, PDF, and Word documents.
+
+$$x^n + y^n = z^n$$
+
+When you click the _Knit_ button a document will be generated that includes both
+content as well as the output of any embedded R code chunks within the document.
+
+Here is an inline equation $A = \pi r^2$.
+
+# Syntax highlighting
+
+This is inline `code`.
+
+This is a code block:
+
+```{r}
+seq_len(10)
+```
+
+This is another code block, without evaluation:
+
+```{r, eval=FALSE}
+library("dplyr")
+
+starwars %>% 
+  filter(species == "Droid")
+
+starwars %>% 
+  select(name, ends_with("color"))
+
+starwars %>% 
+  mutate(name, bmi = mass / ((height / 100) ^ 2)) %>%
+  select(name:mass, bmi)
+```
+
+# Figures
+
+```{r, echo=FALSE, fig.cap="Figure: Insert caption here.", fig.asp=1, out.width="50%", fig.align="center"}
+pal <- c(
+  "#00857c", "#0c2340", "#6eceb2", "#bfed33", "#fff063",
+  "#69b8f7", "#688ce8", "#5450e4"
+)
+
+x <- log(1:length(pal) + 1)
+barplot(x, col = pal, border = FALSE)
+```
+
+# Tables
+
+```{r, echo=FALSE}
+knitr::kable(head(mtcars))
+```
+
+# Citations
+
+See [Bibliographies and Citations in R Markdown](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+for details.
+
+# Markdown tables
+
+We support Markdown tables via
+[pandoc table syntax](https://pandoc.org/MANUAL.html#tables).
+
+You can use any online Markdown table generator to create these tables.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+# Markdown figures
+
+Without caption:
+
+```markdown
+#![](example.png){width=50% class="center-block"}
+```
+
+With caption:
+
+```markdown
+#![Insert caption here.](example.png){width=50%}
+```
+
+# References
