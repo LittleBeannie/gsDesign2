@@ -58,21 +58,33 @@ fixed %>% summary() %>% as_gt()
 ```
 
 
-This compares with the design from @kornfreidlin2013 with 680 patients and 512 events:
+This compares with the design from @kornfreidlin2013 with 680 patients and 512 events.
+Their simulation average trial duration was raised from 34.8 months to 34.86 using the AHR method to obtain the same 512 targeted endpoints.
 
  
 ```{r}
 fixedevents <- fixed_design(x = "AHR", alpha = 0.025, power = NULL, 
                       enrollRates = enrollRates %>% mutate(rate = 680 / 12),
                       failRates = failRates,
-                      studyDuration = 35,
-                      events = 512)
+                      studyDuration = 34.86)
 fixedevents %>% summary() %>% as_gt()
 ```
 
 
 The Wieand rule recommends stopping after 50% of planned events accrue if the observed HR > 1.
 The Korn and Freidlin modification of this is to add a second interim analysis after 75% of planned events and stop if the observed HR > 1.
+We add this futility bound to the above.
+@kornfreidlin2013 computed 88.4% power for this design with 100,000 simulations which estimate the standard error for the power calculation to be `r paste(100 * round(sqrt(.884 * (1 - .884)/100000),4),'%',sep='')`.
+
+```{r}
+wieand <- gs_power_ahr(enrollRates = enrollRates, failRates = failRates,
+                       upper = gs_b, upar = c(rep(Inf, 2), qnorm(.975)),
+                       lower = gs_b, lpar = c(0, 0, -Inf),
+                       events = 512 * c(.5, .75, 1))
+wieand %>% summary() %>% as_gt(title="Group sequential design with futility only",
+                               subtitle="Wieand futility rule stops if HR > 1")
+```
+
 
 
 
