@@ -47,41 +47,36 @@ enrollRates <- tibble(Stratum = "All", duration = 12, rate = 680 / 12)
 failRates <- tibble(Stratum = "All", duration = c(3, 100), 
                    failRate = -log(.5) / 12, hr = c(1, .693), dropoutRate = 0)
 ## Study duration was 34.8 in Korn & Freidlin Table 1
-studyDuration <- 34.8
+## We change to 34.86 here to obtain 512 expected events more precisely
+studyDuration <- 34.86
 ```
 
 We now derive a fixed sample size based on these assumptions.
+Ideally, we would allow a targeted event count and variable follow-up in `fixed_design()` so that the study duration will be computed automatically.
+
 
 ```{r}
-fixed <- fixed_design(x = "AHR", alpha = 0.025, power = NULL, 
+fixedevents <- fixed_design(x = "AHR", alpha = 0.025, power = NULL, 
                       enrollRates = enrollRates,
                       failRates = failRates,
                       studyDuration = studyDuration)
-fixed %>% summary() %>% as_gt(footnote = "Korn-Freidlin time-based power calculation")
-```
-
-
-This compares with the design from @kornfreidlin2018 with 680 patients and 512 events.
-Their simulation average trial duration was raised from 34.8 months to 34.86 using the AHR method to obtain the same 512 targeted endpoints. Ideally, we will allow a targeted event count and variable follow-up in `fixed_design()` so that the study duration will be computed automatically.
-
- 
-```{r}
-fixedevents <- fixed_design(x = "AHR", alpha = 0.025, power = NULL, 
-                      enrollRates = enrollRates %>% mutate(rate = 680 / 12),
-                      failRates = failRates,
-                      studyDuration = 34.86)
 fixedevents %>% summary() %>% 
   select(-Bound) %>%
-  as_gt(footnote="Korn-Freidlin 512 event-based power") %>%
+  as_gt(footnote="Power based on 512 events") %>%
   fmt_number(columns = 3:4, decimals = 2) %>% 
   fmt_number(columns = 5:6, decimals = 3)
 ```
 
+
+
 # Modified Wieand futility bound
 
 The @wieand rule recommends stopping after 50% of planned events accrue if the observed HR > 1.
-The Korn and Freidlin modification of this is to add a second interim analysis after 75% of planned events and stop if the observed HR > 1.
-We add this futility bound to the above; in the last row under *Alternate hypothesis* in the following table we see the power is 88.44%.
+kornfreidlin2018 modified this by adding a second interim analysis after 75% of planned events and stop if the observed HR > 1
+This is implemented here by requiring a trend in favor of control with a direction $Z$-bound at 0 resulting in the *Nominal p* bound being 0.5 for interim analyses in the table below.
+A fixed bound is specified with the 'gs_b()` function for `upper` and `lower` and its correspoinding parameters `upar` for the upper (efficacy) bound and `lpar` for the lower (futility) bound.
+The final efficacy bound is for a 1-sided nominal p-value of 0.025; the futility bound lowers this to 0.0247 as noted in the lower-right-hand corner of the table below.
+In the last row under *Alternate hypothesis* below we see the power is 88.44%.
 @kornfreidlin2018 computed 88.4% power for this design with 100,000 simulations which estimate the standard error for the power calculation to be `r paste(100 * round(sqrt(.884 * (1 - .884)/100000),4),'%',sep='')`.
 
 ```{r}
@@ -89,19 +84,24 @@ wieand <- gs_power_ahr(enrollRates = enrollRates, failRates = failRates,
                        upper = gs_b, upar = c(rep(Inf, 2), qnorm(.975)),
                        lower = gs_b, lpar = c(0, 0, -Inf),
                        events = 512 * c(.5, .75, 1))
-wieand %>% summary() %>% as_gt(title="Group sequential design with futility only",
-                               subtitle="Wieand futility rule stops if HR > 1")
+wieand %>% summary() %>% 
+  as_gt(title="Group sequential design with futility only at interim analyses",
+        subtitle="Wieand futility rule stops if HR > 1")
 ```
 
 # Beta-spending futility bound with AHR
+
+Need to summarize here.
+
 
 ```{r}
 betaspending <- gs_power_ahr(enrollRates = enrollRates, failRates = failRates,
                        upper = gs_b, upar = c(rep(Inf, 2), qnorm(.975)),
                        lower = gs_spending_bound, 
-                       lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025, param = NULL, 
-                                   timing = NULL),
-                       events = 512 * c(.5, .75, 1))
+                       lpar = list(sf = gsDesign::sfLDOF, total_spend = 0.025,
+                                   param = NULL, timing = NULL),
+                       events = 512 * c(.5, .75, 1),
+                       test_lower = c(TRUE, TRUE, FALSE))
 betaspending %>% 
   summary() %>% as_gt(title="Group sequential design with futility only",
                       subtitle="Beta-spending futility bound")
