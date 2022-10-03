@@ -186,7 +186,7 @@ gs_design_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 
   y$Analysis <- 1:K
   y$N <- eAccrual(x = y$Time, enrollRates = enrollRates)
   if(h1_spending){
-    theta1 <- y$theta  # theta1 = -log(AHR)
+    theta1 <- y$theta  
     info1 <- y$info
   }else{
     theta1 <- 0
@@ -198,8 +198,9 @@ gs_design_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 
   # --------------------------------------------- #
   suppressMessages(
     allout <- gs_design_npe(
-      theta = y$theta, theta1 = theta1, 
-      info = y$info, info0 = y$info0, info1 = info1, info_scale = info_scale,
+      theta = y$theta, theta0 = 0, theta1 = theta1, 
+      info = y$info, info0 = y$info0, info1 = info1, 
+      info_scale = info_scale,
       alpha = alpha, beta = beta, binding = binding,
       upper = upper, upar = upar, test_upper = test_upper,
       lower = lower, lpar = lpar, test_lower = test_lower,
@@ -208,19 +209,12 @@ gs_design_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 
   
   allout <- allout %>%
     # add `~HR at bound`, `HR generic` and `Nominal p`
-    mutate(
-      "~HR at bound" = exp(-Z / sqrt(info0)),
-      "Nominal p" = pnorm(-Z)) %>% 
+    mutate("~HR at bound" = exp(-Z / sqrt(info0)), "Nominal p" = pnorm(-Z)) %>% 
     # Add `Time`, `Events`, `AHR`, `N` from gs_info_ahr call above
-    full_join(
-      y %>% select(-c(info, info0, theta)), 
-      by = "Analysis") %>%
+    full_join(y %>% select(-c(info, info0, theta)), by = "Analysis") %>%
     # select variables to be output
-    select(
-      c("Analysis", "Bound", "Time", "N", "Events", 
-        "Z", "Probability", "Probability0", "AHR", "theta", 
-        "info", "info0", "IF", 
-        "~HR at bound", "Nominal p")) %>% 
+    select(c("Analysis", "Bound", "Time", "N", "Events", "Z", "Probability", "Probability0", "AHR", "theta", 
+             "info", "info0", "IF", "~HR at bound", "Nominal p")) %>% 
     # arrange the output table
     arrange(Analysis, desc(Bound))
   

@@ -135,7 +135,7 @@ gs_spending_bound <- function(k = 1,
     
     # if theta not a vector, make it one
     # theta is for lower bound only
-    if(length(theta) == 1) theta <- rep(theta, k) # theta <- rep(theta, length(info))
+    if(length(theta) == 1) theta <- rep(theta, length(info))
     
     # set starting value
     a <- qnorm(spend) + sqrt(info[k]) * theta[k]

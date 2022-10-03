@@ -122,11 +122,14 @@ NULL
 gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2, 10), rate = c(3, 6, 9)),
                          failRates = tibble(Stratum = "All", duration = c(3, 100), failRate = log(2)/c(9, 18), 
                                             hr = c(.9, .6), dropoutRate = rep(.001, 2)),
-                         events = c(30, 40, 50), analysisTimes = NULL, 
-                         upper = gs_b, lower = gs_b,
+                         events = c(30, 40, 50), 
+                         analysisTimes = NULL, 
+                         upper = gs_b, 
                          upar = gsDesign(k = length(events), test.type = 1, n.I = events, maxn.IPlan = max(events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
+                         lower = gs_b,
                          lpar = c(qnorm(.1), rep(-Inf, 2)), 
-                         test_lower = TRUE, test_upper = TRUE,
+                         test_lower = TRUE, 
+                         test_upper = TRUE,
                          ratio = 1, binding = FALSE, info_scale = c(0, 1, 2), r = 18, tol = 1e-6
                          ){
   
@@ -156,7 +159,7 @@ gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
   y_H0 <- gs_power_npe(theta = 0, 
                        info = x$info0, info0 = x$info0, info_scale = info_scale,
                        upper = upper, upar = upar, test_upper = test_upper,
-                       lower = lower, lpar = lpar, test_lower = test_lower,
+                       lower = if(binding){lower}else{gs_b}, lpar = if(binding){lpar}else{rep(-Inf, K)}, test_lower = test_lower,
                        binding = binding, r = r, tol = tol)
   
   # ---------------------------------------- #

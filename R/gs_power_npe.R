@@ -34,6 +34,7 @@ NULL
 #' are not supported by \code{gs_power_npe()}.
 #' @param theta natural parameter for group sequential design representing
 #' expected incremental drift at all analyses; used for power calculation
+#' @param theta0 natural parameter for null hypothesis, if needed for upper bound computation
 #' @param theta1 natural parameter for alternate hypothesis, if needed for lower bound computation
 #' @param info statistical information at all analyses for input \code{theta}
 #' @param info0 statistical information under null hypothesis, if different than \code{info};
@@ -157,13 +158,12 @@ NULL
 #'   upar = (x %>% filter(Bound == "Upper"))$Z,
 #'   lpar = -(x %>% filter(Bound == "Upper"))$Z)
 
-gs_power_npe <- function(theta = .1, theta1 = NULL,
-                         info = 1, info0 = NULL, info1 = NULL,
+gs_power_npe <- function(theta = .1, theta0 = NULL, theta1 = NULL,    # 3 theta
+                         info = 1, info0 = NULL, info1 = NULL,        # 3 info
                          info_scale = c(0, 1, 2),
-                         binding = FALSE,
                          upper = gs_b, upar = qnorm(.975),
                          lower = gs_b, lpar = -Inf,
-                         test_upper = TRUE, test_lower = TRUE,
+                         test_upper = TRUE, test_lower = TRUE, binding = FALSE,
                          r = 18, tol = 1e-6){
   
   # --------------------------------------------- #
@@ -171,6 +171,7 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
   # --------------------------------------------- #
   K <- length(info)
   if (length(theta) == 1 && K > 1) theta <- rep(theta, K)
+  if (is.null(theta0)){theta0 <- rep(0, K)}else if(length(theta0) == 1){theta0 <- rep(theta0, K)}
   if (is.null(theta1)){theta1 <- theta}else if(length(theta1) == 1){theta1 <- rep(theta1, K)}
   if (length(test_upper) == 1 && K > 1) test_upper <- rep(test_upper, K)
   if (length(test_lower) == 1 && K > 1) test_lower <- rep(test_lower, K)
@@ -178,6 +179,7 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
   # --------------------------------------------- #
   #     set up info                               #
   # --------------------------------------------- #
+  # impute info
   if(is.null(info0)){
     info0 <- info
   }
@@ -197,6 +199,7 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
     info0 <- info1
   }
   
+  # check info
   check_info(info)
   check_info(info0)
   check_info(info1)
@@ -230,7 +233,7 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
       upperProb[1] <- if(b[1] < Inf) {pnorm( sqrt(info[1]) * (theta[1] - b[1] / sqrt(info0[1])))}else{0}
       lowerProb[1] <- if(a[1] > -Inf){pnorm(-sqrt(info[1]) * (theta[1] - a[1] / sqrt(info0[1])))}else{0}
       # update the grids
-      hgm1_0 <- h1(r = r, theta = 0,         I = info0[1], a = if(binding){a[1]}else{-Inf}, b = b[1])
+      hgm1_0 <- h1(r = r, theta = theta0[1], I = info0[1], a = if(binding){a[1]}else{-Inf}, b = b[1])
       hgm1_1 <- h1(r = r, theta = theta1[1], I = info1[1], a = a[1], b = b[1])
       hgm1   <- h1(r = r, theta = theta[1],  I = info[1],  a = a[1], b = b[1])
     }else{
@@ -249,7 +252,7 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
       
       # update the grids
       if(k < K){
-        hgm1_0 <- hupdate(r = r, theta = 0,         I = info0[k], a = if(binding){a[k]}else{-Inf}, b = b[k], thetam1 = 0,           Im1 = info0[k-1], gm1 = hgm1_0)
+        hgm1_0 <- hupdate(r = r, theta = theta0[k], I = info0[k], a = if(binding){a[k]}else{-Inf}, b = b[k], thetam1 = 0,           Im1 = info0[k-1], gm1 = hgm1_0)
         hgm1_1 <- hupdate(r = r, theta = theta1[k], I = info1[k], a = a[k],                        b = b[k], thetam1 = theta1[k-1], Im1 = info1[k-1], gm1 = hgm1_1)
         hgm1   <- hupdate(r = r, theta = theta[k],  I = info[k],  a = a[k],                        b = b[k], thetam1 = theta[k-1],  Im1 = info[k-1],  gm1 = hgm1)
       }
@@ -265,9 +268,9 @@ gs_power_npe <- function(theta = .1, theta1 = NULL,
     theta1 = rep(theta1, 2),
     IF = rep(info / max(info), 2),
     info = rep(info, 2)) %>% 
-    mutate(info0 = if(is.null(info0)){NA}else{rep(info0, 2)},
-           info1 = if(is.null(info1)){NA}else{rep(info1, 2)}) %>% 
-    filter(abs(Z) < Inf) %>% 
+    mutate(info0 = rep(info0, 2),
+           info1 = rep(info1, 2)) %>% 
+    #filter(abs(Z) < Inf) %>% 
     arrange(desc(Bound), Analysis)
   
   return(ans)
