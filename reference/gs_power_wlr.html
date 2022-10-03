@@ -211,19 +211,21 @@ lower bound</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> All          100   0.046<span style="text-decoration: underline;">2</span>   0.6       0.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bounds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0     Z `~HR at bound` `Nominal p`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper     0.004<span style="text-decoration: underline;">70</span>      0.003<span style="text-decoration: underline;">81</span>  2.67          0.377     0.003<span style="text-decoration: underline;">81</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower     0.088<span style="text-decoration: underline;">1</span>       0.100   -<span style="color: #BB0000;">1.28</span>          1.60      0.9    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper     0.018<span style="text-decoration: underline;">2</span>       0.012<span style="text-decoration: underline;">7</span>   2.29          0.485     0.011<span style="text-decoration: underline;">0</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        3 Upper     0.043<span style="text-decoration: underline;">9</span>       0.026<span style="text-decoration: underline;">8</span>   2.03          0.563     0.021<span style="text-decoration: underline;">1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0       Z `~HR at bound` `Nominal p`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper     0.004<span style="text-decoration: underline;">70</span>      0.003<span style="text-decoration: underline;">81</span>    2.67          0.377     0.003<span style="text-decoration: underline;">81</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower     0.088<span style="text-decoration: underline;">1</span>       0.100     -<span style="color: #BB0000;">1.28</span>          1.60      0.9    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper     0.018<span style="text-decoration: underline;">2</span>       0.012<span style="text-decoration: underline;">7</span>     2.29          0.485     0.011<span style="text-decoration: underline;">0</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        2 Lower     0.088<span style="text-decoration: underline;">1</span>       0.100   -<span style="color: #BB0000;">Inf</span>           <span style="color: #BB0000;">Inf</span>         1      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>        3 Upper     0.043<span style="text-decoration: underline;">9</span>       0.026<span style="text-decoration: underline;">8</span>     2.03          0.563     0.021<span style="text-decoration: underline;">1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower     0.088<span style="text-decoration: underline;">1</span>       0.100   -<span style="color: #BB0000;">Inf</span>           <span style="color: #BB0000;">Inf</span>         1      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis     Time        N   Events       AHR      theta     info    info0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1 5.893973 245.5822 30.00022 0.9636346 0.03704306 3.683843 3.684245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2 6.900914 287.5381 39.99994 0.9373448 0.06470406 5.749098 5.750773</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3 7.808461 325.3525 50.00009 0.9155821 0.08819526 8.132517 8.136765</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis     Time   N   Events       AHR      theta     info    info0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1 5.893973 500 30.00022 0.9636346 0.03704306 3.683843 3.684245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2 6.900914 500 39.99994 0.9373448 0.06470406 5.749098 5.750773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3 7.808461 500 50.00009 0.9155821 0.08819526 8.132517 8.136765</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          IF       IF0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.4529769 0.4527898</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.7069273 0.7067640</span>
@@ -259,23 +261,25 @@ lower bound</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> All          100   0.046<span style="text-decoration: underline;">2</span>   0.6       0.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bounds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0     Z `~HR at bound` `Nominal p`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper      0.017<span style="text-decoration: underline;">2</span>      0.003<span style="text-decoration: underline;">81</span>  2.67          0.546     0.003<span style="text-decoration: underline;">81</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100   -<span style="color: #BB0000;">1.28</span>          1.34      0.9    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper      0.622       0.014<span style="text-decoration: underline;">1</span>   2.29          0.747     0.011<span style="text-decoration: underline;">0</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        3 Upper      0.842       0.026<span style="text-decoration: underline;">3</span>   2.03          0.789     0.021<span style="text-decoration: underline;">1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0       Z `~HR at bound` `Nominal p`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper      0.017<span style="text-decoration: underline;">2</span>      0.003<span style="text-decoration: underline;">81</span>    2.67          0.546     0.003<span style="text-decoration: underline;">81</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100     -<span style="color: #BB0000;">1.28</span>          1.34      0.9    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper      0.622       0.014<span style="text-decoration: underline;">1</span>     2.29          0.747     0.011<span style="text-decoration: underline;">0</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        2 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100   -<span style="color: #BB0000;">Inf</span>           <span style="color: #BB0000;">Inf</span>         1      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>        3 Upper      0.842       0.026<span style="text-decoration: underline;">3</span>     2.03          0.789     0.021<span style="text-decoration: underline;">1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100   -<span style="color: #BB0000;">Inf</span>           <span style="color: #BB0000;">Inf</span>         1      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time        N    Events       AHR     theta     info    info0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 416.6667  77.80361 0.8720599 0.1368971 16.20843 16.22923</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500.0000 246.28341 0.7164215 0.3334865 61.35217 62.08666</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500.0000 293.69568 0.6955693 0.3630247 72.91885 74.25144</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          IF       IF0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2222803 0.2185712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8413760 0.8361677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time   N    Events       AHR     theta     info    info0        IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 500  77.80361 0.8720599 0.1368971 16.20843 16.22923 0.2222803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500 246.28341 0.7164215 0.3334865 61.35217 62.08666 0.8413760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500 293.69568 0.6955693 0.3630247 72.91885 74.25144 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         IF0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2185712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8361677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wlr"       "gs_design" "list"     </span>
@@ -307,23 +311,25 @@ lower bound</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> All          100   0.046<span style="text-decoration: underline;">2</span>   0.6       0.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bounds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0     Z `~HR at bound` `Nominal p`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper      0.017<span style="text-decoration: underline;">2</span>      0.003<span style="text-decoration: underline;">81</span>  2.67          0.546     0.003<span style="text-decoration: underline;">81</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100   -<span style="color: #BB0000;">1.28</span>          1.34      0.9    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper      0.622       0.014<span style="text-decoration: underline;">1</span>   2.29          0.747     0.011<span style="text-decoration: underline;">0</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        3 Upper      0.842       0.026<span style="text-decoration: underline;">3</span>   2.03          0.789     0.021<span style="text-decoration: underline;">1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound Probability Probability0       Z `~HR at bound` `Nominal p`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper      0.017<span style="text-decoration: underline;">2</span>      0.003<span style="text-decoration: underline;">81</span>    2.67          0.546     0.003<span style="text-decoration: underline;">81</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100     -<span style="color: #BB0000;">1.28</span>          1.34      0.9    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        2 Upper      0.622       0.014<span style="text-decoration: underline;">1</span>     2.29          0.747     0.011<span style="text-decoration: underline;">0</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        2 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100   -<span style="color: #BB0000;">Inf</span>           <span style="color: #BB0000;">Inf</span>         1      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>        3 Upper      0.842       0.026<span style="text-decoration: underline;">3</span>     2.03          0.789     0.021<span style="text-decoration: underline;">1</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower      0.033<span style="text-decoration: underline;">5</span>      0.100   -<span style="color: #BB0000;">Inf</span>           <span style="color: #BB0000;">Inf</span>         1      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time        N    Events       AHR     theta     info    info0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 416.6667  77.80361 0.8720599 0.1368971 16.20843 16.22923</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500.0000 246.28341 0.7164215 0.3334865 61.35217 62.08666</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500.0000 293.69568 0.6955693 0.3630247 72.91885 74.25144</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          IF       IF0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2222803 0.2185712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8413760 0.8361677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time   N    Events       AHR     theta     info    info0        IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 500  77.80361 0.8720599 0.1368971 16.20843 16.22923 0.2222803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500 246.28341 0.7164215 0.3334865 61.35217 62.08666 0.8413760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500 293.69568 0.6955693 0.3630247 72.91885 74.25144 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         IF0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2185712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8361677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wlr"       "gs_design" "list"     </span>
@@ -366,10 +372,10 @@ lower bound</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower     0.200       0.2      -<span style="color: #BB0000;">0.990</span>          1.32     0.839   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis     Time        N   Events       AHR      theta     info    info0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1 5.893973 245.5822 30.00022 0.9636346 0.03704306 3.683843 3.684245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2 6.900914 287.5381 39.99994 0.9373448 0.06470406 5.749098 5.750773</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3 7.808461 325.3525 50.00009 0.9155821 0.08819526 8.132517 8.136765</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis     Time   N   Events       AHR      theta     info    info0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1 5.893973 500 30.00022 0.9636346 0.03704306 3.683843 3.684245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2 6.900914 500 39.99994 0.9373448 0.06470406 5.749098 5.750773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3 7.808461 500 50.00009 0.9155821 0.08819526 8.132517 8.136765</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          IF       IF0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.4529769 0.4527898</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.7069273 0.7067640</span>
@@ -416,14 +422,14 @@ lower bound</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower   0.200       0.2        -<span style="color: #BB0000;">1.00</span>           1.12   0.842     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time        N    Events       AHR     theta     info    info0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 416.6667  77.80361 0.8720599 0.1368971 16.20843 16.22923</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500.0000 246.28341 0.7164215 0.3334865 61.35217 62.08666</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500.0000 293.69568 0.6955693 0.3630247 72.91885 74.25144</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          IF       IF0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2222803 0.2185712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8413760 0.8361677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time   N    Events       AHR     theta     info    info0        IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 500  77.80361 0.8720599 0.1368971 16.20843 16.22923 0.2222803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500 246.28341 0.7164215 0.3334865 61.35217 62.08666 0.8413760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500 293.69568 0.6955693 0.3630247 72.91885 74.25144 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         IF0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2185712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8361677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wlr"       "gs_design" "list"     </span>
@@ -466,14 +472,14 @@ lower bound</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower   0.200       0.2        -<span style="color: #BB0000;">1.00</span>           1.12   0.842     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $analysis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time        N    Events       AHR     theta     info    info0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 416.6667  77.80361 0.8720599 0.1368971 16.20843 16.22923</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500.0000 246.28341 0.7164215 0.3334865 61.35217 62.08666</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500.0000 293.69568 0.6955693 0.3630247 72.91885 74.25144</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          IF       IF0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2222803 0.2185712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8413760 0.8361677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Time   N    Events       AHR     theta     info    info0        IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1   10 500  77.80361 0.8720599 0.1368971 16.20843 16.22923 0.2222803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2   24 500 246.28341 0.7164215 0.3334865 61.35217 62.08666 0.8413760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3   30 500 293.69568 0.6955693 0.3630247 72.91885 74.25144 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         IF0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2185712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.8361677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wlr"       "gs_design" "list"     </span>

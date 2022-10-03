@@ -86,18 +86,19 @@ are not supported by <code>gs_power_npe()</code>.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gs_power_npe</span><span class="op">(</span></span>
 <span>  theta <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  theta0 <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta1 <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  info <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  info0 <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  info1 <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  info_scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  binding <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  upper <span class="op">=</span> <span class="va">gs_b</span>,</span>
 <span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span><span class="op">)</span>,</span>
 <span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span>
 <span>  lpar <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
 <span>  test_upper <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  test_lower <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  binding <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  r <span class="op">=</span> <span class="fl">18</span>,</span>
 <span>  tol <span class="op">=</span> <span class="fl">1e-06</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -108,6 +109,10 @@ are not supported by <code>gs_power_npe()</code>.</p>
     <dl><dt>theta</dt>
 <dd><p>natural parameter for group sequential design representing
 expected incremental drift at all analyses; used for power calculation</p></dd>
+
+
+<dt>theta0</dt>
+<dd><p>natural parameter for null hypothesis, if needed for upper bound computation</p></dd>
 
 
 <dt>theta1</dt>
@@ -130,10 +135,6 @@ impacts null hypothesis bound calculation</p></dd>
 
 <dt>info_scale</dt>
 <dd><p>the information scale for calculation, default is 2, other options are 0 or 1.</p></dd>
-
-
-<dt>binding</dt>
-<dd><p>indicator of whether futility bound is binding; default of FALSE is recommended</p></dd>
 
 
 <dt>upper</dt>
@@ -163,6 +164,10 @@ a logical vector of the same length as <code>info</code> should indicate which a
 single value of TRUE (default) indicates all analyses;
 single value FALSE indicated no lower bound; otherwise,
 a logical vector of the same length as <code>info</code> should indicate which analyses will have a lower bound</p></dd>
+
+
+<dt>binding</dt>
+<dd><p>indicator of whether futility bound is binding; default of FALSE is recommended</p></dd>
 
 
 <dt>r</dt>
@@ -237,12 +242,15 @@ a logical vector of the same length as <code>info</code> should indicate which a
 <span class="r-in"><span>  upar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>, </span></span>
 <span class="r-in"><span>  lower <span class="op">=</span> <span class="va">gs_b</span>,</span></span>
 <span class="r-in"><span>  lpar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">.1</span><span class="op">)</span>, <span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound     Z Probability theta theta1    IF  info info0 info1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        2 Upper  3         0.113    0.2    0.2 0.667    80    80    80</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        3 Upper  2         0.887    0.3    0.3 1       120   120   120</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        1 Lower -<span style="color: #BB0000;">1.28</span>      0.027<span style="text-decoration: underline;">8</span>   0.1    0.1 0.333    40    40    40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Analysis Bound       Z Probability theta theta1    IF  info info0 info1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 Upper  <span style="color: #BB0000;">Inf</span>         0        0.1    0.1 0.333    40    40    40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        2 Upper    3         0.113    0.2    0.2 0.667    80    80    80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        3 Upper    2         0.887    0.3    0.3 1       120   120   120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        1 Lower   -<span style="color: #BB0000;">1.28</span>      0.027<span style="text-decoration: underline;">8</span>   0.1    0.1 0.333    40    40    40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>        2 Lower -<span style="color: #BB0000;">Inf</span>         0.027<span style="text-decoration: underline;">8</span>   0.2    0.2 0.667    80    80    80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>        3 Lower -<span style="color: #BB0000;">Inf</span>         0.027<span style="text-decoration: underline;">8</span>   0.3    0.3 1       120   120   120</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Spending function bounds</span></span></span>
 <span class="r-in"><span><span class="co"># Lower spending based on non-zero effect</span></span></span>
