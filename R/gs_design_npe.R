@@ -290,7 +290,7 @@ gs_design_npe <- function(theta = .1, theta0 = NULL, theta1 = NULL,    # 3 theta
   # --------------------------------------------- #
   symmetric_design <- ifelse(identical(upper, lower) & length(dplyr::setdiff(upar, lpar)) == 0, TRUE, FALSE)
   if(identical(lower, gs_b) & (!is.list(lpar))){
-    two_sided <- ifelse(unique(lpar) == -Inf, FALSE, TRUE)
+    two_sided <- ifelse(identical(lpar, rep(-Inf, K)), FALSE, TRUE)
   }else{
     two_sided <- TRUE
   }
