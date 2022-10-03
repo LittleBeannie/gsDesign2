@@ -6,18 +6,19 @@
 \usage{
 gs_power_npe(
   theta = 0.1,
+  theta0 = NULL,
   theta1 = NULL,
   info = 1,
   info0 = NULL,
   info1 = NULL,
   info_scale = c(0, 1, 2),
-  binding = FALSE,
   upper = gs_b,
   upar = qnorm(0.975),
   lower = gs_b,
   lpar = -Inf,
   test_upper = TRUE,
   test_lower = TRUE,
+  binding = FALSE,
   r = 18,
   tol = 1e-06
 )
@@ -25,6 +26,8 @@ gs_power_npe(
 \arguments{
 \item{theta}{natural parameter for group sequential design representing
 expected incremental drift at all analyses; used for power calculation}
+
+\item{theta0}{natural parameter for null hypothesis, if needed for upper bound computation}
 
 \item{theta1}{natural parameter for alternate hypothesis, if needed for lower bound computation}
 
@@ -37,8 +40,6 @@ impacts null hypothesis bound calculation}
 \code{info}; impacts futility hypothesis bound calculation}
 
 \item{info_scale}{the information scale for calculation, default is 2, other options are 0 or 1.}
-
-\item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 
 \item{upper}{function to compute upper bound}
 
@@ -56,6 +57,8 @@ a logical vector of the same length as \code{info} should indicate which analyse
 single value of TRUE (default) indicates all analyses;
 single value FALSE indicated no lower bound; otherwise,
 a logical vector of the same length as \code{info} should indicate which analyses will have a lower bound}
+
+\item{binding}{indicator of whether futility bound is binding; default of FALSE is recommended}
 
 \item{r}{Integer, at least 2; default of 18 recommended by Jennison and Turnbull}
 

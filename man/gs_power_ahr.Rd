@@ -11,9 +11,9 @@ gs_power_ahr(
   events = c(30, 40, 50),
   analysisTimes = NULL,
   upper = gs_b,
-  lower = gs_b,
   upar = gsDesign(k = length(events), test.type = 1, n.I = events, maxn.IPlan =
     max(events), sfu = sfLDOF, sfupar = NULL)$upper$bound,
+  lower = gs_b,
   lpar = c(qnorm(0.1), rep(-Inf, 2)),
   test_lower = TRUE,
   test_upper = TRUE,
@@ -35,9 +35,9 @@ gs_power_ahr(
 
 \item{upper}{Function to compute upper bound}
 
-\item{lower}{Function to compute lower bound}
-
 \item{upar}{Parameter passed to \code{upper()}}
+
+\item{lower}{Function to compute lower bound}
 
 \item{lpar}{Parameter passed to \code{lower()}}
 

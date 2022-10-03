@@ -6,6 +6,7 @@
 \usage{
 gs_design_npe(
   theta = 0.1,
+  theta0 = NULL,
   theta1 = NULL,
   info = 1,
   info0 = NULL,
@@ -27,6 +28,8 @@ gs_design_npe(
 \arguments{
 \item{theta}{natural parameter for group sequential design representing expected incremental drift at all analyses;
 used for power calculation}
+
+\item{theta0}{natural parameter used for upper bound spending; if \code{NULL}, this will be set to 0}
 
 \item{theta1}{natural parameter used for lower bound spending; if \code{NULL}, this will be set to \code{theta}
 which yields the usual beta-spending. If set to 0, spending is 2-sided under null hypothesis.}
