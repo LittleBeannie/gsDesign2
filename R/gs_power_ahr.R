@@ -180,8 +180,7 @@ gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
   suppressMessages(
     analysis <- x %>% 
       select(Analysis, Time, Events, AHR) %>% 
-      #mutate(N = eAccrual(x = x$Time, enrollRates = enrollRates)) %>% 
-      mutate(N = sum(enrollRates$rate * enrollRates$duration)) %>% 
+      mutate(N = eAccrual(x = x$Time, enrollRates = enrollRates)) %>% 
       left_join(y_H1 %>% select(Analysis, info, IF, theta) %>% unique()) %>%
       left_join(y_H0 %>% select(Analysis, info, IF) %>% dplyr::rename(info0 = info, IF0 = IF) %>% unique()) %>%
       select(Analysis, Time, N, Events, AHR, theta, info, info0, IF, IF0) %>% 
