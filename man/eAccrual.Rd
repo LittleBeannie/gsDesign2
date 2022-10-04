@@ -59,7 +59,7 @@ eAccrual(x = c(5, 10, 20),
 # Example 3: stratified design
 eAccrual(x = c(24, 30, 40), 
          enrollRates = tibble(Stratum=c("subgroup", "complement"), 
-                              duration = enroll_duration, 
+                              duration = 33, 
                               rate = c(30, 30)))
 
 }
