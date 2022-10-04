@@ -2,11 +2,17 @@ Package: gsDesign2
 Title: Group sequential design with non-constant effect
 Version: 0.2.0
 Authors@R: c(
-    person("Keaven", "Anderson", email = "keaven_anderson@merck.com", role = c("aut", "cre")),
+    person("Keaven", "Anderson", email = "keaven_anderson@merck.com", role = c("aut")),
     person("Yilong", "Zhang", email = "elong0527@gmail.com", role = c("aut")),
-    person("Yujie", "Zhao", email = "yujie.zhao@merck.com", role = c("aut")),
-    person("Jianxiao", "Yang", email = "yangjx@ucla.edu", role = c("aut")),
-    person("Nan", "Xiao", email = "nan.xiao1@merck.com", role = c("aut")),
+    person("Yujie", "Zhao", email = "yujie.zhao@merck.com", role = c("aut", "cre")),
+    person("Jianxiao", "Yang", email = "yangjx@ucla.edu", role = c("ctb")),
+    person("Nan", "Xiao", email = "nan.xiao1@merck.com", role = c("ctb")),
+    person("Amin", "Shirazi", email = "ashirazist@gmail.com", role = c("ctb")),
+    person("Ruixue", "Wang", email = "ruixue.wang@merck.com", role = c("ctb")),
+    person("Yi", "Cui", email = "yi.cui@merck.com", role = c("ctb")),
+    person("Ping", "Yang", email = "ping.yang1@merck.com", role = c("ctb")),
+    person("Xin Tong", "Li", email = "xin.tong.li@merck.com", role = c("ctb")), 
+    person("Yalin", "Zhu", email = "yalin.zhu@merck.com", role = c("ctb")),
     person("Merck Sharp & Dohme Corp", role = "cph")
     )
 Description: Basic group sequential design computations extended.
