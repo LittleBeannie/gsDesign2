@@ -51,6 +51,8 @@ NULL
 #' @return A vector with expected cumulative enrollment for the specified `times`.
 #' 
 #' @examples
+#' library(tibble)
+#' 
 #' # Example 1: default
 #' eAccrual()
 #' 

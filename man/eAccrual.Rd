@@ -43,6 +43,8 @@ given a set of piecewise constant enrollment rates and times.
 }
 
 \examples{
+library(tibble)
+
 # Example 1: default
 eAccrual()
 
