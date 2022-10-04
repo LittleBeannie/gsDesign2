@@ -89,10 +89,27 @@ given a set of piecewise constant enrollment rates and times.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example: default</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example 1: default</span></span></span>
 <span class="r-in"><span><span class="fu">eAccrual</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   0   5  10  15  25  35  45  65  85 105 125 145 165 185 205 225 245 265 285</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [20] 305 325 345 365 385 405</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example 2: unstratified design</span></span></span>
+<span class="r-in"><span><span class="fu">eAccrual</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>         enrollRates <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">18</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  35 125 325</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">eAccrual</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>         enrollRates <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>duration <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">18</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>         Stratum <span class="op">=</span> <span class="st">"All"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  35 125 325</span>
+<span class="r-in"><span>         </span></span>
+<span class="r-in"><span><span class="co"># Example 3: stratified design</span></span></span>
+<span class="r-in"><span><span class="fu">eAccrual</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">24</span>, <span class="fl">30</span>, <span class="fl">40</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>         enrollRates <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Stratum<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"subgroup"</span>, <span class="st">"complement"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                              duration <span class="op">=</span> <span class="va">enroll_duration</span>, </span></span>
+<span class="r-in"><span>                              rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">30</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval_tidy(xs[[j]], mask):</span> object 'enroll_duration' not found</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
