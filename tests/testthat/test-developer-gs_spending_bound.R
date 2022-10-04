@@ -52,7 +52,7 @@ test_that("Two-sided symmetric design fails to reproduce gsDesign test.type=2 bo
                   delta = delta, alpha = alpha, beta = beta, tol = 1e-6)
   gsdv <- gs_design_npe(theta = delta, info = timing, beta = beta,
                         theta1 = rep(0,3), # Use this for lower bound spending under null hypothesis
-                        binding = FALSE, # Use this for 2-sided symmetric design
+                        binding = TRUE, # Use this for 2-sided symmetric design
                         upper = gs_spending_bound,
                         upar = list(sf = sfu, total_spend = alpha, param = sfupar),
                         lower = gs_spending_bound,
