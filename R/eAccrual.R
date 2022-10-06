@@ -51,8 +51,24 @@ NULL
 #' @return A vector with expected cumulative enrollment for the specified `times`.
 #' 
 #' @examples
-#' # Example: default
+#' library(tibble)
+#' 
+#' # Example 1: default
 #' eAccrual()
+#' 
+#' # Example 2: unstratified design
+#' eAccrual(x = c(5, 10, 20), 
+#'          enrollRates = tibble(duration = c(3, 3, 18), rate = c(5, 10, 20)))
+#' 
+#' eAccrual(x = c(5, 10, 20), 
+#'          enrollRates = tibble(duration = c(3, 3, 18), rate = c(5, 10, 20), 
+#'          Stratum = "All"))
+#'          
+#' # Example 3: stratified design
+#' eAccrual(x = c(24, 30, 40), 
+#'          enrollRates = tibble(Stratum=c("subgroup", "complement"), 
+#'                               duration = 33, 
+#'                               rate = c(30, 30)))
 #' 
 #' @export
 #'
@@ -67,23 +83,72 @@ eAccrual <- function(x = 0:24,
   # check enrollment rate assumptions
   check_enrollRates(enrollRates)
   
-  # convert rates to step function
-  ratefn <- stepfun(x = cumsum(enrollRates$duration),
-                    y = c(enrollRates$rate, 0),
-                    right=TRUE)
+  # check if it is stratified design
+  if("Stratum" %in% names(enrollRates)){
+    n_strata <- length(unique(enrollRates$Stratum))
+  }else{
+    n_strata <- 1
+  }
   
+  # convert rates to step function
+  if(n_strata == 1){
+    ratefn <- stepfun(x = cumsum(enrollRates$duration),
+                      y = c(enrollRates$rate, 0),
+                      right = TRUE)
+  }else{
+    ratefn <- lapply(unique(enrollRates$Stratum), 
+                     FUN = function(s){
+                       stepfun(x = cumsum((enrollRates %>% filter(Stratum == s))$duration),
+                               y = c((enrollRates %>% filter(Stratum == s))$rate, 0),
+                               right = TRUE)
+                     })
+  }
+
   # add times where rates change to enrollRates
-  xvals <- sort(unique(c(x, cumsum(enrollRates$duration))))
+  if(n_strata == 1){
+    xvals <- sort(unique(c(x, cumsum(enrollRates$duration))))
+  }else{
+    xvals <- lapply(unique(enrollRates$Stratum), 
+                    FUN = function(s){
+                      sort(unique(c(x, cumsum((enrollRates %>% filter(Stratum == s))$duration))))
+                    })
+  }
   
   # make a tibble
-  xx <- tibble(x = xvals,
-               duration = xvals - lag(xvals,default = 0),
-               rate = ratefn(xvals),                      # enrollment rates at points (right continuous)
-               eAccrual = cumsum(rate*duration)           # expected accrual
-  )
+  if(n_strata == 1){
+    xx <- tibble(x = xvals,
+                 duration = xvals - lag(xvals, default = 0),
+                 rate = ratefn(xvals),                        # enrollment rates at points (right continuous)
+                 eAccrual = cumsum(rate * duration)           # expected accrual
+    )
+  }else{
+    xx <- lapply(1:n_strata, 
+               FUN = function(i){
+                 tibble(x = xvals[[i]],
+                        duration = xvals[[i]] - lag(xvals[[i]], default = 0),
+                        rate = ratefn[[i]](xvals[[i]]),       # enrollment rates at points (right continuous)
+                        eAccrual = cumsum(rate * duration)    # expected accrual
+                 )
+               })
+  }
   
+  
+
   # return survival or cdf
-  ind <- !is.na(match(xx$x, x))
-  ans <- as.numeric(xx$eAccrual[ind])
+  if(n_strata == 1){
+    ind <- !is.na(match(xx$x, x))
+    ans <- as.numeric(xx$eAccrual[ind])
+  }else{
+    ind <- lapply(1:n_strata, 
+                  FUN = function(i){
+                    !is.na(match(xx[[i]]$x, x))
+                  })
+    ans <- lapply(1:n_strata, 
+                  FUN = function(i){
+                    as.numeric(xx[[i]]$eAccrual[ind[[i]]])
+                  })
+    ans <- do.call("+", ans)
+  }
+  
   return(ans)
 }

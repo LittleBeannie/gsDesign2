@@ -283,7 +283,7 @@ check_info <- function(info){
   if(!is.vector(info, mode = "numeric")){
     stop("gs_design_npe() or gs_power_npe(): info must be specified numeric vector!")
   } 
-  if (min(info - lag(info, default = 0) <= 0)){
+  if (min(info - lag(info, default = 0)) <= 0){
     stop("gs_design_npe() or gs_power_npe(): info much be strictly increasing and positive!")
   } 
 }

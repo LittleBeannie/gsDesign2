@@ -139,6 +139,12 @@ gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
   # get the info_scale
   info_scale <- if(methods::missingArg(info_scale)){2}else{match.arg(as.character(info_scale), choices = 0:2)}
   
+  # check if it is two-sided design or not
+  if(identical(lower, gs_b) & (!is.list(lpar))){
+    two_sided <- ifelse(identical(lpar, rep(-Inf, K)), FALSE, TRUE)
+  }else{
+    two_sided <- TRUE
+  }
   # ---------------------------------------- #
   #    calculate the asymptotic variance     #
   #       and statistical information        #
@@ -159,7 +165,9 @@ gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
   y_H0 <- gs_power_npe(theta = 0, 
                        info = x$info0, info0 = x$info0, info_scale = info_scale,
                        upper = upper, upar = upar, test_upper = test_upper,
-                       lower = if(binding){lower}else{gs_b}, lpar = if(binding){lpar}else{rep(-Inf, K)}, test_lower = test_lower,
+                       lower = if(!two_sided){gs_b}else{lower}, 
+                       lpar = if(!two_sided){rep(-Inf, K)}else{lpar}, 
+                       test_lower = test_lower,
                        binding = binding, r = r, tol = tol)
   
   # ---------------------------------------- #
@@ -180,8 +188,7 @@ gs_power_ahr <- function(enrollRates = tibble(Stratum = "All", duration = c(2, 2
   suppressMessages(
     analysis <- x %>% 
       select(Analysis, Time, Events, AHR) %>% 
-      #mutate(N = eAccrual(x = x$Time, enrollRates = enrollRates)) %>% 
-      mutate(N = sum(enrollRates$rate * enrollRates$duration)) %>% 
+      mutate(N = eAccrual(x = x$Time, enrollRates = enrollRates)) %>% 
       left_join(y_H1 %>% select(Analysis, info, IF, theta) %>% unique()) %>%
       left_join(y_H0 %>% select(Analysis, info, IF) %>% dplyr::rename(info0 = info, IF0 = IF) %>% unique()) %>%
       select(Analysis, Time, N, Events, AHR, theta, info, info0, IF, IF0) %>% 

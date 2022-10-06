@@ -288,12 +288,12 @@ gs_design_npe <- function(theta = .1, theta0 = NULL, theta1 = NULL,    # 3 theta
   # --------------------------------------------- #
   #     check design type                         #
   # --------------------------------------------- #
-  symmetric_design <- ifelse(identical(upper, lower) & length(dplyr::setdiff(upar, lpar)) == 0, TRUE, FALSE)
   if(identical(lower, gs_b) & (!is.list(lpar))){
     two_sided <- ifelse(identical(lpar, rep(-Inf, K)), FALSE, TRUE)
   }else{
     two_sided <- TRUE
   }
+  
   # --------------------------------------------- #
   #     initialization                            #
   # --------------------------------------------- #
@@ -411,17 +411,12 @@ gs_design_npe <- function(theta = .1, theta0 = NULL, theta1 = NULL,    # 3 theta
                          binding = binding, r = r, tol = tol)
   
   # calculate the probability under H0
-  if(two_sided + symmetric_design == 2){
-    flag <- 1 
-  }else if(two_sided == TRUE & symmetric_design == FALSE){
-    flag <- ifelse(binding, 1, 0)
-  }
   ans_H0 <- gs_power_npe(theta = 0, theta0 = theta0, theta1 = theta1, 
                          info = info * inflation_factor, info0 = info0 * inflation_factor, info1 = info1 * inflation_factor,
                          info_scale = info_scale,
                          upper = upper, upar = upar, 
-                         lower = if(flag){lower}else{gs_b}, 
-                         lpar = if(flag){lpar}else{rep(-Inf, K)},
+                         lower = if(!two_sided){gs_b}else{lower}, 
+                         lpar = if(!two_sided){rep(-Inf, K)}else{lpar},
                          test_upper = test_upper, test_lower = test_lower,
                          binding = binding, r = r, tol = tol)
   
