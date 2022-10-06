@@ -27,8 +27,8 @@ library(ggplot2)
 # Overview
 
 We set up futility bounds under a non-proportional hazards assumption.
-We consider methods presented by @kornfreidlin2018 for setting such bounds and then consider an alternate futility bound based on $\beta-$spending under a delayed or crossing treatment effect to simplify implementation.
-Finally, we show how to update this $\beta-$spending bound based on blinded interim data.
+We consider methods presented by @kornfreidlin2018 for setting such bounds and then consider an alternate futility bound based on $\beta$-spending under a delayed or crossing treatment effect to simplify implementation.
+Finally, we show how to update this $\beta$-spending bound based on blinded interim data.
 We will consider an example to reproduce a line of @kornfreidlin2018 Table 1 with the alternative futility bounds considered.
 
 
@@ -72,9 +72,9 @@ fixedevents %>% summary() %>%
 # Modified Wieand futility bound
 
 The @wieand rule recommends stopping after 50% of planned events accrue if the observed HR > 1.
-kornfreidlin2018 modified this by adding a second interim analysis after 75% of planned events and stop if the observed HR > 1
+@kornfreidlin2018 modified this by adding a second interim analysis after 75% of planned events and stop if the observed HR > 1
 This is implemented here by requiring a trend in favor of control with a direction $Z$-bound at 0 resulting in the *Nominal p* bound being 0.5 for interim analyses in the table below.
-A fixed bound is specified with the 'gs_b()` function for `upper` and `lower` and its correspoinding parameters `upar` for the upper (efficacy) bound and `lpar` for the lower (futility) bound.
+A fixed bound is specified with the `gs_b()` function for `upper` and `lower` and corresponding parameters `upar` for the upper (efficacy) bound and `lpar` for the lower (futility) bound.
 The final efficacy bound is for a 1-sided nominal p-value of 0.025; the futility bound lowers this to 0.0247 as noted in the lower-right-hand corner of the table below.
 In the last row under *Alternate hypothesis* below we see the power is 88.44%.
 @kornfreidlin2018 computed 88.4% power for this design with 100,000 simulations which estimate the standard error for the power calculation to be `r paste(100 * round(sqrt(.884 * (1 - .884)/100000),4),'%',sep='')`.
@@ -109,7 +109,7 @@ betaspending %>%
 
 # Classical beta-spending futility bound
 
-A classical $\beta-$spending bound would assume a constant treatment effect over time using the  proportional hazards assumption. We use the average hazard ratio at the fixed design analysis for this purpose.
+A classical $\beta$-spending bound would assume a constant treatment effect over time using the  proportional hazards assumption. We use the average hazard ratio at the fixed design analysis for this purpose.
 
 # Korn and Freidlin futility bound
 
@@ -149,6 +149,12 @@ We see above that about 1/3 of events are still within 3 months of enrollment at
 
 The bound proposed by @kornfreidlin2018 
 
+## Updating beta=spending bound at time of analysis
 
+We provide an example of how to update a $\beta$-spending bound using blinded data when a piecewise constant hazard ratio is assumed. 
+The basic approach is as follows:
+
+1) For each piecewise interval in the design with a different hazard ratio, compute the blinded total events and total follow-up time.
+2) Compute variance and statistical information under the null hypothesis for each interval in the piecewise model. This assumes equal censoring in the two arms. Assuming equal randomization and equal dropout rates in the two arms.
 
 # References
