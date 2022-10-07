@@ -6,6 +6,8 @@
 status](https://www.r-pkg.org/badges/version/gsDesign2)](https://CRAN.R-project.org/package=gsDesign2)
 <!-- badges: end -->
 
+## This repo is no longer under maintain, please re-direct to its latest version at https://github.com/Merck/gsDesign2.
+
 ## Objective
 
 The goal of **gsDesign2** is to enable fixed or group sequential design
